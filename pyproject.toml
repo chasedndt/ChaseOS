@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "chaseos"
+version = "0.1.0"
+description = "ChaseOS Core production-safe baseline"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+chaseos = "runtime.cli.main:main"
+chase = "runtime.cli.main:main"
+
+[tool.setuptools]
+py-modules = ["chaseos"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["runtime", "runtime.cli"]
+
+[tool.pytest.ini_options]
+cache_dir = ".pytest_tmp_env/cache"
+norecursedirs = [".pytest_tmp_env"]
