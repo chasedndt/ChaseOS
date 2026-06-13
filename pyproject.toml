@@ -18,7 +18,7 @@ py-modules = ["chaseos"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["runtime", "runtime.cli"]
+include = ["runtime", "runtime.*"]
 
 [tool.pytest.ini_options]
 cache_dir = ".pytest_tmp_env/cache"
