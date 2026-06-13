@@ -1,0 +1,12 @@
+id: default-site-ops-team
+name: Default Site Ops Team
+mode: site_ops
+presets:
+  - site-ops-worker
+  - research-worker
+  - qa-testing-worker
+  - memory-documentation-worker
+coordination:
+  lead: site-ops-worker
+  maxParallelWorkers: 2
+  approvalRequiredForExternalEffects: true

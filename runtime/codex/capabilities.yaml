@@ -1,0 +1,22 @@
+bus_name: Codex
+personal_runtime_name: Axiom-Codex
+retained_runtime_name: Axiom-Codex
+legacy_personal_runtime_names:
+  - Codex-ChaseOS-Worker
+name_retention_source: 06_AGENTS/Codex-Runtime-Profile.md
+heartbeat_stale_seconds: 900
+max_concurrent_tasks: 1
+priority_ceiling: normal
+handles:
+  - task_type: code.review
+    priority: primary
+    notes: Inspect code and return risks/proposals/patch artifacts without mutating ChaseOS state directly.
+  - task_type: code.patch
+    priority: primary
+    notes: Produce patch proposals as artifacts for ChaseOS/OpenClaw review and application.
+  - task_type: repo.inspect
+    priority: secondary
+    notes: Read-only repository inspection and implementation planning.
+  - task_type: test.run
+    priority: secondary
+    notes: Run tests or describe test evidence from a bounded task packet.

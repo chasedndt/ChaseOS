@@ -1,0 +1,13 @@
+id: default-venture-ops-team
+name: Default Venture Ops Team
+mode: venture_ops
+presets:
+  - ceo-orchestrator
+  - venture-ops-worker
+  - product-analysis-worker
+  - marketing-content-worker
+  - qa-testing-worker
+coordination:
+  lead: ceo-orchestrator
+  maxParallelWorkers: 3
+  approvalRequiredForExternalEffects: true

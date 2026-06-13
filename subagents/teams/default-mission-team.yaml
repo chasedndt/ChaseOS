@@ -1,0 +1,13 @@
+id: default-mission-team
+name: Default Mission Team
+mode: mission
+presets:
+  - ceo-orchestrator
+  - research-worker
+  - venture-ops-worker
+  - qa-testing-worker
+  - memory-documentation-worker
+coordination:
+  lead: ceo-orchestrator
+  maxParallelWorkers: 3
+  approvalRequiredForExternalEffects: true

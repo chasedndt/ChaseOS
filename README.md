@@ -1,51 +1,38 @@
 # ChaseOS Core
 
-ChaseOS Core is a local-first runtime and governance framework for bounded
-human-AI workflows.
+ChaseOS Core is a public framework for building a local-first human-AI operating system. It defines governed memory, source intelligence, agent boundaries, approval workflows, runtime discipline, and evidence-first writeback.
 
-This production repository intentionally excludes local-only notes, generated
-run evidence, credentials, workspaces, and non-product context.
+## What This Repository Contains
 
-## Current Scope
+- Framework documentation for the ChaseOS control plane.
+- Core home/project/knowledge/log folder templates.
+- Agent governance docs: Permission Matrix, Trust Tiers, Gate, adapter standards, and runtime boundaries.
+- SOPs for research ingest, promotion sessions, credential boundaries, untrusted input, build logs, and agent failure ambiguity.
+- Templates for notes, projects, logs, runtime profiles, audits, approval packets, and workflow packs.
+- Governance patterns for approval-gated writes.
+- Adapter standards for external runtimes.
+- Chaser Forge workflow and extension-governance templates.
+- Example folders that can be copied into a private deployment.
 
-- Minimal production-safe CLI
-- Core repository metadata
-- Publication safety boundaries
-- Public-safe OpenCore/template documentation surfaces
-- Chaser Forge workflow and extension-governance templates
+## What This Repository Does Not Contain
 
-## Safety Boundary
+- Personal notes or private project state.
+- Live runtime logs or approval queues.
+- Credential values.
+- Provider-specific deployment state.
+- Machine-local paths.
 
-Do not commit credentials, local machine state, run artifacts, local-only notes,
-or generated evidence bundles to this repository.
+## Intended Use
 
-Production downloads and installers require a separate release gate with human
-approval, checksums, release notes, known limitations, and a security/privacy
-review.
-
-## Development
-
-```powershell
-python -m runtime.cli.main --help
-```
+Use Core as a starter kit and reference model. Private deployments should keep local content, runtime state, and operator records outside the public Core tree.
 
 ## OpenCore / Template Surfaces
 
-The first tracked OpenCore transfer slice is Chaser Forge:
+This repository now includes the compulsory public Core scaffold for a working ChaseOS starter:
 
-- `docs/forge/chaser_forge_workflows_index.md`
-- `docs/forge/chaser_forge_workflow_proofs_index.md`
-- `docs/forge/chaser_forge_opencore_transfer_plan.md`
-- `docs/standards/chaseos-forge-workflow-node-v1.md`
-- `templates/forge/`
+- `00_HOME/`, `01_PROJECTS/`, `02_KNOWLEDGE/`, `03_INPUTS/`, `04_SOPS/`, `05_TEMPLATES/`, `06_AGENTS/`, and `07_LOGS/` starter/index surfaces.
+- Public-safe agent governance and runtime boundary docs.
+- Workflow/governance templates under `templates/`.
+- Chaser Forge public workflow templates under `docs/forge/` and `templates/forge/`.
 
-These are governance and template surfaces only. They do not enable live
-marketplace fetch, network upload, paid checkout, license enforcement,
-third-party remote install, approval consumption, provider/model calls, browser
-control, host mutation, or canonical promotion.
-
-## Status
-
-Production baseline cleanup is in progress. Treat missing workflow packs or
-workspace-specific content as intentional until they pass sanitized product
-review.
+These are governance and template surfaces only. They do not enable live marketplace fetch, network upload, paid checkout, license enforcement, third-party remote install, approval consumption, provider/model calls, browser control, host mutation, or canonical promotion.

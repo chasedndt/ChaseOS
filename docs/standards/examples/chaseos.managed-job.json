@@ -1,0 +1,5 @@
+{
+  "managed_runtime_available": false,
+  "schema": "chaseos.managed-job.v1",
+  "status": "future_not_enabled"
+}

@@ -1,25 +1,22 @@
-# ChaseOS Core production ignore rules
+# ============================================================
+# ChaseOS .gitignore
+# ============================================================
+# Tracks: vault markdown, runtime code, policy, manifests, templates.
+# Never tracks: credentials, env files, local state, large artifacts,
+#               Python cache, venv, Obsidian app config, SQLite dbs.
+# ============================================================
 
-# Credentials and local config
+# --- Credentials and secrets ---
 .env
 .env.*
+!.env.example
 *.key
 *.pem
 *.p12
-*.pfx
-*.crt
-*.cer
-*.asc
-*.kdbx
-*.secret
-*.token
 secrets/
 credentials/
-private/
-local_config/
-config.local.*
 
-# Python and package artifacts
+# --- Python runtime ---
 .venv/
 venv/
 __pycache__/
@@ -29,96 +26,71 @@ __pycache__/
 .Python
 build/
 dist/
-*.exe
-*.msi
-*.dmg
-*.pkg
-*.app/
-*.zip
-*.7z
-*.tar
-*.tar.gz
-*.tgz
-*.whl
 *.egg-info/
 *.egg
-uv.lock
 
-# Web artifacts
-node_modules/
-.next/
-.nuxt/
-out/
-coverage/
-
-# Tool, cache, and temp state
-.*/
-!.gitignore
+# --- Test and temp artifacts ---
 .pytest_cache/
+.pytest-tmp/
+.pytest_tmp/
 .pytest_tmp_env/
-.uv-cache/
-logs/
-tmp/
-temp/
+.codex/
+.codex-*/
+.codex_tmp/
+.codex_tmp_test/
 .tmp/
 *.tmp
 
-# Databases and generated state
+# --- Obsidian app config (not content) ---
+.obsidian/
+
+# --- ChaseOS local export/build state (not public repo payload) ---
+core_export/
+core_templates/
+
+# --- ChaseOS runtime state (local machine state, not code) ---
+.chaseos/
+# Includes machine-local Discord bindings such as
+
+# .chaseos/ contains: dedup_registry.json, watch_folders.json,
+# watch_processed.json, config.yaml — all local machine state,
+# not portable or meaningful in version control.
+
+# --- SQLite databases (agent bus, artifact store) ---
 *.db
 *.db-wal
 *.db-shm
 *.sqlite
-*.sqlite3
-*.duckdb
-*.jsonl
+runtime/agent_bus/*.db*
+runtime/acquisition/artifact_store.db*
 
-# Local notes, docs, exports, demos, and handoffs
-/*.md
-!README.md
-*.patch
-conftest.py
-ChaseOS*/
-00_HOME/
-01_PROJECTS/
-02_KNOWLEDGE/
-03_INPUTS/
-04_SOPS/
-05_PROMPTS/
-05_TEMPLATES/
-06_AGENTS/
-07_LOGS/
-99_ARCHIVE/
-website/
-core_export/
-core_templates/
-docs/
-!docs/
-docs/*
-!docs/forge/
-docs/forge/*
-!docs/forge/chaser_forge_workflows_index.md
-!docs/forge/chaser_forge_workflow_proofs_index.md
-!docs/forge/chaser_forge_opencore_transfer_plan.md
-!docs/standards/
-docs/standards/*
-!docs/standards/chaseos-forge-workflow-node-v1.md
-!docs/audits/
-docs/audits/*
-!docs/audits/2026-06-13_chaser_forge_opencore_transfer_audit.md
-fixtures/
-kernel/
-subagents/
-security/
+# --- Large runtime artifacts (generated, not source) ---
+runtime/acquisition/packs/
+runtime/scaffold/generated/
+07_LOGS/Operator-Screenshots/
 
-# Runtime: keep only the minimal production CLI package tracked
-runtime/*
-!runtime/cli/
-runtime/cli/*
-!runtime/cli/__init__.py
-!runtime/cli/main.py
+# --- Studio shell state ---
+runtime/studio/approvals/
+runtime/studio/shell/frontend/assets/cytoscape.min.js
 
-# Local OS/editor files
+# --- Runtime lifecycle and process state ---
+runtime/lifecycle/run/
+runtime/lifecycle/bootstrap/
+runtime/osril/run/
+runtime/events/
+
+# --- Hermes and OpenClaw local state ---
+.hermes/
+.openclaw/
+
+# --- Claude Code local session state (NOT the hooks/settings.json — those are tracked) ---
+.claude/settings.local.json
+.claude/hooks/__pycache__/
+
+# --- VS Code workspace settings (keep .vscode/extensions.json if desired) ---
 .vscode/settings.json
 .vscode/launch.json
+
+# --- macOS artifacts (if ever synced) ---
 .DS_Store
 Thumbs.db

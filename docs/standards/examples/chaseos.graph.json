@@ -1,0 +1,45 @@
+{
+  "edges": [
+    {
+      "from": "project.chaseos-public-launch",
+      "to": "pack.startup_validation_launch",
+      "type": "uses_pack"
+    },
+    {
+      "from": "pack.startup_validation_launch",
+      "to": "approval.appr-demo-launch-publish",
+      "type": "requests_approval"
+    },
+    {
+      "from": "approval.appr-demo-launch-publish",
+      "to": "outcome.run-demo-launch-readiness",
+      "type": "gates_outcome"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "project.chaseos-public-launch",
+      "label": "ChaseOS public launch",
+      "type": "project"
+    },
+    {
+      "id": "pack.startup_validation_launch",
+      "label": "Startup Validation Launch",
+      "type": "workflow_pack"
+    },
+    {
+      "id": "approval.appr-demo-launch-publish",
+      "label": "Deploy approval",
+      "type": "approval"
+    },
+    {
+      "id": "outcome.run-demo-launch-readiness",
+      "label": "Launch readiness output",
+      "type": "outcome"
+    }
+  ],
+  "preview_notice": "Public-safe graph shape example with synthetic IDs only.",
+  "private_graph_exported": false,
+  "schema": "chaseos.graph.v1.preview",
+  "status": "preview"
+}

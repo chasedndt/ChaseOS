@@ -1,0 +1,11 @@
+{
+  "authority": "bounded_development_runtime",
+  "runtime": "Codex",
+  "schema": "chaseos.agent.v1",
+  "task_types": [
+    "repo.inspect",
+    "code.patch",
+    "code.review",
+    "test.run"
+  ]
+}

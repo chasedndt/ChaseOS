@@ -1,0 +1,50 @@
+# OpenClaw Runtime — Capability Manifest
+# Declares what task types OpenClaw can handle on the agent coordination bus.
+#
+# bus_name: should match the runtime bus identity exposed by the capability registry.
+#   The agent bus storage and JSON packet schemas are runtime-generic; adding a
+#   new runtime requires a capability manifest/policy binding and validation, not
+#   a SQLite CHECK-constraint rewrite.
+#
+# To change what OpenClaw advertises to the router: edit this file.
+# To make openclaw_watch execute a task type, a matching bounded handler must also
+# exist in runtime/workflows/openclaw_watch.py.
+
+runtime: openclaw
+bus_name: OpenClaw
+display_name: "OpenClaw"
+description: "Primary operator synthesizer — cron-triggered AOR workflows, scheduled briefings, source acquisition"
+
+handles:
+  - task_type: operator-briefing
+    priority: primary
+    notes: "operator_today and operator_close_day AOR workflows"
+  - task_type: scheduled-briefing
+    priority: primary
+    notes: "SBP pipeline execution (sbp_strikezone_digest)"
+  - task_type: source-pack-builder
+    priority: primary
+    notes: "strikezone_acquisition and future acquisition workflows"
+  - task_type: graph-hygiene
+    priority: primary
+    notes: "graph_hygiene proposal and maintenance lane"
+  - task_type: vault-maintenance
+    priority: secondary
+    notes: "broader maintenance umbrella including graduate_ideas"
+  - task_type: review
+    priority: secondary
+    notes: "Can perform reviews if Hermes is unavailable"
+
+max_concurrent_tasks: 3
+heartbeat_stale_seconds: 900
+priority_ceiling: normal
+
+governance_notes:
+  validated_by: "runtime/adapters/runtime_governance.py"
+  last_verified: "2026-04-28"
+  authority_boundary: "Capability discovery does not grant authority; AOR/Gate manifests still govern execution."
+  forbidden_expansion:
+    - "host_shell_as_chaseos_authority"
+    - "credential_access"
+    - "wallet_or_exchange_execution"
+    - "autonomous_canonical_writeback"

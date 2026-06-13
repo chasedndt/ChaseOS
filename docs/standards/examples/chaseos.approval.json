@@ -1,0 +1,15 @@
+{
+  "approval_id": "appr-demo-launch-publish",
+  "decision": null,
+  "execution_allowed": false,
+  "preview_notice": "Approval packet example only; it does not grant execution authority.",
+  "requested_action": {
+    "summary": "Deploy the static ChaseOS public-site preview after human review.",
+    "target": "public_website_deploy",
+    "type": "external_publish"
+  },
+  "required_reviewer": "operator",
+  "risk_tier": "external_visibility",
+  "schema": "chaseos.approval.v1.preview",
+  "status": "pending_operator_review"
+}

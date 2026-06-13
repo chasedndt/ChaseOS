@@ -1,0 +1,41 @@
+name: ChaseOS Release Proof
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: "Release version to validate, such as 0.8.8"
+        required: true
+        type: string
+      release_channel:
+        description: "Release channel"
+        required: true
+        default: "stable"
+        type: choice
+        options:
+          - stable
+          - beta
+          - dev
+
+permissions:
+  contents: read
+
+jobs:
+  release-proof:
+    name: Validate release manifest contract
+    runs-on: windows-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Validate ChaseOS release artifact contract
+        shell: pwsh
+        run: |
+          Write-Host "No GitHub release publication is performed by this proof workflow."
+          $studio = "dist/studio/ChaseOS-Studio.exe"
+          $installer = "dist/studio/ChaseOS-Installer.exe"
+          $manifest = "dist/studio/chaser-update-manifest.json"
+          Write-Host "Expected artifacts: $studio, $installer, $manifest"
+          Write-Host "Required manifest fields: latest_version, release_date, release_notes_summary, artifact_name, download_url, sha256, size_bytes, signature, mandatory, recommended, assets, installer_helper"
+          Write-Host "Allowed release channels: stable, beta, dev"
+          Write-Host "Publication, upload, signing, download, install, rollback, relaunch, and replacement remain disabled in this proof workflow."

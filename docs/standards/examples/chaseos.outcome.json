@@ -1,0 +1,22 @@
+{
+  "external_actions_executed": [],
+  "local_only": true,
+  "outputs": [
+    {
+      "id": "landing-page-copy",
+      "type": "draft",
+      "visibility": "public_safe_preview"
+    },
+    {
+      "id": "standards-examples",
+      "type": "artifact",
+      "visibility": "public_safe_preview"
+    }
+  ],
+  "pack_id": "startup_validation_launch",
+  "preview_notice": "Outcome record example only; anonymous aggregate sharing is opt-in and not enabled here.",
+  "run_id": "run-demo-launch-readiness",
+  "schema": "chaseos.outcome.v1.preview",
+  "status": "preview_generated",
+  "telemetry_opt_in": false
+}

@@ -1,0 +1,40 @@
+# Hermes Runtime — Capability Manifest
+# Declares what task types Hermes can handle on the agent coordination bus.
+#
+# bus_name: should match the runtime bus identity exposed by the capability registry.
+#   The agent bus storage and JSON packet schemas are runtime-generic; adding a
+#   new runtime requires a capability manifest/policy binding and validation, not
+#   a SQLite CHECK-constraint rewrite.
+#
+# To change what Hermes advertises to the router: edit this file.
+# To make hermes_watch execute a task type, a matching bounded handler must also
+# exist in runtime/workflows/hermes_watch.py.
+
+runtime: hermes
+bus_name: Hermes
+display_name: "Hermes"
+description: "Planning, review, and higher-reasoning runtime — analysis, shadow audits, cross-runtime coordination"
+
+handles:
+  - task_type: review
+    priority: primary
+    notes: "Primary reviewer for OpenClaw outputs, brief enrichment, quality checks"
+  - task_type: planning
+    priority: primary
+    notes: "Strategic planning, architecture analysis, feature design"
+  - task_type: shadow-audit
+    priority: primary
+    notes: "Non-canonical audit passes over vault state — no protected writes"
+  - task_type: operator-briefing
+    priority: secondary
+    notes: "Can shadow or supplement OpenClaw briefings — not primary executor"
+  - task_type: developer-co-development
+    priority: primary
+    notes: "Cross-runtime co-development coordination"
+  - task_type: chat
+    priority: secondary
+    notes: "Studio Chat local conversation reply via Hermes-owned bridge; no shell, browser, connector execution, approval consumption, protected writes, or canonical promotion"
+
+max_concurrent_tasks: 2
+heartbeat_stale_seconds: 900
+priority_ceiling: high

@@ -1,29 +1,27 @@
 # ChaseOS Core Manifest
 
-ChaseOS Core contains the production-safe baseline for a governed local-first AI
-operating layer.
+ChaseOS Core is the public framework layer for governed memory, runtime boundaries, agent coordination, and operator review.
 
-## Included
+## Scope
 
-- Minimal production-safe CLI
-- Core repository metadata
-- Publication safety boundaries
-- Public-safe OpenCore/template documentation surfaces
-- Governed Chaser Forge workflow and extension templates
+- Architecture principles for local-first human-AI systems.
+- Public schemas, templates, and operating patterns.
+- Approval-first write surfaces and evidence requirements.
+- Adapter boundaries for model and automation runtimes.
+- Core starter folders for home, projects, knowledge, inputs, SOPs, templates, agents, and logs.
+- Chaser Forge workflow and extension-governance templates.
 
-## Excluded
+## Outside Core
 
-- Credentials and secret material
-- Local state and generated run outputs
-- Local-only notes and context
-- Workspace-specific content
-- Release binaries and installers
-- Website deployment surfaces
-- Live hosted marketplace fetch/upload authority
-- Paid marketplace checkout, license enforcement, seller accounts, or payouts
-- Untrusted third-party remote install execution
+- Personal vault content.
+- Live runtime state.
+- Private schedules and workflow outputs.
+- Credential values and deployment-specific configuration.
+- Host mutation evidence from a private machine.
+- Live hosted marketplace fetch/upload authority.
+- Paid marketplace checkout, license enforcement, seller accounts, or payouts.
+- Untrusted third-party remote install execution.
 
-## Release Rule
+## Publication Standard
 
-No public download or installer may be published from this repository until the
-release/download gate passes with explicit human approval.
+Core materials must be reusable without exposing private paths, private project names, live identifiers, or deployment state.
