@@ -43,8 +43,4 @@ governance_notes:
   validated_by: "runtime/adapters/runtime_governance.py"
   last_verified: "2026-04-28"
   authority_boundary: "Capability discovery does not grant authority; AOR/Gate manifests still govern execution."
-  forbidden_expansion:
-    - "host_shell_as_chaseos_authority"
-    - "credential_access"
-    - "wallet_or_exchange_execution"
-    - "autonomous_canonical_writeback"
+  forbidden_expansion: "host_shell_as_chaseos_authority, credential_access, wallet_or_exchange_execution, autonomous_canonical_writeback"
