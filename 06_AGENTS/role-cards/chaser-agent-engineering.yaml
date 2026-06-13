@@ -1,16 +1,16 @@
 ---
-# archon-engineering — Role Card for Archon Bus-Received Engineering Tasks
+# chaser_agent-engineering — Role Card for Chaser Agent Bus-Received Engineering Tasks
 # ChaseOS Phase 9 — Agent Bus Coordination
 #
-# This role card governs Archon's behavior when receiving implementation,
+# This role card governs Chaser Agent's behavior when receiving implementation,
 # code-review, and architecture-review tasks from the coordination bus.
 # It does NOT govern direct session-driven engineering (that runs under CLAUDE.md).
 #
 
-id: archon-engineering
-name: "Archon Engineering Bus Handler"
+id: chaser_agent-engineering
+name: "Chaser Agent Engineering Bus Handler"
 version: "1.0"
-runtime: archon
+runtime: chaser_agent
 created: "2026-04-30"
 
 # ── Permitted task types ───────────────────────────────────────────────────────
@@ -24,7 +24,7 @@ permitted_task_types:
 
 permission_ceiling: bus_result_only
 
-# Archon bus-received tasks produce a bounded analysis result posted to the bus
+# Chaser Agent bus-received tasks produce a bounded analysis result posted to the bus
 # plus an Agent-Activity audit writeback. They do not mutate canonical vault
 # state, call external connectors, or access credentials.
 
@@ -38,7 +38,7 @@ permitted_reads:
   - "00_HOME/Now.md"
   - "CLAUDE.md"
 
-# Note: Archon MAY read any non-protected file that is declared in the bus task
+# Note: Chaser Agent MAY read any non-protected file that is declared in the bus task
 # packet as a review target. The scope is bounded by what was declared in the task.
 
 # ── Forbidden actions ──────────────────────────────────────────────────────────
@@ -71,7 +71,7 @@ escalation_triggers:
 # ── Coordination ──────────────────────────────────────────────────────────────
 
 coordination:
-  bus_recipient: "Archon"
+  bus_recipient: "Chaser Agent"
   peer_runtimes:
     - "Hermes"
     - "OpenClaw"
@@ -81,7 +81,7 @@ coordination:
 # ── Governance note ────────────────────────────────────────────────────────────
 
 governance_note: >
-  This role card governs Archon's behavior ONLY when receiving bus tasks via
-  archon_watch. Direct session-driven engineering work (the primary Archon mode)
+  This role card governs Chaser Agent's behavior ONLY when receiving bus tasks via
+  chaser_agent_watch. Direct session-driven engineering work (the primary Chaser Agent mode)
   is governed by CLAUDE.md and the operator's direct instructions. This card
   cannot grant authority above Tier 2 or override Gate policy.

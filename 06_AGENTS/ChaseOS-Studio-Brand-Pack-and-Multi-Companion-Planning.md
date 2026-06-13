@@ -17,18 +17,18 @@ This pass records the missing brand/logo/installer identity lane and the multi-c
 
 2026-05-12 update: the operator is not ready for logo/brand asset generation yet. The next brand lane is manual guidepack review through [[ChaseOS-Studio-Manual-Branding-Guidepack]], not immediate asset generation.
 
-2026-05-12 companion update: `phase11-multi-companion-registry-readiness` is now COMPLETE / READ-ONLY / VERIFIED. The registry/schema can be validated against builtin Hermes/OpenClaw/Archon status cards, but the registry is not loaded for selection and no roster UI or executor has been built.
+2026-05-12 companion update: `phase11-multi-companion-registry-readiness` is now COMPLETE / READ-ONLY / VERIFIED. The registry/schema can be validated against builtin Hermes/OpenClaw/Chaser Agent status cards, but the registry is not loaded for selection and no roster UI or executor has been built.
 
-2026-05-12 direction update: `operator-companion-direction-before-roster-ui` is now COMPLETE / READ-ONLY / VERIFIED. The direction packet lists Hermes/OpenClaw/Archon, exposes ten unanswered operator decisions with recommended defaults, and keeps roster UI blocked until the operator answers them.
+2026-05-12 direction update: `operator-companion-direction-before-roster-ui` is now COMPLETE / READ-ONLY / VERIFIED. The direction packet lists Hermes/OpenClaw/Chaser Agent, exposes ten unanswered operator decisions with recommended defaults, and keeps roster UI blocked until the operator answers them.
 
-2026-05-13 direction-answer update: `operator-answer-companion-direction-questions` is now COMPLETE / OPERATOR-APPROVED / READ-ONLY POLICY CAPTURE / NO AUTHORITY EXPANSION. The approved v0.1 policy is stored at `runtime/studio/chat/companions/operator-direction.v0.1.json`; it keeps Hermes/OpenClaw/Archon, makes selection per Chat session, allows only UI identity/tone/status/read-only-card/non-authoritative comments, and blocks routing, provider/model selection, permissions, writeback, memory, tool access, protected-file access, runtime dispatch, Agent Bus task writes, and canonical mutation. Next companion pass is `phase11-companion-roster-ui-preview`.
+2026-05-13 direction-answer update: `operator-answer-companion-direction-questions` is now COMPLETE / OPERATOR-APPROVED / READ-ONLY POLICY CAPTURE / NO AUTHORITY EXPANSION. The approved v0.1 policy is stored at `runtime/studio/chat/companions/operator-direction.v0.1.json`; it keeps Hermes/OpenClaw/Chaser Agent, makes selection per Chat session, allows only UI identity/tone/status/read-only-card/non-authoritative comments, and blocks routing, provider/model selection, permissions, writeback, memory, tool access, protected-file access, runtime dispatch, Agent Bus task writes, and canonical mutation. Next companion pass is `phase11-companion-roster-ui-preview`.
 
 ## Repo-Truth Baseline
 
 - Studio installer-build execution proof for packet `studio-installer-build-appr-ac14811da651baec` is complete and verified as a scoped `zip-portable` proof.
 - The current portable ZIP proof does not include a branded installer logo, app icon, shortcut icon, install wizard, signed installer, or release-ready visual identity pack.
 - Phase 11 companion status and companion-selection preview/queue/readiness surfaces exist, but `runtime/studio/chat/companions/` was not present before this pass.
-- Existing companion code already treats companions as more than one possible runtime-facing UX card (`hermes`, `openclaw`, `archon`), but the future durable registry and roster model still needed an explicit contract.
+- Existing companion code already treats companions as more than one possible runtime-facing UX card (`hermes`, `openclaw`, `chaser_agent`), but the future durable registry and roster model still needed an explicit contract.
 - Companion personality/status remains UX only and never grants runtime authority, trust tier, Gate permission, provider access, Agent Bus write access, or canonical mutation authority.
 
 ## Brand Pack Contract

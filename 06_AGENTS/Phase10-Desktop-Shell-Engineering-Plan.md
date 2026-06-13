@@ -7,7 +7,7 @@ created: 2026-05-04
 updated: 2026-05-04
 phase: Phase 10 — ChaseOS Studio
 knowledge_class: system-operational
-owner: Archon (primary engineering runtime)
+owner: Chaser Agent (primary engineering runtime)
 related_docs:
   - 06_AGENTS/ChaseOS-Studio-Architecture.md
   - 06_AGENTS/Phase10A0-UI-Runtime-Handover.md
@@ -854,10 +854,10 @@ a = Analysis(
 
 ## 12. Runtime Handover Instructions
 
-This section is for all runtimes (Archon, Hermes, Codex, OpenClaw) participating in Phase 10
+This section is for all runtimes (Chaser Agent, Hermes, Codex, OpenClaw) participating in Phase 10
 engineering.
 
-### For the runtime implementing 10A (primary: Archon)
+### For the runtime implementing 10A (primary: Chaser Agent)
 
 **Read before starting:**
 1. This document (complete)
@@ -878,7 +878,7 @@ loads, clicking a node shows its path in the Inspector panel.
 - Loopback binding only (no network exposure)
 - Dev mode is the only mode that enables PyWebView devtools
 
-### For the runtime implementing graph rendering (primary: Archon)
+### For the runtime implementing graph rendering (primary: Chaser Agent)
 
 **Read before starting:**
 1. `runtime/studio/graph_view_contract.py` and `runtime/studio/graph_index_contract.py`
@@ -892,7 +892,7 @@ of this document). No transformation needed between API return and `cytoscape({ 
 **First task:** Cytoscape.js canvas that loads graph data from `window.pywebview.api.get_graph_contract()`,
 renders nodes with trust-state colors, and emits `nodeSelected(node_id)` event on click.
 
-### For the runtime implementing write surfaces (primary: Archon / Codex review)
+### For the runtime implementing write surfaces (primary: Chaser Agent / Codex review)
 
 **Read before starting:**
 1. `runtime/studio/service.py` — the `StudioService`, `ActionSpec`, `ApprovalRequest`, `ActionResult`

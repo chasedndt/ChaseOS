@@ -216,6 +216,6 @@ This is not about constraining the runtime to only previously-traveled routes. I
 
 ---
 
-*Graph links: [[CLAUDE]] · [[Agent-Memory-Architecture]] · [[Vault-Map]] · [[Autonomous-Operator-Runtime]] · [[OPENCLAW]] · [[OpenClaw-Runtime-Profile]] · [[OpenClaw-Adapter-Spec]] · [[OpenAI-Adapter-Spec]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[Hermes-Adapter-Spec]] · [[Archon-Runtime-Profile]] · [[Codex-Runtime-Profile]] · [[Runtime-InterAgent-Coordination-Bus]] · [[Runtime-Instance-Authority-Parity]] · [[Feature-Register]] · [[Trust-Tiers]] · [[ChaseOS-Gate]] · [[Handoff-Protocol]] · [[ROADMAP]]*
+*Graph links: [[CLAUDE]] · [[Agent-Memory-Architecture]] · [[Vault-Map]] · [[Autonomous-Operator-Runtime]] · [[OPENCLAW]] · [[OpenClaw-Runtime-Profile]] · [[OpenClaw-Adapter-Spec]] · [[OpenAI-Adapter-Spec]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[Hermes-Adapter-Spec]] · [[Chaser-Agent-Runtime-Profile]] · [[Codex-Runtime-Profile]] · [[Runtime-InterAgent-Coordination-Bus]] · [[Runtime-Instance-Authority-Parity]] · [[Feature-Register]] · [[Trust-Tiers]] · [[ChaseOS-Gate]] · [[Handoff-Protocol]] · [[ROADMAP]]*
 
 *Runtime-Navigation-Map.md — v1.0 | Created: 2026-03-25 | Architecture expansion pass — Runtime Navigation Map formally encoded as a Phase 9 ChaseOS feature; distinguished from Shared Vault Map, Layer C behavioral memory, Agent Identity Ledger, and Execution Repair Memory*

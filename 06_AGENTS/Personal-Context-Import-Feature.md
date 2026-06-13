@@ -52,7 +52,7 @@ Implemented now:
 - Evidence and rollback plan under `runtime/studio/context-import/personal-map-apply-executions/`.
 - Runtime memory mutation readiness: `runtime/studio/personal_context_import_runtime_memory_mutation_readiness.py`.
 - Runtime memory approved mutation executor: `runtime/studio/personal_context_import_runtime_memory_approved_mutation_executor.py`.
-- Exact-once nav-map personal context route appends for codex, hermes, archon.
+- Exact-once nav-map personal context route appends for codex, hermes, chaser_agent.
 - Markers under `runtime/studio/approvals/personal-context-import/_runtime_memory_mutation_markers/`.
 - Agent Bus dispatch packet preview: `runtime/studio/personal_context_import_agent_bus_dispatch_packet.py`.
 - Bounded reference-only packet preview (no Bus task write; preview-only surface with full gate requirements).

@@ -15,7 +15,7 @@ Companion identity is not runtime authority.
 
 A ChaseOS companion is a runtime-linked identity profile for presentation, tone,
 status narration, and non-authoritative commentary. Selecting Hermes, OpenClaw,
-Claude Code / Archon, or Chaser Agent as a companion/profile must not activate
+Claude Code / Chaser Agent, or Chaser Agent as a companion/profile must not activate
 that runtime, widen permissions, invoke tools, change provider/model routing,
 change AOR workflow routing, alter memory scope, or mutate canonical truth.
 

@@ -103,7 +103,7 @@ incremental:
 
 - Hermes: ready
 - OpenClaw: ready
-- Archon: partial, missing repair memory
+- Chaser Agent: partial, missing repair memory
 - Claude: partial, missing navigation and repair memory
 
 This is useful product signal, not a failure. The dashboard contract exposes

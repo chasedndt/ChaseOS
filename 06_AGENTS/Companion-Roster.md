@@ -18,7 +18,7 @@ and one planned coming-soon profile:
 |---|---|---|---|
 | Hermes | `hermes` | Bounded runtime coordination companion | Careful shadow operator; calm, precise, audit-friendly |
 | OpenClaw | `openclaw` | Local operator/runtime control companion | High-control local operator identity; visibly stronger governance warnings |
-| Archon / Claude Code | `claude-code` / Studio alias `archon` | Engineering and architecture companion | Planning, architecture, strategy, system design, and governance reasoning |
+| Chaser Agent / Claude Code | `claude-code` / Studio alias `chaser_agent` | Engineering and architecture companion | Planning, architecture, strategy, system design, and governance reasoning |
 | Chaser Agent | `chaser` | Planned internal ChaserAgent companion and gateway diagnostic surface | Coming soon; read-only profile/card only; not selectable or hatchable |
 
 The roster is implemented in `runtime/companion/roster.py` and validated by
@@ -68,7 +68,7 @@ V0.1 uses abstract runtime marks only:
 
 - Hermes: `H`
 - OpenClaw: `O`
-- Archon / Claude Code: `C`
+- Chaser Agent / Claude Code: `C`
 - Chaser Agent: `Ch`
 
 Final avatars, brand assets, and icon files are deferred until a separate brand

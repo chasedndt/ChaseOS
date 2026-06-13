@@ -215,6 +215,6 @@ For how Hermes preferred routes, trusted zones, risk zones, and escalation point
 
 ---
 
-*Graph links: [[CLAUDE]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[OPENCLAW]] · [[OpenClaw-Runtime-Profile]] · [[Archon-Runtime-Profile]] · [[Codex-Runtime-Profile]] · [[Hermes-Adapter-Spec]] · [[OpenClaw-Adapter-Spec]] · [[Runtime-Navigation-Map]] · [[Runtime-InterAgent-Coordination-Bus]] · [[Runtime-Instance-Authority-Parity]] · [[ChaseOS-Discord-Control-Plane]] · [[Discord-Control-Plane-Setup-SOP]] · [[Vault-Map]] · [[Agent-Activity-Index]] · [[ChaseOS-Studio-Architecture]]*
+*Graph links: [[CLAUDE]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[OPENCLAW]] · [[OpenClaw-Runtime-Profile]] · [[Chaser-Agent-Runtime-Profile]] · [[Codex-Runtime-Profile]] · [[Hermes-Adapter-Spec]] · [[OpenClaw-Adapter-Spec]] · [[Runtime-Navigation-Map]] · [[Runtime-InterAgent-Coordination-Bus]] · [[Runtime-Instance-Authority-Parity]] · [[ChaseOS-Discord-Control-Plane]] · [[Discord-Control-Plane-Setup-SOP]] · [[Vault-Map]] · [[Agent-Activity-Index]] · [[ChaseOS-Studio-Architecture]]*
 
 *Hermes-Runtime-Profile.md — v0.2 | Created: 2026-04-24 | Updated: 2026-05-15 (Discord binding validator and Studio control-plane readiness added)*

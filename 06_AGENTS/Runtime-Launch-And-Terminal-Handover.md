@@ -2,7 +2,7 @@
 title: Runtime Launch & Internal Terminal — Operator Handover
 status: live
 updated: 2026-06-11
-runtime_node: "[[Archon-Runtime-Profile]]"
+runtime_node: "[[Chaser-Agent-Runtime-Profile]]"
 ---
 
 # Runtime Launch & Internal Terminal — Operator Handover

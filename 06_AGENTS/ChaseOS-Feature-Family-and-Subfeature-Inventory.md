@@ -346,7 +346,7 @@ Repo-observed features and subfeatures:
 | Operator-action-required gate | PARTIAL | Gate model recorded. |
 | Companion selection approval preview/executor | PARTIAL / GATED | Selection proof lanes; no authority expansion. |
 | Runtime dispatch executor | PARTIAL / GATED | Evidence paths exist; no broad runtime authority. |
-| Companion memory boundary | COMPLETE CONTRACT | Separate governed namespaces for Hermes/OpenClaw/Archon. |
+| Companion memory boundary | COMPLETE CONTRACT | Separate governed namespaces for Hermes/OpenClaw/Chaser Agent. |
 | Companion memory approval preview | PARTIAL / VERIFIED | Digest-gated pending approval. |
 | Companion memory proof execution | PARTIAL / VERIFIED | Proof-only exact-once path. |
 | Companion memory ledger write | PARTIAL / VERIFIED | One real Hermes raw/non-canonical ledger entry after explicit approval. |

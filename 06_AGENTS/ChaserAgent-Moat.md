@@ -1,7 +1,7 @@
 # ChaserAgent Moat
 
 Date: 2026-06-03
-Runtime: Archon (claude-code)
+Runtime: Chaser Agent (claude-code)
 Status: STRATEGY — defines the defensible advantage; not an implementation claim
 Related: [[Chaser-Gateway-Architecture]] · [[ChaserAgent-Architecture]] · [[ChaseOS-Gate]] · [[Agent-Memory-Architecture]] · [[Knowledge-Taxonomy]] · [[Provider-Agnostic-Routing-Architecture]]
 

@@ -2,7 +2,7 @@
 
 Date: 2026-06-03 (N5 read-only state, pre-N6 proposal packets, N6A approval requests, N6R executor readiness, initial N6 CLI executor, N7 internal gateway ingress, N9 approved file-create, N10 approved file-copy, N11 read-only Studio dashboard, and N12 source visual QA built 2026-06-06)
 N5/N6A/N6R/N6/N7/N9/N10/N11/N12 current status: PARTIAL - `runtime/chaser/board.py` read-only state aggregator, terminal command proposal packets, terminal write approval-request queue front half, terminal write executor-readiness validation, the dedicated N6 CLI executor with approved `mkdir`/`touch`/`copy`/`cp` verbs, the internal N7 gateway facade, the read-only Studio Chaser Board dashboard, and source-rendered visual QA proof are built; broader write/content verbs, network gateway ingress, Agent Bus mutation, packaged/native Chaser Board proof, and ChaserAgent live runtime wiring remain planned
-Runtime: Archon (claude-code); N5 implementation: Codex
+Runtime: Chaser Agent (claude-code); N5 implementation: Codex
 Status: PARTIAL - read-only state aggregation, terminal command proposal packet construction, gated approval-request queue writing, no-execution terminal executor-readiness validation, the approved `mkdir`/`touch`/`copy`/`cp` CLI executor, N7 internal gateway ingress routing, and the N11 read-only Studio dashboard are built; broader live gateway/runtime work remains planned
 Source books: `247 Agent Harness engineering V0.md` §9, `deep-research-report.md`
 Related: [[Chaser-Gateway-Architecture]] · [[ChaserAgent-Architecture]] · [[Terminal-ChaserAgent-Agent-Bus-Handover]] · [[Runtime-InterAgent-Coordination-Bus]] · [[Autonomous-Operator-Runtime]] · [[Scheduled-Briefing-Pipelines]]

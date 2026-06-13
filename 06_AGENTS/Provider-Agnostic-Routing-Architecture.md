@@ -17,7 +17,7 @@ created: 2026-05-18
 ## The Rule
 
 **Studio surfaces never call model providers directly.**
-All LLM execution routes through the Agent Bus → the configured runtime (Hermes, OpenClaw, Archon, or any future runtime). Each runtime owns its own credentials, model configuration, and provider selection. No ChaseOS feature is wired to a single provider.
+All LLM execution routes through the Agent Bus → the configured runtime (Hermes, OpenClaw, Chaser Agent, or any future runtime). Each runtime owns its own credentials, model configuration, and provider selection. No ChaseOS feature is wired to a single provider.
 
 This rule applies to:
 - Studio Chat companion (Phase 11)
@@ -51,7 +51,7 @@ Each runtime has its own `model_config.yaml` file:
 |---------|----------------|-----------------|
 | Hermes (WSL) | `runtime/hermes/model_config.yaml` | `ANTHROPIC_API_KEY` → claude model |
 | OpenClaw (Windows) | `runtime/openclaw/model_config.yaml` | operator-configured |
-| Archon (Claude Code) | `runtime/memory/adapters/archon/` | Anthropic (session) |
+| Chaser Agent (Claude Code) | `runtime/memory/adapters/chaser_agent/` | Anthropic (session) |
 
 To switch models or providers: edit the runtime's `model_config.yaml`. No code change required. No Studio code is affected.
 
@@ -68,7 +68,7 @@ For surfaces that need a direct-provider fallback (e.g., `phase11_chat_live_prov
 | `ollama` | *(none — local)* | `$OLLAMA_BASE_URL/v1/chat/completions` |
 | `openai-compatible` | `OPENAI_COMPATIBLE_API_KEY` | `$OPENAI_COMPATIBLE_BASE_URL/v1/chat/completions` |
 
-For bus-routed runtimes (`hermes`, `openclaw`, `archon`): dispatch via `agent_bus.create_task()` instead of a direct HTTP call.
+For bus-routed runtimes (`hermes`, `openclaw`, `chaser_agent`): dispatch via `agent_bus.create_task()` instead of a direct HTTP call.
 
 ---
 
@@ -84,7 +84,7 @@ For bus-routed runtimes (`hermes`, `openclaw`, `archon`): dispatch via `agent_bu
 
 ## What Is Permitted
 
-- Runtimes (Hermes, OpenClaw, Archon) calling providers directly — they own those credentials
+- Runtimes (Hermes, OpenClaw, Chaser Agent) calling providers directly — they own those credentials
 - `phase11_chat_live_provider_execution_executor.py` as an approval-gated fallback path — but with multi-provider support, not OpenAI-only
 - SBP `execution_adapter` field pointing to a specific runtime — the runtime handles provider selection
 - Personal context import proof referencing a configurable provider via env var
@@ -101,7 +101,7 @@ agent_bus.create_task(
     vault_root=vault,
     task_type="chat",
     sender="Codex",
-    recipient=configured_runtime,  # Hermes | OpenClaw | Archon
+    recipient=configured_runtime,  # Hermes | OpenClaw | Chaser Agent
     message=user_message,
 )
 ```
@@ -123,5 +123,5 @@ The fallback direct-provider path (`phase11_chat_live_provider_execution_executo
 
 - `06_AGENTS/ChaseOS-MCP-Server.md` — MCP server and scoped vault surfaces
 - `06_AGENTS/Runtime-InterAgent-Coordination-Bus.md` — Agent Bus architecture
-- `06_AGENTS/Archon-Runtime-Profile.md`, `Hermes-Runtime-Profile.md`, `OpenClaw-Runtime-Profile.md`
+- `06_AGENTS/Chaser-Agent-Runtime-Profile.md`, `Hermes-Runtime-Profile.md`, `OpenClaw-Runtime-Profile.md`
 - `runtime/execution_adapters/execute.py` — shared `execute_synthesis()` adapter used by runtimes

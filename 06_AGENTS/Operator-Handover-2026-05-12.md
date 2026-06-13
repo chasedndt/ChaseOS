@@ -119,7 +119,7 @@ The remaining 6 are deferred architecture items with no immediate action require
 
 All read-only/audit passes are complete. Portable installer ZIP is built and verified.
 
-Six executor lanes remain and each requires an explicit operator authority decision before Archon can proceed:
+Six executor lanes remain and each requires an explicit operator authority decision before Chaser Agent can proceed:
 
 | Lane | Blocked on |
 |------|-----------|
@@ -130,7 +130,7 @@ Six executor lanes remain and each requires an explicit operator authority decis
 | Approval target mutation executor | Operator approves |
 | Agent Bus / canonical writeback | Operator approves |
 
-**To activate a lane:** open a new session and name which one you want. Archon runs only that governed pass.
+**To activate a lane:** open a new session and name which one you want. Chaser Agent runs only that governed pass.
 **To close Phase 11 as-is:** say "close Phase 11 at the current read-only boundary".
 
 ---

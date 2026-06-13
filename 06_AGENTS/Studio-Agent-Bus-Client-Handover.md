@@ -2,7 +2,7 @@
 
 **Date:** 2026-05-28  
 **Runtime author:** Hermes / Optimus  
-**Audience:** Hermes, OpenClaw, Archon/Claude Code, Codex/Axiom-Codex, Studio/UI developers  
+**Audience:** Hermes, OpenClaw, Chaser Agent/Claude Code, Codex/Axiom-Codex, Studio/UI developers  
 **Status:** Implementation foothold added; further expansion should reuse the new Studio Agent Bus client seam.
 
 ## Executive Summary
@@ -86,7 +86,7 @@ This is the boundary other Studio surfaces should adopt when they merely need re
 - `runtime/studio/phase11_chat_send_message.py` was the existing Chat -> Agent Bus task writer.
 - `runtime/studio/phase11_chat_agent_bus_dispatch_bridge.py` is a separate approval-gated Chat -> Agent Bus/AOR bridge for workflow/runtime dispatch.
 - `runtime/agent_bus/bus.py` is the public bus API and already supports task creation, heartbeat listing, and task polling.
-- `runtime/workflows/hermes_watch.py`, `runtime/workflows/openclaw_watch.py`, and `runtime/workflows/archon_watch.py` are runtime-daemon-side task handlers.
+- `runtime/workflows/hermes_watch.py`, `runtime/workflows/openclaw_watch.py`, and `runtime/workflows/chaser_agent_watch.py` are runtime-daemon-side task handlers.
 - `runtime/studio/shell/frontend/app.js` calls Studio shell APIs for Chat send/poll and runtime controls; frontend should remain a client of backend contracts, not a launcher/provider surface.
 
 ## Should Agent Bus Client Capability Expand Beyond Chat?
@@ -121,7 +121,7 @@ Candidate future consumers:
 - Remains bus-dispatch-only for Chat unless/until a separate OpenClaw chat synthesis contract is approved.
 - Should not be forced to provide direct Studio replies if its role is coordination/Windows runtime operations.
 
-### Archon / Claude Code
+### Chaser Agent / Claude Code
 
 - Uses Agent Bus recipient mapping through companion config where needed.
 - Should not require Studio frontend changes to rename or retarget the recipient; use `.chaseos/companion_config.json` `recipient_names`.

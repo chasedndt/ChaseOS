@@ -98,9 +98,9 @@ After the Section 1 check, one of these is true:
 > give access to the Docs/Drive API. If your only Google access is Gemini → set `google_enabled: false`.
 > No Google setup is needed.
 
-### Step 3b — Code changes (Archon implements these once you confirm)
+### Step 3b — Code changes (Chaser Agent implements these once you confirm)
 
-Once you report your credential state, Archon will implement:
+Once you report your credential state, Chaser Agent will implement:
 
 **File 1:** `runtime/acquisition/plans/strikezone-daily.json`
 Add an `adapter_flags` block:
@@ -167,7 +167,7 @@ Key schedules to wire:
 For every-minute watch loops, use a Task Scheduler entry that repeats every 1 minute:
 | Task | Repeat | Command |
 |------|--------|---------|
-| archon_watch | every 1 min | `chaseos run archon_watch` |
+| chaser_agent_watch | every 1 min | `chaseos run chaser_agent_watch` |
 | hermes_watch | every 1 min | `chaseos run hermes_watch --adapter hermes` |
 | openclaw_watch | every 1 min | `chaseos run openclaw_watch --adapter openclaw` |
 | events watch | every 1 min | `chaseos events watch --once --execute` |
@@ -252,7 +252,7 @@ These require external setup or architecture work. Not blocking anything current
 
 - [ ] Section 1: Credential check run, output noted
 - [ ] Section 2: C-1 strikezone schedule disabled or shadow_mode applied
-- [ ] Section 3: Credential state reported to Archon, M-2/P-D2 code changes implemented
+- [ ] Section 3: Credential state reported to Chaser Agent, M-2/P-D2 code changes implemented
 - [x] Section 4: Cron execution method chosen — **Option C implemented** (Hermes self-contained schedule polling; one Task Scheduler entry needed)
 - [ ] Section 5: Any desired credentials set in env and tested
 

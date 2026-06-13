@@ -23,7 +23,7 @@ Current builtin companion cards:
 |---|---|---|---|---|
 | Hermes | `hermes` | bounded runtime coordination companion | precise, governance-aware, coordination-heavy | read-only status only |
 | OpenClaw | `openclaw` | local operator/runtime control companion | operational, tool-aware, safety-bounded | read-only status only |
-| Archon | `archon` | engineering and architecture companion | systems-focused, implementation-oriented | read-only status only |
+| Chaser Agent | `chaser_agent` | engineering and architecture companion | systems-focused, implementation-oriented | read-only status only |
 
 Current companion runtime surfaces:
 
@@ -59,7 +59,7 @@ Current UI/status truth:
 - Queue-write execution can write a pending approval artifact only with the expected digest.
 - Approval-consumption readiness can validate a companion-selection approval but does not execute it.
 - The governed approval-consumption executor has consumed one approved companion-selection artifact, written `runtime/studio/chat/companion-selection.json`, and blocked duplicate execution before target rewrite.
-- Multi-companion registry readiness validates the registry/schema and compares Hermes/OpenClaw/Archon registry entries against builtin status cards without loading the registry for selection.
+- Multi-companion registry readiness validates the registry/schema and compares Hermes/OpenClaw/Chaser Agent registry entries against builtin status cards without loading the registry for selection.
 - Operator companion direction exposes the current roster options and the captured v0.1 operator answers that enabled the read-only roster UI preview.
 - The roster UI preview renders active-first companion cards from `runtime/companion` metadata and keeps selection writes approval-gated.
 - The runtime core adapter sync verifies Studio companion status, registry readiness, roster preview, and selection preview all consume the core companion roster while preserving no authority expansion.
@@ -78,7 +78,7 @@ Current UI/status truth:
 Observed live command behavior during this pass:
 
 - `phase11-chat-companion-selection-approval-preview --requested-runtime hermes --current-runtime openclaw --message "select Hermes companion"` returned `ok=true`, selection requested, zero blockers, and no writes.
-- The embedded companion status reported 3 registered companion cards: Hermes, OpenClaw, and Archon.
+- The embedded companion status reported 3 registered companion cards: Hermes, OpenClaw, and Chaser Agent.
 - `phase11-chat-companion-selection-approval-consumption-readiness --json` without an approval artifact returned blocked with `no_companion_selection_approval_artifacts_found`.
 - `qa-runner --surface phase11-chat-companion-selection-approval-consumption-readiness --mode static --json` passed and confirmed no real Markdown writes and no real approval artifact writes.
 - `phase11-multi-companion-registry-readiness --json` returned `ok=true`, 3 registry companions, 3 builtin status cards, no blockers, and a warning that preferred `registry.json` is absent so the example registry was used.
@@ -131,8 +131,8 @@ Observed live command behavior during this pass:
 The operator approved the following companion model on 2026-05-13:
 
 - Companions are runtime-linked identity profiles with visual, tone, and status surfaces.
-- Initial roster remains Hermes, OpenClaw, and Archon.
-- Names stay Hermes/OpenClaw/Archon; aliases are deferred.
+- Initial roster remains Hermes, OpenClaw, and Chaser Agent.
+- Names stay Hermes/OpenClaw/Chaser Agent; aliases are deferred.
 - v0.1 selection is per Chat session.
 - v0.1 affects only UI identity, tone preset, status narration, read-only runtime card display, and non-authoritative companion comments.
 - v0.1 does not affect execution routing, provider/model selection, permission scope, writeback authority, memory write authority, tool access, or protected file access.
@@ -151,10 +151,10 @@ The previous direction packet asked ten questions. They are now answered by `run
 Should companions be runtime identities, named AI personas, small product mascots, or mode/profile presets?
 
 2. Number of first companions  
-Should MVP start with Hermes/OpenClaw/Archon only, or add new custom companions?
+Should MVP start with Hermes/OpenClaw/Chaser Agent only, or add new custom companions?
 
 3. Companion names  
-Keep Hermes/OpenClaw/Archon, rename any of them, or add aliases?
+Keep Hermes/OpenClaw/Chaser Agent, rename any of them, or add aliases?
 
 4. Visual style  
 Should companions use abstract runtime marks, generated avatars, initials/badges, or character-like portraits?
@@ -212,7 +212,7 @@ Those passes now:
 - validates `runtime/studio/chat/companions/registry.example.json` or a future real `registry.json`
 - compares registry entries against existing builtin cards
 - produces read-only readiness output
-- exposes Hermes/OpenClaw/Archon as current companion options
+- exposes Hermes/OpenClaw/Chaser Agent as current companion options
 - captures ten operator decisions with approved v0.1 UI-only boundaries
 - unblocks a read-only companion roster UI preview
 - renders active-first roster preview cards from the core companion package
@@ -250,7 +250,7 @@ Next recommended pass is `phase11-companion-memory-context-readiness-preview`. D
 
 Status: COMPLETE / V0.1 CORE LAYER VERIFIED / NO RUNTIME AUTHORITY.
 
-`runtime/companion/` now provides the core companion policy, profile validation, Hermes/OpenClaw/Archon roster, read-only switch preview, approval-flag-gated selection writer, and switch-ledger behavior. The pass also created [[Companion-Behavior-Policy]], [[Companion-Roster]], and [[Companion-Profile-Template]]. It does not add Studio UI, avatar assets, companion memory, provider/model routing, runtime dispatch, Agent Bus writes, permission changes, tool/connector access, protected-file access, or canonical mutation.
+`runtime/companion/` now provides the core companion policy, profile validation, Hermes/OpenClaw/Chaser Agent roster, read-only switch preview, approval-flag-gated selection writer, and switch-ledger behavior. The pass also created [[Companion-Behavior-Policy]], [[Companion-Roster]], and [[Companion-Profile-Template]]. It does not add Studio UI, avatar assets, companion memory, provider/model routing, runtime dispatch, Agent Bus writes, permission changes, tool/connector access, protected-file access, or canonical mutation.
 
 Verification: focused companion tests passed (`10 passed`), adjacent Phase 11 companion regression passed (`18 passed`), read-only preview wrote nothing, and approved selection against a log-root proof fixture wrote only a scoped selection proof plus switch ledger with routing/memory/permission changes false.
 
@@ -258,7 +258,7 @@ Verification: focused companion tests passed (`10 passed`), adjacent Phase 11 co
 
 Status: COMPLETE / READ-ONLY / CORE ADAPTER SYNC VERIFIED / NO AUTHORITY EXPANSION.
 
-Studio companion status, multi-companion registry readiness, companion roster UI preview, and companion-selection approval preview now consume `runtime/companion` as the source of truth for Hermes/OpenClaw/Archon identity metadata, visual marks, descriptive stats, profile validation, and the shared companion selection target path. `runtime/companion` no longer reverse-imports Studio status metadata.
+Studio companion status, multi-companion registry readiness, companion roster UI preview, and companion-selection approval preview now consume `runtime/companion` as the source of truth for Hermes/OpenClaw/Chaser Agent identity metadata, visual marks, descriptive stats, profile validation, and the shared companion selection target path. `runtime/companion` no longer reverse-imports Studio status metadata.
 
 Verification: focused implementation tests passed (`27 passed`), the companion selection chain passed (`25 passed`), the adapter-sync audit passed (`4 passed`), the broader companion regression passed (`58 passed`), the companion QA subset passed (`10 passed, 67 deselected`), and static QA surfaces for companion status, registry readiness, roster UI preview, selection approval preview, and selection approval consumption executor all passed. The adapter-sync dry run returned `ok=true` with status/registry/roster/selection synced and `canonical_mutation_allowed=false`.
 

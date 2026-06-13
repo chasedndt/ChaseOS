@@ -20,7 +20,7 @@ This surface is a ChaseOS operator surface. It is not a new control plane, not a
 
 Current implementation footholds already exist in the Phase 11 Chat companion lane:
 
-- `runtime/studio/phase11_chat_companion_status.py` builds authority-neutral companion status cards for Hermes, OpenClaw, and Archon.
+- `runtime/studio/phase11_chat_companion_status.py` builds authority-neutral companion status cards for Hermes, OpenClaw, and Chaser Agent.
 - `runtime/studio/phase11_chat_companion_selection_preview.py` builds digest-bound approval previews for companion selection.
 - `runtime/studio/phase11_chat_companion_selection_queue_write_readiness.py` previews future approval-queue writes without writing artifacts.
 - `runtime/studio/phase11_chat_companion_selection_queue_write_execution.py` can create a pending approval artifact for companion selection while preserving no target selection write, no approval consumption, no runtime control, and no canonical mutation.

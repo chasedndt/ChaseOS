@@ -1,6 +1,6 @@
 # Core Export Git-Safe Extraction Development Plan
 
-> **For Hermes / OpenClaw / Codex / Archon:** this is a runtime-handoff-ready implementation plan. Route coordination-sensitive work through `runtime/agent_bus/`; do not use Discord/chat thread state as the machine source of truth.
+> **For Hermes / OpenClaw / Codex / Chaser Agent:** this is a runtime-handoff-ready implementation plan. Route coordination-sensitive work through `runtime/agent_bus/`; do not use Discord/chat thread state as the machine source of truth.
 
 **Goal:** Build a proper Git-safe ChaseOS Core extraction feature that can generate a substantial, reviewable, privacy-safe Core repository candidate before any Git initialization, commit, remote, push, or publication.
 
@@ -407,7 +407,7 @@ work_fingerprint: core-export-git-safe-extraction:<slice-id>
 | Hermes / Optimus | planning, governance, docs, status, review packets | maintain this plan, logs, and operator-facing readiness |
 | Codex | implementation/tests | manifest expansion, synthetic source/template support, CLI contract/docs sync |
 | OpenClaw | Windows-local/manual validation lane | inspect generated export tree in Windows IDE, confirm local path behavior, no WSL-only assumptions |
-| Archon | architecture/code-review lane | review candidate pack completeness, privacy posture, and runtime handoff coherence |
+| Chaser Agent | architecture/code-review lane | review candidate pack completeness, privacy posture, and runtime handoff coherence |
 
 ## 6. Agent Bus Task Packet Templates
 
@@ -463,7 +463,7 @@ verification:
 ```yaml
 packet_id: core-export-governance-review
 sender: Operator
-recipient: Archon
+recipient: Chaser Agent
 kind: architecture-review
 request: >
   Review the expanded candidate set for ChaseOS OS alignment: Core/Personal split,
@@ -472,7 +472,7 @@ constraints:
   - review only
   - no file writes outside review report unless explicitly assigned
 outputs:
-  - core_export/reports/latest/archon-core-governance-review-YYYY-MM-DD.md
+  - core_export/reports/latest/chaser_agent-core-governance-review-YYYY-MM-DD.md
 verification:
   - identifies pass/conditional/blocked docs
   - flags missing essentials before Git init

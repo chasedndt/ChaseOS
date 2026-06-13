@@ -38,7 +38,7 @@ superseded_by: 06_AGENTS/ChaseOS-Hardening-Passover.md
 
 ## How to Use This Document
 
-- **Archon (Claude Code):** Use this as the routing anchor for any hardening or security pass. Do not re-derive findings — read this first.
+- **Chaser Agent (Claude Code):** Use this as the routing anchor for any hardening or security pass. Do not re-derive findings — read this first.
 - **Hermes:** Do not act on findings autonomously. Escalate implementation decisions to operator. Use as context for review tasks.
 - **OpenClaw:** Before enabling any disabled schedule, check this document for associated CRITICAL or HIGH findings.
 - **Any new runtime or agent:** Read `kernel/PERMISSION_MATRIX.md` alongside this for the current permission state.
@@ -181,14 +181,14 @@ Remove `SOUL.md`, `00_HOME/Principles.md`, and all other protected files from `s
 #### H-3 | Watch loops scheduled at `* * * * *` — No rate guard
 **Status:** `ACTIONABLE NOW` — schedule YAML changes only
 **Files to change:**
-- `runtime/schedules/sch-archon-watch-every-minute.yaml` — add `max_cycles_per_day: 480` (every 3 minutes equivalent)
+- `runtime/schedules/sch-chaser-agent-watch-every-minute.yaml` — add `max_cycles_per_day: 480` (every 3 minutes equivalent)
 - `runtime/schedules/sch-hermes-watch-every-minute.yaml` — add `max_cycles_per_day: 480`; stagger to `*/3 * * * *`
 - `runtime/schedules/sch-openclaw-watch-every-minute.yaml` — add `max_cycles_per_day: 720` (every 2 minutes equivalent)
 - `runtime/aor/engine.py` — add enforcement logic for `max_cycles_per_day` from schedule config
 
 **What it does:** All three watch loop schedules are `* * * * *` (1440/day). All are currently `enabled: false`, but the rate guard must exist before any are enabled. Hermes loops trigger LLM synthesis per cycle if `ANTHROPIC_API_KEY` is set and `synthesize` default is not changed (see C-2). 1440 cycles × Anthropic API = significant cost exposure.
 
-**Linked feature:** Phase 9 Agent Bus (2026-04-25–27), Phase 9 Hermes Watch Loop, Phase 9 OpenClaw Watch Loop, Phase 9 Archon identity (2026-04-30).
+**Linked feature:** Phase 9 Agent Bus (2026-04-25–27), Phase 9 Hermes Watch Loop, Phase 9 OpenClaw Watch Loop, Phase 9 Chaser Agent identity (2026-04-30).
 
 **Do not enable any `* * * * *` schedule until `max_cycles_per_day` enforcement is added.**
 
@@ -274,7 +274,7 @@ Remove `SOUL.md`, `00_HOME/Principles.md`, and all other protected files from `s
 ```
 | Git (commit, push, branch, force-push) | ⚠️ Explicit per-operation instruction | ❌ | ❌ | ❌ | ❌ | ❌ |
 ```
-Note: Force-push to main is `❌ Prohibited` for all runtimes. Claude Code (Archon) may commit/push only with explicit per-operation user instruction.
+Note: Force-push to main is `❌ Prohibited` for all runtimes. Claude Code (Chaser Agent) may commit/push only with explicit per-operation user instruction.
 
 **Linked feature:** Phase 4 Agent Control + Security Plane, `06_AGENTS/Permission-Matrix.md`.
 
@@ -386,7 +386,7 @@ For a focused hardening sprint, implement in this order:
 These items require a human decision before implementation can proceed:
 
 1. **C-1:** Should `strikezone_acquisition` use `shadow_mode: true` (dry-run, no real API calls) OR `approval_rule: operator-first-run` (requires operator sign-off before each new acquisition target)? Both are valid; shadow mode is faster to implement.
-2. **H-3:** What are the acceptable `max_cycles_per_day` values for each watch loop? Suggested: Archon=480 (every 3 min), Hermes=288 (every 5 min), OpenClaw=720 (every 2 min).
+2. **H-3:** What are the acceptable `max_cycles_per_day` values for each watch loop? Suggested: Chaser Agent=480 (every 3 min), Hermes=288 (every 5 min), OpenClaw=720 (every 2 min).
 3. **M-2:** Are `GOOGLE_OAUTH_TOKEN` and IMAP credentials currently configured in env? If yes, the email/Google adapters are already running silently.
 
 ---
@@ -401,7 +401,7 @@ These items require a human decision before implementation can proceed:
 | `runtime/workflows/registry/sbp_strikezone_digest.yaml` | `human_in_loop: required` | C-3 |
 | `runtime/policy/gateway_allowlists.json` | Split `setup_init`; add `approval_gate` to `host.startup_folder` | H-1/H-2 |
 | `runtime/policy/protected_files.yaml` | Update sync date | M-1 |
-| `runtime/schedules/sch-archon-watch-every-minute.yaml` | Add `max_cycles_per_day` | H-3 |
+| `runtime/schedules/sch-chaser-agent-watch-every-minute.yaml` | Add `max_cycles_per_day` | H-3 |
 | `runtime/schedules/sch-hermes-watch-every-minute.yaml` | Add `max_cycles_per_day`; stagger cron | H-3 |
 | `runtime/schedules/sch-openclaw-watch-every-minute.yaml` | Add `max_cycles_per_day` | H-3 |
 | `runtime/aor/engine.py` | Enforce `max_cycles_per_day` from schedule config | H-3 |
