@@ -1,0 +1,25 @@
+{
+  "schema": "chaseos.forge-index.v1",
+  "status": "example-only",
+  "generated_at": "2026-06-13T00:00:00Z",
+  "catalog_id": "example-local-forge-index",
+  "items": [
+    {
+      "pack_id": "example-campaign-studio",
+      "name": "Example Campaign Studio",
+      "version": "0.1.0",
+      "price_class": "free-example",
+      "certification": "uncertified-example",
+      "listing_url": "https://example.invalid/forge/example-campaign-studio",
+      "manifest_url": "https://example.invalid/forge/example-campaign-studio/manifest.json",
+      "manifest_digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "install_status": "manual-review-required",
+      "blocked_authority": [
+        "automatic_remote_install",
+        "payment_or_license_mutation",
+        "untrusted_remote_execution"
+      ]
+    }
+  ],
+  "notes": "Example static index only. Do not treat example.invalid URLs or zero digests as trusted package sources."
+}

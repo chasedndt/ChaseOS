@@ -8,6 +8,8 @@ operating layer.
 - Minimal production-safe CLI
 - Core repository metadata
 - Publication safety boundaries
+- Public-safe OpenCore/template documentation surfaces
+- Governed Chaser Forge workflow and extension templates
 
 ## Excluded
 
@@ -17,6 +19,9 @@ operating layer.
 - Workspace-specific content
 - Release binaries and installers
 - Website deployment surfaces
+- Live hosted marketplace fetch/upload authority
+- Paid marketplace checkout, license enforcement, seller accounts, or payouts
+- Untrusted third-party remote install execution
 
 ## Release Rule
 

@@ -11,6 +11,8 @@ run evidence, credentials, workspaces, and non-product context.
 - Minimal production-safe CLI
 - Core repository metadata
 - Publication safety boundaries
+- Public-safe OpenCore/template documentation surfaces
+- Chaser Forge workflow and extension-governance templates
 
 ## Safety Boundary
 
@@ -26,6 +28,21 @@ review.
 ```powershell
 python -m runtime.cli.main --help
 ```
+
+## OpenCore / Template Surfaces
+
+The first tracked OpenCore transfer slice is Chaser Forge:
+
+- `docs/forge/chaser_forge_workflows_index.md`
+- `docs/forge/chaser_forge_workflow_proofs_index.md`
+- `docs/forge/chaser_forge_opencore_transfer_plan.md`
+- `docs/standards/chaseos-forge-workflow-node-v1.md`
+- `templates/forge/`
+
+These are governance and template surfaces only. They do not enable live
+marketplace fetch, network upload, paid checkout, license enforcement,
+third-party remote install, approval consumption, provider/model calls, browser
+control, host mutation, or canonical promotion.
 
 ## Status
 

@@ -1,0 +1,30 @@
+{
+  "schema": "chaseos.approval-request.v1",
+  "request_id": "forge-example-sandbox-request",
+  "workflow_id": "forge.sandbox.request",
+  "status": "example-only",
+  "requested_action": "sandbox_install_preview",
+  "extension_id": "example-campaign-studio",
+  "material_digest_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "decision_required": true,
+  "operator_statement_required": "I approve sandbox review for example-campaign-studio with digest 0000000000000000000000000000000000000000000000000000000000000000.",
+  "allowed_writes_if_approved": [
+    "extensions/example-campaign-studio/**",
+    "runtime/forge/registry/extensions.json"
+  ],
+  "approval_consumed": false,
+  "exact_once_marker": "runtime/forge/markers/forge-example-sandbox-request.json",
+  "blocked_authority": [
+    "network_fetch",
+    "network_upload",
+    "external_registry_mutation",
+    "payment_or_license_mutation",
+    "untrusted_remote_install",
+    "provider_model_call",
+    "browser_control",
+    "agent_bus_write",
+    "host_mutation",
+    "canonical_promotion"
+  ],
+  "notes": "Example packet only. Real approval requests must recompute material_digest_sha256 from the manifest/package and must not reuse this request id or digest."
+}

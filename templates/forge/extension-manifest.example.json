@@ -1,0 +1,64 @@
+{
+  "schema": "chaseos.extension-manifest.v1",
+  "extension_id": "example-campaign-studio",
+  "name": "Example Campaign Studio",
+  "version": "0.1.0",
+  "description": "Example-only Forge extension manifest for OpenCore templates.",
+  "status": "example-only",
+  "extension_points": [
+    {
+      "type": "sidebar.nav.item",
+      "id": "example-campaign-studio-nav",
+      "label": "Campaign Studio",
+      "target": "workspace.page:example-campaign-studio"
+    },
+    {
+      "type": "workspace.page",
+      "id": "example-campaign-studio",
+      "component": "example.static.page",
+      "data_mode": "mock"
+    },
+    {
+      "type": "workflow.template",
+      "id": "example-campaign-review",
+      "mode": "preview-only"
+    }
+  ],
+  "permissions": {
+    "read": [
+      "extension.example.inputs"
+    ],
+    "write": [],
+    "network": false,
+    "provider_model_calls": false,
+    "browser_control": false,
+    "host_mutation": false
+  },
+  "target_paths": [
+    "extensions/example-campaign-studio/manifest.json",
+    "extensions/example-campaign-studio/ui/page.json",
+    "extensions/example-campaign-studio/workflows/example-campaign-review.json"
+  ],
+  "protected_core_paths": [
+    "runtime/",
+    "docs/standards/",
+    "pyproject.toml",
+    ".github/"
+  ],
+  "rollback": {
+    "strategy": "extension-owned-files-only",
+    "requires_snapshot": true
+  },
+  "blocked_authority": [
+    "network_fetch",
+    "network_upload",
+    "external_registry_mutation",
+    "payment_or_license_mutation",
+    "untrusted_remote_install",
+    "provider_model_call",
+    "browser_control",
+    "agent_bus_write",
+    "host_mutation",
+    "canonical_promotion"
+  ]
+}
