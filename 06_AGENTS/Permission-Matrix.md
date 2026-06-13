@@ -115,7 +115,7 @@ Standard output files = build logs, daily notes, agent session logs, knowledge n
 
 ### Git operations
 
-| Action | Anthropic Agent Harness (Claude Code) | OpenClaw | Hermes | Chaser Agent | All advisory surfaces |
+| Action | Anthropic Agent Harness (Claude Code) | OpenClaw | Hermes | Archon (automated) | All advisory surfaces |
 |--------|---------------------------------------|----------|--------|--------------------|-----------------------|
 | `git commit` | ⚠️ Explicit per-operation instruction required | ❌ | ❌ | ❌ | ❌ |
 | `git push` | ⚠️ Explicit per-operation instruction required | ❌ | ❌ | ❌ | ❌ |

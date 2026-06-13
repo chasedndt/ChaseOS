@@ -1,0 +1,120 @@
+runtime_id: openclaw
+adapter_id: openclaw
+trust_ceiling: tier-2
+allowed_task_types:
+- operator-briefing
+- graph-hygiene
+- runtime-binding
+- activity-logging
+- scheduled-briefing
+- source-pack-builder
+required_read_rules:
+- 00_HOME/Now.md
+- 06_AGENTS/OpenClaw-Adapter-Spec.md
+- 06_AGENTS/OpenClaw-Runtime-Profile.md
+- 06_AGENTS/Runtime-Navigation-Map.md
+- 06_AGENTS/role-cards/
+- 07_LOGS/Agent-Activity/
+- 07_LOGS/Operator-Briefs/
+- OPENCLAW.md
+- runtime/aor/
+- runtime/memory/nav/openclaw/nav-map.json
+- runtime/schedules/
+- runtime/workflows/registry/
+writeback_targets:
+- acquisition_packs
+- operator_briefs
+- runtime_activity
+- scheduled_briefing_runs
+- standard_outputs
+promotion_rules:
+  may_promote_to_knowledge: 'no'
+  gate_conditions_required: false
+  autonomous_promotion: false
+audit_log_target: 07_LOGS/Agent-Activity/YYYY-MM-DD-openclaw-[workflow-id].md
+escalation_boundaries:
+  protected_file_behavior: block
+  explicitly_denied_write_targets:
+  - 00_HOME/**
+  - 01_PROJECTS/**
+  - 02_KNOWLEDGE/**
+  - 03_INPUTS/**
+  - 04_SOPS/**
+  - 05_TEMPLATES/**
+  - 06_AGENTS/**
+  - runtime/**
+  - .claude/**
+  - .codex/**
+  - .obsidian/**
+  - .venv/**
+  coordination_policy:
+    cross_runtime_coordination: bus-required
+    direct_runtime_state_in_chat: false
+    actionable_ingress_translation: required
+    coordination_source_of_truth: runtime/agent_bus/
+  approval_mode: manifest-bounded-per-action
+task_type_contracts:
+- task_type: operator-briefing
+  required_reads:
+  - 00_HOME/Now.md
+  - 03_INPUTS/
+  - 07_LOGS/Build-Logs/
+  - 07_LOGS/Decision-Ledger/
+  optional_reads:
+  - 01_PROJECTS/
+  permission_ceiling: no_protected_file_writes
+  runtime_class: read-heavy
+  writeback_expectations: operator brief only; no canonical mutations
+  escalation_trigger:
+  - protected file write requested
+  - write outside declared writeback_targets
+  - inputs classified Tier 4 without explicit sanitization
+- task_type: graph-hygiene
+  required_reads:
+  - 06_AGENTS/Vault-Map.md
+  - 06_AGENTS/Knowledge-Taxonomy.md
+  optional_reads:
+  - 01_PROJECTS/
+  - 02_KNOWLEDGE/
+  - 03_INPUTS/00_QUARANTINE/
+  permission_ceiling: proposal_log_only
+  runtime_class: read-heavy
+  writeback_expectations: hygiene report only; no vault mutations
+  escalation_trigger:
+  - any repair, rename, or delete requested
+  - protected file modification requested
+  - write outside declared report targets
+- task_type: scheduled-briefing
+  required_reads:
+  - 00_HOME/Now.md
+  optional_reads:
+  - runtime/source_intelligence/
+  permission_ceiling: no_protected_file_writes
+  runtime_class: scheduled
+  writeback_expectations: output artifact at declared target + run log entry
+  escalation_trigger:
+  - schedule deviation (run triggered outside declared schedule)
+  - protected file access requested
+  - output destination not in manifest writeback_targets
+- task_type: source-pack-builder
+  required_reads: []
+  optional_reads:
+  - sources[].path (declared at runtime)
+  - sources[].sidecar_path (declared at runtime)
+  permission_ceiling: acquisition_pack_only
+  runtime_class: read-heavy
+  writeback_expectations: source_packet, normalized_source_pack, and briefing_ready_input_set
+    artifacts only under runtime/acquisition/packs/ or 07_LOGS/Acquisition-Packs/;
+    no canonical mutations
+  escalation_trigger:
+  - required source scope is missing
+  - undeclared source class requested
+  - source path outside declared class scope
+  - browser scope too broad or credential/form/download-enabled
+  - write outside runtime/acquisition/packs/ or 07_LOGS/Acquisition-Packs/
+  - canonical mutation requested
+  - connector/API/network/live browser use requested
+  - MCP expansion, native cron, delivery, action packet, memory candidate, or outcome
+    scoring requested
+policy_binding_complete: true
+generated_at: '2026-06-01T22:03:40.748619Z'

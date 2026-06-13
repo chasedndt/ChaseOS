@@ -1,0 +1,67 @@
+# ChaseOS Task Profile — Ingestion Pass
+# Corresponds to Session-Prompt-Patterns.md Pattern 5
+#
+# This profile defines the required reads, allowed write targets, and
+# promotion rules for an ingestion pass session.
+
+task_type: ingestion-pass
+display_name: "Ingestion Pass — Process 03_INPUTS/ content into knowledge"
+session_pattern_ref: "05_TEMPLATES/Session-Prompt-Patterns.md Pattern 5"
+
+required_reads:
+  - "00_HOME/Now.md"
+  - "03_INPUTS/03_INPUTS-Folder-Guide.md"
+  - "06_AGENTS/Ingestion-Architecture.md"
+  - "06_AGENTS/Knowledge-Taxonomy.md"
+  - "04_SOPS/Untrusted-Input-Handling-SOP.md"
+  - "04_SOPS/Research-Ingest-SOP.md"
+  # Plus: list of specific files in 03_INPUTS/ being processed this session
+
+allowed_write_targets:
+  - "02_KNOWLEDGE/**"          # after full promotion gate only
+  - "03_INPUTS/**"             # updating queue status, adding annotations
+  - "07_LOGS/Build-Logs/**"    # session build log
+  - "07_LOGS/Agent-Activity/**"  # agent activity log if elevated actions taken
+
+explicitly_denied:
+  - protected_files: true      # never without explicit per-file approval
+  - "01_PROJECTS/**"           # only with explicit user direction
+  - "00_HOME/Now.md"           # action extraction must be presented to user, not auto-written
+
+promotion:
+  gate_required: true
+  gate_conditions:
+    - "triage_complete"        # source, relevance, recency assessed
+    - "sanitized"              # hazards, unverified claims removed or labeled
+    - "verified"               # key claims cross-checked
+    - "human_reviewed"         # explicit user confirmation before promotion
+  autonomous_promotion: false  # NEVER
+
+note_type_selection:
+  single_source: "Source-Note-Template.md"
+  multi_source_or_synthesis: "Synthesis-Note-Template.md"
+  generated_idea: "Generated-Idea-Template.md"
+
+knowledge_class_requirements:
+  source_note: "source-derived"
+  synthesis_note: "synthesized"
+  generated_idea: "generated-ideas"
+  # All promoted notes must declare knowledge_class in frontmatter
+
+action_extraction:
+  allowed: true
+  autonomous: false            # must surface to user for review before writing to any target
+  close_out_step_required: true  # list all extracted actions at session close; user decides routing
+
+linking_requirements:
+  domain_index_link: required     # every promoted note must link to its domain index
+  cross_note_link: required       # every promoted note must link to at least one related note
+  index_file_update: required     # domain index file must be updated when new note added
+
+raw_input_state:
+  retain_by_default: true
+  processed_banner_required: true  # update banner to PROCESSED state after promotion
+
+approval_mode: per-action      # each protected or elevated action requires explicit approval
+
+audit_log: "07_LOGS/Build-Logs/YYYY-MM-DD-Ingestion-[batch-descriptor].md"

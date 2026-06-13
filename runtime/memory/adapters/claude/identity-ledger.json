@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "agent_identity_ledger",
+  "runtime_id": "claude",
+  "runtime_label": "Claude / Anthropic Agent Harness",
+  "status": "seeded-operational",
+  "updated_at": "2026-04-27T00:00:00Z",
+  "sources": [
+    "CLAUDE.md",
+    "06_AGENTS/Agent-Registry.md",
+    "06_AGENTS/Claude-Memory-System.md",
+    "06_AGENTS/Agent-Memory-Architecture.md",
+    "07_LOGS/Build-Logs/",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "identity_summary": {
+    "current_actor_posture": "primary vault-writing engineering and documentation harness",
+    "execution_surface": "Claude Code CLI with local filesystem access",
+    "access_mode": "direct vault read/write via filesystem when operating as the Anthropic Agent Harness",
+    "trust_tier": "Tier 2 ceiling per Agent Registry; protected files and high-risk writes remain governed",
+    "primary_value": "repo-grounded implementation, documentation truth-sync, and writeback discipline",
+    "not_authority_source": true
+  },
+  "behavioral_tendencies": [
+    {
+      "id": "repo-truth-first",
+      "status": "expected",
+      "summary": "The Claude lane is expected to read current vault truth before acting and to treat the vault as authoritative over chat/session memory.",
+      "evidence_refs": [
+        "CLAUDE.md",
+        "06_AGENTS/Claude-Memory-System.md",
+        "06_AGENTS/Agent-Registry.md"
+      ]
+    },
+    {
+      "id": "writeback-index-discipline",
+      "status": "expected",
+      "summary": "Meaningful changes must be written back through build logs, documentation-history notes, daily notes, and related indexes.",
+      "evidence_refs": [
+        "CLAUDE.md",
+        "06_AGENTS/Claude-Memory-System.md",
+        "07_LOGS/Build-Logs/Build-Logs-Index.md",
+        "99_ARCHIVE/Documentation-History/Documentation-History-Index.md"
+      ]
+    },
+    {
+      "id": "protected-surface-caution",
+      "status": "expected",
+      "summary": "Protected governance and canonical state files require narrow edits grounded in current repo truth.",
+      "evidence_refs": [
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "CLAUDE.md"
+      ]
+    }
+  ],
+  "doctrine_adherence": {
+    "status": "seeded-from-governance-docs",
+    "expected_disciplines": [
+      "read vault truth before acting",
+      "respect protected-file and Gate boundaries",
+      "log meaningful implementation and documentation passes",
+      "separate implementation truth from planned or docs-only truth",
+      "do not store credentials or secrets in memory or logs"
+    ],
+    "current_evidence_state": "human-readable doctrine exists; Claude scorecard seeded at runtime/memory/scorecards/claude.json (2026-04-29); AOR-governed workflow runs will populate it going forward",
+    "evidence_refs": [
+      "06_AGENTS/Agent-Registry.md",
+      "06_AGENTS/Claude-Memory-System.md",
+      "07_LOGS/Build-Logs/",
+      "07_LOGS/Agent-Activity/"
+    ]
+  },
+  "correction_history": [
+    {
+      "id": "build-log-discipline",
+      "status": "standing-rule",
+      "summary": "Claude-lane sessions must write build logs directly and keep related indexes synchronized.",
+      "evidence_refs": [
+        "06_AGENTS/Claude-Memory-System.md",
+        "07_LOGS/Build-Logs/Build-Logs-Index.md"
+      ]
+    },
+    {
+      "id": "memory-vault-precedence",
+      "status": "standing-rule",
+      "summary": "Persistent adapter memory accelerates session start, but current vault files win when memory conflicts with repo truth.",
+      "evidence_refs": [
+        "06_AGENTS/Claude-Memory-System.md",
+        "06_AGENTS/Agent-Memory-Architecture.md"
+      ]
+    }
+  ],
+  "workflow_history_posture": {
+    "status": "log-backed-human-readable",
+    "summary": "Claude/Codex-style harness activity is recorded through build logs, documentation-history notes, and agent activity logs; Claude scorecard seeded 2026-04-29 at runtime/memory/scorecards/claude.json.",
+    "evidence_refs": [
+      "07_LOGS/Build-Logs/",
+      "99_ARCHIVE/Documentation-History/",
+      "07_LOGS/Agent-Activity/"
+    ]
+  },
+  "memory_cluster_influence": {
+    "status": "bounded",
+    "summary": "Claude memory may shape session orientation, but Layer A governance and current repo truth remain sovereign.",
+    "inputs": [
+      "CLAUDE.md",
+      "06_AGENTS/Claude-Memory-System.md",
+      "00_HOME/Now.md",
+      "06_AGENTS/Agent-Memory-Architecture.md"
+    ]
+  },
+  "drift_signals": [],
+  "authority_boundaries": [
+    "Identity ledger is advisory Layer C memory, not Gate policy.",
+    "Identity ledger cannot raise trust tier, grant write scope, or approve protected-file edits.",
+    "Identity ledger cannot replace current vault truth, role cards, manifests, Permission Matrix, or operator approval.",
+    "Single incidents remain Layer E history until repeated and confirmed."
+  ],
+  "promotion_rules": [
+    "Promote a tendency only when it is supported by repeated logs or explicit operator correction.",
+    "Remove or downgrade stale identity claims when current governance docs or runtime behavior contradict them.",
+    "Do not add secrets, credentials, or private external identifiers.",
+    "Keep identity claims evidence-backed and distinguish expected behavior from verified behavior."
+  ],
+  "governance_boundary": "The Agent Identity Ledger is a behavioral record and inspection aid. It does not grant authority, alter trust tier, or override ChaseOS Gate, role cards, manifests, Permission Matrix, or operator approval."
+}

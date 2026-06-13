@@ -1,0 +1,42 @@
+- provider_adapter_id: perplexity_api
+  display_name: Perplexity API
+  provider_type: api
+  capabilities: [research]
+  cost_mode: estimated
+  estimated_cost_per_run: "0.0050"
+  budget_policy_id: budget_local_default
+  supports_dry_run: true
+  supports_stub: true
+  requires_paid_credits: true
+  requires_user_provider_account: true
+  requires_tenant_provider_account: false
+  version: 1
+  status: active
+- provider_adapter_id: gemini_image
+  display_name: Gemini Image
+  provider_type: api
+  capabilities: [image_edit]
+  cost_mode: estimated
+  estimated_cost_per_run: "0.0300"
+  budget_policy_id: budget_local_default
+  supports_dry_run: true
+  supports_stub: true
+  requires_paid_credits: true
+  requires_user_provider_account: true
+  requires_tenant_provider_account: false
+  version: 1
+  status: active
+- provider_adapter_id: seedream_future
+  display_name: Seedream Future
+  provider_type: api
+  capabilities: [image_generate, image_edit]
+  cost_mode: unknown_future
+  estimated_cost_per_run: "0"
+  budget_policy_id: null
+  supports_dry_run: true
+  supports_stub: true
+  requires_paid_credits: true
+  requires_user_provider_account: true
+  requires_tenant_provider_account: false
+  version: 0.1
+  status: planned

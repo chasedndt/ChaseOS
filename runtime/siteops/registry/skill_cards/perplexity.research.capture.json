@@ -1,0 +1,29 @@
+{
+  "object_type": "skill_card",
+  "skill_id": "perplexity.research.capture",
+  "display_name": "Perplexity / Research Capture",
+  "family": "ChaseOS SiteOps",
+  "technical_registry": "Website Workflow Index",
+  "user_tab": "Site Skills",
+  "status": "PARTIAL",
+  "execution_status": "DRY_RUN_READY",
+  "workflow_id": "perplexity.research.capture",
+  "site_profile": "perplexity",
+  "provider_profile": "perplexity_api",
+  "category": "research",
+  "risk_level": "medium",
+  "required_auth": "PERPLEXITY_API_KEY environment variable for future live API run",
+  "required_provider": "perplexity_api",
+  "estimated_cost": "provider-dependent; no live call in dry-run",
+  "approval_points": [
+    "paid_provider_call",
+    "knowledge_promotion"
+  ],
+  "outputs": [
+    "capture packet candidate",
+    "citation trace",
+    "provider audit"
+  ],
+  "success_rate": null,
+  "last_tested": null
+}

@@ -1,0 +1,144 @@
+schema_version: 0.1
+skill_id: excalidraw.draw_basic_shape
+domain: excalidraw.com
+intent: Draw a basic rectangle on a blank Excalidraw canvas in shadow mode.
+status: draft
+mode: shadow
+account_required: false
+credentials_required: false
+canonical_writeback: false
+
+allowed_domains:
+  - https://excalidraw.com
+
+inputs_schema:
+  shape:
+    type: string
+    allowed_values:
+      - rectangle
+    default: rectangle
+  canvas_region:
+    type: string
+    default: center
+
+outputs_schema:
+  run_log_path:
+    type: string
+    destination: 07_LOGS/Browser-Runs/
+  screenshot_path:
+    type: string
+    destination: 07_LOGS/Operator-Screenshots/
+    optional: true
+  candidate_path:
+    type: string
+    destination: 03_INPUTS/Browser-Skill-Candidates/
+    optional: true
+
+preconditions:
+  - isolated disposable browser profile
+  - no account login
+  - no credentials
+  - blank or disposable Excalidraw canvas
+  - operator-approved shadow run only
+
+steps:
+  - step_id: open_excalidraw
+    action: navigate
+    target: https://excalidraw.com/
+    wait_for: canvas_ready
+  - step_id: select_rectangle_tool
+    action: click_selector
+    target: rectangle_tool
+    selectors:
+      - button[title*="Rectangle"]
+      - button[aria-label*="Rectangle"]
+      - "[data-testid='toolbar-rectangle']"
+  - step_id: draw_rectangle
+    action: drag
+    target: canvas
+    coordinate_strategy: relative_canvas
+    relative_start:
+      x_pct: 0.35
+      y_pct: 0.35
+    relative_end:
+      x_pct: 0.60
+      y_pct: 0.55
+  - step_id: verify_shape_present
+    action: verify
+    target: canvas
+    verification_ref: shape_visible
+
+selectors:
+  canvas:
+    semantic: Excalidraw drawing canvas
+    css_candidates:
+      - canvas
+      - ".excalidraw__canvas"
+  rectangle_tool:
+    semantic: Rectangle shape tool
+    css_candidates:
+      - button[title*="Rectangle"]
+      - button[aria-label*="Rectangle"]
+      - "[data-testid='toolbar-rectangle']"
+
+fallbacks:
+  - fallback_id: toolbar_shortcut
+    condition: rectangle_tool selector not found
+    action: keypress
+    target: "2"
+    note: Only allowed in shadow mode if Excalidraw shortcut mapping is verified.
+  - fallback_id: halt_on_login_or_modal
+    condition: login, account prompt, export dialog, or credential field appears
+    action: halt
+    target: operator_review
+
+wait_conditions:
+  - wait_id: canvas_ready
+    type: selector_visible
+    target: canvas
+    timeout_ms: 10000
+  - wait_id: toolbar_ready
+    type: selector_visible
+    target: rectangle_tool
+    timeout_ms: 10000
+
+verification:
+  shape_visible:
+    method: screenshot_or_canvas_state
+    evidence_allowed:
+      - screenshot_path
+      - run_log_path
+    success_condition: A rectangle-like shape is visible on the disposable canvas.
+    forbidden_evidence:
+      - cookies
+      - session_tokens
+      - credentials
+      - account_state
+
+secret_policy:
+  credentials: forbidden
+  cookies: forbidden
+  session_tokens: forbidden
+  browser_profile_state: forbidden
+  local_storage: forbidden
+  allowed_secret_material: none
+
+source_runs: []
+approval_status: draft
+risk_level: medium
+last_verified: null
+
+screenshot_policy:
+  retention: run_log_reference_only
+  redact_private_data: true
+  authenticated_pages_allowed: false
+
+coordinate_policy:
+  raw_absolute_pixels_allowed: false
+  relative_coordinates_required: true
+  strategy: relative_canvas
+
+notes:
+  - Non-executable sample skill for BOSL schema validation.
+  - This does not authorize live Excalidraw automation.
+  - Future live proof must run in an isolated browser profile with no login.

@@ -1,0 +1,41 @@
+---
+schema_id: live_revenue_evidence
+name: Live Revenue Evidence
+version: "0.1"
+status: active
+required_fields:
+  - type
+  - revenue_proof_id
+  - workflow_id
+  - client_label
+  - payment_reference_id
+  - payment_status
+  - amount
+  - currency
+  - receipt_artifact_path
+  - delivery_proof_path
+  - crm_reference_id
+  - approval_id
+  - revenue_recognition_boundary
+field_rules:
+  type: must equal ventureops-live-revenue-evidence
+  payment_status: received or settled
+  amount: numeric and greater than zero
+  currency: 3-letter code
+  receipt_artifact_path: declared relative artifact path only; no secrets, credentials, env files, parent traversal, or broad filesystem roots
+  delivery_proof_path: declared relative artifact path only; no secrets, credentials, env files, parent traversal, or broad filesystem roots
+  revenue_recognition_boundary: must equal proof_only_no_accounting_claim
+forbidden_fields:
+  - card_number
+  - bank_account
+  - api_key
+  - token
+  - secret
+  - password
+  - seed_phrase
+  - private_key
+  - cookie
+completion_boundary: >
+  This schema validates redacted revenue evidence for VentureOps proof purposes
+  only. It is not an accounting record, tax record, payment-system mutation, or
+  permission to claim recognized revenue outside the governed proof chain.

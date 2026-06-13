@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChaseOS Studio Companion Profile",
+  "type": "object",
+  "required": [
+    "companion_id",
+    "display_name",
+    "runtime_id",
+    "status",
+    "avatar",
+    "tone_tags",
+    "supported_surfaces",
+    "authority",
+    "selection",
+    "evidence"
+  ],
+  "properties": {
+    "companion_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "runtime_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "available_builtin",
+        "available_registry",
+        "disabled"
+      ]
+    },
+    "avatar": {
+      "type": "object",
+      "required": [
+        "kind",
+        "asset_path"
+      ],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "brand_icon",
+            "generated_avatar",
+            "runtime_mark",
+            "initials"
+          ]
+        },
+        "asset_path": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "tone_tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supported_surfaces": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "chat_panel",
+          "dashboard",
+          "runtime_status",
+          "slash_pet",
+          "companion_roster"
+        ]
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": [
+        "personality_grants_authority",
+        "runtime_control_allowed",
+        "provider_calls_allowed",
+        "agent_bus_task_write_allowed",
+        "canonical_mutation_allowed"
+      ],
+      "properties": {
+        "personality_grants_authority": {
+          "type": "boolean",
+          "const": false
+        },
+        "runtime_control_allowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "provider_calls_allowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "agent_bus_task_write_allowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "canonical_mutation_allowed": {
+          "type": "boolean",
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "selection": {
+      "type": "object",
+      "required": [
+        "can_be_selected",
+        "selection_requires_approval_executor",
+        "target_path"
+      ],
+      "properties": {
+        "can_be_selected": {
+          "type": "boolean"
+        },
+        "selection_requires_approval_executor": {
+          "type": "boolean",
+          "const": true
+        },
+        "target_path": {
+          "type": "string",
+          "const": "runtime/studio/chat/companion-selection.json"
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "source",
+        "profile_digest_required"
+      ],
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "profile_digest_required": {
+          "type": "boolean",
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

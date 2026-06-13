@@ -1,0 +1,28 @@
+{
+  "object_type": "skill_card",
+  "skill_id": "tradingview.indicator.review",
+  "display_name": "TradingView / Indicator Review",
+  "family": "ChaseOS SiteOps",
+  "technical_registry": "Website Workflow Index",
+  "user_tab": "Site Skills",
+  "status": "PARTIAL",
+  "execution_status": "DRY_RUN_READY",
+  "workflow_id": "tradingview.indicator.review",
+  "site_profile": "tradingview",
+  "category": "trading_research",
+  "risk_level": "high",
+  "required_auth": "operator-owned-or-permitted-source",
+  "required_provider": "none",
+  "estimated_cost": "none in dry-run",
+  "approval_points": [
+    "capture_user_owned_indicator_code",
+    "alert_setup_draft",
+    "knowledge_promotion"
+  ],
+  "outputs": [
+    "indicator review candidate",
+    "run audit"
+  ],
+  "success_rate": null,
+  "last_tested": null
+}

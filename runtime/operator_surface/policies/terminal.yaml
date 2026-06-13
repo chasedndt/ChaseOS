@@ -1,0 +1,85 @@
+# ChaseOS TerminalAdapter policy scaffold
+# Status: PARTIAL / MVP. This file documents the policy posture used by
+# runtime/operator_surface/adapters/terminal_adapter.py; it is not yet a full
+# dynamic policy engine.
+version: 0.1.0
+status: partial
+terms:
+  - terminal-output-tier4
+  - cwd-scope-required
+  - no-elevated-commands
+  - no-destructive-commands
+  - no-ambient-credential-access
+terminal_output:
+  trust_tier: Tier 4
+  trusted_instruction_source: false
+scope:
+  cwd_must_be_under_allowed_roots: true
+  allowed_roots_source:
+    - OperatorScope.allowed_paths
+    - OperatorScope.target_uris with file:// scheme
+forbidden:
+  credential_access: true
+  elevated_commands:
+    - sudo
+    - su
+    - doas
+    - runas
+  destructive_tokens:
+    - rm
+    - rmdir
+    - del
+    - erase
+    - mkfs
+    - shutdown
+    - reboot
+    - poweroff
+  destructive_flags:
+    - -rf
+    - -fr
+    - /s
+    - /q
+blocked_without_future_approval:
+  write_commands:
+    - touch
+    - mkdir
+    - cp
+    - mv
+    - tee
+    - chmod
+    - chown
+    - git
+    - npm
+    - pip
+    - uv
+  network_commands:
+    - curl
+    - wget
+    - ssh
+    - scp
+    - ftp
+    - nc
+    - ncat
+    - telnet
+mvp_allowlist:
+  read_only_commands:
+    - pwd
+    - ls
+    - dir
+    - date
+    - whoami
+    - uname
+    - python
+    - python3
+    - pytest
+    - uvx
+    - printf
+capture:
+  timeout_seconds_default: 15
+  max_output_chars_default: 4000
+  redact_secret_like_values: true
+audit:
+  emit_step_events: true
+  include_classification: true
+  include_cwd: true
+  include_redaction_and_truncation_flags: true

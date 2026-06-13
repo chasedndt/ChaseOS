@@ -1,0 +1,35 @@
+# ChaseOS — Protected Files Registry
+# Machine-readable version of Permission-Matrix.md Section 2
+#
+# SYNC REQUIREMENT: This file must match 06_AGENTS/Permission-Matrix.md Section 2 exactly.
+# If Permission-Matrix.md is updated, update this file too.
+# The protected_write_guard.py hook reads from this file — not from the markdown.
+#
+# Last synced: 2026-05-21 (N-8/M-1 fix — added 3 new runtime policy/API paths)
+
+protected_files:
+  - "SOUL.md"
+  - "00_HOME/Principles.md"
+  - "00_HOME/Operating-System.md"
+  - "00_HOME/Assistant-Contract.md"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+  - "ROADMAP.md"
+  - "FORKING.md"
+  - "CLAUDE.md"
+  - "06_AGENTS/Agent-Control-Plane.md"
+  - "06_AGENTS/Permission-Matrix.md"
+  - "06_AGENTS/Trust-Tiers.md"
+  - "06_AGENTS/Handoff-Protocol.md"
+  # Added 2026-05-21 (N-8/M-1): runtime control plane paths
+  - "runtime/policy/protected_files.yaml"
+  - "runtime/policy/gateway_allowlists.json"
+  - "runtime/studio/shell/api.py"
+
+# Notes:
+# - Paths are relative to the vault root
+# - Do not add files here without also adding them to Permission-Matrix.md Section 2
+# - The hook checks for substring matches, so "README.md" will match both root README.md
+#   and any subfolder README.md — be specific if needed (e.g., "./README.md")
+# - ChaseOS-Gate.md, Adapter-Manifest-Standard.md, and runtime/ files are sensitive
+#   but not formally protected (no per-file approval required) — handled by good practice

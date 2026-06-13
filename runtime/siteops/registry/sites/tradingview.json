@@ -1,0 +1,49 @@
+{
+  "object_type": "site_profile",
+  "site_id": "tradingview",
+  "display_name": "TradingView",
+  "status": "PARTIAL",
+  "profile_status": "draft",
+  "category": "trading_research",
+  "risk_level": "high",
+  "allowed_domains": [
+    "tradingview.com"
+  ],
+  "auth_mode": "user_browser_session",
+  "known_workflows": [
+    "tradingview.idea.capture",
+    "tradingview.indicator.review"
+  ],
+  "allowed_actions": [
+    "browser.open",
+    "browser.inspect",
+    "browser.screenshot",
+    "browser.read_visible_text",
+    "file.download"
+  ],
+  "blocked_actions": [
+    "publish_publicly",
+    "place_trade",
+    "connect_broker",
+    "change_billing",
+    "change_account_settings",
+    "create_live_alert"
+  ],
+  "approval_required": [
+    "before_alert_draft",
+    "external_share",
+    "publish_publicly",
+    "broker_connection",
+    "trading_action"
+  ],
+  "common_ui_anchors": {
+    "idea_text": "Idea",
+    "chart": "Chart",
+    "indicators": "Indicators"
+  },
+  "output_targets": {
+    "screenshots": "07_LOGS/Website-Workflow-Runs/",
+    "quarantine": "03_INPUTS/00_QUARANTINE/source/",
+    "audit": "07_LOGS/Agent-Activity/"
+  }
+}

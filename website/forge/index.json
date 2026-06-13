@@ -1,0 +1,220 @@
+{
+  "base_url": "https://chaseos.ai",
+  "creator_interest_url": "https://chaseos.ai/creators",
+  "creator_payouts": "not_enabled",
+  "external_registry_mutation": "not_enabled",
+  "generated_at": "2026-05-31T00:00:00Z",
+  "index_url": "https://chaseos.ai/forge/index.json",
+  "licensing_entitlements": "not_enabled",
+  "marketplace_payments": "not_enabled",
+  "pack_submission_url": "https://chaseos.ai/submit-pack",
+  "packs": [
+    {
+      "approval_required": true,
+      "author": "ChaseOS",
+      "authority_boundary": {
+        "auto_install_enabled": false,
+        "external_actions": "blocked_pending_operator_approval",
+        "license_enforcement_enabled": false,
+        "payment_required": false,
+        "untrusted_remote_install_allowed": false
+      },
+      "category": "founder",
+      "certification_status": "uncertified_preview_example",
+      "compatibility": {
+        "chaseos": ">=0.8.0",
+        "studio": "early-access"
+      },
+      "description": "Preview pack for turning an idea into research notes, landing-page copy, approval packets, and a launch-readiness decision.",
+      "digest_algorithm": "sha256",
+      "docs_url": "https://chaseos.ai/forge",
+      "id": "startup_validation_launch",
+      "install_boundary": "manual_preview_only_no_auto_install",
+      "license": "example-free-preview-no-entitlement",
+      "manifest_digest_sha256": "82f825faaf5c3769a1ca0ef2a064b3fc9d4fe2fd6fd7a85bd8abdcc9c6649379",
+      "manifest_url": "https://chaseos.ai/forge/packs/startup_validation_launch/manifest.json",
+      "name": "Startup Validation Launch",
+      "permissions_required": [
+        "read_declared_sources",
+        "write_preview_outputs"
+      ],
+      "price_class": "free_example_preview",
+      "status": "preview",
+      "submission_url": "https://chaseos.ai/submit-pack",
+      "version": "0.1.0"
+    },
+    {
+      "approval_required": true,
+      "author": "ChaseOS",
+      "authority_boundary": {
+        "auto_install_enabled": false,
+        "external_actions": "blocked_pending_operator_approval",
+        "license_enforcement_enabled": false,
+        "payment_required": false,
+        "untrusted_remote_install_allowed": false
+      },
+      "category": "content",
+      "certification_status": "uncertified_preview_example",
+      "compatibility": {
+        "chaseos": ">=0.8.0",
+        "studio": "early-access"
+      },
+      "description": "Drafts channel-specific content plans and blocked external-action approval packets without posting automatically.",
+      "digest_algorithm": "sha256",
+      "docs_url": "https://chaseos.ai/forge",
+      "id": "content_distribution_pack",
+      "install_boundary": "manual_preview_only_no_auto_install",
+      "license": "example-free-preview-no-entitlement",
+      "manifest_digest_sha256": "5d0a71c6d51748fec0df589416f49f30795055310c17f1c9159f797766d34542",
+      "manifest_url": "https://chaseos.ai/forge/packs/content_distribution_pack/manifest.json",
+      "name": "Content Distribution Pack",
+      "permissions_required": [
+        "read_declared_sources",
+        "write_preview_outputs"
+      ],
+      "price_class": "free_example_preview",
+      "status": "preview",
+      "submission_url": "https://chaseos.ai/submit-pack",
+      "version": "0.1.0"
+    },
+    {
+      "approval_required": true,
+      "author": "ChaseOS",
+      "authority_boundary": {
+        "auto_install_enabled": false,
+        "external_actions": "blocked_pending_operator_approval",
+        "license_enforcement_enabled": false,
+        "payment_required": false,
+        "untrusted_remote_install_allowed": false
+      },
+      "category": "research",
+      "certification_status": "uncertified_preview_example",
+      "compatibility": {
+        "chaseos": ">=0.8.0",
+        "studio": "early-access"
+      },
+      "description": "Organizes source-backed research briefs with provenance and outcome records.",
+      "digest_algorithm": "sha256",
+      "docs_url": "https://chaseos.ai/forge",
+      "id": "research_briefing_pack",
+      "install_boundary": "manual_preview_only_no_auto_install",
+      "license": "example-free-preview-no-entitlement",
+      "manifest_digest_sha256": "e9db8c9acd1cfffd1156533c6315366d0b831104de9a8f7b02a4874f415b648f",
+      "manifest_url": "https://chaseos.ai/forge/packs/research_briefing_pack/manifest.json",
+      "name": "Research Briefing Pack",
+      "permissions_required": [
+        "read_declared_sources",
+        "write_preview_outputs"
+      ],
+      "price_class": "free_example_preview",
+      "status": "preview",
+      "submission_url": "https://chaseos.ai/submit-pack",
+      "version": "0.1.0"
+    },
+    {
+      "approval_required": true,
+      "author": "ChaseOS",
+      "authority_boundary": {
+        "auto_install_enabled": false,
+        "external_actions": "blocked_pending_operator_approval",
+        "license_enforcement_enabled": false,
+        "payment_required": false,
+        "untrusted_remote_install_allowed": false
+      },
+      "category": "developer-ops",
+      "certification_status": "uncertified_preview_example",
+      "compatibility": {
+        "chaseos": ">=0.8.0",
+        "studio": "early-access"
+      },
+      "description": "Creates repo-inspection, patch, and test-run packets for bounded developer-agent workflows.",
+      "digest_algorithm": "sha256",
+      "docs_url": "https://chaseos.ai/forge",
+      "id": "local_developer_ops_pack",
+      "install_boundary": "manual_preview_only_no_auto_install",
+      "license": "example-free-preview-no-entitlement",
+      "manifest_digest_sha256": "c7724b7f47ae9f5eb80f8fe7cdd1ce9c699fcf3938cdc5ca1f892b4be94da550",
+      "manifest_url": "https://chaseos.ai/forge/packs/local_developer_ops_pack/manifest.json",
+      "name": "Local Developer Ops Pack",
+      "permissions_required": [
+        "read_declared_sources",
+        "write_preview_outputs"
+      ],
+      "price_class": "free_example_preview",
+      "status": "preview",
+      "submission_url": "https://chaseos.ai/submit-pack",
+      "version": "0.1.0"
+    },
+    {
+      "approval_required": true,
+      "author": "ChaseOS",
+      "authority_boundary": {
+        "auto_install_enabled": false,
+        "external_actions": "blocked_pending_operator_approval",
+        "license_enforcement_enabled": false,
+        "payment_required": false,
+        "untrusted_remote_install_allowed": false
+      },
+      "category": "commerce",
+      "certification_status": "uncertified_preview_example",
+      "compatibility": {
+        "chaseos": ">=0.8.0",
+        "studio": "early-access"
+      },
+      "description": "Structures product research, listing drafts, content plans, and manual approval checkpoints.",
+      "digest_algorithm": "sha256",
+      "docs_url": "https://chaseos.ai/forge",
+      "id": "ecommerce_reselling_ops_pack",
+      "install_boundary": "manual_preview_only_no_auto_install",
+      "license": "example-free-preview-no-entitlement",
+      "manifest_digest_sha256": "a7e0b421eb4b744c7beb5482e06bcdafd4afcd83b014758092d5b4ed82c95c53",
+      "manifest_url": "https://chaseos.ai/forge/packs/ecommerce_reselling_ops_pack/manifest.json",
+      "name": "Ecommerce Reselling Ops Pack",
+      "permissions_required": [
+        "read_declared_sources",
+        "write_preview_outputs"
+      ],
+      "price_class": "free_example_preview",
+      "status": "preview",
+      "submission_url": "https://chaseos.ai/submit-pack",
+      "version": "0.1.0"
+    },
+    {
+      "approval_required": true,
+      "author": "ChaseOS",
+      "authority_boundary": {
+        "auto_install_enabled": false,
+        "external_actions": "blocked_pending_operator_approval",
+        "license_enforcement_enabled": false,
+        "payment_required": false,
+        "untrusted_remote_install_allowed": false
+      },
+      "category": "governance",
+      "certification_status": "uncertified_preview_example",
+      "compatibility": {
+        "chaseos": ">=0.8.0",
+        "studio": "early-access"
+      },
+      "description": "Audits runtime authority, approval posture, and blocked/future action lanes.",
+      "digest_algorithm": "sha256",
+      "docs_url": "https://chaseos.ai/forge",
+      "id": "agent_governance_pack",
+      "install_boundary": "manual_preview_only_no_auto_install",
+      "license": "example-free-preview-no-entitlement",
+      "manifest_digest_sha256": "588d0710368a32056babaf0712406f0f5bb3b9a68dede7f077c84c7c4dee4f04",
+      "manifest_url": "https://chaseos.ai/forge/packs/agent_governance_pack/manifest.json",
+      "name": "Agent Governance Pack",
+      "permissions_required": [
+        "read_declared_sources",
+        "write_preview_outputs"
+      ],
+      "price_class": "free_example_preview",
+      "status": "preview",
+      "submission_url": "https://chaseos.ai/submit-pack",
+      "version": "0.1.0"
+    }
+  ],
+  "remote_install": "manual_preview_only_approval_gated_future",
+  "schema": "chaseos.forge-index.v1",
+  "status": "preview_static_index"
+}

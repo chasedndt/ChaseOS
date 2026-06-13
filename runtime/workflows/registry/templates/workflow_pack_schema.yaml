@@ -1,0 +1,47 @@
+schema_version: "0.2"
+status: template
+description: "Required fields for portable VentureOps workflow packs."
+required_fields:
+  - workflow_id
+  - name
+  - version
+  - owner
+  - customer
+  - problem
+  - offer
+  - task_type
+  - trigger
+  - required_inputs
+  - required_context
+  - role_cards
+  - allowed_tools
+  - forbidden_tools
+  - runtime_split
+  - approval_mode
+  - writeback_targets
+  - proof_artifact
+  - audit_target
+  - failure_behavior
+  - monetization_model
+  - success_metric
+  - scorecard
+  - status
+  - implementation_status
+  - risk_notes
+status_values:
+  - DOCS-ONLY
+  - DRAFT
+  - PARTIAL
+  - DRY_RUN_PASSED
+  - VERIFIED
+  - CLIENT_READY
+  - MONETIZED
+  - BLOCKED
+  - DEFERRED
+authority_rules:
+  - "No integration without workflow_id."
+  - "No tool without a contract."
+  - "No credential without a secret boundary."
+  - "No write action without an approval mode."
+  - "No external side effect without an audit log."
+  - "No live trading, payment, external send, or account mutation without human approval."

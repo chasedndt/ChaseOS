@@ -1,0 +1,280 @@
+{
+  "snapshot_id": "vcmi-ba2db78ce1f20d98",
+  "created_at": "2026-05-27T01:04:34.980877+00:00",
+  "vault_root": "C:\\Users\\chaseos\\Documents\\chaseos_obsidian",
+  "extraction_scope": [
+    "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-310dd4bc2b1e09e3.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/workspace.json",
+    "03_INPUTS/00_QUARANTINE/Sources/20260526-155104__source__visual-capture__markdown-guide-basic-syntax-web-capture-pass.md"
+  ],
+  "nodes": [
+    {
+      "node_id": "8a18d01f2f7083cb",
+      "label": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-310dd4bc2b1e09e3.json",
+      "node_type": "source_intelligence_core_ingestion_artifact",
+      "source_file": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-310dd4bc2b1e09e3.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "artifact_digest": "ba324c82811abf31875938e7dff76ec52d8ea236db5a13ee8be71e7748dee8c9",
+        "ingestion_digest": "5ecb8ca98b3edb565109fbae9fb2594eae00fafd69ad53c8847475e5e98b795e",
+        "pass_id": "visual-capture-markdown-ingestion-pass35-source-pack-sic-ingestion-executor"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:ingestion_artifact"
+    },
+    {
+      "node_id": "533d20b1ed86f055",
+      "label": "Markdown Guide Basic Syntax Web Capture Pass 36",
+      "node_type": "source_intelligence_core_source_package",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359",
+        "source_type": "markdown",
+        "user_trust_level": "reviewed",
+        "chunk_count": 34,
+        "normalized_text_char_count": 34681,
+        "origin_path": "C:\\Users\\chaseos\\Documents\\chaseos_obsidian\\03_INPUTS\\00_QUARANTINE\\Sources\\20260526-155104__source__visual-capture__markdown-guide-basic-syntax-web-capture-pass.md",
+        "origin_url": "https://www.markdownguide.org/basic-syntax/"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package"
+    },
+    {
+      "node_id": "bf9463323c332252",
+      "label": "vcmi-reviewed-captures",
+      "node_type": "source_intelligence_core_workspace",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/workspace.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "workspace_slug": "vcmi-reviewed-captures",
+        "workspace_uuid": "621130db-575e-46fe-a9c6-556add2519d3",
+        "source_count": 1,
+        "index_status": "not-indexed"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:workspace"
+    },
+    {
+      "node_id": "19c256c39dec17bc",
+      "label": "20260526-155104__source__visual-capture__markdown-guide-basic-syntax-web-capture-pass",
+      "node_type": "file",
+      "source_file": "03_INPUTS/00_QUARANTINE/Sources/20260526-155104__source__visual-capture__markdown-guide-basic-syntax-web-capture-pass.md",
+      "source_line": null,
+      "domain": "capture",
+      "project": null,
+      "properties": {
+        "language": "markdown"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:capture_markdown"
+    },
+    {
+      "node_id": "7bb6e543317a19df",
+      "label": "6385475b-681a-4c51-99e7-3ec6db413359_c0000",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359",
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0000",
+        "chunk_index": 1,
+        "text_sha256": "baa2adaf1b09ac3a053b770203807c991413e2fb44cf3f0478978a2770effba9",
+        "text_char_count": 1177
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "00f1914f4459dcc6",
+      "label": "6385475b-681a-4c51-99e7-3ec6db413359_c0001",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359",
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0001",
+        "chunk_index": 2,
+        "text_sha256": "f8070ee67069f44a5b4c1b9e8258db9df974afb9f50ed5198f88c09f5ca5b42d",
+        "text_char_count": 1185
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "b69502e17fa3319c",
+      "label": "6385475b-681a-4c51-99e7-3ec6db413359_c0002",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359",
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0002",
+        "chunk_index": 3,
+        "text_sha256": "08e3906d0dfee5e536be2779f9a616989baeb204268cf1d0f45c352ea69cb243",
+        "text_char_count": 1177
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "b8d37773c694c88d",
+      "label": "6385475b-681a-4c51-99e7-3ec6db413359_c0003",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359",
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0003",
+        "chunk_index": 4,
+        "text_sha256": "74c2c1a8cc78aab7018e64e94b42d5d2579d6bef625954c07fe421305973176b",
+        "text_char_count": 1166
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "c80f8f51698b3f4b",
+      "label": "6385475b-681a-4c51-99e7-3ec6db413359_c0004",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359",
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0004",
+        "chunk_index": 5,
+        "text_sha256": "84de9a7d816f3f0409fb522f34a5262341e39f8ebe501ab4473fff8a8d0c52ef",
+        "text_char_count": 1162
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "65d7f78c1cd95b59",
+      "source_id": "8a18d01f2f7083cb",
+      "target_id": "533d20b1ed86f055",
+      "relation": "ingested_source_package",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359"
+      },
+      "provenance": "vcmi_pass36:ingestion_artifact_to_source_package"
+    },
+    {
+      "edge_id": "d8f3575576ce0f5d",
+      "source_id": "533d20b1ed86f055",
+      "target_id": "bf9463323c332252",
+      "relation": "belongs_to_workspace",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "workspace_slug": "vcmi-reviewed-captures"
+      },
+      "provenance": "vcmi_pass36:source_package_to_workspace"
+    },
+    {
+      "edge_id": "e832c94a0f9de470",
+      "source_id": "533d20b1ed86f055",
+      "target_id": "19c256c39dec17bc",
+      "relation": "derived_from_capture_markdown",
+      "confidence": "EXTRACTED",
+      "properties": {},
+      "provenance": "vcmi_pass36:source_package_to_capture_markdown"
+    },
+    {
+      "edge_id": "6fe7f578f5209abe",
+      "source_id": "533d20b1ed86f055",
+      "target_id": "7bb6e543317a19df",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0000"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "2e4a593ce03940b4",
+      "source_id": "533d20b1ed86f055",
+      "target_id": "00f1914f4459dcc6",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0001"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "a8a23ef317c2eed4",
+      "source_id": "533d20b1ed86f055",
+      "target_id": "b69502e17fa3319c",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0002"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "01811eb8152fc8f8",
+      "source_id": "533d20b1ed86f055",
+      "target_id": "b8d37773c694c88d",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0003"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "71507e1a577f6cb8",
+      "source_id": "533d20b1ed86f055",
+      "target_id": "c80f8f51698b3f4b",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "6385475b-681a-4c51-99e7-3ec6db413359_c0004"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    }
+  ],
+  "community_assignments": {},
+  "build_info": {
+    "builder": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor",
+    "source_model": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor.v1",
+    "source_readiness_pass_id": "visual-capture-markdown-ingestion-pass36-source-pack-sic-graph-indexing-readiness",
+    "source_readiness_policy_id": "vcmi.reviewed_capture_source_pack_sic_graph_indexing_readiness.v1",
+    "source_intelligence_core_ingestion_artifact_path": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-310dd4bc2b1e09e3.json",
+    "source_intelligence_core_ingestion_artifact_digest": "ba324c82811abf31875938e7dff76ec52d8ea236db5a13ee8be71e7748dee8c9",
+    "source_intelligence_core_ingestion_digest": "5ecb8ca98b3edb565109fbae9fb2594eae00fafd69ad53c8847475e5e98b795e",
+    "graph_index_preview_packet_digest": "ba2db78ce1f20d98dcaf511f80f42d7afd3e41e207ad4a77ca7c8b1eab8254ba",
+    "graph_snapshot_written": true,
+    "canonical_mutation_performed": false
+  },
+  "metadata": {
+    "policy_id": "vcmi.reviewed_capture_source_pack_sic_graph_indexing_executor.v1",
+    "pass_id": "visual-capture-markdown-ingestion-pass37-source-pack-graph-indexing-executor",
+    "record_type": "vcmi_source_pack_source_intelligence_core_graph_snapshot",
+    "source_package_id": "6385475b-681a-4c51-99e7-3ec6db413359",
+    "target_workspace_id": "vcmi-reviewed-captures",
+    "canonical_mutation_allowed": false,
+    "canonical_knowledge_promotion_performed": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "type": "object",
+  "required": [
+    "task_id",
+    "layer",
+    "runtime_id",
+    "status",
+    "objective",
+    "created_at",
+    "memory_boundary"
+  ],
+  "properties": {
+    "task_id": {"type": "string"},
+    "layer": {"const": "D"},
+    "runtime_id": {"type": "string"},
+    "status": {"type": "string"},
+    "objective": {"type": "string"},
+    "created_at": {"type": "string"},
+    "sources": {"type": "array"},
+    "write_targets": {"type": "array"},
+    "memory_boundary": {"type": "string"}
+  }
+}

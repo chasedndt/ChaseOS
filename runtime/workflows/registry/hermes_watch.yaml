@@ -1,0 +1,83 @@
+---
+# hermes_watch — Hermes Bus Watch Loop
+# ChaseOS Phase 9 — Agent Bus Coordination
+#
+# Autonomous polling loop: Hermes claims and dispatches open tasks from the
+# coordination bus without requiring manual per-task invocation.
+#
+# Run once:     chaseos run hermes_watch
+# Run looping:  chaseos run hermes_watch --input interval_seconds=60
+#
+# Dispatch table (as of this manifest version):
+#   review                   -> hermes_review_execute (structural review + optional LLM synthesis)
+#   planning                 -> bounded bus-analysis result + Agent-Activity writeback
+#   shadow-audit             -> bounded bus-analysis result + Agent-Activity writeback
+#   developer-co-development -> bounded bus-analysis result + Agent-Activity writeback
+#   others                   -> escalated (blocked on bus, operator notified)
+#
+id: hermes_watch
+name: "Hermes Watch Loop"
+version: "1.1"
+description: "Hermes polls the coordination bus for open tasks addressed to it, claims them, and dispatches review plus bounded bus-analysis tasks. Run once or with an interval for continuous operation."
+task_type: coordination
+role_card: review
+trigger_type: scheduled
+owner: operator
+status: active
+runtime_adapter: hermes
+
+permission_ceiling: bus_result_only
+
+coordination_requirements:
+  coordination_sensitive: true
+  via: "runtime/agent_bus/"
+  partner_runtime: "OpenClaw"
+  execution_mode: "poll-and-claim"
+
+llm_synthesis_enabled: false  # explicit operator opt-in required — never call paid APIs by default
+
+inputs:
+  - interval_seconds    # optional int — if set, loop continuously; if omitted, run once
+  - max_tasks_per_cycle # optional int — max tasks per cycle (default: 2)
+  - synthesize          # optional bool — enable LLM synthesis in review/chat handlers (default: False, opt-in only)
+
+outputs:
+  - cycles_run
+  - tasks_dispatched
+  - tasks_escalated
+  - cycle_summaries
+  - writebacks
+
+writeback_targets:
+  - "07_LOGS/Agent-Activity/"
+
+failure_behavior: escalate
+
+approval_rule: none
+
+audit_expectations:
+  - "cycle count recorded"
+  - "tasks dispatched per cycle recorded"
+  - "tasks escalated per cycle recorded"
+  - "heartbeat upserted each cycle"
+
+notes: >
+  This workflow is the autonomous execution entry point for Hermes.
+  Each cycle: upsert heartbeat → list open tasks → claim + dispatch → upsert heartbeat.
+
+  The dispatch table in hermes_watch.py maps task_type to handler. Adding a new
+  Hermes handler requires: (1) implement the handler, (2) add to _TASK_DISPATCH,
+  and (3) update the approved workflow/governance docs without widening shell,
+  connector, credential, canonical-promotion, or protected-file authority.
+
+  Bounded bus-analysis handlers consume only the bus task packet and return a
+  bus result plus Agent-Activity audit writeback. They do not read artifacts,
+  call external connectors, execute shell commands, or mutate canonical vault
+  state.
+
+  LLM synthesis in the review handler requires ANTHROPIC_API_KEY in the environment.
+  If the key is absent or the API call fails, synthesis is skipped silently and the
+  structural review stands alone.
+
+  Heartbeat is upserted at cycle start (idle) and cycle end (busy if dispatched, else idle).
+  This ensures the router's staleness detection sees Hermes as live during active polling.

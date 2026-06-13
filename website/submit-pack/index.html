@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Submit a Pack - ChaseOS</title>
+  <meta name="description" content="Creator submission interest form. Static validation only." />
+  <link rel="canonical" href="https://chaseos.ai/submit-pack" />
+  <meta property="og:title" content="Submit a Pack - ChaseOS" />
+  <meta property="og:description" content="Creator submission interest form. Static validation only." />
+  <meta property="og:url" content="https://chaseos.ai/submit-pack" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body data-page="submit-pack">
+  <header class="site-header"><a class="brand" href="../">ChaseOS</a><nav class="nav" aria-label="Primary"><a href="../">Home</a><a href="../studio/">Studio</a><a href="../demo/">Demo</a><a href="../forge/">Forge</a><a href="../standards/">Standards</a><a href="../docs/">Docs</a><a href="../waitlist/">Waitlist</a></nav></header>
+  <main>
+<section class="split"><div><h1>Submit a pack idea.</h1><p class="lead">Tell us what operating kit or workflow pack you want to build. This static preview does not store submissions.</p></div>
+<form id="pack-form" class="panel" novalidate>
+  <label>Creator name <input name="creator_name" required /></label>
+  <label>Email <input name="email" type="email" required /></label>
+  <label>Pack name <input name="pack_name" required /></label>
+  <label>Problem solved <textarea name="problem_solved" required></textarea></label>
+  <label>External actions needed <textarea name="external_actions"></textarea></label>
+  <label class="consent"><input name="consent_to_contact" type="checkbox" required /> I consent to be contacted about Forge creator access.</label>
+  <button type="submit">Validate pack submission</button><p id="pack-result" role="status"></p>
+</form></section>
+</main>
+  <footer><span>Start at https://chaseos.ai.</span><span>ChaseOS Studio Early Access / Developer Preview. Payments, managed agents, and live external actions are not enabled.</span></footer>
+  <script src="../site.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "schema_version": "chaseos.studio.companion.operator_direction.v0.1",
+  "direction_id": "operator-companion-direction-v0.1",
+  "status": "OPERATOR_APPROVED_WITH_AMENDMENTS / UI_ONLY / NO_AUTHORITY_EXPANSION",
+  "approved_at": "2026-05-13",
+  "approved_by": "operator",
+  "approval_source": "Current Codex session operator message approving companion defaults with amendments.",
+  "operator_decisions": {
+    "companion_concept": "Companions are runtime-linked identity profiles with visual, tone, status, and governed separate memory namespaces. They do not independently grant routing, tool access, memory write authority, or write authority.",
+    "initial_roster": "Hermes, OpenClaw, and Claude Code.",
+    "naming_policy": "Names stay as Hermes/OpenClaw/Archon for now. Aliases can come later.",
+    "visual_style": "Use abstract runtime marks, status badges, borders, and lightweight animation presets until a brand pack exists.",
+    "selection_scope": "Per Chat session.",
+    "effect_scope": "For v0.1, companion selection affects UI identity, tone preset, status narration, read-only runtime card display, and non-authoritative companion comments only.",
+    "tone_level": "Companion cards may include rarity, stats, and personality, but these are descriptive UX metadata only and must not change actual runtime capability until a future governed routing pass.",
+    "memory_scope": "Separate companion memory is allowed as governed, approval-gated, non-authoritative memory. This pass defines the namespace and validation boundary only; future memory writes require a separate approval/executor pass.",
+    "switch_policy": "Switching companions must use a read-only preview plus approval-gated write to the selected companion target.",
+    "multi_companion_future": "Future roster expansion should support one active companion first, then inactive roster browsing, then multiple visible companions later."
+  },
+  "initial_roster": [
+    "hermes",
+    "openclaw",
+    "claude-code"
+  ],
+  "v0_1_affects": [
+    "ui_identity",
+    "tone_preset",
+    "status_narration",
+    "read_only_runtime_card_display",
+    "non_authoritative_companion_comments"
+  ],
+  "v0_1_does_not_affect": [
+    "execution_routing",
+    "provider_model_selection",
+    "permission_scope",
+    "writeback_authority",
+    "memory_write_authority",
+    "tool_access",
+    "protected_file_access"
+  ],
+  "descriptive_metadata_only": [
+    "rarity",
+    "stats",
+    "personality"
+  ],
+  "future_boundaries": {
+    "aliases": "future_optional",
+    "brand_pack_required_before_final_visual_assets": true,
+    "companion_memory_boundary_contract_defined": true,
+    "companion_memory_writes_require_future_approval_executor": true,
+    "runtime_capability_changes_require_future_governed_routing_pass": true,
+    "multiple_visible_companions_deferred": true
+  },
+  "authority": {
+    "routing_granted": false,
+    "tool_access_granted": false,
+    "memory_access_granted": false,
+    "write_authority_granted": false,
+    "provider_model_selection_granted": false,
+    "permission_scope_granted": false,
+    "protected_file_access_granted": false,
+    "runtime_dispatch_granted": false,
+    "agent_bus_task_write_granted": false,
+    "canonical_mutation_granted": false
+  },
+  "next_recommended_pass": "phase11-companion-roster-ui-preview"
+}

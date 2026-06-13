@@ -1,0 +1,63 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for the exact-once VentureOps Mission Mode Agent Bus enqueue gate."
+required_fields:
+  - schema_version
+  - type
+  - enqueue_id
+  - approval_decision
+  - approval_status
+  - approved_by
+  - approved_at
+  - operator_approval_statement
+  - mission_id
+  - mission_workspace_path
+  - readiness_status_at_approval
+  - ready_for_activation_at_approval
+  - ready_for_aor_dispatch_at_approval
+  - approved_next_step
+  - recipient
+  - priority
+  - agent_bus_task_id
+  - work_fingerprint
+  - mission_task_packet_preview
+  - mission_task_packet_digest
+  - approved_scope
+  - required_acknowledgements
+  - consumption_policy
+  - consumable
+  - agent_bus_task_write_authorized
+  - mission_activation_execution_authorized
+  - aor_dispatch_authorized
+  - runtime_task_claim_authorized
+  - workflow_dispatch_authorized
+  - workflow_evolution_apply_authorized
+  - provider_calls_authorized
+  - browser_actions_authorized
+  - browser_skill_activation_authorized
+  - external_side_effects_authorized
+  - crm_or_payment_mutation_authorized
+  - live_trading_authorized
+  - protected_file_edit_authorized
+  - canonical_promotion_authorized
+  - credential_or_secret_read_authorized
+  - context_errors
+  - enqueue_digest
+approved_next_step_values:
+  - agent_bus_mission_dry_review_enqueue_only
+recipient_values:
+  - Codex
+  - Hermes
+  - OpenClaw
+priority_values:
+  - low
+  - normal
+  - high
+  - critical
+consumption_policy_values:
+  - exact_once
+authority_rules:
+  - "Mission activation and manifest-promotion/workflow-evolution review gates must already be consumed before this gate can write a task."
+  - "The gate may write exactly one local Agent Bus mission dry-review task and one exact-once consumption marker."
+  - "The gate must not claim the task, start a runtime process, dispatch AOR, activate the mission, apply workflow evolution, call providers, use browsers, send externally, mutate CRM/payment systems, trade, read credentials, edit protected files, or promote canonical state."
+  - "Duplicate enqueue is blocked by the exact-once marker and active task fingerprint check."

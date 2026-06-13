@@ -1,0 +1,25 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for evidence-backed Mission Mode recommendation cards."
+required_fields:
+  - mission_candidate_id
+  - mission_name
+  - target_domain
+  - target_user
+  - objective
+  - why_suggested
+  - evidence_files
+  - confidence_score
+  - recommended_workflow_packs
+  - recommended_sub_agents
+  - required_inputs
+  - required_context
+  - required_integrations
+  - approval_requirements
+  - risk_class
+  - first_safe_next_step
+  - readiness_level
+authority_rules:
+  - "Recommendations require local evidence files."
+  - "Sparse workspaces produce discovery questions instead of hallucinated missions."
+  - "Trading/financial recommendations are optional domain packs and default to non-live modes."

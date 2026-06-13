@@ -1,0 +1,55 @@
+{
+  "claude": {
+    "required_inputs": [
+      "api_key_or_supported_auth",
+      "default_model",
+      "reasoning_policy"
+    ],
+    "validation_checks": [
+      "auth_present",
+      "model_selected",
+      "secret_reference_present"
+    ],
+    "secret_reference_kind": "env-var-or-local-secret-ref",
+    "notes": "Anthropic-backed provider setup should remain explicit about auth source and default model posture."
+  },
+  "openai": {
+    "required_inputs": [
+      "api_key",
+      "default_model",
+      "reasoning_policy"
+    ],
+    "validation_checks": [
+      "api_key_present",
+      "model_selected",
+      "secret_reference_present"
+    ],
+    "secret_reference_kind": "env-var-or-local-secret-ref",
+    "notes": "OpenAI setup should collect API key presence, default model, and preferred reasoning profile."
+  },
+  "local_oss": {
+    "required_inputs": [
+      "endpoint_url",
+      "model_id_or_registry",
+      "launcher_mode"
+    ],
+    "validation_checks": [
+      "endpoint_present",
+      "model_target_present"
+    ],
+    "probe_kind": "http-endpoint",
+    "notes": "Local OSS setup should focus on endpoint shape, available models, and launcher/runtime assumptions."
+  },
+  "n8n": {
+    "required_inputs": [
+      "base_url",
+      "auth_secret_or_token",
+      "workflow_scope"
+    ],
+    "validation_checks": [
+      "base_url_present",
+      "auth_present"
+    ],
+    "notes": "n8n setup should stay explicit about workflow ownership boundaries and auth model."
+  }
+}

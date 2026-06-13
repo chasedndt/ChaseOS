@@ -51,7 +51,7 @@ Deletion remains review-gated. The hygiene pass may flag delete candidates, but 
 You can directly run the maintenance pass through the standard ChaseOS binary via PowerShell from the vault root:
 
 ```powershell
-cd %CHASEOS_VAULT_ROOT%
+cd <VAULT_ROOT>
 .\.venv\Scripts\python.exe -m runtime.cli.main maintain
 ```
 

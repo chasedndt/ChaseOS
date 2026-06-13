@@ -21,9 +21,9 @@ This draft was generated from browser run evidence. It is not active runtime mem
 
 ## Evidence
 
-- Source run: `%CHASEOS_VAULT_ROOT%\07_LOGS\Browser-Runs\browser_runtime_20260430_022607_example-com.json`
-- Evidence link: `%CHASEOS_VAULT_ROOT%\07_LOGS\Browser-Runs\browser_runtime_20260430_022607_example-com.json`
-- Evidence link: `%CHASEOS_VAULT_ROOT%\07_LOGS\Agent-Activity\browser-runtime-20260430-022607-example-com.md`
+- Source run: `<VAULT_ROOT>\07_LOGS\Browser-Runs\browser_runtime_20260430_022607_example-com.json`
+- Evidence link: `<VAULT_ROOT>\07_LOGS\Browser-Runs\browser_runtime_20260430_022607_example-com.json`
+- Evidence link: `<VAULT_ROOT>\07_LOGS\Agent-Activity\browser-runtime-20260430-022607-example-com.md`
 
 ## Safe Actions Observed
 
@@ -47,7 +47,7 @@ This draft was generated from browser run evidence. It is not active runtime mem
   "domain": "example.com",
   "status": "draft",
   "run_id": "browser_runtime_20260430_022607_example-com",
-  "source_log_path": "%CHASEOS_VAULT_ROOT%\\07_LOGS\\Browser-Runs\\browser_runtime_20260430_022607_example-com.json",
+  "source_log_path": "C:\\Users\\chaseos\\Documents\\chaseos_obsidian\\07_LOGS\\Browser-Runs\\browser_runtime_20260430_022607_example-com.json",
   "created_at": "2026-04-30T02:26:07.443585+00:00",
   "observed_urls": [
     "https://example.com"
@@ -71,8 +71,8 @@ This draft was generated from browser run evidence. It is not active runtime mem
     "No secrets, cookies, credentials, or user profile data were retained."
   ],
   "evidence_links": [
-    "%CHASEOS_VAULT_ROOT%\\07_LOGS\\Browser-Runs\\browser_runtime_20260430_022607_example-com.json",
-    "%CHASEOS_VAULT_ROOT%\\07_LOGS\\Agent-Activity\\browser-runtime-20260430-022607-example-com.md"
+    "C:\\Users\\chaseos\\Documents\\chaseos_obsidian\\07_LOGS\\Browser-Runs\\browser_runtime_20260430_022607_example-com.json",
+    "C:\\Users\\chaseos\\Documents\\chaseos_obsidian\\07_LOGS\\Agent-Activity\\browser-runtime-20260430-022607-example-com.md"
   ],
   "review_required": true,
   "activation_allowed": false

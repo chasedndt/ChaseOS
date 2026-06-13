@@ -1,0 +1,22 @@
+# Hermes Runtime — Model Configuration
+# Planning, review, and higher-reasoning synthesis runtime.
+# Uses a more capable primary model than OpenClaw for complex analysis tasks.
+# Fallback chain is tried in order when the primary model fails.
+#
+# To change models: edit this file. No code changes required.
+
+runtime: hermes
+description: "Planning and review agent — higher-reasoning synthesis and coordination"
+
+primary:
+  model_id: gpt-5.5
+  max_tokens: 8192
+  temperature: 0.2
+
+fallbacks:
+  - model_id: claude-sonnet-4-6
+    max_tokens: 8192
+    temperature: 0.2
+  - model_id: claude-haiku-4-5-20251001
+    max_tokens: 4096
+    temperature: 0.2

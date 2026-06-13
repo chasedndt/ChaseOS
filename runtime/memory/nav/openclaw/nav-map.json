@@ -1,0 +1,258 @@
+{
+  "runtime_id": "openclaw",
+  "version": "0.1",
+  "status": "active",
+  "updated": "2026-06-13",
+  "preferred_read_routes": [],
+  "trusted_zones": [],
+  "risk_zones": [],
+  "successful_route_patterns": [
+    {
+      "workflow_id": "strikezone_acquisition",
+      "reads": [
+        "runtime/acquisition/plans/strikezone-daily.json",
+        "00_HOME/Now.md",
+        "01_PROJECTS/StrikeZone/StrikeZone-Crypto-OS.md"
+      ],
+      "recorded_at": "2026-05-07T09:50:53.380547+00:00"
+    },
+    {
+      "workflow_id": "strikezone_acquisition",
+      "reads": [
+        "runtime/acquisition/plans/strikezone-daily.json",
+        "00_HOME/Now.md",
+        "01_PROJECTS/StrikeZone/StrikeZone-Crypto-OS.md"
+      ],
+      "recorded_at": "2026-05-08T09:50:25.790149+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-10T20:32:08.048615+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T04:24:31.788742+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T04:24:56.259163+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T04:38:22.718098+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T04:38:54.470413+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T04:46:07.577576+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T05:15:28.665886+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T05:32:24.723301+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T05:32:54.457895+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T05:49:16.622052+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T06:34:13.889031+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T06:47:10.408159+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T06:54:57.618538+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T07:08:59.984582+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T07:21:56.619166+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-11T07:32:41.285594+00:00"
+    },
+    {
+      "workflow_id": "ventureops_ai_runtime_security_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-13T09:59:42.861350+00:00"
+    },
+    {
+      "workflow_id": "ventureops_ai_runtime_security_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-13T10:13:18.044082+00:00"
+    },
+    {
+      "workflow_id": "mission_chase_ai_runtime_governance_kit",
+      "reads": [
+        "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/",
+        "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/activation-approval-packet-draft.json",
+        "runtime/workflows/missions/mission_chase_ai_runtime_governance_kit.py",
+        "runtime/agent_bus/mission_tasks.py",
+        "runtime/agent_bus/schemas/mission_task_packet.schema.json"
+      ],
+      "recorded_at": "2026-05-13T19:15:01.815498+00:00"
+    }
+  ],
+  "common_escalation_triggers": [],
+  "governance_boundary": "Navigation map is advisory. Preferred routes do not grant read permissions beyond what the role card write_scope and Gate policy allow."
+}

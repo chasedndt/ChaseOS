@@ -1,16 +1,40 @@
-# Personal Map Node Template
+---
+type: personal-map-node
+status: candidate
+node_type: preference
+canonical_writeback_enabled: false
+created: YYYY-MM-DD
+---
 
-This public template shows the shape of a private personal-map node without containing private content.
+# Personal Map Node - <label>
 
 ## Node
 
-- Title:
-- Domain:
-- Trust state:
-- Related projects:
-
-## Notes
-
+- Node ID:
+- Node type:
+- Label:
 - Summary:
-- Evidence:
-- Review status:
+- Tags:
+
+## Evidence
+
+- Source:
+- Trust label:
+- Observed at:
+- Why this is evidence:
+
+## Related Nodes
+
+- `<node_id>` - `<relation>`
+
+## Review
+
+- Operator reviewed: no
+- Accepted into durable map: no
+- Notes:
+
+## Boundaries
+
+- Candidate only until reviewed.
+- Does not override current repo truth.
+- Does not mutate Project-OS files.

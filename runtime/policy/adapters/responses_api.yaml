@@ -1,0 +1,93 @@
+adapter_id: "responses-api-mcp-binding"
+adapter_name: "OpenAI Responses API MCP Binding"
+provider: "openai"
+surface: "responses_api"
+adapter_class: "api_binding"
+status: "dry_run_foundation"
+trust_ceiling: "tier-3-until-approved"
+markdown_doc: "06_AGENTS/Responses-MCP-Binding.md"
+
+allowed_task_types:
+  - "research"
+  - "draft-alert-generation"
+  - "source-intelligence"
+
+required_read_sets:
+  default:
+    - "README.md"
+    - "ROADMAP.md"
+    - "06_AGENTS/Responses-MCP-Binding.md"
+    - "06_AGENTS/N8N-MCP-Hub-Spec.md"
+
+allowed_write_targets:
+  standard_outputs: true
+  project_os_files: false
+  knowledge_notes: false
+  inputs_folder: false
+  protected_files: false
+  draft_outputs: true
+
+explicitly_denied_write_targets:
+  - "00_HOME/**"
+  - "01_PROJECTS/**"
+  - "02_KNOWLEDGE/**"
+  - "03_INPUTS/**"
+  - "06_AGENTS/**"
+  - "runtime/**"
+  - ".env"
+  - "secrets/**"
+  - "credentials/**"
+
+protected_file_behavior: "block"
+
+promotion_behavior:
+  may_promote_to_knowledge: "no"
+  gate_conditions_required: false
+  autonomous_promotion: false
+
+external_side_effect_policy:
+  may_call_external_apis: "no"
+  may_write_to_external_systems: "no"
+  approval_scope: "operator-approved-live-activation-only"
+
+coordination_policy:
+  cross_runtime_coordination: "bus-required"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "required"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+approval_mode: "deny-by-default"
+audit_log_target: "07_LOGS/Agent-Activity/YYYY-MM-DD-openai-responses-[descriptor].md"
+
+allowed_first_pass_use_cases:
+  - "read_only_research_context"
+  - "workflow_draft_creation"
+  - "source_lookup"
+  - "discord_draft_generation"
+
+forbidden_first_pass_use_cases:
+  - "credential_access"
+  - "wallet_or_exchange_execution"
+  - "direct_trading"
+  - "filesystem_mutation_outside_declared_write_targets"
+  - "live_discord_or_telegram_send_without_approval"
+
+tool_policy:
+  default_require_approval: "always"
+  allowed_tools_required: true
+  blind_remote_mcp_connection: "forbidden"
+  log_mcp_call_data: true
+
+live_calls:
+  enabled: false
+  activation_requires:
+    - "operator approval"
+    - "server trust review"
+    - "data-sharing review"
+    - "audit path verified"
+
+notes: |
+  Responses API MCP binding remains a dry-run foundation. It may generate
+  bounded draft payloads only through declared workflows. Live API calls,
+  remote MCP calls, credential access, Discord sends, and canonical writeback
+  remain disabled until a future operator-approved activation pass.

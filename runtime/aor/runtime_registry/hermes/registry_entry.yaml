@@ -1,0 +1,14 @@
+runtime_id: hermes
+provider: hermes
+surface_type: discord-wsl-runtime
+adapter_binding_status: bound
+trust_ceiling: tier-2
+allowed_task_families:
+- operator-briefing
+- runtime-binding
+- activity-logging
+lifecycle_state: registered
+initial_scope_posture: bounded-read-write
+notes: Seed registry entry for the active Hermes runtime lane under ChaseOS governance.
+policy_binding_record: <VAULT_ROOT>/runtime/aor/runtime_registry/hermes/policy_binding.yaml
+last_evaluated: '2026-04-26T02:58:46.197624Z'

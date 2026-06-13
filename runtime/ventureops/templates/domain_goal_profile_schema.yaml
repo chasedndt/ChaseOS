@@ -1,0 +1,35 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for portable domain goal profiles."
+required_fields:
+  - domain
+  - user_goal
+  - current_assets
+  - current_constraints
+  - preferred_tools
+  - forbidden_tools
+  - risk_tolerance
+  - approval_preferences
+  - success_metrics
+  - available_capital
+  - available_time
+  - current_workflows
+  - known_strategies
+  - known_failure_patterns
+  - recommended_workflow_packs
+  - missing_context
+  - readiness_level
+readiness_values:
+  - ready_to_draft_manifest
+  - needs_inputs
+  - needs_domain_profile
+  - needs_workflow_packs
+  - needs_sub_agent_plan
+  - needs_runtime_adapter
+  - needs_approval_policy
+  - needs_integrations
+  - unsafe_or_blocked
+  - insufficient_evidence
+authority_rules:
+  - "Profiles are instance-aware and evidence-backed; sparse workspaces must ask discovery questions."
+  - "Trading and financial domains default to analysis, journal, paper, and risk review modes."

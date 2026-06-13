@@ -1,0 +1,40 @@
+{
+  "schema_version": "2026-05-05.runtime-coordination-watch-safety.v1",
+  "runtimes": {
+    "openclaw": {
+      "runtime_id": "openclaw",
+      "runtime_name": "OpenClaw",
+      "os_boundary": "windows",
+      "gateway_port": 18789,
+      "dashboard_url": "http://127.0.0.1:18789/",
+      "health_command": ["openclaw", "gateway", "status", "--deep", "--timeout", "120000", "--require-rpc"],
+      "channel_status_command": ["openclaw", "channels", "status", "--json", "--probe"],
+      "model_smoke_command": ["openclaw", "infer", "model", "run", "--gateway", "--model", "openai-codex/gpt-5.5", "--prompt", "Return only smoke-ok", "--json"],
+      "allowed_start_command": ["openclaw", "gateway", "start"],
+      "allowed_stop_command": ["openclaw", "gateway", "stop"],
+      "runtime_process_markers": ["openclaw"],
+      "forbidden_during_maintenance": ["start", "stop", "restart", "config-write", "oauth-login", "discord-repair", "gateway-restart"],
+      "protected_config_paths": [
+        "~/.openclaw/openclaw.json",
+        "~/.openclaw/openclaw.json.bak",
+        "~/.openclaw/agents/main/agent/auth-profiles.json",
+        "~/.openclaw/agents/main/agent/auth-state.json"
+      ]
+    },
+    "hermes": {
+      "runtime_id": "hermes",
+      "runtime_name": "Hermes",
+      "os_boundary": "wsl/ubuntu",
+      "gateway_port": 9119,
+      "dashboard_url": "http://127.0.0.1:9119/",
+      "health_command": ["placeholder", "hermes", "health", "--port", "9119"],
+      "channel_status_command": ["placeholder", "hermes", "gateway", "status"],
+      "model_smoke_command": ["placeholder", "hermes", "model", "smoke", "--prompt", "Return only smoke-ok"],
+      "allowed_start_command": ["placeholder", "hermes", "gateway", "run", "--port", "9119"],
+      "allowed_stop_command": ["placeholder", "hermes", "gateway", "stop"],
+      "runtime_process_markers": ["hermes"],
+      "forbidden_during_maintenance": ["start", "stop", "restart", "config-write", "gateway-restart"],
+      "notes": "Hermes must not collide with OpenClaw's canonical 127.0.0.1:18789 gateway port. Port 9119 is the intended ChaseOS control/dashboard lane unless later repo truth supersedes it."
+    }
+  }
+}

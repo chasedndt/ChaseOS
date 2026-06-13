@@ -1,0 +1,85 @@
+﻿# ChaseOS Adapter Manifest - OpenAI Surfaces
+# Schema: 06_AGENTS/Adapter-Manifest-Standard.md
+# Covers: ChatGPT advisory surface plus first shadow harness foundation.
+
+adapter_id: "openai-chat"
+adapter_name: "OpenAI Chat Surface (ChatGPT)"
+provider: "openai"
+surface: "chat"
+adapter_class: "advisory"
+status: "active"
+trust_ceiling: "tier-3"
+markdown_doc: "OPENAI.md"
+adapter_spec: "06_AGENTS/OpenAI-Adapter-Spec.md"
+
+allowed_task_types:
+  - "research"
+  - "review"
+
+required_read_sets:
+  default:
+    - "user-provided-context-only"
+
+allowed_write_targets:
+  standard_outputs: false
+  project_os_files: false
+  knowledge_notes: false
+  inputs_folder: false
+  protected_files: false
+
+protected_file_behavior: "advisory-only"
+
+promotion_behavior:
+  may_promote_to_knowledge: "no"
+  gate_conditions_required: false
+  autonomous_promotion: false
+
+external_side_effect_policy:
+  may_call_external_apis: "yes"
+  may_write_to_external_systems: "no"
+  approval_scope: "not-applicable"
+
+coordination_policy:
+  cross_runtime_coordination: "not-applicable"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "not-applicable"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+approval_mode: "not-applicable"
+audit_log_target: "03_INPUTS/Digests/YYYY-MM-DD_chatgpt-[topic].md"
+hook_config: {}
+
+harness_foundation:
+  adapter_id: "openai-harness-shadow"
+  adapter_name: "OpenAI Agents SDK / Responses API Shadow Harness"
+  adapter_class: "harness"
+  status: "shadow_proof"
+  trust_ceiling: "tier-2-ceiling-not-live"
+  concrete_use_case: "openai_operator_research_shadow"
+  config: "runtime/policy/adapters/openai_config.yaml"
+  responses_mcp_policy: "runtime/policy/adapters/responses_api.yaml"
+  role_card: "06_AGENTS/role-cards/openai-operator-shadow.yaml"
+  workflow_manifest: "runtime/workflows/registry/openai_operator_research_shadow.yaml"
+  workflow_handler: "runtime/workflows/openai_shadow.py"
+  payload_builder: "runtime/adapters/openai/responses_mcp_payload.py"
+  approval_mode: "deny_by_default"
+  live_api_calls_enabled: false
+  remote_mcp_calls_enabled: false
+  n8n_live_calls_enabled: false
+  canonical_writeback_enabled: false
+  external_side_effects_enabled: false
+
+notes: |
+  Advisory surface. ChatGPT has no vault access. Outputs must be imported by
+  the user or by a separately governed harness. Outputs are Tier 3 research and
+  must be verified before knowledge promotion. Do not paste credentials or
+  protected-file contents into ChatGPT sessions. Provider-side retention and
+  logging behavior is external to ChaseOS.
+
+  2026-04-27 shadow foundation:
+  OpenAI Agent Harness remains not live, but the repo now has a bounded shadow
+  foundation for OpenAI Agents SDK / Responses API / MCP planning.
+
+  The shadow foundation writes only draft/audit artifacts and performs no live
+  OpenAI API calls, no remote MCP calls, no n8n HTTP calls, no Discord sends,
+  no canonical writeback, and no trading or wallet/exchange execution.

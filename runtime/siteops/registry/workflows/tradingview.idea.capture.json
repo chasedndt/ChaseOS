@@ -1,0 +1,64 @@
+{
+  "object_type": "workflow_manifest",
+  "workflow_id": "tradingview.idea.capture",
+  "display_name": "TradingView Idea Capture",
+  "status": "PARTIAL",
+  "execution_status": "dry_run_ready",
+  "live_execution_status": "NOT BUILT",
+  "workflow_type": "browser_capture",
+  "mode": "assisted",
+  "site_profile": "tradingview",
+  "inputs": [
+    {
+      "name": "idea_url",
+      "required": true
+    },
+    {
+      "name": "project",
+      "required": false
+    },
+    {
+      "name": "ticker_hint",
+      "required": false
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "validate_inputs"
+    },
+    {
+      "step_id": "open_tradingview_idea"
+    },
+    {
+      "step_id": "capture_visible_idea_text"
+    },
+    {
+      "step_id": "capture_chart_screenshot"
+    },
+    {
+      "step_id": "extract_ticker_timeframe_setup"
+    },
+    {
+      "step_id": "write_quarantine_source_candidate"
+    },
+    {
+      "step_id": "write_run_audit"
+    }
+  ],
+  "approval_required": [
+    "before_project_writeback",
+    "before_external_share"
+  ],
+  "blocked_actions": [
+    "publish_publicly",
+    "connect_broker",
+    "place_trade",
+    "create_live_alert"
+  ],
+  "outputs": [
+    "screenshot_trace",
+    "captured_text",
+    "quarantine_source_candidate",
+    "browser_run_audit"
+  ]
+}

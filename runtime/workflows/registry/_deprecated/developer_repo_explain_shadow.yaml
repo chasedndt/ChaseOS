@@ -1,0 +1,98 @@
+---
+# developer_repo_explain_shadow - Developer Co-Development Mode
+# ChaseOS AOR Phase 9 — first bounded implementation
+#
+# Purpose:
+#   Read narrow declared context and produce draft intelligence artifacts:
+#   - developer brief (repo truth explanation)
+#   - contradiction scan (phase/version/claim drift)
+#   - doc refresh proposal (draft only)
+#   - implementation brief (next-pass prompt)
+#   - diagram proposal (Mermaid/ASCII text only)
+#   - build log and documentation-history archive note
+#
+# This is the first workflow in the Developer Co-Development Mode feature family.
+# It is shadow/draft-only — no canonical vault state is ever modified.
+#
+# Adapter-capable: this manifest is adapter-agnostic.
+# Developer Co-Development Mode is ChaseOS-owned.
+# feature runs through adapters — feature does not belong to adapters.
+#
+id: developer_repo_explain_shadow
+name: "Developer Repo Explain (Shadow)"
+version: "1.0"
+description: "Bounded developer co-development shadow workflow. Reads declared narrow context, produces draft developer brief, contradiction scan, implementation brief, and diagram proposal."
+
+task_type: developer-copilot-shadow
+role_card: developer-copilot-shadow
+trigger_type: manual
+owner: operator
+status: deprecated
+
+mode: shadow
+permission_ceiling: shadow_log_only
+
+inputs:
+  - focus_area        # path, subsystem name, or phase area (e.g. "runtime/aor", "Phase 9 AOR")
+  - question          # what the developer wants to understand
+  - target_paths      # list or comma-separated explicit file/dir paths to read
+  - project_scope     # which project domain this is about (e.g. "ChaseOS Phase 9")
+
+outputs:
+  - draft_developer_brief_path
+  - draft_contradiction_scan_path
+  - draft_doc_refresh_proposal_path
+  - draft_implementation_brief_path
+  - draft_diagram_proposal_path
+  - build_log_path
+  - archive_note_path
+
+writeback_targets:
+  - "07_LOGS/Developer-Briefs/"
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Build-Logs/"
+  - "99_ARCHIVE/Documentation-History/"
+
+repo_scope:
+  primary_repo: "."
+  extra_dirs: []
+  cross_repo_access: false
+
+connector_policy:
+  network_connectors: disabled
+  gateway_inputs: disabled
+  delivery_connectors: disabled
+
+failure_behavior: escalate
+
+rollback_path: "delete generated artifacts inside 07_LOGS/Developer-Briefs/; no canonical files are ever touched"
+
+approval_rule: "declared-scope-preapproved; anything outside declared scope escalates"
+
+audit_expectations:
+  - "focus_area recorded"
+  - "question recorded"
+  - "files_read list recorded"
+  - "contradictions_found count recorded"
+  - "all draft output paths recorded"
+  - "build log path recorded"
+  - "archive note path recorded"
+  - "shadow-mode non-goals recorded"
+
+non_goals:
+  - "no canonical state mutation"
+  - "no project OS edits"
+  - "no knowledge promotion"
+  - "no connector use"
+  - "no shell or git execution"
+  - "no ambient repo traversal"
+  - "no LLM generation calls (Phase 9 implementation is structural analysis only)"
+
+notes: >
+  First bounded implementation of Developer Co-Development Mode.
+  Proves the pattern: ChaseOS-owned feature running through AOR governance.
+  No canonical writes. Draft-only output. Adapter-capable design preserved.
+
+  This workflow is not Claude-owned, not Hermes-owned, not OpenClaw-owned.
+  It is a ChaseOS feature. It runs through adapters.
+  Adapter-specific configuration belongs in adapter manifests, not here.

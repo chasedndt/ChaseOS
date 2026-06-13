@@ -43,7 +43,7 @@ Wait 2-3 minutes after Windows login so Startup folder launchers, WSL, and coord
 Open PowerShell in the ChaseOS workspace:
 
 ```powershell
-cd %CHASEOS_VAULT_ROOT%
+cd <VAULT_ROOT>
 ```
 
 Create a timestamp for evidence files:
@@ -184,7 +184,7 @@ Then provide or point Codex to:
 - `runtime/lifecycle/run/hermes-bootstrap-post-reboot-<stamp>.json`
 - `runtime/lifecycle/run/openclaw-bootstrap-post-reboot-<stamp>.json`
 - `runtime/studio/state/studio-dashboard-post-reboot-<stamp>.json`
-- the tail of `%USERPROFILE%\.hermes\gateway-startup.log` if Hermes had errors
+- the tail of `<HERMES_HOME>/<path>` if Hermes had errors
 
 ---
 

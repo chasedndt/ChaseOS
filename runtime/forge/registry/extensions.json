@@ -1,0 +1,16 @@
+{
+  "schema_version": "forge.registry.v1",
+  "status": "empty_forge_registry",
+  "generated_extensions_may_write_registry_directly": false,
+  "sandbox_registry_write_requires_approval": true,
+  "approved_sandbox_registry_writer_built": true,
+  "live_install_approval_packet_requires_sandbox_proof": true,
+  "live_install_approval_packet_built": true,
+  "approved_live_install_executor_built": true,
+  "live_registry_write_requires_separate_approval": true,
+  "rollback_approval_packet_requires_live_proof": true,
+  "rollback_approval_packet_built": true,
+  "approved_rollback_executor_built": true,
+  "rollback_registry_write_requires_separate_approval": true,
+  "entries": []
+}

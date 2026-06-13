@@ -1,0 +1,45 @@
+id: hermes_skill_review
+version: "1.0"
+status: active
+task_type: idea-graduation
+role_card: research-runner
+description: >
+  Scans 03_INPUTS/00_QUARANTINE/ for AI-generated or synthesized content candidates
+  and produces a structured review proposal. Report-only; never auto-promotes.
+  Hermes Workflow Class 3 — learning-loop hardening surface.
+
+trigger_type: on-demand
+owner_runtime: hermes
+
+inputs:
+  max_scan:
+    type: integer
+    required: false
+    default: 50
+    description: "Max quarantine files to scan"
+  min_items:
+    type: integer
+    required: false
+    default: 0
+    description: "Minimum candidates required before writing a report file"
+  filter_class:
+    type: string
+    required: false
+    default: ""
+    description: "Filter to a specific input_class (e.g. 'generated-ideas'); empty = all"
+
+required_reads:
+  - "03_INPUTS/00_QUARANTINE/"
+  - "00_HOME/Now.md"
+
+writeback_targets:
+  - "07_LOGS/Skill-Review/"
+  - "07_LOGS/Agent-Activity/"
+
+permission_ceiling: tier-2
+approval_rule: none
+
+governance_boundary: >
+  This workflow is read-only with respect to quarantine files. It produces a review
+  proposal only. No quarantine item is promoted, endorsed, or modified by this workflow.
+  All promotion requires explicit operator Gate endorsement.

@@ -1,0 +1,67 @@
+---
+# openclaw_promote_note - Draft bounded promotion workflow
+# ChaseOS AOR Phase 9 - runtime-instance promotion substrate (draft only)
+#
+# Purpose:
+#   Define the first draft workflow manifest shape for an OpenClaw
+#   promotion-review path without activating canonical promotion authority.
+#
+id: openclaw_promote_note
+name: "OpenClaw Promote Note"
+version: "1.0"
+description: "Draft bounded AOR/Gate-mediated promotion workflow for one OpenClaw note candidate. Not active authority."
+
+runtime_adapter: openclaw
+task_type: promotion-review
+role_card: openclaw-promotion-review
+trigger_type: manual
+owner: operator
+status: draft
+
+permission_ceiling: gated_canonical_write
+
+inputs:
+  - candidate_path
+  - target_path
+  - source_refs
+  - source_package_id
+  - source_ids
+  - verification_status
+  - knowledge_class
+  - index_update_targets
+  - promotion_reason
+  - operator_approval_ref
+
+outputs:
+  - promoted_note_path
+  - index_update_paths
+  - provenance_check_result
+  - promotion_record_path
+  - audit_record_path
+  - build_log_path
+
+writeback_targets:
+  - "02_KNOWLEDGE/"
+  - "07_LOGS/Promotion-Records/"
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Build-Logs/"
+
+failure_behavior: escalate
+
+rollback_path: "remove bounded writeback artifacts created by this draft workflow if the governed promotion run is rejected before finalization"
+
+approval_rule: operator-explicit
+
+audit_expectations:
+  - "operator approval reference recorded"
+  - "provenance minimum result recorded"
+  - "canonical write target recorded"
+  - "index update targets recorded"
+  - "draft workflow status recorded"
+
+notes: >
+  Draft-only substrate artifact derived from the runtime-instance promotion
+  pair specification pass. This file does not activate OpenClaw promotion
+  authority by itself. Any future activation still requires adapter-manifest
+  expansion, Gate-aligned wiring, focused tests, and explicit constitutional
+  approval.

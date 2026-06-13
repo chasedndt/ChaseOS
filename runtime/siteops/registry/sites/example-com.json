@@ -1,0 +1,37 @@
+{
+  "object_type": "site_profile",
+  "site_id": "example-com",
+  "display_name": "Example.com",
+  "status": "PARTIAL",
+  "profile_status": "shadow_proof_only",
+  "category": "browser_research",
+  "risk_level": "low",
+  "allowed_domains": [
+    "example.com"
+  ],
+  "auth_mode": "public",
+  "known_workflows": [
+    "example-com.observed_shadow_flow"
+  ],
+  "allowed_actions": [
+    "browser.open",
+    "browser.inspect",
+    "browser.screenshot",
+    "browser.read_visible_text"
+  ],
+  "blocked_actions": [
+    "login",
+    "form_submit",
+    "download",
+    "external_share",
+    "canonical_writeback"
+  ],
+  "approval_required": [
+    "before_live_execution",
+    "before_trusted_artifact_write"
+  ],
+  "output_targets": {
+    "screenshots": "07_LOGS/Browser-Runs/",
+    "audit": "07_LOGS/Agent-Activity/"
+  }
+}

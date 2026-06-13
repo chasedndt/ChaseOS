@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChaseOS Runtime Bootstrap Contract",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "runtime_id",
+    "platform_family",
+    "repo_root_resolution",
+    "runtime_identity_sources",
+    "binding_discovery",
+    "attachment_modes",
+    "fail_closed_rules"
+  ],
+  "properties": {
+    "contract_version": { "type": "string" },
+    "runtime_id": { "type": "string" },
+    "platform_family": {
+      "type": "string",
+      "enum": ["windows", "wsl", "linux", "macos", "container", "remote"]
+    },
+    "repo_root_resolution": {
+      "type": "object",
+      "required": ["strategy"],
+      "properties": {
+        "strategy": { "type": "string" },
+        "candidate_paths": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      }
+    },
+    "runtime_identity_sources": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "binding_discovery": {
+      "type": "object",
+      "required": ["machine_local_allowed", "machine_local_locations"],
+      "properties": {
+        "machine_local_allowed": { "type": "boolean" },
+        "machine_local_locations": { "type": "array", "items": { "type": "string" } },
+        "github_safe_default": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "attachment_modes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["core-only", "runtime-only", "attached-personal"]
+      }
+    },
+    "fail_closed_rules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

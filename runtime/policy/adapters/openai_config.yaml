@@ -1,0 +1,65 @@
+﻿config_id: "openai-harness-shadow-config"
+adapter_id: "openai-harness-shadow"
+status: "shadow_proof"
+owner: "ChaseOS"
+runtime_label: "OpenAI"
+
+approved_workflows:
+  - "openai_operator_research_shadow"
+
+live_api_calls:
+  enabled: false
+  reason: "No OpenAI API key or live execution path is required for first-pass shadow proof."
+
+mcp:
+  live_tool_calls:
+    enabled: false
+  allowed_dry_run_servers:
+    - "chaseos_runtime_mcp"
+  require_approval_default: "always"
+
+canonical_writeback:
+  enabled: false
+  forbidden_targets:
+    - "00_HOME/Now.md"
+    - "01_PROJECTS/"
+    - "02_KNOWLEDGE/"
+    - "06_AGENTS/"
+    - "runtime/"
+
+readable_path_allowlist:
+  - "00_HOME/Now.md"
+  - "README.md"
+  - "ROADMAP.md"
+  - "06_AGENTS/OpenAI-Adapter-Spec.md"
+  - "06_AGENTS/Responses-MCP-Binding.md"
+  - "06_AGENTS/N8N-MCP-Hub-Spec.md"
+  - "07_LOGS/Build-Logs/"
+
+writable_path_allowlist:
+  - "07_LOGS/Operator-Briefs/_drafts/"
+  - "07_LOGS/Agent-Activity/"
+
+approval_model:
+  default: "deny"
+  dry_run_payload_generation: "allowed"
+  live_model_call: "operator_approval_required"
+  remote_mcp_tool_call: "operator_approval_required"
+  canonical_writeback: "forbidden"
+
+audit_model:
+  required: true
+  write_targets:
+    - "07_LOGS/Agent-Activity/"
+    - "07_LOGS/Operator-Briefs/_drafts/"
+
+forbidden_actions:
+  - "read_secrets"
+  - "read_env_values"
+  - "call_live_openai_api"
+  - "call_live_n8n_endpoint"
+  - "send_discord_message"
+  - "mutate_now_md"
+  - "promote_to_knowledge"
+  - "execute_trade"
+  - "wallet_or_exchange_signing"

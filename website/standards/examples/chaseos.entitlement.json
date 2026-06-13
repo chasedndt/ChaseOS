@@ -1,0 +1,5 @@
+{
+  "license_mutation_allowed": false,
+  "schema": "chaseos.entitlement.v1",
+  "status": "future_not_enabled"
+}

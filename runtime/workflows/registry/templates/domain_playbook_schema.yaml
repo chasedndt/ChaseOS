@@ -1,0 +1,17 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for portable VentureOps domain playbooks."
+required_fields:
+  - domain_id
+  - name
+  - target_users
+  - evidence_sources
+  - workflow_opportunities
+  - approval_boundaries
+  - proof_artifacts
+  - monetization_paths
+  - risks
+rules:
+  - "Domain playbooks must be portable and must not assume Chase's dashboard."
+  - "Instance-specific rankings must be labeled personal-seed or evidence-ranked."
+  - "Missing evidence must produce questions, not confident workflow claims."

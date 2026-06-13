@@ -1,0 +1,23 @@
+﻿id: openai_operator_research_shadow
+name: OpenAI Operator Research Shadow
+version: "1.0"
+description: "Bounded local OpenAI shadow workflow that reads declared ChaseOS context and writes draft/audit artifacts only."
+task_type: openai-operator-research-shadow
+role_card: openai-operator-shadow
+trigger_type: manual
+owner: ChaseOS
+status: deprecated
+permission_ceiling: shadow_log_only
+writeback_targets:
+  - "07_LOGS/Operator-Briefs/_drafts/"
+  - "07_LOGS/Agent-Activity/"
+failure_behavior: escalate
+runtime_adapter: openai
+required_reads:
+  - "00_HOME/Now.md"
+  - "README.md"
+  - "ROADMAP.md"
+  - "06_AGENTS/OpenAI-Adapter-Spec.md"
+  - "06_AGENTS/Responses-MCP-Binding.md"
+  - "06_AGENTS/N8N-MCP-Hub-Spec.md"
+notes: "No live OpenAI call, no live n8n call, no Discord send, no canonical mutation."

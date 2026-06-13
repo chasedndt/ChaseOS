@@ -1,0 +1,1 @@
+{"object": "PolicyDecision", "required": ["decision_id", "run_id", "tenant_id", "user_id", "action", "target", "decision", "reasons", "policy_pack_version", "evaluated_at"], "decision_values": ["allow", "deny", "approval_required"], "scope_required": ["tenant_id", "user_id"], "secret_values_allowed": false}

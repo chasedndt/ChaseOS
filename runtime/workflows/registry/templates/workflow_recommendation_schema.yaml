@@ -1,0 +1,26 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for evidence-backed VentureOps workflow recommendation cards."
+required_fields:
+  - workflow_id
+  - workflow_name
+  - target_user_or_customer
+  - domain
+  - problem_solved
+  - why_suggested
+  - evidence_files
+  - confidence_score
+  - required_inputs
+  - required_context
+  - required_runtime_surfaces
+  - approval_requirements
+  - expected_outputs
+  - proof_artifact
+  - monetization_path
+  - risks
+  - first_safe_next_step
+rules:
+  - "Recommendation must cite local evidence files."
+  - "Recommendation must not claim implementation, revenue, or live execution without proof."
+  - "Unknown/sparse workspaces receive discovery questions instead of invented recommendations."
+  - "Crypto/trading recommendations require direct instance evidence and remain draft/paper/proof by default."

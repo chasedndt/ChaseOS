@@ -1,0 +1,18 @@
+{
+  "schema_id": "chaseos.siteops.skill_card.v0",
+  "object_type": "skill_card",
+  "required": [
+    "skill_id",
+    "display_name",
+    "family",
+    "user_tab",
+    "status",
+    "workflow_id",
+    "category",
+    "risk_level",
+    "approval_points",
+    "outputs"
+  ],
+  "ui_rule": "Skill cards render in the future Phase 10 Site Skills tab; they do not grant execution authority.",
+  "notes": "Schema is documentation for the stdlib validator in runtime/siteops/registry.py."
+}

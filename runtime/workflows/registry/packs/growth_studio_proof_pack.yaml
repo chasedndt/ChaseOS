@@ -1,0 +1,62 @@
+﻿workflow_id: growth_studio_proof_pack
+name: "Visual Product & Creative Studio"
+version: "0.1.0"
+owner: "ChaseOS"
+customer: "local business, creator, or internal venture operator"
+problem: "Small operators need fast visual proof assets without losing approval, provenance, and client-safe redaction."
+offer: "Research-to-brief-to-draft-to-screenshot proof pack with critique, revision notes, proof card, and delivery checklist."
+task_type: "creative-proof-pack"
+trigger: "manual"
+required_inputs:
+  - "target business or creator"
+  - "approved source/context links or files"
+  - "asset type"
+  - "client-safe redaction policy"
+required_context:
+  - "05_TEMPLATES/Customer-Offer-Canvas.md"
+  - "05_TEMPLATES/Proof-of-Run-Template.md"
+  - "05_TEMPLATES/Workflow-Recommendation-Card.md"
+role_cards:
+  - "Planner"
+  - "Creative Director"
+  - "Tool Operator"
+  - "Critic"
+  - "QA Validator"
+allowed_tools:
+  - "local research over approved sources"
+  - "design draft generation"
+  - "screenshot QA"
+  - "proof-card writing"
+forbidden_tools:
+  - "credential reads"
+  - "unapproved public posting"
+  - "unapproved client send"
+  - "payment mutation"
+runtime_split:
+  AOR: "routes task and records audit/proof targets"
+  Hermes: "briefing, strategy, critique"
+  OpenClaw: "supervised browser/design execution only after approval"
+  Codex: "landing/prototype scaffolding if requested"
+  Human: "approves external delivery and publication"
+approval_mode: "human_approval_required_before_external_send_or_publication"
+writeback_targets:
+  - "07_LOGS/Workflow-Proofs/"
+  - "07_LOGS/Agent-Activity/"
+proof_artifact: "07_LOGS/Workflow-Proofs/growth_studio_proof_pack-<run_id>.md"
+audit_target: "07_LOGS/Agent-Activity/<date>-ventureops-growth-studio-proof-pack.md"
+failure_behavior: "fail_closed_and_log_blocker"
+monetization_model: "fixed-fee creative proof pack / local growth service"
+success_metric: "client-safe draft asset plus proof card and QA notes"
+scorecard:
+  status: "untested"
+  required_metrics:
+    - "proof_artifact_quality"
+    - "customer_value"
+    - "human_approvals_required"
+    - "security_risk"
+status: "draft"
+implementation_status: "PARTIAL - pack example and validators exist; no live creative run yet"
+risk_notes:
+  - "unapproved publication"
+  - "private customer data exposure"
+  - "brand misuse"

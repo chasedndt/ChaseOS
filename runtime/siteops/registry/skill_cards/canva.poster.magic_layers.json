@@ -1,0 +1,21 @@
+{
+  "object_type": "skill_card",
+  "skill_id": "canva.poster.magic_layers",
+  "display_name": "Canva / Poster Magic Layers",
+  "family": "ChaseOS SiteOps",
+  "user_tab": "Site Skills",
+  "status": "PARTIAL",
+  "workflow_id": "canva.poster.magic_layers",
+  "category": "Creative",
+  "risk_level": "medium",
+  "approval_points": [
+    "before_provider_call",
+    "before_export",
+    "before_external_share"
+  ],
+  "outputs": [
+    "PNG/PDF asset",
+    "screenshots",
+    "run audit"
+  ]
+}

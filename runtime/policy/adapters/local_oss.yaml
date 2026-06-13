@@ -1,0 +1,91 @@
+# ChaseOS Adapter Manifest — Local / Open-Source Adapters
+# Schema: 06_AGENTS/Adapter-Manifest-Standard.md
+# Covers: Claude Code + Ollama, Cline, OpenHands (all planned/future)
+
+adapter_id: "local-oss"
+adapter_name: "Local / Open-Source Operator Harness"
+provider: "local-oss"
+surface: "harness"
+adapter_class: "harness"
+status: "planned"
+trust_ceiling: "tier-2"
+markdown_doc: "LOCAL-OSS.md"
+
+# --- SCOPE ---
+allowed_task_types:
+  - "docs-pass"         # when formally activated
+  - "build-debug"       # when formally activated
+  - "ingestion-pass"    # when formally activated
+
+required_read_sets:
+  default:
+    - "00_HOME/Now.md"
+    - "01_PROJECTS/[Relevant]-OS.md"
+  # Same read order as Anthropic harness — but must be configured at adapter level
+  # Cline / OpenHands require system prompt or custom instructions to replicate CLAUDE.md routing
+
+# --- WRITE TARGETS ---
+allowed_write_targets:
+  standard_outputs: true    # when activated with correct permission scope
+  project_os_files: true    # with user direction
+  knowledge_notes: true     # after full promotion gate
+  inputs_folder: true
+  protected_files: false
+
+# --- PROTECTED FILE BEHAVIOR ---
+protected_file_behavior: "require-approval"
+# Claude Code + Ollama: same hook-based enforcement as claude-harness (when configured)
+# Cline: built-in approval UI in VSCode
+# OpenHands: must be configured to pause on protected files
+
+# --- PROMOTION BEHAVIOR ---
+promotion_behavior:
+  may_promote_to_knowledge: "gated"
+  gate_conditions_required: true
+  autonomous_promotion: false
+
+# --- EXTERNAL SIDE EFFECTS ---
+external_side_effect_policy:
+  may_call_external_apis: "with-approval"
+  may_write_to_external_systems: "with-approval"
+  approval_scope: "session"
+
+# --- COORDINATION POLICY ---
+coordination_policy:
+  cross_runtime_coordination: "bus-required"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "required"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+# --- APPROVAL MODE ---
+approval_mode: "per-action"
+
+# --- AUDIT ---
+audit_log_target: "07_LOGS/Build-Logs/YYYY-MM-DD-LocalOSS-[descriptor].md"
+
+hook_config:
+  protected_write_guard: "inactive"       # not yet wired for local adapters
+  ingestion_promotion_guard: "inactive"   # not yet wired for local adapters
+  session_start_context: "inactive"
+  session_end_audit: "inactive"
+
+notes: |
+  STATUS: Planned — none of the three paths are formally active ChaseOS adapters.
+
+  Paths:
+    1. Claude Code + Ollama: same harness as claude-harness; model runs locally via Ollama
+    2. Cline: VSCode extension with approval UI; requires system prompt replicating CLAUDE.md
+    3. OpenHands: Docker-sandboxed; requires careful scope control; web browsing = Tier 4 inputs
+
+  Activation requirements (any path):
+    1. Path chosen and configured
+    2. Compatibility test: confirm model follows ChaseOS permission rules
+    3. Registry entry in Agent-Registry.md updated with Active status
+    4. Owner trust assignment confirmed
+    5. This manifest updated with path-specific operational details
+    6. Compliance checklist passed (Adapter-Compliance-Checklist.md)
+
+  Gate conformance when active:
+    - Claude Code + Ollama: same hook scripts as claude-harness (copy .claude/settings.json)
+    - Cline: VSCode approval UI serves as per-action approval mechanism
+    - OpenHands: configure pause-on-protected-file in OpenHands settings

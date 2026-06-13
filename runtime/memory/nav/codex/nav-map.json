@@ -1,0 +1,60 @@
+{
+  "runtime_id": "codex",
+  "version": "0.1",
+  "status": "active",
+  "updated": "2026-05-14",
+  "preferred_read_routes": [],
+  "trusted_zones": [],
+  "risk_zones": [],
+  "successful_route_patterns": [
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-10T16:59:18.215231+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-10T17:02:51.310777+00:00"
+    },
+    {
+      "workflow_id": "agent_runtime_governance_audit",
+      "reads": [
+        "06_AGENTS/Agent-Control-Plane.md",
+        "06_AGENTS/Permission-Matrix.md",
+        "06_AGENTS/Trust-Tiers.md",
+        "06_AGENTS/Backends-Supported.md",
+        "runtime/codex/capabilities.yaml",
+        "runtime/workflows/registry/use_case_registry.yaml"
+      ],
+      "recorded_at": "2026-05-13T15:50:39.505615+00:00"
+    },
+    {
+      "workflow_id": "mission_chase_ai_runtime_governance_kit",
+      "reads": [
+        "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/",
+        "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/activation-approval-packet-draft.json",
+        "runtime/workflows/missions/mission_chase_ai_runtime_governance_kit.py",
+        "runtime/agent_bus/mission_tasks.py",
+        "runtime/agent_bus/schemas/mission_task_packet.schema.json"
+      ],
+      "recorded_at": "2026-05-14T12:52:49.789701+00:00"
+    }
+  ],
+  "common_escalation_triggers": [],
+  "governance_boundary": "Navigation map is advisory. Preferred routes do not grant read permissions beyond what the role card write_scope and Gate policy allow."
+}

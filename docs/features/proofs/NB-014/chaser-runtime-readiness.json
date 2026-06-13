@@ -6,7 +6,7 @@
     "surface": "chaser_runtime_readiness_review",
     "schema_version": "chaser_runtime_readiness_review.v1",
     "generated_at": "2026-06-12T13:36:22.948914+00:00",
-    "vault_root": "<WSL_CHASEOS_VAULT_ROOT>",
+    "vault_root": "<VAULT_ROOT>",
     "review_status": "readiness_review_complete_live_wiring_blocked",
     "live_runtime_ready": false,
     "ready_for_runtime_activation": false,

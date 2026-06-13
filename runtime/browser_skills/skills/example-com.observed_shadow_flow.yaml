@@ -1,0 +1,12 @@
+skill_id: example-com.observed_shadow_flow
+source_candidate_id: candidate_browser_runtime_20260430_022607_example-com
+tenant_id: local
+workspace_id: default
+created_by: local-user
+status: inactive_review
+activation_allowed: false
+provenance:
+  source: browser_skill_candidate
+  candidate_id: candidate_browser_runtime_20260430_022607_example-com
+  approval_id: approval_siteops_candidate_bound_replacement_candidate-browser-runtime-20260430-022607-exampl_976914bf1181_browser_skill_candidate_promote
+  promotion_gate_operation: siteops.browser_skill_candidate.apply_trusted_artifacts

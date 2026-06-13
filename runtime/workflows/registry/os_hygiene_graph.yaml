@@ -1,0 +1,85 @@
+---
+# os_hygiene_graph - OS Graph Maintenance Workflow
+# ChaseOS AOR Phase 9
+#
+# The governed 3-stage vault graph maintenance workflow.
+# Distinct from graph_hygiene, which is proposal/report-only.
+#
+# Runs every night at 03:00 ET via schedule intent sch-os-hygiene-graph-0300.
+# Also callable on-demand by any runtime: chaseos run os_hygiene_graph
+# Also callable directly by humans: chaseos maintain
+#
+id: os_hygiene_graph
+name: "OS Graph Maintenance"
+version: "1.1"
+description: "3-stage vault graph maintenance with a strict loose-node review gate: Stage 1 vault hygiene review and repairs, Stage 2 daily hub chronological linking, Stage 3 provenance link injection. Writes run record to 07_LOGS/Maintain-Runs/."
+
+task_type: os-graph-maintenance
+role_card: os-graph-maintenance
+trigger_type: scheduled
+owner: operator
+status: active
+
+permission_ceiling: vault_graph_write
+
+schedule_intent_ref: sch-os-hygiene-graph-0300
+
+inputs:
+  - dry_run              # bool; if true, report only with no mutations (default: false)
+  - strict_review_gate   # bool; block scheduled mutation when loose-node review debt remains (default: true)
+  - allow_review_debt    # bool; explicit override for continuing despite review debt (default: false)
+  - fix_semantic_hub_gaps     # bool; repair bounded semantic hub gaps (default: false)
+  - semantic_hub_gap_limit    # int; maximum semantic hub gaps to repair (default: 50)
+  - fix_ambiguous_links       # bool; path-qualify safe ambiguous links to known canonical docs (default: false)
+  - ambiguous_link_limit      # int; maximum safe ambiguous links to repair (default: 50)
+  - review_ambiguous_links    # bool; surface unsafe ambiguous links as review issues (default: false)
+  - ambiguous_review_limit    # int; maximum unsafe ambiguous links to surface (default: 50)
+  - propose_ambiguous_link_decisions   # bool; write unapproved ambiguous-link proposal artifact (default: false)
+  - ambiguous_proposal_path            # str; optional output path for ambiguous-link proposal
+  - ambiguous_proposal_max_items       # int; maximum ambiguous-link proposal rows (default: 50)
+  - ambiguous_proposal_include_pending # bool; include rows already staged in older unapproved proposals
+  - review_unresolved_links   # bool; surface unresolved wikilinks as review issues (default: false)
+  - unresolved_link_limit     # int; maximum unresolved links to surface (default: 50)
+
+outputs:
+  - stage_1_vault_hygiene    # {files_scanned, files_fixed, wikilinks_fixed, nodes_wired, loose_node_review_count, strict_gate_failed}
+  - stage_2_daily_hub        # {files_scanned, notes_created, notes_updated, backlinks_added}
+  - stage_3_provenance       # {files_scanned, files_modified, links_added}
+  - run_record_path          # path to the written run record
+
+writeback_targets:
+  - "07_LOGS/Maintain-Runs/"
+  - "07_LOGS/Graph-Reports/"
+
+failure_behavior: escalate
+
+rollback_path: >
+  Run is non-destructive for strict-gate blocks because Stage 2 and Stage 3 are
+  skipped before mutation. When explicitly allowed to continue, wikilink
+  injections and daily hub entries are additive-only. No rollback required. If a
+  run record was written partially, re-running will overwrite it with a complete
+  record. Ambiguous-link proposal artifacts are unapproved review surfaces only;
+  they do not execute link edits, create aliases, rename nodes, archive files, or
+  delete files.
+
+approval_rule: none
+
+audit_expectations:
+  - "stage_1 files_scanned recorded"
+  - "stage_1 loose_node_review_count recorded"
+  - "stage_1 strict_gate_failed recorded"
+  - "stage_2 notes_created recorded"
+  - "stage_3 files_modified recorded"
+  - "run_record_path recorded"
+  - "run_duration_seconds recorded"
+
+notes: >
+  Phase 9 os_hygiene_graph is the governed AOR execution path for the chaseos
+  maintain CLI feature. The CLI (chaseos maintain) remains available for human
+  use and calls the same underlying modules. The AOR path adds permission
+  ceiling enforcement, role card governance, audit trail in
+  07_LOGS/Agent-Activity/, and the Maintain-Runs run record. Any runtime can
+  post a task for this workflow via the coordination bus. Scheduled/OpenClaw
+  runs default to strict_review_gate=true and allow_review_debt=false, so the
+  workflow blocks before mutating when Stage 1 finds duplicate, runtime,
+  placeholder, or other review-gated loose-node debt.

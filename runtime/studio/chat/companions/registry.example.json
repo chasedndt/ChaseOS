@@ -1,0 +1,130 @@
+{
+  "registry_id": "studio-companion-registry-example-v1",
+  "status": "EXAMPLE / PLANNED / NOT LOADED BY RUNTIME",
+  "companions": [
+    {
+      "companion_id": "hermes-companion",
+      "display_name": "Hermes",
+      "runtime_id": "hermes",
+      "status": "available_builtin",
+      "avatar": {
+        "kind": "runtime_mark",
+        "asset_path": ""
+      },
+      "tone_tags": [
+        "precise",
+        "governance-aware",
+        "coordination-heavy"
+      ],
+      "supported_surfaces": [
+        "chat_panel",
+        "dashboard",
+        "runtime_status",
+        "slash_pet",
+        "companion_roster"
+      ],
+      "authority": {
+        "personality_grants_authority": false,
+        "runtime_control_allowed": false,
+        "provider_calls_allowed": false,
+        "agent_bus_task_write_allowed": false,
+        "canonical_mutation_allowed": false
+      },
+      "selection": {
+        "can_be_selected": true,
+        "selection_requires_approval_executor": true,
+        "target_path": "runtime/studio/chat/companion-selection.json"
+      },
+      "evidence": {
+        "source": "runtime/companion core roster",
+        "profile_digest_required": true
+      }
+    },
+    {
+      "companion_id": "openclaw-companion",
+      "display_name": "OpenClaw",
+      "runtime_id": "openclaw",
+      "status": "available_builtin",
+      "avatar": {
+        "kind": "runtime_mark",
+        "asset_path": ""
+      },
+      "tone_tags": [
+        "operational",
+        "tool-aware",
+        "safety-bounded"
+      ],
+      "supported_surfaces": [
+        "chat_panel",
+        "dashboard",
+        "runtime_status",
+        "slash_pet",
+        "companion_roster"
+      ],
+      "authority": {
+        "personality_grants_authority": false,
+        "runtime_control_allowed": false,
+        "provider_calls_allowed": false,
+        "agent_bus_task_write_allowed": false,
+        "canonical_mutation_allowed": false
+      },
+      "selection": {
+        "can_be_selected": true,
+        "selection_requires_approval_executor": true,
+        "target_path": "runtime/studio/chat/companion-selection.json"
+      },
+      "evidence": {
+        "source": "runtime/companion core roster",
+        "profile_digest_required": true
+      }
+    },
+    {
+      "companion_id": "claude-code-companion",
+      "display_name": "Claude Code",
+      "runtime_id": "claude-code",
+      "status": "available_builtin",
+      "avatar": {
+        "kind": "runtime_mark",
+        "asset_path": ""
+      },
+      "tone_tags": [
+        "systems-focused",
+        "implementation-oriented",
+        "engineering-session"
+      ],
+      "supported_surfaces": [
+        "chat_panel",
+        "dashboard",
+        "runtime_status",
+        "slash_pet",
+        "companion_roster"
+      ],
+      "authority": {
+        "personality_grants_authority": false,
+        "runtime_control_allowed": false,
+        "provider_calls_allowed": false,
+        "agent_bus_task_write_allowed": false,
+        "canonical_mutation_allowed": false
+      },
+      "selection": {
+        "can_be_selected": true,
+        "selection_requires_approval_executor": true,
+        "target_path": "runtime/studio/chat/companion-selection.json"
+      },
+      "evidence": {
+        "source": "runtime/companion core roster",
+        "profile_digest_required": true
+      }
+    }
+  ],
+  "blocked_authority": {
+    "runtime_loader_implemented": false,
+    "selection_target_written": false,
+    "approval_consumed": false,
+    "provider_call_performed": false,
+    "runtime_dispatched": false,
+    "agent_bus_task_written": false,
+    "canonical_state_mutated": false
+  },
+  "next_recommended_pass": "phase11-multi-companion-registry-readiness"
+}

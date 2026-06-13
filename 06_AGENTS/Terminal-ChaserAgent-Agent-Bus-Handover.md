@@ -2,9 +2,9 @@
 
 Date: 2026-06-03
 Last updated: 2026-06-08
-Author runtime: Chaser Agent (claude-code)
+Author runtime: Archon (claude-code)
 Status: LIVING HANDOVER â€” update at the end of every pass on this track
-Audience: Hermes, OpenClaw, Chaser Agent, and any future runtime claiming work on the Agent Bus
+Audience: Hermes, OpenClaw, Archon, and any future runtime claiming work on the Agent Bus
 Related: [[Chaser-Gateway-Architecture]] Â· [[ChaserAgent-Architecture]] Â· [[Terminal-Workbench-Architecture]] Â· [[Session-Export-and-Artifacts-Architecture]] Â· [[ChaserAgent-Moat]] Â· [[board-py-Integration-Deep-Dive]] Â· [[Terminal-ChaserAgent-Feature-Matrix]] Â· [[Runtime-InterAgent-Coordination-Bus]]
 
 > This is the single document an agent should read to continue the Terminal Workbench + ChaserAgent track without re-deriving context. It states exactly what is built, what is next, the governance rules, the contracts, and the test commands.
@@ -131,7 +131,7 @@ Each is a self-contained pass. Claim one via the Agent Bus, do it, update this h
 
 | # | Unit | Suggested runtime | Depends on | Governance risk |
 |---|---|---|---|---|
-| ~~N1~~ | âœ… **DONE 2026-06-03** â€” Chaser Gateway Diagnostic built (`runtime/chaser/gateway_diagnostic.py`, `chaseos chaser gateway diagnose`, `StudioAPI.get_chaser_gateway_diagnostic`, 6 tests). Read-only, fail-open per check, does not materialize the bus DB, emits a repair plan. | Chaser Agent | â€” | done |
+| ~~N1~~ | âœ… **DONE 2026-06-03** â€” Chaser Gateway Diagnostic built (`runtime/chaser/gateway_diagnostic.py`, `chaseos chaser gateway diagnose`, `StudioAPI.get_chaser_gateway_diagnostic`, 6 tests). Read-only, fail-open per check, does not materialize the bus DB, emits a repair plan. | Archon | â€” | done |
 | ~~N2~~ | **DONE 2026-06-05** - Studio Terminal Workbench frontend mount built (`#/terminal-workbench`, nav button, read-only panel, preview input, run history). Calls `get_terminal_workbench` only; no execute button and no frontend run API. | Codex | backend (built) | done |
 | ~~N3~~ | **DONE 2026-06-06** - Session write lifecycle built over `runtime/chaser/sessions.py`: audited pin/unpin, rename, archive-first active-store removal, and payload/path id mismatch rejection. No hard delete or canonical writeback. | Codex | session store (built) | done |
 | N3T | **DONE 2026-06-06** - Terminal read-only workbench hardening: safe run-detail readback, `chaseos operate terminal show <run_id> --json`, richer Studio audit/policy metadata, and frontend selected-run detail/copy/history-preview ergonomics. No execution, no ChaserAgent wiring. | Codex | N2 + terminal audit (built) | done |

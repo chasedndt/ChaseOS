@@ -1,0 +1,85 @@
+- skill_template_id: canva.poster.magic_layers
+  display_name: Canva Poster Magic Layers
+  category: creative
+  site_profile_id: canva
+  workflow_template_ids: [canva.poster.magic_layers]
+  provider_adapter_ids: []
+  risk_level: medium
+  required_capabilities: [browser_session]
+  required_approvals: [export_file, external_share]
+  default_policy_pack: siteops_default_v1
+  owner_type: system
+  visibility: public_catalog
+  created_by: system
+  updated_by: system
+  version: 1
+  status: active
+  notes: dry-run only
+- skill_template_id: tradingview.idea.capture
+  display_name: TradingView Idea Capture
+  category: trading_research
+  site_profile_id: tradingview
+  workflow_template_ids: [tradingview.idea.capture]
+  provider_adapter_ids: []
+  risk_level: high
+  required_capabilities: [browser_session]
+  required_approvals: [broker_connection, live_trade]
+  default_policy_pack: siteops_default_v1
+  owner_type: system
+  visibility: public_catalog
+  created_by: system
+  updated_by: system
+  version: 1
+  status: active
+  notes: dry-run only; no live trading
+- skill_template_id: tradingview.indicator.review
+  display_name: TradingView Indicator Review
+  category: trading_research
+  site_profile_id: tradingview
+  workflow_template_ids: [tradingview.indicator.review]
+  provider_adapter_ids: []
+  risk_level: high
+  required_capabilities: [browser_session]
+  required_approvals: [broker_connection, live_trade]
+  default_policy_pack: siteops_default_v1
+  owner_type: system
+  visibility: public_catalog
+  created_by: system
+  updated_by: system
+  version: 1
+  status: active
+  notes: dry-run only; no broker execution
+- skill_template_id: gemini.image.edit
+  display_name: Gemini Image Edit
+  category: creative_provider
+  site_profile_id: null
+  workflow_template_ids: [gemini.image.edit]
+  provider_adapter_ids: [gemini_image]
+  risk_level: medium
+  required_capabilities: [image_edit]
+  required_approvals: [paid_provider_call]
+  default_policy_pack: siteops_default_v1
+  owner_type: system
+  visibility: public_catalog
+  created_by: system
+  updated_by: system
+  version: 1
+  status: active
+  notes: dry-run only
+- skill_template_id: perplexity.research.capture
+  display_name: Perplexity Research Capture
+  category: research
+  site_profile_id: null
+  workflow_template_ids: [perplexity.research.capture]
+  provider_adapter_ids: [perplexity_api]
+  risk_level: medium
+  required_capabilities: [research]
+  required_approvals: [paid_provider_call, external_share]
+  default_policy_pack: siteops_default_v1
+  owner_type: system
+  visibility: public_catalog
+  created_by: system
+  updated_by: system
+  version: 1
+  status: active
+  notes: dry-run only

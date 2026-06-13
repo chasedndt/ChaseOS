@@ -1,0 +1,79 @@
+schema_version: "0.1"
+mission_id: "mission-chase-ai-runtime-governance-kit"
+name: "Chase AI Runtime Governance Kit Mission"
+version: "0.1"
+owner: "Chase"
+instance_id: "chaseos-personal"
+status: "draft"
+created: "2026-05-13"
+updated: "2026-05-13"
+objective: "Turn the verified AI runtime security audit workflow into a repeatable mission for reviewing governed runtime setups over time."
+domain: "runtime_governance"
+target_user: "ChaseOS operator and future AI-native founder/client"
+success_metric: "each pass produces proof artifact, scorecard, review, and any improvement proposal remains approval-gated"
+time_horizon: "long_running"
+capital_or_resource_constraints:
+  - "no external delivery or live remediation without explicit approval"
+risk_class: "security_review"
+mission_mode:
+  adaptive: true
+  auto_apply_evolution: false
+  approval_required_for_evolution: true
+workflow_packs:
+  - workflow_id: "agent_runtime_governance_audit"
+    version: "0.1"
+    role: "primary"
+  - workflow_id: "ventureops_ai_runtime_security_audit"
+    version: "0.1"
+    role: "exact-id alias"
+sub_agents:
+  - role: "mission_supervisor"
+    responsibility: "Maintain mission continuity and escalate blockers."
+    runtime_preference: "hermes"
+    authority: "advisory"
+    allowed_outputs: ["mission_review", "pass_plan", "blocker_report"]
+    forbidden_actions: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+  - role: "security_reviewer"
+    responsibility: "Review permission surfaces, side effects, secrets risk, and prompt-injection boundaries."
+    runtime_preference: "strong_model"
+    authority: "review_only"
+    allowed_outputs: ["permission_review", "risk_review", "blocked_action_report"]
+    forbidden_actions: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+  - role: "runtime_operator"
+    responsibility: "Inspect runtime readiness and failure logs inside declared scope."
+    runtime_preference: "codex"
+    authority: "review_only"
+    allowed_outputs: ["runtime_readiness_report", "failure_summary", "fallback_recommendation"]
+    forbidden_actions: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+  - role: "critic_validator"
+    responsibility: "Validate proof artifacts and scorecards before evolution proposals."
+    runtime_preference: "strong_model"
+    authority: "review_only"
+    allowed_outputs: ["scorecard", "failure_analysis", "evolution_risk_review"]
+    forbidden_actions: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+runtime_split:
+  hermes: ["mission_supervisor"]
+  codex: ["runtime_operator"]
+  browser_runtime: []
+  local_runtime: ["schema_validation", "proof_artifact_validation"]
+  human: ["approval", "external_delivery", "canonical_promotion"]
+required_inputs: ["approved runtime files", "scope approval", "permission review goal"]
+required_context: ["Agent-Control-Plane", "Permission-Matrix", "Trust-Tiers", "Backends-Supported", "workflow registry"]
+allowed_tools: ["deterministic_markdown_scan", "schema_validation", "proposal_drafting", "test_run"]
+forbidden_tools: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+approval_required_for: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_access", "browser_actions_with_external_effect", "browser_skill_activation", "provider_config_mutation", "workflow_evolution_activation", "canonical_promotion"]
+writeback_targets: ["07_LOGS/VentureOps-Missions/", "07_LOGS/Mission-Reviews/"]
+proof_artifact_targets: ["07_LOGS/Workflow-Proofs/"]
+audit_targets: ["07_LOGS/Agent-Activity/"]
+scorecard:
+  status: "not_scored"
+  required_before_evolution: true
+failure_behavior: "fail_closed_and_request_operator_review"
+review_cadence: "weekly while active"
+evolution_policy:
+  allow_proposals: true
+  allow_dry_run: true
+  allow_auto_apply: false
+  required_approvals: ["human_approval", "gate_review", "mission_owner_acceptance"]
+unsafe_boundaries: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+notes: "Chase personal-instance example; not a live client run and not external delivery."

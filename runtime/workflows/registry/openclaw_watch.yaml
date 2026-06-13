@@ -1,0 +1,90 @@
+---
+# openclaw_watch — OpenClaw Bus Watch Loop
+# ChaseOS Phase 9 — Agent Bus Coordination
+#
+# Autonomous polling loop: OpenClaw claims and dispatches open tasks from the
+# coordination bus without requiring manual per-task invocation.
+#
+# Run once:     chaseos run openclaw_watch
+# Run looping:  chaseos run openclaw_watch --input interval_seconds=60
+# Dry run:      chaseos run openclaw_watch --input dry_run=true
+#
+# Dispatch table (as of this manifest version):
+#   operator-briefing  → operator_today (default) or operator_close_day (workflow: annotation)
+#   graph-hygiene      → graph_hygiene
+#   vault-maintenance  → graduate_ideas
+#   scheduled-briefing → sbp_strikezone_digest
+#   others             → escalated (blocked on bus, operator notified)
+#
+# Note: "review" is intentionally absent. OpenClaw is a secondary reviewer only;
+# review tasks are routed to Hermes by the bus router. Secondary review dispatch
+# for Hermes-unavailable scenarios is Phase 10.
+#
+# Task type inference order:
+#   1. intent == REVIEW         → review (escalated to Hermes)
+#   2. notes "task_type: X"     → use X directly
+#   3. notes "workflow: X"      → derive task_type from workflow name
+#   4. fallback                 → "unknown" (escalated)
+#
+id: openclaw_watch
+name: "OpenClaw Watch Loop"
+version: "1.0"
+description: "OpenClaw polls the coordination bus for open tasks addressed to it, claims them, and dispatches to the appropriate handler. Enables other runtimes to dispatch work to OpenClaw via the bus rather than direct invocation."
+task_type: coordination
+role_card: operator-briefing
+trigger_type: scheduled
+owner: operator
+status: active
+runtime_adapter: openclaw
+
+permission_ceiling: no_protected_file_writes
+
+coordination_requirements:
+  coordination_sensitive: true
+  via: "runtime/agent_bus/"
+  partner_runtime: "Hermes"
+  execution_mode: "poll-and-claim"
+
+inputs:
+  - interval_seconds    # optional int — if set, loop continuously; if omitted, run once
+  - max_tasks_per_cycle # optional int — max tasks per cycle (default: 3 — matches max_concurrent_tasks)
+  - dry_run             # optional bool — log tasks without claiming (default: False)
+
+outputs:
+  - cycles_run
+  - tasks_dispatched
+  - tasks_escalated
+  - cycle_summaries
+  - writebacks
+
+writeback_targets:
+  - "07_LOGS/Operator-Briefs/"
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Build-Logs/"
+
+failure_behavior: escalate
+
+approval_rule: none
+
+audit_expectations:
+  - "cycle count recorded"
+  - "tasks dispatched per cycle recorded"
+  - "tasks escalated per cycle recorded"
+  - "heartbeat upserted each cycle"
+  - "task type correctly inferred from notes annotations"
+
+notes: >
+  OpenClaw is primarily a sender on the coordination bus (it posts review tasks to Hermes,
+  SBP tasks to itself via schedule, etc.). This watch loop is the receiver side — it handles
+  tasks that other runtimes or the system dispatch TO OpenClaw.
+
+  Task type must be inferrable from the task. Senders should include either:
+    notes: "task_type: operator-briefing"
+    notes: "workflow: operator_close_day"
+  in the task notes when dispatching to OpenClaw so the watch loop can route correctly.
+
+  The dry_run input allows operators to inspect what tasks are pending without claiming them.
+  Useful for debugging bus state before enabling live dispatch.
+
+  The dispatch table in openclaw_watch.py maps task_type → handler. Adding a new
+  OpenClaw handler requires: (1) implement the handler function, (2) add to _TASK_DISPATCH.

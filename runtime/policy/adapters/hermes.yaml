@@ -1,0 +1,127 @@
+# ChaseOS Adapter Manifest - Hermes Agent Runtime
+# Schema: 06_AGENTS/Adapter-Manifest-Standard.md
+
+adapter_id: "hermes"
+adapter_name: "Hermes Agent Runtime"
+provider: "hermes"
+surface: "runtime"
+adapter_class: "runtime"
+status: "active"
+trust_ceiling: "tier-2"
+markdown_doc: "HERMES.md"
+
+# --- SCOPE ---
+allowed_task_types:
+  - "operator-briefing-shadow"
+  - "review"
+  - "planning"
+  - "shadow-audit"
+  - "developer-co-development"
+  - "chat"
+
+required_read_sets:
+  shadow_briefing:
+    - ".chaseos/hermes_config.yaml"
+    - "runtime/workflows/registry/hermes_operator_today_shadow.yaml"
+    - "06_AGENTS/role-cards/hermes-operator-shadow.yaml"
+  bus_coordination:
+    - ".chaseos/hermes_config.yaml"
+    - "runtime/workflows/registry/hermes_review_execute.yaml"
+    - "runtime/workflows/registry/hermes_watch.yaml"
+    - "runtime/hermes/capabilities.yaml"
+
+# --- WRITE TARGETS ---
+allowed_write_targets:
+  standard_outputs: true
+  operator_briefs: true
+  runtime_activity: true
+  project_os_files: false
+  knowledge_notes: false
+  inputs_folder: false
+  protected_files: false
+  archive_notes: true
+  draft_outputs: true
+
+explicitly_denied_write_targets:
+  - "00_HOME/**"
+  - "01_PROJECTS/**"
+  - "02_KNOWLEDGE/**"
+  - "03_INPUTS/**"
+  - "04_SOPS/**"
+  - "05_TEMPLATES/**"
+  - "06_AGENTS/**"
+  - "runtime/**"
+  - ".claude/**"
+  - ".codex/**"
+  - ".obsidian/**"
+  - ".venv/**"
+
+# --- PROTECTED FILE BEHAVIOR ---
+protected_file_behavior: "block"
+
+# --- PROMOTION BEHAVIOR ---
+promotion_behavior:
+  may_promote_to_knowledge: "no"
+  gate_conditions_required: false
+  autonomous_promotion: false
+
+# --- EXTERNAL SIDE EFFECTS ---
+external_side_effect_policy:
+  may_call_external_apis: "no"
+  may_write_to_external_systems: "no"
+  approval_scope: "current-run"
+
+# --- COORDINATION POLICY ---
+coordination_policy:
+  cross_runtime_coordination: "bus-required"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "required"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+# --- APPROVAL MODE ---
+approval_mode: "manifest-bounded-per-action"
+
+# --- GOVERNANCE HARDENING ---
+governance_hardening:
+  validated_by: "runtime/adapters/runtime_governance.py"
+  last_verified: "2026-04-28"
+  shadow_boundary: "Hermes remains approval-first shadow for external authority; declared bus coordination workflows may post bus results and audit writebacks only."
+  forbidden_authority_expansion:
+    - "canonical_truth_ownership"
+    - "autonomous_promotion"
+    - "ambient_vault_access"
+    - "shell_execution"
+    - "connector_execution"
+    - "direct_runtime_to_runtime_chat_commands"
+    - "live_trading_or_wallet_execution"
+
+# --- AUDIT ---
+audit_log_target: "07_LOGS/Agent-Activity/YYYY-MM-DD-hermes-[workflow-id].md"
+
+hook_config: {}
+
+notes: |
+  Hermes is an active bounded runtime adapter with authority parity to OpenClaw
+  under ChaseOS doctrine, even though its currently enabled workflow breadth is
+  narrower on this machine.
+
+  First bounded Hermes activation was limited to the shadow workflow
+  hermes_operator_today_shadow. Current bounded workflow breadth also includes
+  hermes_review_execute and hermes_watch for coordination-bus review, planning,
+  shadow-audit, developer co-development task packets, and bounded Studio Chat
+  local conversation replies through a Hermes-owned bridge. The chat task type is
+  limited to a bus result; no shell/browser/connector execution, approval
+  consumption, protected writes, or canonical promotion is allowed.
+
+  This adapter is fail-closed:
+    - no ambient vault access
+    - no networked connectors
+    - no shell command execution
+    - no canonical promotion
+    - no protected file edits
+
+  Writes are currently limited to:
+    - 07_LOGS/Agent-Activity/
+    - 07_LOGS/Build-Logs/
+    - 07_LOGS/Operator-Briefs/_drafts/
+    - 99_ARCHIVE/Documentation-History/

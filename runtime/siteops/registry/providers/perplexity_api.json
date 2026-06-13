@@ -1,0 +1,38 @@
+{
+  "object_type": "provider_profile",
+  "provider_id": "perplexity_api",
+  "display_name": "Perplexity API",
+  "provider_type": "api",
+  "status": "PARTIAL",
+  "execution_status": "CONNECTOR_EXISTS_SITEOPS_WRAPPER_DRY_RUN",
+  "capabilities": [
+    "research_query",
+    "citation_capture",
+    "digest_capture"
+  ],
+  "auth_mode": "env_var",
+  "required_env_vars": [
+    "PERPLEXITY_API_KEY"
+  ],
+  "credential_boundary": "Environment variable reference only; registry must never store key values.",
+  "cost_mode": "paid_or_quota",
+  "supports_dry_run": true,
+  "supports_stub": true,
+  "blocked_actions": [
+    "secret_or_credential_exfiltration",
+    "uncited_fact_promotion",
+    "automatic_canonical_writeback"
+  ],
+  "approval_required": [
+    "paid_provider_call",
+    "knowledge_promotion"
+  ],
+  "output_targets": {
+    "quarantine": "03_INPUTS/00_QUARANTINE/digest/",
+    "audit": "07_LOGS/Website-Workflow-Runs/"
+  },
+  "notes": [
+    "Phase 8 API connector exists at runtime/capture/connectors/perplexity_connector.py.",
+    "SiteOps wrapper execution is dry-run-only in this pass."
+  ]
+}

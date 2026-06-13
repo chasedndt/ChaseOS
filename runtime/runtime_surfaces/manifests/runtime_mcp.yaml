@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "surface_id": "runtime.mcp.chaseos",
+  "display_name": "ChaseOS Runtime MCP",
+  "surface_family": "runtime_mcp",
+  "surface_type": "mcp",
+  "owner_layer": "runtime/mcp",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/mcp/server.py",
+    "runtime/mcp/resources/runtime_capabilities.py"
+  ],
+  "docs_refs": [
+    "06_AGENTS/ChaseOS-Runtime-MCP.md",
+    "06_AGENTS/ChaseOS-MCP-Server.md"
+  ],
+  "trust_ceiling": "tier-1",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "mcp.resource.read",
+      "maps_to": "mcp_resource_read",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "mcp.proposal.submit",
+      "maps_to": "mcp_proposal_submit",
+      "risk_class": "proposal_write",
+      "approval_required": "conditional"
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "07_LOGS/Agent-Activity/"
+  ],
+  "audit_targets": [
+    "07_LOGS/Agent-Activity/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/mcp"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  }
+}

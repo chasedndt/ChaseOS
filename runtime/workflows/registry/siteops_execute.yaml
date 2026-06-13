@@ -1,0 +1,26 @@
+id: siteops_execute
+name: SiteOps Execute
+description: >
+  Execute an approved SiteOps browser workflow. Navigates to the workflow target URL
+  using the SiteOps-owned Playwright executor, captures page content, routes output
+  to 03_INPUTS/00_QUARANTINE/, and writes run record + audit event.
+  No API keys required. No credentials. Read-only browser capture only.
+task_type: siteops-execute
+role_card: siteops-operator
+trigger_type: operator
+status: active
+runtime_adapter: openclaw
+owner: operator
+writeback_targets:
+  - "07_LOGS/SiteOps-Runs/**"
+  - "07_LOGS/SiteOps-Audits/**"
+  - "07_LOGS/SiteOps-Approvals/**"
+  - "07_LOGS/Agent-Activity/**"
+quarantine_targets:
+  - "03_INPUTS/00_QUARANTINE/source/**"
+escalation_conditions:
+  - "approval_not_found"
+  - "approval_not_approved"
+  - "approval_consumed"
+  - "executor_kind_not_browser"
+  - "no_url_in_inputs_or_template"

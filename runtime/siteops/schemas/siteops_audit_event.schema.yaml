@@ -1,0 +1,1 @@
+{"object": "SiteOpsAuditEvent", "required": ["event_id", "run_id", "tenant_id", "workspace_id", "user_id", "event_type", "action", "target", "policy_decision", "timestamp", "metadata", "redacted_fields"], "scope_required": ["tenant_id", "workspace_id", "user_id"], "append_only": true, "secret_values_allowed": false}

@@ -1,0 +1,45 @@
+config_id: "n8n-mcp-hub-config"
+adapter_id: "n8n-workflow"
+status: "planned_dry_run_policy_with_call_governance_and_proof_runner"
+owner: "ChaseOS"
+
+deployment:
+  enabled: false            # set to true when n8n instance is deployed and tested
+  base_url_env_var: "N8N_BASE_URL"              # set N8N_BASE_URL=http://localhost:5678
+  mcp_access_token_env_var: "N8N_MCP_ACCESS_TOKEN"  # set N8N_MCP_ACCESS_TOKEN=<token>
+  mcp_http_path: "/mcp-server/http"
+  local_only: true          # keep true for local-only enforcement; set false with approval for remote
+  live_probe_requires_explicit_flag: true
+  secrets_configured: false  # set to true once both env vars above are set
+
+mcp_client_role:
+  enabled: false
+  may_consume_chaseos_runtime_mcp: "planned"
+  allowed_chaseos_surfaces:
+    - "chaseos.current_state"
+    - "chaseos.operator_brief_latest"
+    - "chaseos.create_research_digest_draft"
+    - "chaseos.validate_writeback_target"
+
+mcp_server_role:
+  enabled: false
+  expose_all_workflows: false
+  workflow_registry: "runtime/policy/adapters/n8n_workflows.yaml"
+
+approval_model:
+  default: "deny"
+  mcp_exposed_workflow: "operator_approval_required"
+  production_execution: "operator_approval_required"
+  draft_generation: "allowed"
+  approval_records: "07_LOGS/Agent-Activity/_n8n_approvals/"
+  governed_call_drafts: "07_LOGS/Agent-Activity/_n8n_call_drafts/"
+  mcp_proof_records: "07_LOGS/Agent-Activity/_n8n_mcp_proofs/"
+  live_execution_from_governed_drafts: false
+
+forbidden_actions:
+  - "live_trading_execution"
+  - "wallet_or_exchange_signing"
+  - "credential_exposure"
+  - "autonomous_canonical_writeback"
+  - "expose_all_workflows_to_mcp"
+  - "production_discord_post_without_approval"

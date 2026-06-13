@@ -1,0 +1,55 @@
+---
+# graduate_ideas - Idea Graduation Workflow
+# ChaseOS AOR Phase 9 - First-Wave Workflow
+#
+# Reviews quarantine and generated-ideas candidates and produces
+# a graduation proposal for operator review. No promotion occurs here.
+#
+id: graduate_ideas
+name: "Graduate Ideas"
+version: "1.0"
+description: "Proposal-only graduation workflow for quarantine and generated-ideas candidates; suggests destinations and knowledge_class without promoting canonically."
+
+task_type: idea-graduation
+role_card: idea-graduation
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: proposal_log_only
+
+inputs:
+  - date                    # ISO date string; defaults to today
+  - min_age_days            # quarantine age threshold before surfacing candidates
+  - candidate_limit         # max candidates to include in the proposal
+  - include_quarantine      # bool; defaults to true
+  - include_generated_ideas # bool; defaults to true
+
+outputs:
+  - candidate_count
+  - graduation_proposal_path
+  - include_quarantine
+  - include_generated_ideas
+
+writeback_targets:
+  - "07_LOGS/Graduation-Proposals/"
+
+failure_behavior: escalate
+
+rollback_path: "delete the generated proposal file if it is no longer needed; no canonical write occurs"
+
+approval_rule: none
+
+audit_expectations:
+  - "candidate count recorded"
+  - "suggested destination for each candidate recorded"
+  - "suggested knowledge_class for each candidate recorded"
+  - "proposal-only execution recorded"
+
+schedule: null
+
+notes: >
+  Phase 9 Pass 4: graduate_ideas is live as a proposal-only workflow. It reads
+  quarantine and generated-ideas candidates, suggests destinations and
+  knowledge_class values, and writes a review proposal to
+  07_LOGS/Graduation-Proposals/. No promotion to 02_KNOWLEDGE/ occurs here.

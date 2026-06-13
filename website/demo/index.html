@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Public Demo Fixture - ChaseOS</title>
+  <meta name="description" content="Public-safe sample data for graph, source, runtime, approval, and mission previews." />
+  <link rel="canonical" href="https://chaseos.ai/demo" />
+  <meta property="og:title" content="Public Demo Fixture - ChaseOS" />
+  <meta property="og:description" content="Public-safe sample data for graph, source, runtime, approval, and mission previews." />
+  <meta property="og:url" content="https://chaseos.ai/demo" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body data-page="demo">
+  <header class="site-header"><a class="brand" href="../">ChaseOS</a><nav class="nav" aria-label="Primary"><a href="../">Home</a><a href="../studio/">Studio</a><a href="../demo/">Demo</a><a href="../forge/">Forge</a><a href="../standards/">Standards</a><a href="../docs/">Docs</a><a href="../waitlist/">Waitlist</a></nav></header>
+  <main>
+<section><h1>Public-safe demo fixture for ChaseOS Studio.</h1><p class="lead">This route shows the sample surfaces V1 can preview without exposing private vault paths, secrets, customer records, or live runtime authority.</p></section>
+<section class="grid three">
+  <article><h3>Graph visibility</h3><p>Demo nodes connect a public launch project to sources, approvals, runtimes, mission packs, and outputs.</p><p><a href="../standards/examples/chaseos.graph.json">Graph standard example</a></p></article>
+  <article><h3>Source/project organization</h3><p>Source fixtures identify public docs and synthetic example inputs, keeping project context visible but non-private.</p><p><a href="../standards/examples/chaseos.source.json">Source standard example</a></p></article>
+  <article><h3>Runtime/agent awareness</h3><p>Runtime fixture cards describe bounded demo lanes only; they do not start agents, claim tasks, or grant execution.</p><p><a href="../standards/examples/chaseos.agent.json">Agent standard example</a></p></article>
+  <article><h3>Approval visibility</h3><p>Approval packets stay pending or blocked, with <code>execution_allowed=false</code> for every external action.</p><p><a href="../standards/examples/chaseos.approval.json">Approval standard example</a></p></article>
+  <article><h3>Mission pack preview</h3><p>The launch readiness mission previews workflow steps, evidence expectations, and blocked external action gates.</p><p><a href="../forge/packs/startup_validation_launch/manifest.json">Startup validation pack</a></p></article>
+  <article><h3>Fixture files</h3><p><code>fixtures/demo/chaseos_launch/graph_nodes.json</code>, mission, approval, and output files are public-safe sample data.</p><p>No runtime authority is granted by this route.</p></article>
+</section>
+</main>
+  <footer><span>Start at https://chaseos.ai.</span><span>ChaseOS Studio Early Access / Developer Preview. Payments, managed agents, and live external actions are not enabled.</span></footer>
+  <script src="../site.js"></script>
+</body>
+</html>

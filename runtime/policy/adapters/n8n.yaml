@@ -1,0 +1,110 @@
+# ChaseOS Adapter Manifest - n8n MCP Workflow Hub
+# Schema: 06_AGENTS/Adapter-Manifest-Standard.md
+
+adapter_id: "n8n-workflow"
+adapter_name: "n8n Self-Hosted Workflow Hub"
+provider: "n8n"
+surface: "workflow_mcp_hub"
+adapter_class: "workflow_hub"
+status: "planned_dry_run_policy_with_call_governance_and_proof_runner"
+trust_ceiling: "tier-2"
+markdown_doc: "N8N.md"
+adapter_spec: "06_AGENTS/N8N-MCP-Hub-Spec.md"
+config: "runtime/policy/adapters/n8n_config.yaml"
+workflow_registry: "runtime/policy/adapters/n8n_workflows.yaml"
+
+allowed_task_types:
+  - "scheduled-ingest"
+  - "daily-note-generation"
+  - "morning-thesis-prefill"
+  - "activity-logging"
+  - "draft-alert-generation"
+  - "approval-notification"
+
+required_read_sets:
+  scheduled_ingest:
+    - "03_INPUTS/[target-subfolder]/"
+  mcp_client:
+    - "declared ChaseOS Runtime MCP resources only"
+
+allowed_write_targets:
+  standard_outputs: true
+  project_os_files: false
+  knowledge_notes: false
+  inputs_folder: true
+  protected_files: false
+
+explicitly_denied_write_targets:
+  - "02_KNOWLEDGE/**"
+  - "06_AGENTS/**"
+  - "00_HOME/Operating-System.md"
+  - "00_HOME/Assistant-Contract.md"
+  - "CLAUDE.md"
+  - "runtime/**"
+
+protected_file_behavior: "block"
+
+promotion_behavior:
+  may_promote_to_knowledge: "no"
+  gate_conditions_required: false
+  autonomous_promotion: false
+
+external_side_effect_policy:
+  may_call_external_apis: "with-approval"
+  may_write_to_external_systems: "with-approval"
+  approval_scope: "per-workflow-and-production-action"
+
+coordination_policy:
+  cross_runtime_coordination: "bus-required"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "required"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+approval_mode: "deny-by-default"
+audit_log_target: "07_LOGS/Agent-Activity/YYYY-MM-DD-n8n-[workflow-name].md"
+hook_config: {}
+
+mcp_hub_roles:
+  n8n_as_mcp_client:
+    status: "planned"
+    allowed_chaseos_surfaces:
+      - "chaseos.current_state"
+      - "chaseos.operator_brief_latest"
+      - "chaseos.create_research_digest_draft"
+      - "chaseos.validate_writeback_target"
+  n8n_as_mcp_server:
+    status: "planned_dry_run_policy_with_proof_runner"
+    expose_all_workflows: false
+    workflow_registry: "runtime/policy/adapters/n8n_workflows.yaml"
+
+notes: |
+  STATUS: Planned dry-run policy. n8n is not yet deployed or active in ChaseOS.
+
+  Key rules:
+  - n8n may deposit to 03_INPUTS/ or logs only through declared workflow scope.
+  - n8n never promotes directly to 02_KNOWLEDGE/.
+  - n8n never receives credentials through vault files.
+  - External event triggers are Tier 4 and are not trusted as instructions.
+  - Production Discord/Telegram posting requires approval.
+  - Trading execution, wallet signing, and exchange signing are forbidden.
+  - Instance-level MCP exposure must not expose all workflows by default.
+
+  2026-04-27 MCP hub foundation:
+  - n8n-as-client role documented for consuming selected ChaseOS Runtime MCP
+    resources/tools after deployment and authentication.
+  - n8n-as-server role documented for exposing only explicitly enabled
+    workflows to MCP clients.
+  - Local workflow exposure registry added at runtime/policy/adapters/n8n_workflows.yaml.
+  - Dry-run policy helper added at runtime/adapters/n8n/workflow_policy.py.
+  - MCP connection readiness helper added at runtime/adapters/n8n/mcp_connection.py.
+    It redacts token state, blocks non-local endpoints by default, and refuses
+    live probing unless deployment config/env readiness passes.
+  - Approval-aware dry-run call governance added at
+    runtime/adapters/n8n/call_governance.py. It writes approval request/decision
+    records and governed call drafts to Agent-Activity audit subfolders, rejects
+    credential-shaped payload keys, and keeps live HTTP execution disabled.
+  - Redacted MCP proof artifact runner added at
+    runtime/adapters/n8n/mcp_live_proof.py. It writes readiness/probe evidence
+    under 07_LOGS/Agent-Activity/_n8n_mcp_proofs/ and only attempts a live local
+    MCP probe when explicitly requested and config/env readiness passes.
+  - No n8n instance, token, production workflow, or live HTTP execution is configured.

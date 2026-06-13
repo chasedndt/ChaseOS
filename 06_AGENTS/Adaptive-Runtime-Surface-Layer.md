@@ -22,7 +22,7 @@ Implemented targeted as of 2026-05-04:
 - runtime surface manifest schema;
 - validated manifest model and registry loader;
 - first-party runtime surface manifests;
-- Chaser Agent Bus runtime manifest;
+- Archon Agent Bus runtime manifest;
 - Hermes and OpenClaw Agent Bus runtime manifests;
 - OpenAI dry-run provider adapter manifest;
 - local Ollama timeout-contract manifest;
@@ -95,7 +95,7 @@ ARSL does not replace existing execution authorities.
 
 Current named Agent Bus runtime manifests:
 
-- `agent.chaser_agent.bus`
+- `agent.archon.bus`
 - `agent.codex.bus`
 - `agent.hermes.bus`
 - `agent.openclaw.bus`

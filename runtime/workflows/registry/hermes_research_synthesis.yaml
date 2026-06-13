@@ -1,0 +1,46 @@
+id: hermes_research_synthesis
+version: "1.0"
+status: active
+task_type: research-synthesis
+role_card: research-runner
+description: >
+  Reads SIC workspace outputs for a declared workspace and produces a structured
+  synthesis draft captured to quarantine. Optionally uses LLM synthesis (Anthropic
+  claude-haiku-4-5-20251001, fail-open if API key absent). Synthesis draft is a
+  quarantine capture only — never a direct knowledge write.
+
+trigger_type: on-demand
+owner_runtime: hermes
+
+inputs:
+  workspace_id:
+    type: string
+    required: true
+    description: "SIC workspace ID to synthesize (e.g. 'strikezone')"
+  output_limit:
+    type: integer
+    required: false
+    default: 3
+    description: "Max number of recent workspace outputs to include in synthesis"
+  synthesize:
+    type: boolean
+    required: false
+    default: true
+    description: "Use LLM synthesis if API key available; else structured summary only"
+
+required_reads:
+  - "runtime/source_intelligence/workspaces/"
+  - "00_HOME/Now.md"
+
+writeback_targets:
+  - "03_INPUTS/00_QUARANTINE/"
+  - "07_LOGS/Agent-Activity/"
+
+permission_ceiling: tier-2
+approval_rule: none
+
+governance_boundary: >
+  Synthesis drafts are quarantine captures — not canonical knowledge. All promotion
+  to 02_KNOWLEDGE/ requires explicit operator Gate endorsement. This workflow may not
+  write to protected files, canonical knowledge, or project OS files under any
+  circumstance.

@@ -1,0 +1,36 @@
+enabled: false
+allowed_providers:
+  - shadow
+  - browser-use-cli
+allowed_domains:
+  - example.com
+  - localhost
+  - 127.0.0.1
+  - excalidraw.com
+known_targets:
+  excalidraw:
+    url: https://excalidraw.com
+    allowed_domains:
+      - excalidraw.com
+    public_target: true
+    login_required: false
+    env_required: false
+forbidden_domains:
+  - accounts.google.com
+  - gmail.com
+  - mail.google.com
+  - bank
+  - paypal.com
+  - coinbase.com
+browser_profile_policy: throwaway_only
+allow_real_profile: false
+allow_credentials: false
+allow_shell_execution: false
+allow_cookie_export: false
+allow_browser_profile_sync: false
+allow_public_tunnel: false
+screenshot_retention: log_artifact_only
+artifact_retention: log_artifact_only
+skill_generation: draft_only
+canonical_writeback: false
+automatic_skill_activation: false

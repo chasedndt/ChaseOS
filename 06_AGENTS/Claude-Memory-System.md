@@ -25,7 +25,7 @@ Claude Code supports a persistent, file-based memory system stored outside the v
 
 For this vault instance, the memory lives at:
 ```
-%USERPROFILE%\.claude\projects\C--Users-chaseos-Documents-chaseos-obsidian\memory\
+<CLAUDE_HOME>/<path>
 ```
 
 Memory files are loaded into Claude Code's context automatically at session start. They supplement the vault — they do not replace it.

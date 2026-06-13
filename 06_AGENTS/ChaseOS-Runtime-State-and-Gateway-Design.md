@@ -99,7 +99,7 @@ Recommended state fields:
   "runtime_id": "openclaw",
   "adapter_id": "openclaw",
   "platform_family": "windows",
-  "repo_root": "%CHASEOS_VAULT_ROOT%",
+  "repo_root": "C:/Users/chaseos/Documents/chaseos_obsidian",
   "attachment_mode": "attached-personal",
   "user_binding_present": true,
   "trust_ceiling": "tier-2",

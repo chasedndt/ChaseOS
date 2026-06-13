@@ -1,0 +1,68 @@
+---
+# hermes_review_execute — Hermes Review Execution Workflow
+# ChaseOS Phase 9 — Agent Bus Coordination Pass 1
+#
+# Hermes-side workflow for claiming and executing a review task from the
+# coordination bus. Reads the referenced artifact, produces a structured
+# review result packet, and posts the result back to the bus.
+#
+# Role card: review (read artifact + write bus result + write agent-activity)
+# Complementary: openclaw_post_review_task (OpenClaw creates the task)
+#
+id: hermes_review_execute
+name: "Hermes Review Execute"
+version: "1.0"
+description: "Hermes claims the oldest open review task addressed to it, reads the referenced artifact within declared read scope, produces a structured review result, and posts done+result back to the coordination bus."
+task_type: review
+role_card: review
+trigger_type: manual
+owner: operator
+status: active
+runtime_adapter: hermes
+
+permission_ceiling: bus_result_only
+
+coordination_requirements:
+  coordination_sensitive: true
+  via: "runtime/agent_bus/"
+  partner_runtime: "OpenClaw"
+  execution_mode: "claim-or-consume"
+
+inputs:
+  - task_id   # optional — if omitted, claims the oldest open review task for Hermes
+
+outputs:
+  - task_id          # the claimed task ID
+  - status           # final bus task status (done or escalated)
+  - review_summary   # human-readable review result
+  - endorsed         # list of endorsed items
+  - flags            # list of flags or concerns
+  - audit_path       # path to the agent-activity audit entry
+
+writeback_targets:
+  - "07_LOGS/Agent-Activity/"
+
+failure_behavior: escalate
+
+approval_rule: none
+
+audit_expectations:
+  - "workflow_id recorded"
+  - "task_id recorded"
+  - "artifact_path recorded"
+  - "endorsed count recorded"
+  - "flags count recorded"
+  - "bus status recorded (done)"
+
+notes: >
+  Hermes may only read artifacts within its declared optional_reads scope
+  (07_LOGS/Operator-Briefs/, 07_LOGS/SBP-Runs/, 07_LOGS/Build-Logs/).
+  Artifact paths outside this scope are treated as an escalation condition.
+
+  The review result is structural — it checks artifact shape, section presence,
+  and content flags. Optional LLM synthesis routes through the shared runtime
+  execution adapter using Hermes model_config.yaml, and remains fail-open if
+  credentials, model config, or the provider call fail.
+
+  Full event trail on a successful review:
+    created (by OpenClaw) → claimed (by Hermes) → in_progress → done (result posted)

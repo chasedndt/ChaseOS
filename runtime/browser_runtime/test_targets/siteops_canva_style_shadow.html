@@ -1,0 +1,700 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SiteOps Canva Style Shadow Target</title>
+  <style>
+    :root {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6fb;
+      color: #172033;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 250px 1fr;
+    }
+    aside {
+      background: #ffffff;
+      border-right: 1px solid #d8deea;
+      padding: 18px;
+    }
+    main {
+      padding: 18px;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 14px;
+    }
+    .toolbar {
+      display: grid;
+      gap: 8px;
+    }
+    button {
+      border: 1px solid #b8c3d8;
+      background: #f8fafc;
+      color: #172033;
+      border-radius: 6px;
+      padding: 9px 10px;
+      text-align: left;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #ecf3ff;
+    }
+    button.danger {
+      border-color: #d18f8f;
+      background: #fff7f7;
+    }
+    .notice {
+      margin-top: 12px;
+      color: #6b4b00;
+      font-size: 13px;
+      line-height: 1.25;
+    }
+    .canvas {
+      width: min(500px, 100%);
+      aspect-ratio: 4 / 5;
+      position: relative;
+      border: 1px solid #c7d2e5;
+      background: #ffffff;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(20, 31, 52, 0.16);
+    }
+    .template {
+      position: absolute;
+      inset: 18px;
+      border: 3px solid #27364f;
+      background: linear-gradient(135deg, #f5fbff, #edf7f2);
+    }
+    .photo {
+      position: absolute;
+      left: 44px;
+      top: 54px;
+      width: 184px;
+      height: 154px;
+      display: grid;
+      place-items: center;
+      border: 3px solid #2778e8;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #dceaff, #ffffff);
+      font-weight: 700;
+      color: #1d4e9a;
+    }
+    .asset-strip {
+      position: absolute;
+      left: 250px;
+      top: 48px;
+      width: 176px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .fake-asset {
+      height: 54px;
+      border-radius: 8px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 6px 16px rgba(20, 31, 52, 0.16);
+    }
+    .fake-asset.one {
+      background: linear-gradient(135deg, #ffcf70, #ef476f);
+    }
+    .fake-asset.two {
+      background: linear-gradient(135deg, #6be2b8, #2b7de9);
+    }
+    .fake-asset.three {
+      background: linear-gradient(135deg, #f7f7ff, #7c5cff);
+    }
+    .photo-frame {
+      position: absolute;
+      left: 242px;
+      top: 122px;
+      width: 128px;
+      height: 120px;
+      border: 3px solid #172033;
+      border-radius: 12px;
+      background: repeating-linear-gradient(135deg, #dbeafe, #dbeafe 10px, #f8fafc 10px, #f8fafc 20px);
+      display: grid;
+      place-items: center;
+      color: #0f3b79;
+      font-weight: 800;
+    }
+    .resize-handle {
+      position: absolute;
+      right: -7px;
+      bottom: -7px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #2b7de9;
+      border: 2px solid #ffffff;
+      cursor: nwse-resize;
+    }
+    .feature-circle {
+      position: absolute;
+      left: 320px;
+      top: 270px;
+      width: 94px;
+      height: 94px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: #111827;
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(17, 24, 39, 0.28);
+    }
+    .feature-circle span {
+      display: block;
+      font-size: 14px;
+      line-height: 1.05;
+    }
+    .drawing-surface {
+      position: absolute;
+      left: 54px;
+      top: 386px;
+      width: 360px;
+      height: 90px;
+      z-index: 6;
+      pointer-events: auto;
+      cursor: crosshair;
+      border: 1px dashed transparent;
+    }
+    .drawing-surface.active {
+      border-color: rgba(43, 125, 233, 0.35);
+      background: rgba(255, 255, 255, 0.18);
+    }
+    .manual-drawing {
+      fill: none;
+      stroke: #ef476f;
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 3px 2px rgba(17, 24, 39, 0.16));
+    }
+    .headline {
+      position: absolute;
+      left: 44px;
+      top: 248px;
+      font-size: 32px;
+      font-weight: 800;
+      color: #111827;
+    }
+    .cta {
+      position: absolute;
+      left: 44px;
+      top: 316px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      background: #14a67b;
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .brand {
+      color: #0d2f68;
+    }
+    .brand .cta {
+      background: #2b7de9;
+    }
+    .resize {
+      transform: scale(0.92);
+      transform-origin: center;
+    }
+    .layer-list {
+      margin-top: 12px;
+      width: min(500px, 100%);
+      border: 1px solid #ccd7e8;
+      border-radius: 6px;
+      background: #ffffff;
+      padding: 10px 12px;
+      min-height: 22px;
+    }
+    .agent-control-hud {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 9000;
+      display: grid;
+      gap: 4px;
+      min-width: 238px;
+      padding: 10px 12px;
+      border: 1px solid #214e92;
+      border-radius: 8px;
+      background: rgba(10, 29, 61, 0.94);
+      color: #ffffff;
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.28);
+      pointer-events: none;
+    }
+    .agent-control-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+    .agent-control-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: #4ade80;
+      box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.72);
+      animation: agentPulse 1.15s infinite;
+    }
+    .agent-control-status {
+      font-size: 12px;
+      color: #cfe2ff;
+    }
+    .agent-control-lanes {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 2px;
+    }
+    .agent-control-lane {
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
+      padding: 2px 7px;
+      font-size: 11px;
+      color: #d7e4ff;
+    }
+    .agent-control-lane.active {
+      border-color: #6be2b8;
+      background: rgba(107, 226, 184, 0.18);
+      color: #ffffff;
+    }
+    .agent-cursor {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 9100;
+      width: 24px;
+      height: 24px;
+      pointer-events: none;
+      transform: translate(-100px, -100px);
+      transition: transform 90ms linear;
+      filter: drop-shadow(0 3px 5px rgba(15, 23, 42, 0.36));
+    }
+    .agent-cursor::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      background: #1f7aff;
+      clip-path: polygon(0 0, 0 20px, 6px 15px, 10px 23px, 14px 21px, 10px 13px, 18px 13px);
+      border: 1px solid #ffffff;
+    }
+    .agent-cursor.clicking::after,
+    .agent-cursor.dragging::after {
+      content: "";
+      position: absolute;
+      left: -9px;
+      top: -9px;
+      width: 30px;
+      height: 30px;
+      border: 2px solid rgba(31, 122, 255, 0.72);
+      border-radius: 999px;
+      animation: clickRing 420ms ease-out;
+    }
+    .agent-cursor.dragging::after {
+      border-color: rgba(239, 71, 111, 0.78);
+    }
+    .agent-trail {
+      position: fixed;
+      z-index: 9050;
+      width: 7px;
+      height: 7px;
+      margin-left: -3px;
+      margin-top: -3px;
+      border-radius: 999px;
+      background: rgba(31, 122, 255, 0.55);
+      pointer-events: none;
+      animation: trailFade 650ms ease-out forwards;
+    }
+    @keyframes agentPulse {
+      0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.72); }
+      70% { box-shadow: 0 0 0 9px rgba(74, 222, 128, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+    }
+    @keyframes clickRing {
+      from { opacity: 0.82; transform: scale(0.55); }
+      to { opacity: 0; transform: scale(1.55); }
+    }
+    @keyframes trailFade {
+      from { opacity: 0.72; transform: scale(1); }
+      to { opacity: 0; transform: scale(0.3); }
+    }
+  </style>
+</head>
+<body>
+  <div class="agent-control-hud" data-testid="agent-control-hud">
+    <div class="agent-control-title"><span class="agent-control-dot"></span><span>Agent control active</span></div>
+    <div class="agent-control-status" data-testid="agent-control-status">Browser lane armed</div>
+    <div class="agent-control-lanes" aria-hidden="true">
+      <span class="agent-control-lane active">Browser</span>
+      <span class="agent-control-lane">Files future</span>
+      <span class="agent-control-lane">System future</span>
+      <span class="agent-control-lane">Runtime future</span>
+    </div>
+  </div>
+  <div class="agent-cursor" data-testid="agent-cursor" aria-hidden="true"></div>
+  <aside>
+    <h1>Canva Style Editor</h1>
+    <div class="toolbar" aria-label="Canva style toolbar">
+      <button data-testid="select-poster-template">Select poster template</button>
+      <button data-testid="clear-canvas">Clear canvas</button>
+      <button data-testid="load-fake-assets">Load fake assets</button>
+      <button data-testid="add-photo-placeholder">Add photo layer</button>
+      <button data-testid="add-photo-frame">Add photo frame</button>
+      <button data-testid="add-feature-circle">Draw feature circle</button>
+      <button data-testid="enable-pen-drawing">Enable pen drawing</button>
+      <button data-testid="run-magic-layers">Magic Layers</button>
+      <button data-testid="apply-brand-kit">Apply brand kit</button>
+      <button data-testid="resize-social">Resize social</button>
+      <button class="danger" data-testid="export-file">Export file</button>
+      <button class="danger" data-testid="public-share">Public share</button>
+      <button class="danger" data-testid="account-settings">Account settings</button>
+    </div>
+    <div class="notice">
+      Local-only Canva-style target. No Canva account, upload, public share,
+      billing, credential, or external asset path exists.
+    </div>
+  </aside>
+  <main>
+    <div class="canvas" data-testid="design-canvas" aria-label="editable poster canvas"></div>
+    <div class="layer-list" data-testid="layer-list">Layers: none</div>
+  </main>
+  <script>
+    const state = {
+      templateSelected: false,
+      canvasCleared: false,
+      photoLayerAdded: false,
+      magicLayersCreated: false,
+      brandApplied: false,
+      resizeApplied: false,
+      fakeAssetsLoaded: false,
+      photoFrameAdded: false,
+      photoFrameResized: false,
+      circleFeatureAdded: false,
+      penDrawingEnabled: false,
+      manualDrawingAdded: false,
+      manualDrawingPointCount: 0,
+      photoFrameSize: { width: 0, height: 0 },
+      featureBadgeText: '',
+      exportBlocked: false,
+      publicShareBlocked: false,
+      accountSettingsBlocked: false,
+      agentControlVisible: true,
+      agentCursorMoved: false,
+      agentClickFeedbackShown: false,
+      agentDragFeedbackShown: false,
+      agentControlLane: 'browser',
+      futureControlLanes: ['files', 'system', 'runtime'],
+      layers: []
+    };
+    window.__siteopsMediaEditorState = state;
+
+    const canvas = document.querySelector('[data-testid="design-canvas"]');
+    const layerList = document.querySelector('[data-testid="layer-list"]');
+    const agentCursor = document.querySelector('[data-testid="agent-cursor"]');
+    const agentStatus = document.querySelector('[data-testid="agent-control-status"]');
+    let agentMouseDown = false;
+    let lastTrailAt = 0;
+
+    function setAgentStatus(text) {
+      agentStatus.textContent = text;
+    }
+
+    function drawAgentTrail(x, y) {
+      const now = Date.now();
+      if (now - lastTrailAt < 75) return;
+      lastTrailAt = now;
+      const dot = document.createElement('span');
+      dot.className = 'agent-trail';
+      dot.style.left = x + 'px';
+      dot.style.top = y + 'px';
+      document.body.appendChild(dot);
+      setTimeout(() => dot.remove(), 700);
+    }
+
+    document.addEventListener('mousemove', (event) => {
+      state.agentCursorMoved = true;
+      agentCursor.style.transform = 'translate(' + event.clientX + 'px, ' + event.clientY + 'px)';
+      drawAgentTrail(event.clientX, event.clientY);
+      if (agentMouseDown) {
+        state.agentDragFeedbackShown = true;
+        agentCursor.classList.add('dragging');
+        setAgentStatus('Agent dragging on browser surface');
+      } else {
+        setAgentStatus('Agent moving cursor on browser surface');
+      }
+    }, true);
+
+    document.addEventListener('mousedown', () => {
+      agentMouseDown = true;
+      state.agentClickFeedbackShown = true;
+      agentCursor.classList.add('clicking');
+      setAgentStatus('Agent clicking browser control');
+    }, true);
+
+    document.addEventListener('mouseup', () => {
+      agentMouseDown = false;
+      agentCursor.classList.remove('dragging');
+      setAgentStatus('Agent control active on browser lane');
+      setTimeout(() => agentCursor.classList.remove('clicking'), 180);
+    }, true);
+
+    function syncLayers() {
+      layerList.textContent = 'Layers: ' + (state.layers.length ? state.layers.join(', ') : 'none');
+    }
+
+    function resetStateAfterClear() {
+      state.templateSelected = false;
+      state.photoLayerAdded = false;
+      state.magicLayersCreated = false;
+      state.brandApplied = false;
+      state.resizeApplied = false;
+      state.fakeAssetsLoaded = false;
+      state.photoFrameAdded = false;
+      state.photoFrameResized = false;
+      state.circleFeatureAdded = false;
+      state.penDrawingEnabled = false;
+      state.manualDrawingAdded = false;
+      state.manualDrawingPointCount = 0;
+      state.photoFrameSize = { width: 0, height: 0 };
+      state.featureBadgeText = '';
+      state.exportBlocked = false;
+      state.publicShareBlocked = false;
+      state.accountSettingsBlocked = false;
+      state.layers = [];
+      state.canvasCleared = true;
+    }
+
+    function addEl(className, text) {
+      const el = document.createElement('div');
+      el.className = className;
+      el.textContent = text || '';
+      canvas.appendChild(el);
+    }
+
+    let drawingSurface = null;
+    let drawing = false;
+    let activeLine = null;
+    let points = [];
+
+    function ensureDrawingSurface() {
+      if (drawingSurface && drawingSurface.isConnected) return drawingSurface;
+      drawingSurface = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      drawingSurface.classList.add('drawing-surface');
+      drawingSurface.dataset.testid = 'poster-drawing-surface';
+      drawingSurface.setAttribute('viewBox', '0 0 360 90');
+      canvas.appendChild(drawingSurface);
+
+      drawingSurface.addEventListener('mousedown', (event) => {
+        if (!state.penDrawingEnabled) return;
+        event.preventDefault();
+        drawing = true;
+        points = [drawingPoint(event)];
+        activeLine = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        activeLine.classList.add('manual-drawing');
+        activeLine.dataset.testid = 'manual-poster-drawing';
+        drawingSurface.appendChild(activeLine);
+        if (!state.layers.includes('manual-drawing')) {
+          state.layers.push('manual-drawing');
+        }
+        syncDrawing();
+      });
+
+      drawingSurface.addEventListener('mousemove', (event) => {
+        if (!drawing) return;
+        points.push(drawingPoint(event));
+        syncDrawing();
+      });
+      return drawingSurface;
+    }
+
+    function drawingPoint(event) {
+      const rect = drawingSurface.getBoundingClientRect();
+      return [
+        Math.round(event.clientX - rect.left),
+        Math.round(event.clientY - rect.top)
+      ];
+    }
+
+    function syncDrawing() {
+      if (!activeLine) return;
+      activeLine.setAttribute('points', points.map((point) => point.join(',')).join(' '));
+      state.manualDrawingPointCount = points.length;
+      if (points.length >= 3) {
+        state.manualDrawingAdded = true;
+      }
+      syncLayers();
+    }
+
+    window.addEventListener('mouseup', () => {
+      if (!drawing) return;
+      drawing = false;
+      syncDrawing();
+    });
+
+    function ensureAssetStrip() {
+      if (canvas.querySelector('[data-testid="asset-strip"]')) return;
+      const strip = document.createElement('div');
+      strip.className = 'asset-strip';
+      strip.dataset.testid = 'asset-strip';
+      ['one', 'two', 'three'].forEach((kind) => {
+        const asset = document.createElement('div');
+        asset.className = 'fake-asset ' + kind;
+        strip.appendChild(asset);
+      });
+      canvas.appendChild(strip);
+      state.layers.push('fake-assets');
+    }
+
+    function ensurePhotoFrame() {
+      if (canvas.querySelector('[data-testid="photo-frame"]')) return;
+      const frame = document.createElement('div');
+      frame.className = 'photo-frame';
+      frame.dataset.testid = 'photo-frame';
+      frame.textContent = 'Fake Photo';
+      const handle = document.createElement('div');
+      handle.className = 'resize-handle';
+      handle.dataset.testid = 'photo-frame-resize-handle';
+      frame.appendChild(handle);
+      canvas.appendChild(frame);
+      state.layers.push('photo-frame');
+      state.photoFrameSize = { width: frame.offsetWidth, height: frame.offsetHeight };
+
+      let resizing = false;
+      let startX = 0;
+      let startY = 0;
+      let startWidth = 0;
+      let startHeight = 0;
+      handle.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+        resizing = true;
+        startX = event.clientX;
+        startY = event.clientY;
+        startWidth = frame.offsetWidth;
+        startHeight = frame.offsetHeight;
+      });
+      window.addEventListener('mousemove', (event) => {
+        if (!resizing) return;
+        const width = Math.max(96, startWidth + event.clientX - startX);
+        const height = Math.max(84, startHeight + event.clientY - startY);
+        frame.style.width = width + 'px';
+        frame.style.height = height + 'px';
+        state.photoFrameResized = true;
+        state.photoFrameSize = { width, height };
+        syncLayers();
+      });
+      window.addEventListener('mouseup', () => {
+        resizing = false;
+      });
+    }
+
+    document.querySelector('[data-testid="clear-canvas"]').addEventListener('click', () => {
+      canvas.replaceChildren();
+      drawingSurface = null;
+      activeLine = null;
+      points = [];
+      drawing = false;
+      resetStateAfterClear();
+      ensureDrawingSurface();
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="select-poster-template"]').addEventListener('click', () => {
+      if (!state.templateSelected) {
+        addEl('template', '');
+        state.layers.push('template');
+      }
+      state.templateSelected = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="load-fake-assets"]').addEventListener('click', () => {
+      ensureAssetStrip();
+      state.fakeAssetsLoaded = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="add-photo-placeholder"]').addEventListener('click', () => {
+      if (!state.photoLayerAdded) {
+        addEl('photo', 'Photo');
+        state.layers.push('photo');
+      }
+      state.photoLayerAdded = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="add-photo-frame"]').addEventListener('click', () => {
+      ensurePhotoFrame();
+      state.photoFrameAdded = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="add-feature-circle"]').addEventListener('click', () => {
+      if (!state.circleFeatureAdded) {
+        const circle = document.createElement('div');
+        circle.className = 'feature-circle';
+        circle.dataset.testid = 'feature-circle';
+        circle.innerHTML = '<span>NEW<br>FEATURE</span>';
+        canvas.appendChild(circle);
+        state.layers.push('feature-circle');
+      }
+      state.circleFeatureAdded = true;
+      state.featureBadgeText = 'NEW FEATURE';
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="enable-pen-drawing"]').addEventListener('click', () => {
+      state.penDrawingEnabled = true;
+      ensureDrawingSurface();
+      drawingSurface.classList.add('active');
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="run-magic-layers"]').addEventListener('click', () => {
+      if (!state.magicLayersCreated) {
+        addEl('headline', 'Launch Poster');
+        addEl('cta', 'SiteOps Ready');
+        state.layers.push('headline', 'cta');
+      }
+      state.magicLayersCreated = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="apply-brand-kit"]').addEventListener('click', () => {
+      canvas.classList.add('brand');
+      state.brandApplied = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="resize-social"]').addEventListener('click', () => {
+      canvas.classList.add('resize');
+      state.resizeApplied = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="export-file"]').addEventListener('click', () => {
+      state.exportBlocked = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="public-share"]').addEventListener('click', () => {
+      state.publicShareBlocked = true;
+      syncLayers();
+    });
+
+    document.querySelector('[data-testid="account-settings"]').addEventListener('click', () => {
+      state.accountSettingsBlocked = true;
+      syncLayers();
+    });
+  </script>
+</body>
+</html>

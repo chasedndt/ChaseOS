@@ -1,0 +1,1 @@
+{"object": "BudgetPolicy", "required": ["budget_policy_id", "tenant_id", "max_cost_per_run", "max_cost_per_day", "max_cost_per_month", "require_approval_above", "dry_run_required", "status"], "scope_required": ["tenant_id"], "optional_scope": ["workspace_id", "user_id", "provider_id"], "secret_values_allowed": false}

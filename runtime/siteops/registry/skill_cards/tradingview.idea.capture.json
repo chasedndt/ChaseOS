@@ -1,0 +1,28 @@
+{
+  "object_type": "skill_card",
+  "skill_id": "tradingview.idea.capture",
+  "display_name": "TradingView / Idea Capture",
+  "family": "ChaseOS SiteOps",
+  "technical_registry": "Website Workflow Index",
+  "user_tab": "Site Skills",
+  "status": "PARTIAL",
+  "execution_status": "DRY_RUN_READY",
+  "workflow_id": "tradingview.idea.capture",
+  "site_profile": "tradingview",
+  "category": "trading_research",
+  "risk_level": "high",
+  "required_auth": "public_or_user_browser_session_future",
+  "required_provider": "none",
+  "estimated_cost": "none in dry-run",
+  "approval_points": [
+    "authenticated_session",
+    "knowledge_promotion"
+  ],
+  "outputs": [
+    "screenshot",
+    "source note candidate",
+    "run audit"
+  ],
+  "success_rate": null,
+  "last_tested": null
+}

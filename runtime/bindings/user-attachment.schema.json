@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChaseOS Detachable User Attachment Contract",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "attachment_mode",
+    "user_binding_present",
+    "private_state_locations",
+    "portable_exports_allowed",
+    "detachment_rules"
+  ],
+  "properties": {
+    "contract_version": { "type": "string" },
+    "attachment_mode": {
+      "type": "string",
+      "enum": ["core-only", "runtime-only", "attached-personal"]
+    },
+    "user_binding_present": { "type": "boolean" },
+    "user_label": { "type": ["string", "null"] },
+    "private_state_locations": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "machine_local_bindings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "portable_exports_allowed": {
+      "type": "object",
+      "required": ["core_safe", "personal_safe"],
+      "properties": {
+        "core_safe": { "type": "boolean" },
+        "personal_safe": { "type": "boolean" },
+        "notes": { "type": "string" }
+      }
+    },
+    "detachment_rules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": true
+}

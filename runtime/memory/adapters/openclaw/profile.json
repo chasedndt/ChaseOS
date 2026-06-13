@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "runtime_behavior_profile",
+  "runtime_id": "openclaw",
+  "runtime_label": "Sygnal",
+  "personal_runtime_name": "Sygnal",
+  "status": "seeded",
+  "updated_at": "2026-04-27T00:00:00Z",
+  "sources": [
+    "06_AGENTS/OpenClaw-Runtime-Profile.md",
+    "06_AGENTS/OpenClaw-Adapter-Spec.md",
+    "runtime/memory/nav/openclaw/nav-map.json",
+    "runtime/memory/scorecards/openclaw.json"
+  ],
+  "behavioral_profile": {
+    "primary_role": "bounded AOR execution and OpenClaw schedule executor",
+    "strengths": [
+      "runs registered AOR workflows through the canonical ChaseOS pipeline",
+      "maintains strong CGL compliance in recorded scorecard history",
+      "can consume schedule intent exported from runtime/schedules/"
+    ],
+    "known_failure_modes": [
+      {
+        "id": "workflow-escalation-candidate",
+        "status": "candidate",
+        "description": "Recorded scorecard history contains escalated workflow runs. These remain incident-level repair candidates until a repeated fix is confirmed.",
+        "evidence_refs": [
+          "runtime/memory/scorecards/openclaw.json"
+        ]
+      }
+    ],
+    "routing_guidance": [
+      "orient through OpenClaw adapter/profile docs before acting",
+      "read schedule export rather than maintaining independent cron truth",
+      "escalate protected-file, canonical-promotion, and undeclared connector expansion requests"
+    ],
+    "confidence_signals": [
+      "scorecard compliance_rate is currently 1.0",
+      "scorecard overreach_rate is currently 0.0"
+    ]
+  },
+  "governance_boundary": "Layer C memory is advisory and cannot override Gate, role cards, workflow manifests, or operator approval."
+}

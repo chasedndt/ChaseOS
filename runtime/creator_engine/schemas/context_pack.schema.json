@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chaseos.local/schemas/creator_engine/context_pack.schema.json",
+  "title": "Creator Engine Context Pack",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_type",
+    "job_id",
+    "context_path",
+    "created_at",
+    "project_refs",
+    "source_refs",
+    "trust_summary",
+    "status"
+  ],
+  "properties": {
+    "schema_version": { "const": "creator_engine.v1" },
+    "artifact_id": { "type": "string" },
+    "artifact_type": { "const": "context_pack" },
+    "job_id": { "type": "string" },
+    "context_path": { "type": "string" },
+    "created_at": { "type": "string" },
+    "project_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "trust_summary": { "type": "object" },
+    "status": { "type": "string" }
+  },
+  "additionalProperties": true
+}

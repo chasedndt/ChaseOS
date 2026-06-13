@@ -1,0 +1,108 @@
+# ChaseOS Adapter Manifest — Claude Code (Anthropic Agent Harness)
+# Schema: 06_AGENTS/Adapter-Manifest-Standard.md
+
+adapter_id: "claude-harness"
+adapter_name: "Anthropic Agent Harness (Claude Code)"
+provider: "anthropic"
+surface: "harness"
+adapter_class: "harness"
+status: "active"
+trust_ceiling: "tier-2"
+markdown_doc: "CLAUDE.md"
+
+# --- SCOPE ---
+allowed_task_types:
+  - "docs-pass"
+  - "repo-refactor"
+  - "security-review"
+  - "runtime-binding"
+  - "ingestion-pass"
+  - "build-debug"
+
+required_read_sets:
+  default:
+    - "00_HOME/Now.md"
+    - "01_PROJECTS/[Relevant]-OS.md"
+  ingestion:
+    - "00_HOME/Now.md"
+    - "03_INPUTS/03_INPUTS-Folder-Guide.md"
+    - "06_AGENTS/Ingestion-Architecture.md"
+    - "04_SOPS/Untrusted-Input-Handling-SOP.md"
+    - "04_SOPS/Research-Ingest-SOP.md"
+  agent-permissions:
+    - "00_HOME/Assistant-Contract.md"
+    - "06_AGENTS/Agent-Registry.md"
+  vault-structure:
+    - "06_AGENTS/Vault-Map.md"
+
+# --- WRITE TARGETS ---
+allowed_write_targets:
+  standard_outputs: true
+  project_os_files: true
+  knowledge_notes: true
+  inputs_folder: true
+  protected_files: false
+
+explicitly_denied_write_targets: []  # All targets managed via protected_file_behavior + gate
+
+# --- PROTECTED FILE BEHAVIOR ---
+protected_file_behavior: "block"
+# Hook: .claude/hooks/protected_write_guard.py
+# Policy source: runtime/policy/protected_files.yaml (mirrors Permission-Matrix.md §2)
+
+# --- PROMOTION BEHAVIOR ---
+promotion_behavior:
+  may_promote_to_knowledge: "gated"
+  gate_conditions_required: true
+  autonomous_promotion: false
+# Hook: .claude/hooks/ingestion_promotion_guard.py
+
+# --- EXTERNAL SIDE EFFECTS ---
+external_side_effect_policy:
+  may_call_external_apis: "with-approval"
+  may_write_to_external_systems: "with-approval"
+  approval_scope: "session"
+
+# --- COORDINATION POLICY ---
+coordination_policy:
+  cross_runtime_coordination: "bus-required"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "required"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+# --- APPROVAL MODE ---
+approval_mode: "per-action"
+
+# --- AUDIT ---
+audit_log_target: "07_LOGS/Build-Logs/YYYY-MM-DD-[Project]-[descriptor].md"
+
+# --- HOOK CONFIGURATION ---
+hook_config:
+  protected_write_guard: "verified"       # .claude/hooks/protected_write_guard.py — VERIFIED 2026-03-21
+  ingestion_promotion_guard: "verified"   # .claude/hooks/ingestion_promotion_guard.py — VERIFIED 2026-03-21
+  session_start_context: "verified"       # .claude/hooks/session_start_context.py (notification only) — VERIFIED 2026-03-21
+  session_end_audit: "verified"           # .claude/hooks/session_end_audit.py (notification only) — VERIFIED 2026-03-21
+
+# --- NOTES ---
+notes: |
+  Active adapter — Claude Code CLI with direct vault filesystem access.
+  This is the reference implementation for the Execution-Adapter-Standard.
+
+  Hook status: ACTIVE — VERIFIED 2026-03-21.
+
+  Python runtime: repo-local venv at .venv/Scripts/python.exe (Python 3.13.12)
+  PyYAML: 6.0.3 (installed in venv)
+  Settings.json: uses .venv/Scripts/python.exe for all 4 hook commands
+
+  Verification pass completed 2026-03-21:
+    - protected_write_guard.py: SOUL.md and CLAUDE.md blocked (exit 1); non-protected allowed (exit 0)
+    - protected_write_guard.py: absolute paths correctly blocked; CHASEOS_APPROVED_FILE env var works
+    - ingestion_promotion_guard.py: 02_KNOWLEDGE/ writes blocked without approval (exit 1); allowed with CHASEOS_PROMOTION_APPROVED=1
+    - session_start_context.py: no output on general prompt; required-read reminder on ingestion prompt
+    - session_end_audit.py: checklist printed to stderr (exit 0)
+
+  OpenAI / Local-OSS / n8n lanes: documented conformance paths only — not active enforcement.
+  The Gate architecture is vendor-agnostic but only the Anthropic lane is currently enforced.
+
+  Settings.json: .claude/settings.json (project-level)
+  Hook scripts: .claude/hooks/

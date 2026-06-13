@@ -1,0 +1,113 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for the exact-once VentureOps Mission Mode runtime claim/result gate."
+approval_required_fields:
+  - schema_version
+  - type
+  - approval_id
+  - approval_decision
+  - approval_status
+  - approved_by
+  - approved_at
+  - operator_approval_statement
+  - mission_id
+  - mission_workspace_path
+  - readiness_status_at_approval
+  - agent_bus_enqueue_id
+  - agent_bus_task_id
+  - work_fingerprint
+  - runtime
+  - runtime_instance_id
+  - stale_after_seconds
+  - task_claimability
+  - task_snapshot_at_approval
+  - approved_next_step
+  - approved_scope
+  - required_acknowledgements
+  - result_schema
+  - consumption_policy
+  - consumable
+  - runtime_task_claim_authorized
+  - aor_dry_review_dispatch_authorized
+  - mission_result_ingestion_authorized
+  - agent_bus_task_close_authorized
+  - mission_activation_execution_authorized
+  - workflow_evolution_apply_authorized
+  - provider_calls_authorized
+  - browser_actions_authorized
+  - browser_skill_activation_authorized
+  - external_side_effects_authorized
+  - crm_or_payment_mutation_authorized
+  - live_trading_authorized
+  - protected_file_edit_authorized
+  - canonical_promotion_authorized
+  - credential_or_secret_read_authorized
+  - followup_agent_bus_task_authorized
+  - context_errors
+  - approval_digest
+result_required_fields:
+  - schema_version
+  - type
+  - result_id
+  - status
+  - result_shape
+  - mission_id
+  - mission_workspace_path
+  - task_type
+  - agent_bus_task_id
+  - runtime
+  - runtime_instance_id
+  - aor_workflow_id
+  - aor_status
+  - aor_audit_id
+  - aor_writeback_files
+  - result_payload
+  - authority_boundary
+marker_required_fields:
+  - schema_version
+  - type
+  - status
+  - surface
+  - approval_id
+  - approval_path
+  - approval_digest
+  - mission_id
+  - mission_workspace_path
+  - agent_bus_task_id
+  - work_fingerprint
+  - runtime
+  - runtime_instance_id
+  - result_path
+  - result_digest
+  - consumed_at
+  - runtime_task_claimed
+  - workflow_dispatched
+  - aor_dispatch_performed
+  - mission_result_ingested
+  - agent_bus_task_closed
+  - mission_activation_performed
+  - agent_bus_followup_task_written
+  - workflow_evolution_applied
+  - provider_call_performed
+  - browser_action_performed
+  - browser_skill_activated
+  - external_send_performed
+  - crm_or_payment_mutation_performed
+  - live_trading_performed
+  - protected_file_edit_performed
+  - credential_or_secret_read_performed
+  - canonical_promotion_performed
+  - aor_writeback_files
+  - marker_path
+approved_next_step_values:
+  - claim_dispatch_ingest_close_mission_dry_review_task
+runtime_values:
+  - Codex
+consumption_policy_values:
+  - exact_once
+authority_rules:
+  - "Agent Bus enqueue must already be consumed and the task must be open, unclaimed, non-stale, and claimable."
+  - "The gate may claim exactly one local mission.run_dry_review task, dispatch only the existing local AOR dry-review handler, ingest result evidence, and close the task."
+  - "The loaded state is valid only when the Agent Bus task still exists, remains owned by the runtime, and is closed to done."
+  - "Mission activation remains a separate exact-once gate."
+  - "The gate must not apply workflow evolution, call providers, use browsers, send externally, mutate CRM/payment systems, trade, read credentials, edit protected files, write follow-up Agent Bus tasks, or promote canonical state."

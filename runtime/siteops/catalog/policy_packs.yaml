@@ -1,0 +1,18 @@
+- policy_pack_id: siteops_default_v1
+  version: 1
+  status: active
+  blocked_actions:
+    - purchase
+    - billing_action
+    - destructive_action
+    - account_mutation
+    - broker_connection
+    - live_trade
+  approval_required_actions:
+    - export_file
+    - external_share
+    - publish_publicly
+    - paid_provider_call
+    - credential_scope_expansion
+  dry_run_required: true
+  notes: Default fail-closed SiteOps policy pack for production scaffold.

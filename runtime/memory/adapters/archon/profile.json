@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "runtime_behavior_profile",
+  "runtime_id": "archon",
+  "runtime_label": "Archon",
+  "personal_runtime_name": "Archon",
+  "status": "seeded",
+  "updated_at": "2026-04-30T00:00:00Z",
+  "sources": [
+    "06_AGENTS/Archon-Runtime-Profile.md",
+    "CLAUDE.md",
+    "runtime/memory/nav/archon/nav-map.json",
+    "runtime/agent_bus/"
+  ],
+  "behavioral_profile": {
+    "primary_role": "implementation runtime — writes code, tests, docs, and vault artifacts across all ChaseOS phases",
+    "strengths": [
+      "repo-grounded implementation across all ChaseOS phases (1–10)",
+      "test-driven pass structure with build logs after every meaningful session",
+      "documentation truth-sync: build logs, archive notes, index alignment",
+      "context routing discipline: reads Now.md and Project-OS files at session start",
+      "precise scoping — does not expand past declared task boundaries",
+      "vault governance fluency: knows protected files, Gate policy, and permission ceiling contracts"
+    ],
+    "known_failure_modes": [
+      {
+        "id": "session-memory-staleness",
+        "status": "managed",
+        "description": "Adapter memory can lag vault truth after large build days. Mitigated by reading Now.md at session start.",
+        "evidence_refs": []
+      },
+      {
+        "id": "context-drift-long-sessions",
+        "status": "managed",
+        "description": "In very long sessions, task context can drift. Mitigated by re-anchoring on Now.md mid-session.",
+        "evidence_refs": []
+      },
+      {
+        "id": "scope-creep-on-adjacent-tasks",
+        "status": "watched",
+        "description": "When the task is adjacent to existing infrastructure, Archon may notice and want to fix it. Mitigated by flagging to operator rather than expanding scope.",
+        "evidence_refs": []
+      }
+    ],
+    "routing_guidance": [
+      "use runtime/agent_bus/ for coordination-sensitive work",
+      "read CLAUDE.md and Now.md before any engineering session",
+      "escalate requests that exceed declared task boundaries",
+      "post implementation briefs and code-review results back to the bus"
+    ],
+    "confidence_signals": [
+      "navigation overlay seeded",
+      "scorecard evidence not yet populated from bus executions"
+    ]
+  },
+  "governance_boundary": "Layer C memory is advisory and cannot override Gate, role cards, workflow manifests, or operator approval."
+}

@@ -1,0 +1,87 @@
+# strikezone_htf_compass.yaml — draft StrikeZone SBP workflow manifest
+# Created by Hermes/Optimus documentation-schema pass 2026-05-26.
+# Draft-only: no handler implementation or schedule activation is implied by this file.
+
+id: strikezone_htf_compass
+name: "StrikeZone HTF Compass"
+version: "0.1-draft"
+description: "05:55 London daily HTF direction and BTC/ETH market structure compass."
+task_type: scheduled-briefing
+role_card: scheduled-briefing
+trigger_type: scheduled
+owner: operator
+status: draft
+
+permission_ceiling: no_protected_file_writes
+writeback_targets:
+  - "07_LOGS/Operator-Briefs/StrikeZone/"
+  - "07_LOGS/Agent-Activity/StrikeZone/"
+failure_behavior: escalate
+approval_rule: operator-explicit
+
+audit_expectations:
+  - "run_id recorded"
+  - "source registry version/path recorded"
+  - "screenshot paths recorded when evidence is used"
+  - "missing-data flags recorded"
+  - "public/private output separation preserved"
+  - "no trade execution or account mutation performed"
+
+sbp_config:
+  trigger:
+    type: cron
+    cron_expression: "55 5 * * 1-5"
+    timezone: "Europe/London"
+    max_runs_per_day: 1
+  input_adapters:
+    - type: vault-notes
+      trust_tier: 1
+      paths:
+        - "01_PROJECTS/StrikeZone/StrikeZone-Crypto-OS.md"
+        - "06_AGENTS/StrikeZone-SBP-Architecture.md"
+        - "06_AGENTS/StrikeZone-SBP-Source-Registry.md"
+        - "05_PROMPTS/Trading/StrikeZone-Prompt-Registry.md"
+    - type: raw-digest
+      trust_tier: 4
+      optional: true
+      paths:
+        - "03_INPUTS/00_QUARANTINE/Digests/"
+  execution_adapter: hermes
+  delivery_adapters:
+    - type: vault-local
+  guardrail:
+    permission_ceiling: no_protected_file_writes
+    write_scope:
+      - "07_LOGS/Operator-Briefs/StrikeZone/"
+      - "07_LOGS/Agent-Activity/StrikeZone/"
+    read_scope:
+      - "01_PROJECTS/StrikeZone/"
+      - "03_INPUTS/00_QUARANTINE/"
+      - "05_PROMPTS/Trading/"
+      - "06_AGENTS/StrikeZone-SBP-*.md"
+      - "07_LOGS/Operator-Screenshots/StrikeZone/"
+    human_in_loop: required
+    fail_behavior: halt_and_log
+    audit_required: true
+    max_token_budget: 8192
+
+strikezone_boundary:
+  output_mode: operator_reviewed_delivery
+  discord_draft_generation_allowed: true
+  discord_private_review_posting_allowed: true
+  discord_live_public_posting: operator_approved
+  discord_live_trade_signal_posting: operator_approved
+  fully_autonomous_public_posting: disabled_initially
+  trade_execution_allowed: false
+  wallet_or_exchange_signing_allowed: false
+  account_mutation_allowed: false
+  credential_extraction_allowed: false
+  browser_capture_allowed: true
+  stop_and_ask_on:
+    - captcha
+    - 2fa
+    - oauth_reconsent
+    - account_recovery
+    - billing_security_confirmation
+    - source_quality_decision
+  notebooklm_mode: optional_fallback

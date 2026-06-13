@@ -27,13 +27,13 @@ Read these if present:
 Local path:
 
 ```text
-%USERPROFILE%\Documents\Projects\chaseos-web
+<CHASEOS_WEB_REPO>
 ```
 
 WSL path:
 
 ```text
-<WSL_PROJECTS_ROOT>/chaseos-web
+<CHASEOS_WEB_REPO>
 ```
 
 Primary domain:

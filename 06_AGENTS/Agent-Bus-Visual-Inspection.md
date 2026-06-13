@@ -35,7 +35,7 @@ a stable visual entry point with the exact commands and expected runtime nodes.
 Run from the repo root:
 
 ```powershell
-cd %CHASEOS_VAULT_ROOT%
+cd <VAULT_ROOT>
 python -m chaseos agent-bus status --json
 python -m chaseos agent-bus runtimes --json
 python -m chaseos agent-bus heartbeats --runtime Codex --json

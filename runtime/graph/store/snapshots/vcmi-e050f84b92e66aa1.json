@@ -1,0 +1,280 @@
+{
+  "snapshot_id": "vcmi-e050f84b92e66aa1",
+  "created_at": "2026-05-27T07:44:04.334821+00:00",
+  "vault_root": "C:\\Users\\chaseos\\Documents\\chaseos_obsidian",
+  "extraction_scope": [
+    "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-e7da1654ba52f093.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260527-074357-source-visual-captur_f1b45d444746.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/workspace.json",
+    "03_INPUTS/00_QUARANTINE/Sources/20260527-074357__source__visual-capture__capture-to-markdown-real-web-replay-example-d.md"
+  ],
+  "nodes": [
+    {
+      "node_id": "f56e7345019ab8d3",
+      "label": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-e7da1654ba52f093.json",
+      "node_type": "source_intelligence_core_ingestion_artifact",
+      "source_file": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-e7da1654ba52f093.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "artifact_digest": "89b0a2bb98baabcd93df9cdd19d593e30337c00c35e6ef361445d04e359fa87e",
+        "ingestion_digest": "451325f051518edd10dc6311f337f2d0f7a393c35b4d3eb80010458ee3b9d459",
+        "pass_id": "visual-capture-markdown-ingestion-pass35-source-pack-sic-ingestion-executor"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:ingestion_artifact"
+    },
+    {
+      "node_id": "b161ab57226626d1",
+      "label": "Capture to Markdown Real Web Replay Example Domain 2026-05-27",
+      "node_type": "source_intelligence_core_source_package",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260527-074357-source-visual-captur_f1b45d444746.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c",
+        "source_type": "markdown",
+        "user_trust_level": "reviewed",
+        "chunk_count": 6,
+        "normalized_text_char_count": 6984,
+        "origin_path": "C:\\Users\\chaseos\\Documents\\chaseos_obsidian\\03_INPUTS\\00_QUARANTINE\\Sources\\20260527-074357__source__visual-capture__capture-to-markdown-real-web-replay-example-d.md",
+        "origin_url": "https://example.com/"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package"
+    },
+    {
+      "node_id": "bf9463323c332252",
+      "label": "vcmi-reviewed-captures",
+      "node_type": "source_intelligence_core_workspace",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/workspace.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "workspace_slug": "vcmi-reviewed-captures",
+        "workspace_uuid": "621130db-575e-46fe-a9c6-556add2519d3",
+        "source_count": 2,
+        "index_status": "not-indexed"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:workspace"
+    },
+    {
+      "node_id": "1eea8a2a0feae106",
+      "label": "20260527-074357__source__visual-capture__capture-to-markdown-real-web-replay-example-d",
+      "node_type": "file",
+      "source_file": "03_INPUTS/00_QUARANTINE/Sources/20260527-074357__source__visual-capture__capture-to-markdown-real-web-replay-example-d.md",
+      "source_line": null,
+      "domain": "capture",
+      "project": null,
+      "properties": {
+        "language": "markdown"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:capture_markdown"
+    },
+    {
+      "node_id": "5a62af3a7b40fd76",
+      "label": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0000",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260527-074357-source-visual-captur_f1b45d444746.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c",
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0000",
+        "chunk_index": 1,
+        "text_sha256": "5133af50f8eb01576a1bbe3df67c564bf6f62ac832a9d0e2dfb3e8c08ff030f3",
+        "text_char_count": 994
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "3723bd38b4ec071d",
+      "label": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0001",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260527-074357-source-visual-captur_f1b45d444746.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c",
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0001",
+        "chunk_index": 2,
+        "text_sha256": "d70528af8be53faab4d5c5d9cd3cdaa57bd9b02739d31810067894d4850014fe",
+        "text_char_count": 406
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "9bb640764d61e8f6",
+      "label": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0002",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260527-074357-source-visual-captur_f1b45d444746.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c",
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0002",
+        "chunk_index": 3,
+        "text_sha256": "eec18398d832e233e9d6cbc52926c0f8d8889c3e320db19beadae2b372cc4be7",
+        "text_char_count": 1208
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "68605e5e45db5e0a",
+      "label": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0003",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260527-074357-source-visual-captur_f1b45d444746.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c",
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0003",
+        "chunk_index": 4,
+        "text_sha256": "74609382d5c779fda2833829c9511c05564b96929d143d7e3397f2c48313949f",
+        "text_char_count": 950
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "863d972c9d272f5a",
+      "label": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0004",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260527-074357-source-visual-captur_f1b45d444746.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c",
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0004",
+        "chunk_index": 5,
+        "text_sha256": "c213a95e64b7bc7c93376e5689d8f3f29325149b6946d3779ac717b61ad520e3",
+        "text_char_count": 469
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "68393db86f7c24d2",
+      "source_id": "f56e7345019ab8d3",
+      "target_id": "b161ab57226626d1",
+      "relation": "ingested_source_package",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c"
+      },
+      "provenance": "vcmi_pass36:ingestion_artifact_to_source_package"
+    },
+    {
+      "edge_id": "a93fc9af528b060e",
+      "source_id": "b161ab57226626d1",
+      "target_id": "bf9463323c332252",
+      "relation": "belongs_to_workspace",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "workspace_slug": "vcmi-reviewed-captures"
+      },
+      "provenance": "vcmi_pass36:source_package_to_workspace"
+    },
+    {
+      "edge_id": "025025969a46f18d",
+      "source_id": "b161ab57226626d1",
+      "target_id": "1eea8a2a0feae106",
+      "relation": "derived_from_capture_markdown",
+      "confidence": "EXTRACTED",
+      "properties": {},
+      "provenance": "vcmi_pass36:source_package_to_capture_markdown"
+    },
+    {
+      "edge_id": "b58cc79a9c0c4ff2",
+      "source_id": "b161ab57226626d1",
+      "target_id": "5a62af3a7b40fd76",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0000"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "13e893581c3aad34",
+      "source_id": "b161ab57226626d1",
+      "target_id": "3723bd38b4ec071d",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0001"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "3a3b300d09451483",
+      "source_id": "b161ab57226626d1",
+      "target_id": "9bb640764d61e8f6",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0002"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "360b29433b2173f8",
+      "source_id": "b161ab57226626d1",
+      "target_id": "68605e5e45db5e0a",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0003"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "230e579185d9ceb3",
+      "source_id": "b161ab57226626d1",
+      "target_id": "863d972c9d272f5a",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c_c0004"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    }
+  ],
+  "community_assignments": {},
+  "build_info": {
+    "builder": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor",
+    "source_model": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor.v1",
+    "source_readiness_pass_id": "visual-capture-markdown-ingestion-pass36-source-pack-sic-graph-indexing-readiness",
+    "source_readiness_policy_id": "vcmi.reviewed_capture_source_pack_sic_graph_indexing_readiness.v1",
+    "source_intelligence_core_ingestion_artifact_path": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-e7da1654ba52f093.json",
+    "source_intelligence_core_ingestion_artifact_digest": "89b0a2bb98baabcd93df9cdd19d593e30337c00c35e6ef361445d04e359fa87e",
+    "source_intelligence_core_ingestion_digest": "451325f051518edd10dc6311f337f2d0f7a393c35b4d3eb80010458ee3b9d459",
+    "graph_index_preview_packet_digest": "e050f84b92e66aa11efcd40e09fa7c93851a2efec8201f0ca19431075ed4d62e",
+    "graph_snapshot_written": true,
+    "canonical_mutation_performed": false
+  },
+  "metadata": {
+    "policy_id": "vcmi.reviewed_capture_source_pack_sic_graph_indexing_executor.v1",
+    "pass_id": "visual-capture-markdown-ingestion-pass37-source-pack-graph-indexing-executor",
+    "record_type": "vcmi_source_pack_source_intelligence_core_graph_snapshot",
+    "source_package_id": "27528067-bdfd-4a3f-8139-c41d29dcc81c",
+    "target_workspace_id": "vcmi-reviewed-captures",
+    "canonical_mutation_allowed": false,
+    "canonical_knowledge_promotion_performed": false
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "routes": [
+    {
+      "id": "graph-phase1-early",
+      "hash": "#/graph",
+      "name": "Graph (early / lazy-load)",
+      "capture_delay_ms": 9000,
+      "screenshot_path": "runtime/studio/shell/qa_graph_phase1.png",
+      "meta_path": "runtime/studio/shell/qa_graph_phase1.json",
+      "result_script": "JSON.parse(JSON.stringify({chip:(document.getElementById('graph-node-count')||{}).textContent||'',linkChip:(document.getElementById('graph-link-overlay-summary')||{}).textContent||'',nodes:(window._graphAllNodes||[]).length,links:(window._graphAllLinks||[]).length,trace:(window.__loadGraphTrace||[]).slice(-12)}))"
+    },
+    {
+      "id": "graph-phase2-full",
+      "hash": "#/graph",
+      "name": "Graph (full / edges formed)",
+      "capture_delay_ms": 55000,
+      "screenshot_path": "runtime/studio/shell/qa_graph_phase2.png",
+      "meta_path": "runtime/studio/shell/qa_graph_phase2.json",
+      "result_script": "JSON.parse(JSON.stringify({chip:(document.getElementById('graph-node-count')||{}).textContent||'',linkChip:(document.getElementById('graph-link-overlay-summary')||{}).textContent||'',nodes:(window._graphAllNodes||[]).length,links:(window._graphAllLinks||[]).length,dim:(document.getElementById('graph-dim-toggle')||{}).textContent||'',trace:(window.__loadGraphTrace||[]).slice(-12)}))"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+---
+# trace_idea - Read-only provenance trace workflow
+# ChaseOS AOR Phase 9 - Provenance foothold
+#
+# Traverses declared lineage surfaces and writes a bounded trace report only.
+# No canonical mutation occurs during execution.
+id: trace_idea
+name: "Trace Idea"
+version: "1.0"
+description: "Read-only provenance trace workflow that resolves declared lineage across provenance blocks, acquisition artifacts, source packages, and audit references."
+
+task_type: trace-idea
+role_card: trace-idea-readonly
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: report_only
+
+inputs:
+  - artifact_id    # required trace target
+  - date           # optional ISO date; defaults to today
+  - target_id      # optional alias for artifact_id
+  - idea_id        # optional alias for artifact_id
+
+outputs:
+  - found
+  - source_artifact_count
+  - derived_artifact_count
+  - audit_artifact_count
+  - trace_report_path
+
+writeback_targets:
+  - "07_LOGS/Trace-Reports/"
+
+failure_behavior: escalate
+
+rollback_path: "delete the generated trace report if it is no longer needed; no canonical write occurs"
+
+approval_rule: none
+
+audit_expectations:
+  - "trace target recorded"
+  - "lineage items and gaps recorded honestly"
+  - "report-only execution recorded"
+
+schedule: null
+
+notes: >
+  Phase 9 provenance foothold: trace_idea is a read-only traversal workflow.
+  It traces declared lineage across provenance blocks, acquisition artifacts,
+  source packages, and audit/log references, then writes a bounded report to
+  07_LOGS/Trace-Reports/. Missing lineage is reported as a gap rather than
+  invented.

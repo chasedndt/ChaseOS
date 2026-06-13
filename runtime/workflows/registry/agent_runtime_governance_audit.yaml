@@ -1,0 +1,157 @@
+---
+id: agent_runtime_governance_audit
+name: "Agent Runtime Governance Audit"
+version: "0.1"
+description: "VentureOps real workflow proof: ingest declared local ChaseOS governance/runtime files, summarize runtime permission posture, and write an internal proof artifact only."
+
+task_type: ventureops-runtime-audit
+role_card: ventureops-runtime-audit
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: proposal_log_only
+
+inputs:
+  - date
+  - run_id
+  - source_paths
+  - include_offer_packet
+  - include_delivery_approval_contract
+  - include_delivery_packet_preview
+  - include_approval_request_artifact
+  - include_approval_consumption_proof
+  - approval_decision_id
+  - approval_decision
+  - approval_decision_actor
+  - approval_request_run_id
+  - include_exact_once_delivery_gate
+  - include_external_send_dry_run
+  - external_delivery_channel
+  - external_recipient_label
+  - external_recipient_route
+  - include_approved_external_send_proof
+  - external_send_approval_id
+  - external_send_approval_decision
+  - external_send_approval_actor
+  - include_crm_draft
+  - crm_system
+  - crm_record_type
+  - include_payment_invoice_draft
+  - payment_system
+  - invoice_record_type
+  - invoice_currency
+  - invoice_amount
+  - include_workflow_exchange_publication_preview
+  - publication_surface
+  - listing_visibility
+  - include_live_client_scope_contract
+  - include_live_client_scope_proof_gate
+  - real_client_scope_evidence_path
+  - client_label
+  - engagement_type
+  - approved_use
+  - delivery_channels
+
+outputs:
+  - proof_path
+  - client_report_path
+  - scorecard_path
+  - offer_packet_path
+  - client_scope_path
+  - delivery_approval_contract_path
+  - delivery_packet_preview_path
+  - approval_request_artifact_path
+  - approval_consumption_proof_path
+  - exact_once_delivery_gate_path
+  - delivery_gate_marker_path
+  - external_send_dry_run_path
+  - approved_external_send_proof_path
+  - crm_draft_path
+  - payment_invoice_draft_path
+  - workflow_exchange_publication_preview_path
+  - live_client_scope_contract_path
+  - live_client_scope_proof_gate_path
+  - proof_card
+  - scorecard
+  - source_count
+  - signal_counts
+
+required_reads:
+  - "06_AGENTS/Agent-Control-Plane.md"
+  - "06_AGENTS/Permission-Matrix.md"
+  - "06_AGENTS/Trust-Tiers.md"
+  - "06_AGENTS/Backends-Supported.md"
+  - "runtime/codex/capabilities.yaml"
+  - "runtime/workflows/registry/use_case_registry.yaml"
+
+writeback_targets:
+  - "07_LOGS/Workflow-Proofs/"
+
+failure_behavior: escalate
+
+rollback_path: "delete the generated proof artifact if the operator rejects this internal proof; no canonical state is modified"
+
+approval_rule: none
+
+audit_expectations:
+  - "workflow_id recorded"
+  - "input_sources recorded"
+  - "source_count recorded"
+  - "proof_path recorded"
+  - "client_scope_path recorded when requested"
+  - "delivery_approval_contract_path recorded when requested"
+  - "delivery_packet_preview_path recorded when requested"
+  - "approval_request_artifact_path recorded when requested"
+  - "approval_consumption_proof_path recorded when requested"
+  - "exact_once_delivery_gate_path recorded when requested"
+  - "delivery_gate_marker_path recorded when requested"
+  - "external_send_dry_run_path recorded when requested"
+  - "approved_external_send_proof_path recorded when requested"
+  - "crm_draft_path recorded when requested"
+  - "payment_invoice_draft_path recorded when requested"
+  - "workflow_exchange_publication_preview_path recorded when requested"
+  - "live_client_scope_contract_path recorded when requested"
+  - "live_client_scope_proof_gate_path recorded when requested"
+  - "blocked surfaces recorded"
+  - "no provider/browser/external-send action attempted"
+  - "external send remains blocked even after approval consumption"
+  - "approval request artifact does not consume approval"
+  - "approval consumption proof binds to the exact approval request run id"
+  - "duplicate delivery gate marker blocks repeated consumption attempts"
+  - "external-send dry-run hashes recipient route without persisting raw route"
+  - "approved external-send proof uses local proof sink without live external delivery"
+  - "CRM draft links workflow id, client scope, delivery packet, proof artifact, and approved-send proof without CRM mutation"
+  - "payment/invoice draft links workflow id, client scope, delivery packet, proof artifact, approved-send proof, and CRM draft without payment mutation or invoice send"
+  - "Workflow Exchange publication preview links payment/invoice draft and keeps marketplace publication, public listing creation, and revenue claim false"
+  - "live client scope contract blocks real client proof until explicit real client-approved scope exists"
+  - "live client scope proof gate validates explicit scope evidence and safe declared read paths without running live client workflow"
+
+notes: >
+  First executable VentureOps workflow proof. The workflow ingests declared local
+  governance/runtime files and writes bounded proof, report, scorecard, optional
+  offer, client-scope, blocked delivery-approval, no-send delivery packet
+  preview, pending approval request, approval-consumption proof, exact-once
+  delivery gate, delivery gate marker, external-send dry-run, approved
+  external-send proof, CRM draft, payment/invoice draft, Workflow Exchange
+  publication preview, live client scope contract, and optional live client
+  scope proof gate artifacts.
+  Approval consumption
+  requires an explicit decision id, decision value, actor, and matching approval
+  request run id. Exact-once delivery gating refuses to proceed if the marker
+  path already exists. External-send dry-run validates channel and recipient
+  package shape but hashes the recipient route and performs no live dispatch.
+  Approved external-send proof records a local proof-sink dispatch only. It does
+  not call a provider, control a browser, read secrets, perform live external
+  delivery, mutate canonical state, mutate CRM/payment systems, or perform live
+  trading. CRM draft output is a local proposal only and requires separate
+  approval before any CRM mutation. Payment/invoice draft output is a local
+  proposal only and requires separate approval before any payment mutation or
+  invoice send. Workflow Exchange publication preview output is a local
+  proposal only and requires separate approval before any marketplace
+  publication, public listing creation, or revenue claim. Live client scope
+  contract output is a blocker contract only and does not ingest live client
+  data or perform a live client run. Live client scope proof gate output
+  validates a provided JSON scope-evidence packet and declared read paths, but
+  still does not ingest live client data, perform external delivery, or complete
+  the live client proof.

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "surface_id": "provider.runtime.rpgl",
+  "display_name": "Runtime Provider Governance Layer",
+  "surface_family": "provider_model_runtime",
+  "surface_type": "provider_model",
+  "owner_layer": "runtime/providers",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/providers/governance_layer.py",
+    "runtime/providers/registry.py",
+    "runtime/providers/call_surface_audit.py"
+  ],
+  "docs_refs": [
+    "06_AGENTS/Runtime-Provider-Governance-Layer.md"
+  ],
+  "trust_ceiling": "tier-2",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "provider.fallback_decision",
+      "maps_to": "provider_fallback",
+      "risk_class": "provider_fallback",
+      "approval_required": "conditional"
+    },
+    {
+      "capability_id": "provider.live_probe",
+      "maps_to": "provider_live_probe",
+      "risk_class": "external_network_call",
+      "approval_required": true
+    },
+    {
+      "capability_id": "provider.config_apply",
+      "maps_to": "provider_config_apply",
+      "risk_class": "runtime_config_change",
+      "approval_required": true
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "runtime/providers/provider_state_ledger.jsonl",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "audit_targets": [
+    "runtime/providers/provider_state_ledger.jsonl",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/providers"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  }
+}

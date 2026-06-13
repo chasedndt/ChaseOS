@@ -1,0 +1,2018 @@
+{
+  "runtime_id": "openclaw",
+  "schema_version": "1.0",
+  "executions": [
+    {
+      "audit_id": "f42888d4-739d-42d1-a145-d5f53c8a9709",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:58:17.573992+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "3d4231b6-097e-4f35-b85d-fae7b77feead",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:59:05.722206+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "384e8604-8eee-48b3-bf8b-1a02e4e42853",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:59:06.244285+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "d9145990-0628-4a2c-b101-0d9ab668f7e6",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:59:06.972270+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "72c51ee9-97d5-48f1-96c6-1d415af41b3c",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:59:07.764005+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "73f875a3-57fa-496f-b7ec-f76e8284b93f",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:59:08.560780+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "4b4f6162-71fa-471e-a257-488a317781d0",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:59:09.340710+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "8ffc7c30-070e-4588-8151-a2563247ff58",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-19T23:59:10.016187+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "1d021c44-0093-4032-b62b-3664fea53366",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:00:07.823478+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "730582f5-a6bd-4ff7-8414-80cf51d9380f",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:00:08.733546+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "7f99f3d4-439e-4852-abc5-695356402222",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:00:09.571282+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "f9bc6ef6-cbbf-4c65-ab48-9ae0ed7817a8",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:00:10.374604+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "4a48f683-4da3-4d28-aae2-aeb788c0975a",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:00:11.110168+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "a3ee7883-12dd-4eae-8f91-bb62f82afb53",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:00:11.996150+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "16c76ed6-42af-4616-829d-c39965e2a71d",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:00:12.812037+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "650ae0ec-5d4a-4e0e-b804-16a14ac6ca07",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:01:09.373223+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "abc0fa7e-3191-4a1f-9ece-a84a1b88e136",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:01:09.897529+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "42a19113-b240-4c58-9f11-d9f39652c429",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:01:10.581577+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "e5d8402b-a222-4923-be03-47d2a3e03f1b",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:01:11.350370+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "2b1d39e6-39b3-4122-bcca-1cb7403b52d4",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:01:12.100248+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "633287f8-0fa9-4570-9a2d-8adafe7174ec",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:01:12.893011+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "074bc144-3127-4093-ba18-f716416a4fc9",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:01:13.641792+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "1ad212fe-516e-4e40-b584-6f09ee0393b7",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:02:09.948127+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "a3c56f62-10c8-4d4a-932a-04500788602e",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:02:10.536509+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "5349a731-64c2-468e-b140-49b261cdf0c1",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:02:11.153369+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "a4b3d144-4b86-4953-9ff3-b9c40f12563e",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:02:11.889435+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "2f0c54e6-a033-4d56-82b5-0d579c3773d3",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:02:12.612471+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "28f6bb00-bc2e-4c7b-8949-4f05196dab28",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:02:13.359736+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "4f91a8cb-4764-429e-8abf-f6a3ad90a286",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:02:14.061892+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "731afe53-2e65-4c4f-86c4-babbe1b71663",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:03:10.120369+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "dc659dab-ce20-4372-b681-69036f54be2b",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:03:10.636484+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "817191c5-c31e-4ef0-a624-6247ce9336ef",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:03:11.194255+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "f482ebfa-726c-47a7-b3c2-1dbbbd823fb2",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:03:11.905704+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "44e9c8bf-4f03-4038-ba20-5a6f2dea2273",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:03:12.659068+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "2a86f729-c721-486d-ba08-8312b9def074",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:03:13.396452+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "45be64f0-52d1-4183-a85e-42738ced5e6e",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:03:14.112492+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "8d934f82-16c3-43ad-b79d-5f56b7629e12",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:04:10.198385+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "68e2e1d8-3d74-4726-bdc1-8b3723dad532",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:04:10.688250+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "50fa6d87-d244-4e09-84ae-d69552b38b63",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:04:11.388112+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "40993412-5aa3-45b6-ab4e-2834e1edd7ca",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:04:12.156560+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "21c22632-ac18-4539-b96c-e12de36faca8",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:04:13.040906+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "ff7b409e-d5f9-4f5a-9a12-01489d3be469",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:04:13.769994+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "efe18e86-6193-446b-a803-7821521a1a5a",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:04:14.593721+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "957f70a6-243a-45db-ad59-3f2a4931d19a",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:05:12.207976+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "16d4c730-5eaf-4272-9a50-2c434ab706d2",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:05:13.156173+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "f50cbf3e-15e0-4964-a314-a4c467808332",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:05:14.100010+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "3b78e2de-2ff4-4ae5-9b8a-175ac0bea824",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:05:14.830147+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "331b5713-f6aa-419f-9661-84a83fc9a508",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:05:15.603355+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "49354f5d-d1c3-498e-8a0b-62b3e2579b07",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:05:16.383700+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "82239174-f345-4ae3-ac35-558a57b88ad0",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:05:17.077094+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "d227c296-7726-4edb-a5a5-4b2be67ff199",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:06:01.498129+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "334f16bd-3d51-4965-ae1b-7cb20afc383c",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:06:01.765168+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "ee07d22d-a1cf-4f10-acc5-246ad34aa680",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:06:02.021015+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "80da2ce6-4e4c-40ec-ad86-b4d4418c7016",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:06:02.291481+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "2dd9f1d4-96a5-4822-bae7-02f33ed7a4f5",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:06:02.546124+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "810323c7-0d72-4287-a038-14fc3bcb7485",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:06:02.813410+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "5719aed9-463f-49ee-a461-f2307220c527",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T00:06:03.060637+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "891893f9-e963-49b7-8a8b-d974cdb03f94",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T02:01:11.460949+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "f7e5c298-12e5-4a16-9eee-4fad32015588",
+      "workflow_id": "meeting_ingest_linker",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T02:12:11.439839+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "4a972590-de4c-41ab-b01a-29c7e075a803",
+      "workflow_id": "meeting_ingest_linker",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T02:15:21.682719+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "7d5c748d-c16c-4b33-9186-98ef4474647b",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T11:00:17.614366+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "73856160-2ad6-4550-92fe-feeba4de28a8",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T12:34:07.319600+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "0b567534-2540-4b23-9e37-7ecaf56da826",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T12:34:07.557344+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "863c0c94-d045-4183-a6d7-3af089440e64",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T12:34:07.739558+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "a9dd57c1-8019-4dc8-8f68-799ce250657b",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T12:34:07.924591+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "1eafbf94-7f41-42a1-9b9b-37c3be13a2ae",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T12:34:08.121389+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "49e161da-5639-46c3-9b8f-dd9c9f3367a4",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T12:34:08.317139+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "5d121c5d-9926-45b2-acd7-a3ad75212021",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T12:34:08.512057+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "5ab69273-c3b9-4fe7-b483-4485592d29d2",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T14:00:35.060548+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "18111f1f-5879-490d-b743-c6e8a7c98801",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:01:21.924306+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "1e1bd1bb-8fd6-4058-a540-fbbcf7a26c59",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:10:30.352651+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "ed301d60-88e6-4415-8629-813ac9064cea",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:10:31.849399+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "dec6bf12-1c92-44c7-9822-2b8275982614",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:10:33.617183+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "2134b020-e3e5-409e-90e6-3aeae71249dc",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:10:35.678901+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "a71a57be-2f68-47f1-bbe5-ea4d8a19ecda",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:10:36.990215+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "4e029bd7-2739-4332-9c2e-0935a9990cec",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:10:38.032093+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "eb34234d-fae0-45a7-8c11-ec9a2813b384",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:10:39.236586+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "461b558b-5200-4175-b5b3-4e2f2a4d713a",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:11:32.628045+00:00",
+      "stage_reached": "run"
+    },
+    {
+      "audit_id": "42d82cb4-2133-4b9c-acdd-6aa7df28deef",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:13:36.321572+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "c2f67caa-27e9-4e1b-a43c-b4b0586cfc16",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-20T23:15:01.216160+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "dcf67903-e57c-414e-81e6-13f76faae789",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T02:00:20.163541+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "0d78c1c1-a590-4c05-ae2f-ae5aa5befda3",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:00:24.980711+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "88aab023-b137-413d-9090-7be7d0427c4a",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:56.078335+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "75b30cff-9e5a-4d76-b241-319c777e1dac",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:56.424444+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "814e3476-e195-4fa1-86ad-9414f0b8e807",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:56.445167+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "50e07d1e-3665-4155-82c7-d874d5235fb3",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:56.814893+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "91617d83-7a7a-4462-ab2f-05f460e6560c",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:57.079982+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "1a6923a8-c738-49ad-b4b4-64999230e3f6",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:57.190110+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "20fd47c1-894e-4b84-b738-1cd3be4ad12a",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:57.567744+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "78702c75-07e2-4da0-b62f-5a1550b1a163",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:57.701901+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "44889f9f-f75e-40c4-b276-a8ed59daaf3e",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:57.967595+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "6376f2f7-5326-4004-a7e2-e8f1b6431cc8",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:58.347808+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "ec503a63-22b7-4b75-b07b-4b5cbd391faa",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:58.390319+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "346543f5-5844-4bd0-aadc-c670f1827fe4",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:59.053975+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "01d11dba-b31f-449a-b4d7-318764b43c93",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:42:59.763179+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "13083b04-575b-4886-accd-6d489bcfc9a6",
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T11:43:00.455823+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "04e44fff-3a82-41a2-a4ad-a9376f25be2d",
+      "workflow_id": "hermes_operator_today_shadow",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T13:08:09.778878+00:00",
+      "stage_reached": "workflow_lookup"
+    },
+    {
+      "audit_id": "4dc125f2-366a-4b18-9e0a-e328e9d118ad",
+      "workflow_id": "hermes_operator_today_shadow",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T13:08:27.312810+00:00",
+      "stage_reached": "workflow_lookup"
+    },
+    {
+      "audit_id": "27a181b7-7339-4e48-ab2f-1cb01b54989d",
+      "workflow_id": "hermes_operator_today_shadow",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T13:08:49.492741+00:00",
+      "stage_reached": "workflow_lookup"
+    },
+    {
+      "audit_id": "98555a30-c38e-4828-bf2e-627e2f1501f2",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-21T14:01:50.448685+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "31ecf079-959c-4f46-87ed-f01a47784d1c",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-22T02:00:15.531689+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "78c8f58a-d447-4dd3-b745-a0aaed7671f4",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-22T14:01:01.238359+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "a4d84c77-de78-4919-a224-152e3ae4502d",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-23T02:01:04.755730+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "383c92a6-27eb-421a-b1ca-f572411db458",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-23T14:02:13.234697+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "f8dc3209-be83-4351-bad8-1a01797ced0b",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-23T22:31:12.590364+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "ec6eeb53-7b9a-4b60-bf53-14a1988c483c",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-23T22:33:09.607682+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "d5caa1b7-dfa2-4afe-9cb5-529183162950",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-24T02:00:29.350904+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "4482553c-be4d-44b4-9125-57f50e47ee5e",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-24T07:00:13.674650+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "7b8d3128-c664-4178-9d5e-73cb1055ab18",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-24T14:00:48.405420+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "1dd53045-dafc-4980-a946-36f7b6cd754f",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-25T02:00:26.773598+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "9c301967-9cab-4c8a-b79a-d866e0907bd3",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-25T11:00:19.325189+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "8dec7681-27e4-4f23-bff6-66261477f521",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-25T11:05:58.480336+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "d7c2fa64-71a0-43a8-a4e2-bf782b9e8a3d",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-25T23:00:06.081085+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "6ae51163-2d9a-4794-9d39-bd18cb4e70b3",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-25T23:00:40.994085+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "6e82cb4f-1ba8-4f0d-9f8d-187ff7aac94b",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-26T02:01:01.903218+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "ae9331df-f727-4fea-983f-22f272721eb4",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-26T07:00:55.119104+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "c6e21bd4-104c-42f2-9045-a84e99eb6e05",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-26T11:00:05.363129+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "abf55bdb-f93d-4e3e-8f07-7d6615ad8d94",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-26T11:01:38.192369+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "f0eb9eb2-76cc-4fca-8cfe-97008518a7b6",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-26T14:01:07.016666+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "65ead1ce-29d5-4e86-a7d8-4eae1ac1bc30",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-26T23:00:14.203609+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "3e759377-a67e-4385-8db3-1284fba139d4",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-27T00:53:17.780959+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "098a8bdc-0ab0-4c51-9cd8-efb8981d628d",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-27T02:00:49.749634+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "a7df205a-29e0-42ac-8ef5-4d589575b367",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-27T07:41:21.588386+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "ce767a50-45a7-4065-825c-a1288670f154",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-27T07:44:03.046109+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "2fa0fe40-2879-4853-b569-f647dd84f405",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-27T11:00:34.426917+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "e474656c-0108-4d35-96cb-8035f1e20234",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-27T11:01:25.212945+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "2cc7eed3-b41c-44b8-a729-752630b8858f",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-27T14:00:48.864347+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "21353646-5170-44c0-b16e-a9bca059d2f3",
+      "workflow_id": "source_pack_builder",
+      "outcome": "escalated",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T00:00:27.952558+00:00",
+      "stage_reached": "task_classification"
+    },
+    {
+      "audit_id": "8356d32a-1e9c-4607-99ef-36bbe4de326b",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T00:11:42.193278+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "deeb6231-d07e-4b1e-8b77-336e7cc1ad5c",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T02:00:44.378618+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "a2cd1f71-ef89-451d-be25-951298a0dc3e",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T04:42:36.534387+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "6311bd38-e25b-4abf-83d0-00eff72a38e6",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T04:43:56.355542+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "49f8c820-3422-44b7-a6d7-3a563f0d98cb",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T04:51:24.864199+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "0c834eec-2985-42ec-8b56-c17c15a0c230",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T04:52:45.532471+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "fc8bc415-aaca-4ace-86dd-53a35e309318",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T04:56:45.879357+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "0e22e7b2-e6af-4fd0-968c-9814d54fa08d",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T04:58:16.951509+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "c2fc2acb-0da1-4728-af51-03111b96b44a",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:01:20.257491+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "d9cfafb7-2c0e-4e70-b700-0cb6ed2f5c2a",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:02:42.294121+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "74b6886e-c0f4-4bd4-bc4f-73b458877b00",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:09:48.245042+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "cbfd3987-3de2-4ff6-a8ba-052b7234a877",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:12:09.791391+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "beb7ec7a-247b-421b-a063-0b5040155830",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:23:00.979067+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "253a0681-de84-4110-8dc3-1807e06a0bac",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:28:30.306721+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "ac2825d6-7696-4ff5-8da1-a13382c41731",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:34:59.743102+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "3bf0f92b-4b81-42d1-b156-f750d82a3139",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:41:19.935618+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "a805d262-14d6-40c5-9f59-7d8d5d0ca748",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:47:25.823549+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "b0ad9d68-4c68-49db-8656-d52b4d99fada",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T05:54:01.401407+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "fd21fe0a-4f23-4938-a493-a32aab53e674",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T06:30:13.180835+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "d985f46f-8784-4adb-994a-0db1a6fc2a47",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T06:40:03.268394+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "268fe954-d6c1-477b-a0a6-af4b4d4eb52f",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T06:47:51.152810+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "9b4fab4f-d9c1-463a-911e-ea0878ddf717",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T06:50:12.623108+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "fdfc67f4-8717-409a-9e1d-05aafd07b71d",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T07:43:05.318461+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "0e77e1b5-f7bb-4a41-903c-5456ff448ea8",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T14:01:58.580278+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "bbdf723b-6ac7-4999-9740-2877be0e9d23",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-28T23:00:23.315974+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "90cba279-cc2b-4e6b-8649-2a919e5a3e89",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-29T02:00:11.282292+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "4b807db8-34fd-4291-9dfa-7eadf863510f",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-29T11:00:06.302959+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "2be55317-6b76-4004-b8d2-8070ddbf840b",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-29T14:00:48.835769+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "28d44a3c-0000-45ee-9082-c66a9a3af9b2",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-29T19:00:27.107753+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "c67619a8-d615-47fd-8a46-c1695e3e2cdc",
+      "workflow_id": "source_pack_builder",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-29T19:15:29.545777+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "75bb69c1-0ae6-4b82-a57a-95f0955273ba",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-29T23:00:09.642046+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "9e2ad1cf-b1d6-4867-818e-9757268e4b7d",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-30T02:00:37.032131+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "6adc05ee-b41d-4134-9116-bb7c6a98158d",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-31T02:01:20.561178+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "91ed488d-584b-49ae-8d1a-98eddb2a70b8",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-31T14:01:08.297151+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "cb4d6765-7356-414f-b6cb-1ad1fc247311",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-01T02:01:08.024591+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "272ab84a-c75a-4d43-b275-623539e1a705",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-01T14:02:15.521886+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "ca9387e9-ad18-4598-a540-5739ae65146e",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-02T02:00:37.749524+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "286a58c7-196f-49a2-89cc-b67d4366cfff",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-02T13:55:38.881113+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "31319057-a251-4a5f-aa14-a54153fcd2f0",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-02T13:56:35.504503+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "4e7dc194-76f8-4487-954f-65d62507d1d9",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-02T14:01:31.272026+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "2d5ae19e-da33-4804-aff6-2c73b264edd1",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-02T23:00:22.841985+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "d8886a2c-a9b3-459a-b7fd-9aa0cb8fa6b7",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-03T02:00:40.643412+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "fdf0afb3-9d9e-4c95-b922-07302a517f3e",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-03T11:00:40.510486+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "0ba855af-ea43-481e-ae14-2143f10a4c84",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-03T14:16:24.392528+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "00442733-3cbc-4e00-8712-60db72841a27",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-03T19:00:30.516414+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "345fa865-23ae-4ddb-84af-d13b4ee52fe1",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-03T23:00:47.500215+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "b5d7a70b-33f2-4a7c-b4cc-a4f289d24200",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-04T03:54:07.261213+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "06989763-a8ac-433b-982b-d4c12874b647",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-04T07:00:11.029726+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "226ee758-7100-4fb6-ab1e-6afc9e06a4f9",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-04T11:00:30.174500+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "d819e314-1146-46b5-b392-2b6ec63e1a2a",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-04T14:01:05.060786+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "3b221456-4f85-4935-bc43-8c4a62fc059f",
+      "workflow_id": "operator_close_day",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-04T23:00:36.715181+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "8c7b0408-ad61-40f2-bb43-75278373186b",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-05T02:01:05.212725+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "66764fd9-c767-4854-ab49-327ecbbfb165",
+      "workflow_id": "operator_today",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-05T11:00:24.527085+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "ad724a32-04ee-44ad-b0c2-b1d43e356e22",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-05T14:01:00.448612+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "f6e68bf1-9fe6-415f-88a2-ab74086cf775",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-06T20:09:55.695394+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "05122f41-c2ff-4252-b3c6-edc4ee632f64",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-06T20:11:03.761281+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "249c28d9-5ac0-4941-8cc4-6dfbdfaf515c",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-06T20:12:21.228095+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "c85c09e7-bb7e-4e92-911f-8b4f74f69049",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-06T20:13:49.747474+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "58166c74-2aa9-4704-aca3-3c27a9806a5e",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-06T20:20:57.027700+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "a69fea61-f481-4fd4-a0cc-23a71f95a82d",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-07T02:00:58.113942+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "60d57b39-6d99-4e66-95da-5430428768ee",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-07T14:00:14.118757+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "1309b1bf-f9b7-435c-985c-8b286a33bcd5",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-08T02:01:29.711720+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "0de6559d-cbef-41bd-9ce7-9f6d292287a3",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-08T14:00:13.983741+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "0ddf19a5-36a5-41b7-90de-2669cb70fa05",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-09T02:01:07.865163+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "7fa05096-bb1c-429c-acd8-fd4152ad39ff",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-09T14:00:25.057172+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "e97aca6e-d589-4f34-8b93-fc5047dcf269",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-10T02:00:52.959493+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "bd5c8eba-d973-401e-aba4-5d004ae0a558",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-10T15:08:52.509913+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "78d8d830-808f-41d5-8d38-b109579dc221",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-11T02:30:28.191387+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "7ad3eba0-8015-4f34-97fc-d09d08d1089f",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-11T14:01:06.898942+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "e7fedf55-f010-4e32-aaaf-58c96e083bca",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-12T14:00:44.750593+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "1bb01e98-1d2f-4727-a8de-2b28c6805a7b",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-13T02:00:59.548251+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "4e1bffdf-b996-48db-a29b-21b79a4c310a",
+      "workflow_id": "os_hygiene_graph",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-06-13T14:01:24.396286+00:00",
+      "stage_reached": "audit_record"
+    }
+  ],
+  "aggregate_stats": {
+    "total_executions": 200,
+    "success_count": 124,
+    "escalated_count": 76,
+    "failed_count": 0,
+    "dry_run_count": 0,
+    "reliability_rate": 0.62,
+    "overreach_rate": 0.0,
+    "compliance_rate": 1.0
+  },
+  "created_at": "2026-04-25T18:22:10.713695+00:00",
+  "last_updated": "2026-06-13T14:01:24.398267+00:00"
+}

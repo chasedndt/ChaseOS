@@ -89,7 +89,7 @@ Initial posture:
 Local path known:
 
 ```text
-%USERPROFILE%\Documents\Projects\chaseos-web
+<CHASEOS_WEB_REPO>
 ```
 
 This is the website repository for:

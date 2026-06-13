@@ -26,19 +26,19 @@ This runbook does not grant new permissions. It is an operator procedure for sta
 Real ChaseOS repo path from Windows:
 
 ```powershell
-%CHASEOS_VAULT_ROOT%
+<VAULT_ROOT>
 ```
 
 Real ChaseOS repo path from Ubuntu/WSL:
 
 ```bash
-<WSL_CHASEOS_VAULT_ROOT>
+<VAULT_ROOT>
 ```
 
 Do not operate Hermes from an empty Linux-side mirror such as:
 
 ```bash
-<CHASEOS_VAULT_ROOT>
+~/chaseos_obsidian
 ```
 
 unless that directory has been intentionally created and verified as the real active repo. For this machine, use the `/mnt/c/...` path.
@@ -76,7 +76,7 @@ wsl -d Ubuntu
 Inside Ubuntu:
 
 ```bash
-export CHASEOS_REPO="<WSL_CHASEOS_VAULT_ROOT>"
+export CHASEOS_REPO="<VAULT_ROOT>"
 cd "$CHASEOS_REPO"
 pwd
 ```
@@ -84,7 +84,7 @@ pwd
 The expected `pwd` output is:
 
 ```bash
-<WSL_CHASEOS_VAULT_ROOT>
+<VAULT_ROOT>
 ```
 
 Verify repo binding before starting Hermes:
@@ -140,19 +140,19 @@ Do not add Discord, gateway, connector, shell, tunnel, webhook, or external netw
 As of 2026-04-30, Hermes has a Windows Startup-folder launcher matching the local OpenClaw gateway pattern:
 
 ```text
-%USERPROFILE%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Hermes Gateway.cmd
+<WINDOWS_APPDATA>/<path> Menu\Programs\Startup\Hermes Gateway.cmd
 ```
 
 The Startup-folder file delegates to:
 
 ```text
-%USERPROFILE%\.hermes\gateway.cmd
+<HERMES_HOME>/<path>
 ```
 
-The delegated gateway command is intentionally secret-free. It sets only local runtime marker variables and launches the Hermes gateway through WSL Ubuntu from the verified ChaseOS repo path as user `chaseos`. As of 2026-05-01, it also retries after logon while WSL is coming online and writes a diagnostic log to `%USERPROFILE%\.hermes\gateway-startup.log`.
+The delegated gateway command is intentionally secret-free. It sets only local runtime marker variables and launches the Hermes gateway through WSL Ubuntu from the verified ChaseOS repo path as user `chaseos`. As of 2026-05-01, it also retries after logon while WSL is coming online and writes a diagnostic log to `<HERMES_HOME>/<path>`.
 
 ```powershell
-wsl.exe -d Ubuntu -u chaseos -- bash -lc "cd <WSL_CHASEOS_VAULT_ROOT> && exec <WSL_HOME>/.local/bin/hermes gateway run"
+wsl.exe -d Ubuntu -u chaseos -- bash -lc "cd <VAULT_ROOT> && exec <WSL_HOME>/.local/bin/hermes gateway run"
 ```
 
 This is a host startup convenience only. It does not grant Hermes new ChaseOS authority, shell authority through ChaseOS, connector authority, protected-file authority, canonical writeback, or direct promotion rights. The separate ChaseOS Hermes coordination-watch supervisor remains governed by `runtime/lifecycle/hermes.lifecycle.yaml`.
@@ -173,7 +173,7 @@ chaseos runtime startup-surface-toggle --runtime hermes --surface gateway --inte
 chaseos runtime startup-surface-toggle --runtime hermes --surface gateway --intent disable --confirm
 ```
 
-`enable` writes or repairs the managed WSL retry target launcher and the Windows Startup-folder delegate. `disable` removes the Windows Startup-folder delegate and leaves `%USERPROFILE%\.hermes\gateway.cmd` in place so it can be re-enabled later. Both live commands write mutation evidence under `runtime/lifecycle/run/startup-surface-mutations/`. This does not grant Hermes any new ChaseOS authority.
+`enable` writes or repairs the managed WSL retry target launcher and the Windows Startup-folder delegate. `disable` removes the Windows Startup-folder delegate and leaves `<HERMES_HOME>/<path>` in place so it can be re-enabled later. Both live commands write mutation evidence under `runtime/lifecycle/run/startup-surface-mutations/`. This does not grant Hermes any new ChaseOS authority.
 
 The Studio-facing CLI wrapper is the easier operator control surface:
 
@@ -201,8 +201,8 @@ This renders the Hermes startup controls locally and posts dry-run/live toggle a
 As of 2026-04-30, the Hermes gateway launcher runs through WSL, but the ChaseOS Hermes coordination-watch bootstrap launcher runs on Windows Python:
 
 ```powershell
-cd /d "%CHASEOS_VAULT_ROOT%"
-"%CHASEOS_VAULT_ROOT%\.venv\Scripts\python.exe" "%CHASEOS_VAULT_ROOT%\chaseos.py" runtime coordination-watch-supervisor --runtime hermes --action start
+cd /d "<VAULT_ROOT>"
+"<VAULT_ROOT>\.venv\Scripts\python.exe" "<VAULT_ROOT>\chaseos.py" runtime coordination-watch-supervisor --runtime hermes --action start
 ```
 
 Do not run the ChaseOS coordination-watch loop against the Windows-hosted Agent Bus SQLite database from inside WSL for long-lived operation. Short WSL probes can work, but the long-running loop can fail on `/mnt/c/.../agent_bus.sqlite`. Keep the bus watcher Windows-hosted and keep the Hermes gateway WSL-hosted.
@@ -281,7 +281,7 @@ If you used `8788` or `8789`, replace the port in the URL.
 The dashboard should identify or operate against:
 
 ```bash
-<WSL_CHASEOS_VAULT_ROOT>
+<VAULT_ROOT>
 ```
 
 If it shows a Linux home directory, a temporary folder, or an empty repo, stop Hermes and restart from the real repo path.
@@ -313,7 +313,7 @@ kill <pid>
 6. Re-enter the real repo path:
 
 ```bash
-cd <WSL_CHASEOS_VAULT_ROOT>
+cd <VAULT_ROOT>
 pwd
 ```
 
@@ -324,7 +324,7 @@ Avoid broad process-kill commands unless the exact Hermes process has been ident
 If Hermes is running as the installed background gateway service, use:
 
 ```bash
-cd <WSL_CHASEOS_VAULT_ROOT>
+cd <VAULT_ROOT>
 hermes gateway status
 hermes gateway restart
 hermes gateway status
@@ -444,7 +444,7 @@ Symptom: Hermes starts but cannot see ChaseOS docs, workflow registry, or Hermes
 Fix:
 
 ```bash
-cd <WSL_CHASEOS_VAULT_ROOT>
+cd <VAULT_ROOT>
 pwd
 test -f HERMES.md
 test -f .chaseos/hermes_config.yaml
@@ -460,12 +460,12 @@ Fix: stop Hermes, stop dashboard, return to the `/mnt/c/...` ChaseOS repo path, 
 
 ### Empty Linux Directory
 
-Symptom: `<CHASEOS_VAULT_ROOT>` exists but has few or no ChaseOS files.
+Symptom: `~/chaseos_obsidian` exists but has few or no ChaseOS files.
 
 Fix:
 
 ```bash
-cd <WSL_CHASEOS_VAULT_ROOT>
+cd <VAULT_ROOT>
 pwd
 ls HERMES.md PROJECT_FOUNDATION.md .chaseos/hermes_config.yaml
 ```

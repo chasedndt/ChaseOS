@@ -1,0 +1,28 @@
+{
+  "object_type": "skill_card",
+  "skill_id": "gemini.image.edit",
+  "display_name": "Gemini / Image Edit",
+  "family": "ChaseOS SiteOps",
+  "technical_registry": "Website Workflow Index",
+  "user_tab": "Site Skills",
+  "status": "PLANNED",
+  "execution_status": "DRY_RUN_READY",
+  "workflow_id": "gemini.image.edit",
+  "provider_profile": "gemini_image",
+  "category": "creative_provider",
+  "risk_level": "medium",
+  "required_auth": "GEMINI_API_KEY environment variable for future live run",
+  "required_provider": "gemini_image",
+  "estimated_cost": "provider-dependent; no live call in dry-run",
+  "approval_points": [
+    "before_provider_call",
+    "rights_sensitive_generation"
+  ],
+  "outputs": [
+    "provider prompt plan",
+    "creative run candidate",
+    "provider audit"
+  ],
+  "success_rate": null,
+  "last_tested": null
+}

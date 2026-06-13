@@ -142,6 +142,17 @@ runtime/studio/approvals/
 runtime/studio/shell/frontend/assets/cytoscape.min.js
 runtime/scaffold/generated/
 
+# --- Runtime test sandboxes and local state/output (not public Core source) ---
+runtime/**/_tmp*/
+runtime/**/tmp_*/
+runtime/**/state/
+runtime/**/native-state/
+runtime/**/out/
+runtime/**/run/
+runtime/setup_state.json
+runtime/source_intelligence/workspaces/
+runtime/studio/shell/qa_graph*.json
+
 # --- ChaseOS runtime state (local machine state, not code) ---
 .chaseos/
 # Includes machine-local Discord bindings such as dedup_registry.json,

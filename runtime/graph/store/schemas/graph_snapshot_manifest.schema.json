@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "runtime/graph/store/schemas/graph_snapshot_manifest.schema.json",
+  "title": "ChaseOS Graph Snapshot Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "snapshot_id",
+    "created_at",
+    "builder",
+    "source_model",
+    "vault_root_hash",
+    "scope",
+    "source_file_count",
+    "node_count",
+    "edge_count",
+    "snapshot_path",
+    "source_hashes_path",
+    "identity_registry_version",
+    "canonical_mutation_allowed",
+    "generated_from_read_only_scan"
+  ],
+  "properties": {
+    "schema_version": {"const": "graph_snapshot_manifest.v1"},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "minLength": 1},
+    "builder": {"type": "string", "minLength": 1},
+    "source_model": {"type": "string", "minLength": 1},
+    "vault_root_hash": {"type": ["string", "null"]},
+    "scope": {"type": "array", "items": {"type": "string"}},
+    "source_file_count": {"type": "integer", "minimum": 0},
+    "node_count": {"type": "integer", "minimum": 0},
+    "edge_count": {"type": "integer", "minimum": 0},
+    "snapshot_path": {
+      "type": "string",
+      "pattern": "^runtime/graph/store/snapshots/[^/]+\\.json$"
+    },
+    "source_hashes_path": {
+      "type": ["string", "null"],
+      "pattern": "^runtime/graph/store/manifests/source-hashes/[^/]+\\.json$"
+    },
+    "identity_registry_version": {"const": "node_identity_registry.v1"},
+    "canonical_mutation_allowed": {"const": false},
+    "generated_from_read_only_scan": {"const": true}
+  }
+}

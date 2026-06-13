@@ -1,0 +1,78 @@
+version: 0.1
+updated: 2026-04-24
+owner: Optimus
+purpose: Declared bounded browser task classes for autonomous browser work.
+task_classes:
+  declared_url_research_sweep:
+    allowed_actions:
+      - navigate
+      - read_page_content
+      - extract
+      - screenshot
+      - capture_to_quarantine
+      - write_operator_brief
+    requires_approval_for:
+      - navigation_outside_allowed_origins
+      - privacy_relevant_cookie_consent
+    forbidden_actions:
+      - login
+      - credential_fill
+      - form_submit
+      - file_download
+      - recursive_crawl
+  public_page_health_check:
+    allowed_actions:
+      - navigate
+      - read_url
+      - read_title
+      - read_visible_text
+      - screenshot
+    requires_approval_for:
+      - navigation_outside_allowed_origins
+    forbidden_actions:
+      - login
+      - form_submit
+      - file_download
+  watchlisted_page_change_monitor:
+    allowed_actions:
+      - navigate
+      - read_title
+      - read_visible_text
+      - extract
+      - screenshot
+      - write_operator_brief
+    requires_approval_for:
+      - adding_new_origin_during_execution
+      - navigation_outside_allowed_origins
+    forbidden_actions:
+      - recursive_crawl
+      - login
+      - form_submit
+      - file_download
+  known_selector_structured_extraction:
+    allowed_actions:
+      - navigate
+      - extract
+      - screenshot
+      - capture_to_quarantine
+      - write_operator_brief
+    requires_approval_for:
+      - navigation_outside_allowed_origins
+    forbidden_actions:
+      - login
+      - credential_fill
+      - form_submit
+      - file_download
+  evidence_screenshot_capture:
+    allowed_actions:
+      - navigate
+      - screenshot
+      - read_url
+      - read_title
+    requires_approval_for:
+      - navigation_outside_allowed_origins
+    forbidden_actions:
+      - login
+      - form_submit
+      - file_download
+      - recursive_crawl

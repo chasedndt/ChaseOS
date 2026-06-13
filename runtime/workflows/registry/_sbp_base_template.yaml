@@ -1,0 +1,116 @@
+# _sbp_base_template.yaml — SBP Instance Manifest Template
+# ChaseOS Phase 9 — Scheduled Briefing Pipelines Pass 1A
+#
+is_template: true
+#
+# This file begins with "_" and is NOT loaded as a runnable manifest by the AOR
+# registry (see registry.py: files starting with "_" are skipped).
+#
+# To create a new SBP instance pipeline:
+#   1. Copy this file and rename it to sbp_[instance_name].yaml
+#   2. Fill in all instance-specific fields
+#   3. Implement an SBPBaseHandler subclass in runtime/workflows/
+#   4. Register the handler in runtime/aor/engine.py _handlers dict
+#   5. Set status: active only when the instance handler is complete and tested
+#   6. Add a schedule intent in runtime/schedules/ if cron-triggered
+#
+# First planned instance: StrikeZone Market Digest Publisher (SBP Pass 1B)
+# See: 06_AGENTS/Scheduled-Briefing-Pipelines.md
+#
+# ── AOR MANIFEST FIELDS ────────────────────────────────────────────────────────
+#
+# id: sbp_[instance_name]           # must match filename stem exactly
+# name: "[Human-Readable Name]"
+# version: "1.0"
+# description: "One-sentence purpose of this pipeline."
+# task_type: scheduled-briefing     # required — enables SBP substrate dispatch
+# role_card: scheduled-briefing     # use the generic SBP role card (always)
+# trigger_type: scheduled           # scheduled | manual | event
+# owner: operator
+# status: draft                     # draft until instance handler is ready
+#
+# permission_ceiling: no_protected_file_writes   # never: protected_file_writes | canonical_promotion
+# writeback_targets:
+#   - "07_LOGS/SBP-Runs/"          # adjust for instance-specific log targets
+# failure_behavior: escalate
+#
+# approval_rule: none               # or: operator-explicit for sensitive pipelines
+#
+# audit_expectations:
+#   - "pipeline_id recorded"
+#   - "date of run recorded"
+#   - "input adapters used listed"
+#   - "delivery results recorded"
+#   - "writeback path recorded"
+#
+# ── SBP CONFIG BLOCK ───────────────────────────────────────────────────────────
+#
+# sbp_config:
+#
+#   trigger:
+#     type: cron                    # cron | event | manual | webhook
+#     cron_expression: "0 6 * * 1-5"   # required if type=cron; standard cron syntax
+#     timezone: "America/New_York"
+#     max_runs_per_day: 1           # rate limit; prevent runaway execution
+#
+#   input_adapters:
+#     - type: vault-notes           # vault-notes | sic-workspace | external-api |
+#                                   # agent-activity | raw-digest
+#       trust_tier: 1               # 1=canonical | 2=trusted-logs | 3=research | 4=external
+#       paths:                      # for vault-notes: relative paths to vault root
+#         - "00_HOME/Now.md"
+#       # workspace_id: "my-workspace"  # for sic-workspace only
+#
+#   execution_adapter: claude       # claude | n8n | local | openclaw
+#
+#   delivery_adapters:
+#     - type: vault-local           # vault-local (concrete) | discord | email | whop | slack
+#                                   # All non-vault-local types are stubs in Pass 1A.
+#                                   # Wire instance-specific delivery in Pass 1B+.
+#     # - type: discord
+#     #   channel_hint: "#my-channel"   # advisory only; no credentials here
+#
+#   guardrail:
+#     permission_ceiling: no_protected_file_writes  # NEVER: protected_file_writes | canonical_promotion
+#     write_scope:
+#       - "07_LOGS/SBP-Runs/"      # must include or match writeback_targets above
+#     read_scope:                   # advisory; enforced by role card
+#       - "00_HOME/"
+#       - "01_PROJECTS/"
+#     human_in_loop: optional       # required | optional | none
+#     fail_behavior: halt_and_log   # halt_and_log | retry_once | notify_user
+#     audit_required: true          # always true; false is rejected at guardrail check
+#
+# ── INSTANCE IMPLEMENTATION NOTES ─────────────────────────────────────────────
+#
+# Handler pattern:
+#   class MyPipelineHandler(SBPBaseHandler):
+#       workflow_id = "sbp_my_pipeline"
+#       def generate_content(self, collected_inputs, vault_root):
+#           vault_notes = collected_inputs.get("vault-notes", {})
+#           text = vault_notes.get("content") or ""
+#           return f"## My Pipeline\n\n{text}"
+#
+#   def run_sbp_my_pipeline(inputs, vault_root, manifest=None):
+#       if manifest is None:
+#           raise SBPWorkflowExecutionError("manifest required")
+#       return MyPipelineHandler().run(manifest, inputs, vault_root)
+#
+# Engine registration in runtime/aor/engine.py:
+#   _handlers["sbp_my_pipeline"] = run_sbp_my_pipeline
+#
+# Schedule intent (if cron-triggered), add to runtime/schedules/:
+#   schedule_id: sch-sbp-my-pipeline-0600.yaml
+#   See runtime/schedules/sch-operator-today-0700.yaml as reference.
+#
+# Delivery credentials:
+#   Never in the manifest. See Credential-Boundaries-SOP.md.
+#   Discord webhook URL → XAI_DISCORD_WEBHOOK env var or equivalent.
+#
+# ── RELATED DOCS ───────────────────────────────────────────────────────────────
+#
+#   06_AGENTS/Scheduled-Briefing-Pipelines.md  — SBP architecture + governance
+#   06_AGENTS/Autonomous-Operator-Runtime.md   — AOR infrastructure
+#   runtime/sbp/                               — SBP substrate code
+#   04_SOPS/Credential-Boundaries-SOP.md       — credential handling
+#   06_AGENTS/role-cards/scheduled-briefing.yaml  — role card for all SBP pipelines

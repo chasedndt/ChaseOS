@@ -56,7 +56,7 @@ Already active below this bridge:
 - guarded Core export tooling under `core_export/` and runtime CLI surfaces
 - allowlist manifest and candidate inventory
 - scanner-clean previews/reports
-- a recorded local inspection target at `%USERPROFILE%\Documents\chaseos-core` whose current presence must be revalidated before Git/publication
+- a recorded local inspection target at `<CHASEOS_CORE_REPO>` whose current presence must be revalidated before Git/publication
 
 Not included yet:
 - license decision

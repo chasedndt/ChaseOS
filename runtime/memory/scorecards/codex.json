@@ -1,0 +1,58 @@
+{
+  "runtime_id": "codex",
+  "schema_version": "1.0",
+  "executions": [
+    {
+      "audit_id": "3a0cfbc0-9b7a-413f-a021-b14a1074a4e9",
+      "workflow_id": "agent_runtime_governance_audit",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-10T16:59:18.214173+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "8059f18e-1696-4bca-a1fd-85cce165a52c",
+      "workflow_id": "agent_runtime_governance_audit",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-10T17:02:51.308794+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "79388188-55f7-41ef-ba32-585273cd71be",
+      "workflow_id": "agent_runtime_governance_audit",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-13T15:50:39.504482+00:00",
+      "stage_reached": "audit_record"
+    },
+    {
+      "audit_id": "648ef791-6b63-44bf-bd0c-fc9efc8cf486",
+      "workflow_id": "mission_chase_ai_runtime_governance_kit",
+      "outcome": "success",
+      "overreach_events": [],
+      "cgl_violations": [],
+      "operator_acceptance": null,
+      "timestamp_utc": "2026-05-14T12:52:49.788170+00:00",
+      "stage_reached": "audit_record"
+    }
+  ],
+  "aggregate_stats": {
+    "total_executions": 4,
+    "success_count": 4,
+    "escalated_count": 0,
+    "failed_count": 0,
+    "dry_run_count": 0,
+    "reliability_rate": 1.0,
+    "overreach_rate": 0.0,
+    "compliance_rate": 1.0
+  },
+  "created_at": "2026-05-10T16:59:18.214272+00:00",
+  "last_updated": "2026-05-14T12:52:49.788530+00:00"
+}

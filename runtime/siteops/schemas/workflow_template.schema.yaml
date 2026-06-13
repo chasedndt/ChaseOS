@@ -1,0 +1,1 @@
+{"object": "WorkflowTemplate", "required": ["workflow_template_id", "workflow_type", "default_mode", "inputs_schema", "steps", "approval_required", "blocked_actions", "output_schema", "audit_required", "version", "status"], "scope": {"owner_type": "system", "visibility": "public_catalog"}, "secret_values_allowed": false}

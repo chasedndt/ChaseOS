@@ -1,0 +1,76 @@
+{
+  "schema_version": 1,
+  "surface_id": "agent.codex.bus",
+  "display_name": "Codex Agent Bus Runtime",
+  "surface_family": "agent_runtime",
+  "surface_type": "agent",
+  "owner_layer": "runtime/agent_bus",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/agent_bus/router.py",
+    "runtime/agent_bus/capabilities.py",
+    "runtime/adapters/codex/bus_adapter.py",
+    "runtime/codex/capabilities.yaml"
+  ],
+  "docs_refs": [
+    "06_AGENTS/Codex-Runtime-Profile.md",
+    "06_AGENTS/Runtime-InterAgent-Coordination-Bus.md"
+  ],
+  "trust_ceiling": "tier-2",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "code.review",
+      "maps_to": "code.review",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "code.patch",
+      "maps_to": "code.patch",
+      "risk_class": "proposal_write",
+      "approval_required": "conditional"
+    },
+    {
+      "capability_id": "repo.inspect",
+      "maps_to": "repo.inspect",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "test.run",
+      "maps_to": "test.run",
+      "risk_class": "read_local_scoped",
+      "approval_required": "conditional"
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "runtime/adapters/codex/runs/",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "audit_targets": [
+    "runtime/adapters/codex/runs/",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/agent_bus"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  }
+}

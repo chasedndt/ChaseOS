@@ -1,0 +1,50 @@
+{
+  "object_type": "site_profile",
+  "site_id": "canva",
+  "display_name": "Canva",
+  "status": "PARTIAL",
+  "profile_status": "draft",
+  "category": "creative_design",
+  "risk_level": "medium",
+  "allowed_domains": [
+    "canva.com"
+  ],
+  "auth_mode": "user_browser_session",
+  "known_workflows": [
+    "canva.poster.magic_layers"
+  ],
+  "allowed_actions": [
+    "browser.open",
+    "browser.inspect",
+    "browser.screenshot",
+    "browser.click",
+    "browser.type",
+    "file.download"
+  ],
+  "blocked_actions": [
+    "purchase",
+    "publish_publicly",
+    "delete_design",
+    "invite_users",
+    "change_billing",
+    "change_account_settings"
+  ],
+  "approval_required": [
+    "before_export",
+    "external_share",
+    "publish_publicly",
+    "destructive_action",
+    "billing_action"
+  ],
+  "common_ui_anchors": {
+    "magic_layers": "Magic Layers",
+    "export": "Share / Download",
+    "upload": "Uploads"
+  },
+  "output_targets": {
+    "screenshots": "07_LOGS/Website-Workflow-Runs/",
+    "creative_runs": "07_LOGS/Creative-Runs/",
+    "audit": "07_LOGS/Agent-Activity/"
+  },
+  "notes": "Operational knowledge only; browser/session state and secrets stay outside this profile."
+}

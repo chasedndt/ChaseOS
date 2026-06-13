@@ -167,7 +167,7 @@ These are the real V1 blockers:
 1. **Standalone launch and onboarding**
    - ChaseOS Studio opens reliably.
    - Fresh instance/vault path is resolved or selected.
-   - No hardcoded `%USERPROFILE%` / `<WSL_HOME>` assumptions in public paths.
+   - No hardcoded `<WINDOWS_USER_HOME>` / `<WSL_HOME>` assumptions in public paths.
    - First-run explains local-first setup.
 
 2. **Product-facing Home / Command Center**

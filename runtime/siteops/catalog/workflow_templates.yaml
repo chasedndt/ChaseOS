@@ -1,0 +1,88 @@
+- workflow_template_id: canva.poster.magic_layers
+  workflow_type: hybrid_browser_creative
+  site_profile_id: canva
+  provider_adapter_id: null
+  default_mode: dry_run
+  inputs_schema:
+    required: [source_image_path, edit_prompt]
+  steps:
+    - plan_canvas_edit
+    - require_approval_before_export
+  approval_required: [export_file, external_share]
+  blocked_actions: [purchase, billing_action, account_mutation, destructive_action]
+  output_schema:
+    artifacts: [dry_run_plan]
+  audit_required: true
+  version: 1
+  status: active
+- workflow_template_id: tradingview.idea.capture
+  workflow_type: browser_capture
+  site_profile_id: tradingview
+  provider_adapter_id: null
+  default_mode: dry_run
+  inputs_schema:
+    required: [idea_url]
+  steps:
+    - validate_tradingview_url
+    - plan_capture
+  approval_required: [external_share]
+  blocked_actions: [broker_connection, live_trade, purchase, billing_action, account_mutation]
+  output_schema:
+    artifacts: [capture_plan]
+  audit_required: true
+  version: 1
+  status: active
+- workflow_template_id: tradingview.indicator.review
+  workflow_type: browser_capture
+  site_profile_id: tradingview
+  provider_adapter_id: null
+  default_mode: dry_run
+  inputs_schema:
+    required: [indicator_url]
+  steps:
+    - validate_tradingview_url
+    - plan_indicator_review
+    - block_broker_or_live_trade_actions
+  approval_required: [external_share]
+  blocked_actions: [broker_connection, live_trade, purchase, billing_action, account_mutation]
+  output_schema:
+    artifacts: [indicator_review_plan]
+  audit_required: true
+  version: 1
+  status: active
+- workflow_template_id: gemini.image.edit
+  workflow_type: provider_creative
+  site_profile_id: null
+  provider_adapter_id: gemini_image
+  required_capability: image_edit
+  default_mode: dry_run
+  inputs_schema:
+    required: [source_image_path, edit_prompt]
+  steps:
+    - estimate_provider_cost
+    - require_budget_gate
+  approval_required: [paid_provider_call]
+  blocked_actions: [purchase, billing_action, account_mutation]
+  output_schema:
+    artifacts: [dry_run_plan]
+  audit_required: true
+  version: 1
+  status: active
+- workflow_template_id: perplexity.research.capture
+  workflow_type: provider_research
+  site_profile_id: null
+  provider_adapter_id: perplexity_api
+  required_capability: research
+  default_mode: dry_run
+  inputs_schema:
+    required: [query]
+  steps:
+    - estimate_provider_cost
+    - plan_research_capture
+  approval_required: [paid_provider_call, external_share]
+  blocked_actions: [publish_publicly, account_mutation]
+  output_schema:
+    artifacts: [research_capture_plan]
+  audit_required: true
+  version: 1
+  status: active

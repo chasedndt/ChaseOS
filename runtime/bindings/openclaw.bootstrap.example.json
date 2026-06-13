@@ -1,0 +1,39 @@
+{
+  "contract_version": "0.1",
+  "runtime_id": "openclaw",
+  "platform_family": "windows",
+  "repo_root_resolution": {
+    "strategy": "explicit-or-known-root",
+    "candidate_paths": [
+      "C:/Users/chaseos/Documents/chaseos_obsidian",
+      "<VAULT_ROOT>"
+    ],
+    "notes": "Windows-native OpenClaw may still need to interoperate with WSL-visible paths."
+  },
+  "runtime_identity_sources": [
+    "06_AGENTS/OpenClaw-Runtime-Profile.md",
+    "runtime/memory/nav/openclaw/state.json",
+    "runtime/memory/nav/openclaw/self-report.json"
+  ],
+  "binding_discovery": {
+    "machine_local_allowed": true,
+    "machine_local_locations": [
+      ".chaseos/",
+      "C:/Users/chaseos/.openclaw/",
+      "C:/Users/chaseos/Documents/chaseos_obsidian/.chaseos/"
+    ],
+    "github_safe_default": true,
+    "notes": "Machine-local bindings may exist outside the repo; runtime should not assume they are present."
+  },
+  "attachment_modes": [
+    "core-only",
+    "runtime-only",
+    "attached-personal"
+  ],
+  "fail_closed_rules": [
+    "If runtime identity sources are missing, do not infer permissions.",
+    "If personal user binding is absent, remain in core-only or runtime-only mode.",
+    "If machine-local binding paths are ambiguous, escalate rather than guessing."
+  ],
+  "notes": "Example bootstrap contract only. Not an authority grant."
+}

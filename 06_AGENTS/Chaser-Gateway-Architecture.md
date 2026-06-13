@@ -1,7 +1,7 @@
 # Chaser Gateway Architecture
 
 Date: 2026-06-03 (N1 diagnostic built 2026-06-03; N7 internal ingress facade, N8 authority audit, N9 approved file-create, and N10 approved file-copy built 2026-06-06)
-Runtime: Chaser Agent (claude-code); Codex for N7 internal facade
+Runtime: Archon (claude-code); Codex for N7 internal facade
 Status: PARTIAL - architecture + read-only diagnostic + internal structured ingress facade + terminal authority audit built; always-on/network gateway process and external ingress transports not built
 Source books: `247 Agent Harness engineering V0.md`, `deep-research-report.md` (Hermes/OpenClaw reverse-engineering)
 Related: [[ChaserAgent-Architecture]] · [[Terminal-Workbench-Architecture]] · [[ChaserAgent-Moat]] · [[board-py-Integration-Deep-Dive]] · [[Autonomous-Operator-Runtime]] · [[Runtime-InterAgent-Coordination-Bus]] · [[ChaseOS-Gate]] · [[Provider-Agnostic-Routing-Architecture]]
@@ -64,7 +64,7 @@ Prompt Builder → LLM → Policy Engine → Capabilities[ Terminal, Filesystem,
 | Diagram node | ChaseOS owner | Status |
 |---|---|---|
 | Prompt Builder | AOR `engine.py` required-reads + boot frame (`runtime/context/boot.py`) + Agent-Memory layering | partial |
-| LLM | **Runtime-owned** (Hermes/OpenClaw/Chaser Agent resolve their own provider per [[Provider-Agnostic-Routing-Architecture]]) — Chaser core never calls providers directly | existing rule |
+| LLM | **Runtime-owned** (Hermes/OpenClaw/Archon resolve their own provider per [[Provider-Agnostic-Routing-Architecture]]) — Chaser core never calls providers directly | existing rule |
 | Policy Engine | ChaseOS Gate hooks + AOR permission ceiling stage | existing |
 | Capabilities → Terminal | **`TerminalAdapter` + `chaseos operate terminal` (built 2026-06-03)** | partial |
 | Capabilities → Filesystem | `filesystem_adapter.py` (operator surface) | partial |
@@ -107,7 +107,7 @@ Key rules (the moat — see [[ChaserAgent-Moat]]):
 
 1. The Chaser Gateway is **not** a second brain and **not** a second source of truth. It is a router/authorizer in front of the ChaseOS Gate, never around it.
 2. Every inbound request becomes a **typed, authorized, audited** session before it can touch a capability.
-3. The gateway **never** calls model providers directly. It dispatches to a runtime (Hermes/OpenClaw/Chaser Agent) over the Agent Bus, and that runtime owns its provider/credentials ([[Provider-Agnostic-Routing-Architecture]]).
+3. The gateway **never** calls model providers directly. It dispatches to a runtime (Hermes/OpenClaw/Archon) over the Agent Bus, and that runtime owns its provider/credentials ([[Provider-Agnostic-Routing-Architecture]]).
 4. Session identifiers are **routing selectors, not auth tokens** (the OpenClaw lesson — the single most common mistake the books call out).
 5. Capabilities are reached only through governed adapters (TerminalAdapter, browser surface, filesystem adapter), never raw shell/FS.
 

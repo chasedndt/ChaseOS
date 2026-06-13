@@ -1,0 +1,66 @@
+---
+# openclaw_post_review_task — OpenClaw Review Dispatch Workflow
+# ChaseOS Phase 9 — Agent Bus Coordination Pass 1
+#
+# OpenClaw-side workflow for creating a structured review task on the
+# coordination bus after producing a significant artifact (digest, brief, etc.).
+#
+# This workflow does NOT perform the review — it creates the task packet and
+# routes it to the appropriate runtime via the bus router.
+#
+# Role card: operator-briefing (OpenClaw's posting side; read-light, bus dispatch only)
+# Complementary: hermes_review_execute (Hermes claims and executes the review)
+#
+id: openclaw_post_review_task
+name: "OpenClaw Review Task Dispatch"
+version: "1.0"
+description: "OpenClaw creates a structured review task on the coordination bus for the recommended runtime (typically Hermes). Used after producing an artifact that benefits from cross-runtime review."
+task_type: review
+role_card: review
+trigger_type: manual
+owner: operator
+status: active
+runtime_adapter: openclaw
+
+permission_ceiling: bus_result_only
+
+coordination_requirements:
+  coordination_sensitive: true
+  via: "runtime/agent_bus/"
+  partner_runtime: "Hermes"
+  execution_mode: "dispatch"
+
+inputs:
+  - artifact_path   # vault-relative path to the artifact to review
+  - request         # what the reviewing runtime should do
+  - expected_output # what the review should return (e.g. "structured review with endorsements and flags")
+  - priority        # task priority — must not exceed Hermes priority_ceiling=high (default: normal)
+  - notes           # optional extra notes for the reviewer
+
+outputs:
+  - task_id           # coordination bus task ID
+  - route_recommended # recommended runtime from the router
+  - route_reason      # reason from the router
+  - audit_path        # path to the agent-activity audit entry
+
+writeback_targets:
+  - "07_LOGS/Agent-Activity/"
+
+failure_behavior: escalate
+
+approval_rule: none
+
+audit_expectations:
+  - "workflow_id recorded"
+  - "task_id recorded"
+  - "artifact_path recorded"
+  - "recipient runtime recorded"
+  - "route_recommended recorded"
+
+notes: >
+  The bus router is consulted before task creation. If the recommended runtime is None
+  (all stale) or at capacity, the reason is included in outputs and the task is still
+  created — delivery is the bus's responsibility, not the router's.
+
+  Priority ceiling: Hermes declares priority_ceiling=high. This workflow defaults to
+  priority="normal". Operator may set priority="high" but never "critical" (rejected).

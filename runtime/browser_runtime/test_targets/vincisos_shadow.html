@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VincisOS Shadow Test Target</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, sans-serif;
+      background: #f7f8fb;
+      color: #1f2937;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+
+    main {
+      width: min(720px, calc(100vw - 32px));
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      padding: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 24px;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    button {
+      border: 1px solid #64748b;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    section {
+      border-top: 1px solid #e2e8f0;
+      padding-top: 16px;
+    }
+
+    [data-state="inspected"] {
+      color: #166534;
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+  <main data-vincisos-testbed="true" data-auth-required="false">
+    <h1>VincisOS Shadow Test Target</h1>
+    <p id="target-summary">Local static page for ChaseOS browser runtime readiness checks. It contains no credentials, accounts, external scripts, or network assets.</p>
+
+    <div class="toolbar" aria-label="Shadow controls">
+      <button type="button" id="toggle-state" data-test-action="toggle-runtime-state">Inspect State</button>
+      <button type="button" class="secondary" id="reset-state" data-test-action="reset-runtime-state">Reset</button>
+    </div>
+
+    <section aria-live="polite">
+      <p id="runtime-state" data-state="idle">Shadow state: idle</p>
+    </section>
+  </main>
+
+  <script>
+    const state = document.getElementById("runtime-state");
+    document.getElementById("toggle-state").addEventListener("click", () => {
+      state.dataset.state = "inspected";
+      state.textContent = "Shadow state: inspected";
+    });
+    document.getElementById("reset-state").addEventListener("click", () => {
+      state.dataset.state = "idle";
+      state.textContent = "Shadow state: idle";
+    });
+  </script>
+</body>
+</html>

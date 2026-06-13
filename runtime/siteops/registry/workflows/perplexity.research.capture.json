@@ -1,0 +1,60 @@
+{
+  "object_type": "workflow_manifest",
+  "workflow_id": "perplexity.research.capture",
+  "display_name": "Perplexity Research Capture",
+  "status": "PARTIAL",
+  "execution_status": "dry_run_ready",
+  "live_execution_status": "NOT BUILT",
+  "workflow_type": "provider_or_browser_capture",
+  "mode": "assisted",
+  "site_profile": "perplexity",
+  "provider_profile": "perplexity_api",
+  "inputs": [
+    {
+      "name": "query",
+      "required": true
+    },
+    {
+      "name": "project",
+      "required": false
+    },
+    {
+      "name": "topic",
+      "required": false
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "validate_inputs"
+    },
+    {
+      "step_id": "choose_api_or_browser_capture_path"
+    },
+    {
+      "step_id": "capture_answer_and_citations"
+    },
+    {
+      "step_id": "write_quarantine_source_package_candidate"
+    },
+    {
+      "step_id": "write_run_audit"
+    }
+  ],
+  "approval_required": [
+    "paid_provider_call",
+    "paid_api_call_above_budget",
+    "before_project_writeback",
+    "before_canonical_promotion"
+  ],
+  "blocked_actions": [
+    "publish_publicly",
+    "external_share",
+    "canonical_promotion"
+  ],
+  "outputs": [
+    "captured_answer",
+    "citation_list",
+    "quarantine_source_candidate",
+    "provider_or_browser_run_audit"
+  ]
+}

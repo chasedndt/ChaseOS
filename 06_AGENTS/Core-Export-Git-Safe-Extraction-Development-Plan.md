@@ -1,10 +1,10 @@
 # Core Export Git-Safe Extraction Development Plan
 
-> **For Hermes / OpenClaw / Codex / Chaser Agent:** this is a runtime-handoff-ready implementation plan. Route coordination-sensitive work through `runtime/agent_bus/`; do not use Discord/chat thread state as the machine source of truth.
+> **For Hermes / OpenClaw / Codex / Archon:** this is a runtime-handoff-ready implementation plan. Route coordination-sensitive work through `runtime/agent_bus/`; do not use Discord/chat thread state as the machine source of truth.
 
 **Goal:** Build a proper Git-safe ChaseOS Core extraction feature that can generate a substantial, reviewable, privacy-safe Core repository candidate before any Git initialization, commit, remote, push, or publication.
 
-**Architecture:** Keep the private ChaseOS workspace as the source of truth. The `core_export/` lane owns allowlist manifests, curated templates, sanitizer/scanner policy, dry-run reports, manual review artifacts, and Gate-governed local export/update operations. The sibling `<WSL_WINDOWS_USER_HOME>/Documents/chaseos-core` tree is generated output only; it must never be hand-filled by dragging private files into place.
+**Architecture:** Keep the private ChaseOS workspace as the source of truth. The `core_export/` lane owns allowlist manifests, curated templates, sanitizer/scanner policy, dry-run reports, manual review artifacts, and Gate-governed local export/update operations. The sibling `<CHASEOS_CORE_REPO>` tree is generated output only; it must never be hand-filled by dragging private files into place.
 
 **Tech Stack:** Python stdlib, PyYAML via `uvx --with pyyaml`, ChaseOS CLI wrapper (`python3 chaseos.py ...`), canonical runtime CLI (`python3 -m runtime.cli.main ...`), Obsidian markdown docs, `runtime/agent_bus/` for cross-runtime coordination.
 
@@ -15,13 +15,13 @@
 Source workspace:
 
 ```text
-<WSL_CHASEOS_VAULT_ROOT>
+<VAULT_ROOT>
 ```
 
 Current local export target:
 
 ```text
-<WSL_WINDOWS_USER_HOME>/Documents/chaseos-core
+<CHASEOS_CORE_REPO>
 ```
 
 Current tracked export-candidate state:
@@ -40,7 +40,7 @@ remote/push/publication: not performed
 canonical promotion: not performed
 ```
 
-The earlier six-file seed proved the export/verification lane existed but was too thin for Git readiness. The current expanded candidate is no longer that six-file seed: the latest tracker/report/build-log packet records 57 manifest candidates/previews, a guarded update to the local `%USERPROFILE%\Documents\chaseos-core` (`<WSL_WINDOWS_USER_HOME>/Documents/chaseos-core`) inspection target, and a recorded verify-export pass with no scanner blockers. A 2026-05-11 live revalidation found that target absent in this environment and `core_export/reports/latest/manual-preview-review-pass2.md` missing, so current verify-export is blocked until the target and review artifact are restored through the guarded export lane.
+The earlier six-file seed proved the export/verification lane existed but was too thin for Git readiness. The current expanded candidate is no longer that six-file seed: the latest tracker/report/build-log packet records 57 manifest candidates/previews, a guarded update to the local `<CHASEOS_CORE_REPO>` (`<CHASEOS_CORE_REPO>`) inspection target, and a recorded verify-export pass with no scanner blockers. A 2026-05-11 live revalidation found that target absent in this environment and `core_export/reports/latest/manual-preview-review-pass2.md` missing, so current verify-export is blocked until the target and review artifact are restored through the guarded export lane.
 
 This still does **not** approve Git initialization, license choice, public `.gitignore`, remote creation, push/publication, or canonical promotion. The next safe slice is target/review-artifact reconciliation, verify-export rerun, candidate review, and public-readiness cleanup, followed by a separate Git-init approval request only if review remains clean.
 
@@ -48,7 +48,7 @@ This still does **not** approve Git initialization, license choice, public `.git
 
 1. Do not initialize Git until a separate explicit operator/Gate approval is provided for Git init.
 2. Do not commit, add a remote, push, publish, or canonical-promote in this feature-development lane.
-3. Do not manually copy private source files into `<WSL_WINDOWS_USER_HOME>/Documents/chaseos-core`.
+3. Do not manually copy private source files into `<CHASEOS_CORE_REPO>`.
 4. Do not weaken scanner rules to make a candidate pass.
 5. Do not include private logs, raw inputs, runtime state, local bindings, credentials, channel IDs, account IDs, or machine-specific live configuration in public Core.
 6. Do not treat `.gitignore` as the privacy boundary. The privacy boundary is: allowlist manifest → template/sanitizer render → scanner → dry-run report → verifier → manual review → approved export.
@@ -261,7 +261,7 @@ Use `core_template` for synthetic examples where no private source exists. If th
 ```bash
 PYTHONPATH=. uvx --with pyyaml python -m runtime.cli.main core-export build --dry-run \
   --source-root . \
-  --target <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core \
+  --target <CHASEOS_CORE_REPO> \
   --manifest core_export/export_manifest.yaml \
   --write-report \
   --report-dir core_export/reports/latest \
@@ -269,7 +269,7 @@ PYTHONPATH=. uvx --with pyyaml python -m runtime.cli.main core-export build --dr
 
 PYTHONPATH=. uvx --with pyyaml python -m runtime.cli.main core-export verify-report \
   --source-root . \
-  --target <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core \
+  --target <CHASEOS_CORE_REPO> \
   --manifest core_export/export_manifest.yaml \
   --report-dir core_export/reports/latest \
   --json >/tmp/core_export_expanded_verify_report.json
@@ -315,11 +315,11 @@ blocked
 
 ```bash
 python3 chaseos.py core-export export \
-  --source-root <WSL_CHASEOS_VAULT_ROOT> \
-  --target <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core \
-  --manifest <WSL_CHASEOS_VAULT_ROOT>/core_export/export_manifest.yaml \
-  --report-dir <WSL_CHASEOS_VAULT_ROOT>/core_export/reports/latest \
-  --manual-review <WSL_CHASEOS_VAULT_ROOT>/core_export/reports/latest/manual-preview-review-full-core-YYYY-MM-DD.md \
+  --source-root <VAULT_ROOT> \
+  --target <CHASEOS_CORE_REPO> \
+  --manifest <VAULT_ROOT>/core_export/export_manifest.yaml \
+  --report-dir <VAULT_ROOT>/core_export/reports/latest \
+  --manual-review <VAULT_ROOT>/core_export/reports/latest/manual-preview-review-full-core-YYYY-MM-DD.md \
   --operator-approval-ref '<APPROVAL_REF>' \
   --confirm \
   --json
@@ -340,14 +340,14 @@ Approve local Core export update only. Approval ref: APPROVED-CORE-EXPORT-UPDATE
 ```bash
 PYTHONPATH=. uvx --with pyyaml python -m runtime.cli.main core-export verify-export \
   --source-root . \
-  --target <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core \
+  --target <CHASEOS_CORE_REPO> \
   --manifest core_export/export_manifest.yaml \
   --report-dir core_export/reports/latest \
   --json >/tmp/core_export_expanded_verify_export.json
 
 PYTHONPATH=. python3 -m runtime.cli.main core-export next-step \
   --source-root . \
-  --target <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core \
+  --target <CHASEOS_CORE_REPO> \
   --manifest core_export/export_manifest.yaml \
   --report-dir core_export/reports/latest \
   --json >/tmp/core_export_expanded_next_step.json
@@ -378,7 +378,7 @@ Approve Git init for expanded local Core export only. Approval ref: APPROVED-COR
 Allowed scope after that future approval:
 
 ```text
-initialize Git locally inside <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core
+initialize Git locally inside <CHASEOS_CORE_REPO>
 normalize default branch to main if needed
 no commit unless separately approved
 no remote
@@ -407,7 +407,7 @@ work_fingerprint: core-export-git-safe-extraction:<slice-id>
 | Hermes / Optimus | planning, governance, docs, status, review packets | maintain this plan, logs, and operator-facing readiness |
 | Codex | implementation/tests | manifest expansion, synthetic source/template support, CLI contract/docs sync |
 | OpenClaw | Windows-local/manual validation lane | inspect generated export tree in Windows IDE, confirm local path behavior, no WSL-only assumptions |
-| Chaser Agent | architecture/code-review lane | review candidate pack completeness, privacy posture, and runtime handoff coherence |
+| Archon | architecture/code-review lane | review candidate pack completeness, privacy posture, and runtime handoff coherence |
 
 ## 6. Agent Bus Task Packet Templates
 
@@ -433,7 +433,7 @@ outputs:
 verification:
   - YAML parses
   - agent_bus status OK
-  - <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core/.git absent
+  - <CHASEOS_CORE_REPO>/.git absent
 ```
 
 ### Packet B — Template Expansion
@@ -463,7 +463,7 @@ verification:
 ```yaml
 packet_id: core-export-governance-review
 sender: Operator
-recipient: Chaser Agent
+recipient: Archon
 kind: architecture-review
 request: >
   Review the expanded candidate set for ChaseOS OS alignment: Core/Personal split,
@@ -472,7 +472,7 @@ constraints:
   - review only
   - no file writes outside review report unless explicitly assigned
 outputs:
-  - core_export/reports/latest/chaser_agent-core-governance-review-YYYY-MM-DD.md
+  - core_export/reports/latest/archon-core-governance-review-YYYY-MM-DD.md
 verification:
   - identifies pass/conditional/blocked docs
   - flags missing essentials before Git init
@@ -486,7 +486,7 @@ sender: Operator
 recipient: OpenClaw
 kind: validation
 request: >
-  Inspect the generated <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core tree from the
+  Inspect the generated <CHASEOS_CORE_REPO> tree from the
   Windows/local IDE perspective and confirm whether it is usable as a Git candidate.
 constraints:
   - no Git init
@@ -515,7 +515,7 @@ Run expanded dry-run/report validation before any local export update:
 ```bash
 PYTHONPATH=. uvx --with pyyaml python -m runtime.cli.main core-export build --dry-run \
   --source-root . \
-  --target <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core \
+  --target <CHASEOS_CORE_REPO> \
   --manifest core_export/export_manifest.yaml \
   --write-report \
   --report-dir core_export/reports/latest \
@@ -523,7 +523,7 @@ PYTHONPATH=. uvx --with pyyaml python -m runtime.cli.main core-export build --dr
 
 PYTHONPATH=. uvx --with pyyaml python -m runtime.cli.main core-export verify-report \
   --source-root . \
-  --target <WSL_WINDOWS_USER_HOME>/Documents/chaseos-core \
+  --target <CHASEOS_CORE_REPO> \
   --manifest core_export/export_manifest.yaml \
   --report-dir core_export/reports/latest \
   --json
@@ -656,7 +656,7 @@ operator inspection of the local Core export:
 - `core_export/reports/latest/core-export-dry-run-report.json` regenerated.
 - rendered previews regenerated with 57 candidates.
 - `core_export/reports/latest/manual-preview-review-runtime-registration-checklist-local-export-staging-2026-05-01.md` created.
-- existing `%USERPROFILE%\Documents\chaseos-core` target updated through the guarded `--update-existing` export path.
+- existing `<CHASEOS_CORE_REPO>` target updated through the guarded `--update-existing` export path.
 
 Validation result:
 

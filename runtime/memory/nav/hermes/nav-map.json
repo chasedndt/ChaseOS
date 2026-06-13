@@ -1,0 +1,76 @@
+{
+  "runtime_id": "hermes",
+  "version": "0.1",
+  "status": "seeded-doc-first",
+  "updated": "2026-04-24",
+  "preferred_read_routes": [
+    {
+      "task_class": "runtime-coordination-and-discord-lane-work",
+      "route": [
+        "HERMES.md",
+        "06_AGENTS/Runtime-InterAgent-Coordination-Bus.md",
+        "06_AGENTS/ChaseOS-Discord-Control-Plane.md",
+        "runtime/agent_bus/Agent-Bus-Folder-Guide.md",
+        "06_AGENTS/Vault-Map.md",
+        "00_HOME/Now.md"
+      ],
+      "notes": "Hermes should orient first through bounded runtime governance, then structured coordination, then shared routing truth."
+    },
+    {
+      "task_class": "runtime-navigation-and-profile-maintenance",
+      "route": [
+        "06_AGENTS/Runtime-Navigation-Map.md",
+        "06_AGENTS/Hermes-Runtime-Profile.md",
+        "runtime/memory/nav/hermes/nav-map.json",
+        "runtime/Runtime-Layer-Guide.md"
+      ],
+      "notes": "Keeps markdown doctrine and machine-readable nav state aligned."
+    }
+  ],
+  "trusted_zones": [
+    "07_LOGS/Agent-Activity/",
+    "07_LOGS/Operator-Briefs/",
+    "06_AGENTS/ (read-heavy governance docs)",
+    "runtime/agent_bus/",
+    "runtime/memory/nav/"
+  ],
+  "safe_write_paths": [
+    "07_LOGS/Agent-Activity/",
+    "07_LOGS/Operator-Briefs/",
+    "runtime/agent_bus/",
+    "runtime/memory/nav/hermes/"
+  ],
+  "risk_zones": [
+    "02_KNOWLEDGE/",
+    "01_PROJECTS/",
+    "root governance docs without explicit approval",
+    "browser/shell/connector expansion requests"
+  ],
+  "escalation_points": [
+    "Any request for broader Hermes workflow authority",
+    "Any canonical promotion or protected-file mutation",
+    "Any multi-repo or unrestricted browser/shell expansion"
+  ],
+  "index_alignment": {
+    "primary_indexes": [
+      "07_LOGS/Build-Logs/Build-Logs-Index.md",
+      "07_LOGS/Agent-Activity/Agent-Activity-Index.md",
+      "02_KNOWLEDGE/Knowledge-Index.md"
+    ],
+    "routing_docs": [
+      "06_AGENTS/Vault-Map.md",
+      "06_AGENTS/Runtime-Navigation-Map.md",
+      "HERMES.md"
+    ],
+    "notes": "Hermes should preserve Obsidian index structure so future standalone navigation can mirror the same routes."
+  },
+  "standalone_mapping": {
+    "representation_goal": "Preserve bounded-runtime navigation semantics across markdown-first and standalone surfaces.",
+    "stable_paths": [
+      "runtime/memory/nav/hermes/nav-map.json",
+      "06_AGENTS/Hermes-Runtime-Profile.md",
+      "06_AGENTS/Vault-Map.md"
+    ],
+    "notes": "These paths should become stable nodes/records in the future standalone representation."
+  }
+}

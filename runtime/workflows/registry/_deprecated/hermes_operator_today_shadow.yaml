@@ -1,0 +1,84 @@
+---
+# hermes_operator_today_shadow - Hermes bounded shadow workflow
+# ChaseOS Phase 9 Hermes runtime activation proof.
+#
+# Purpose:
+#   Read only the narrow Hermes activation context and produce draft/audit
+#   artifacts without mutating canonical state.
+#
+id: hermes_operator_today_shadow
+name: "Hermes Operator Today Shadow"
+version: "1.0"
+description: "Bounded Hermes shadow workflow. Produces a draft operator brief and audit artifacts from a narrow declared read set."
+
+runtime_adapter: hermes
+task_type: operator-briefing-shadow
+role_card: hermes-operator-shadow
+trigger_type: manual
+owner: operator
+status: deprecated
+
+mode: shadow
+permission_ceiling: shadow_log_only
+
+inputs:
+  - date
+  - operator_focus
+
+required_reads:
+  - "00_HOME/Now.md"
+  - "01_PROJECTS/ChaseOS/ChaseOS-OS.md"
+  - "HERMES.md"
+  - "06_AGENTS/Hermes-Adapter-Spec.md"
+  - "06_AGENTS/Hermes-Workflow-Boundaries.md"
+  - "06_AGENTS/Hermes-Memory-Boundary.md"
+  - "07_LOGS/Build-Logs/2026-04-08-ChaseOS-hermes-integration-binding-pass.md"
+  - "07_LOGS/Build-Logs/2026-04-09-ChaseOS-hermes-permission-matrix-closure.md"
+
+outputs:
+  - draft_operator_brief_path
+  - agent_activity_log_path
+  - build_log_path
+  - archive_note_path
+
+writeback_targets:
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Build-Logs/"
+  - "07_LOGS/Operator-Briefs/_drafts/"
+  - "99_ARCHIVE/Documentation-History/"
+
+repo_scope:
+  primary_repo: "."
+  extra_dirs: []
+  cross_repo_access: false
+
+connector_policy:
+  network_connectors: disabled
+  gateway_inputs: disabled
+  delivery_connectors: disabled
+
+failure_behavior: escalate
+
+rollback_path: "overwrite only artifacts inside declared writeback targets; no canonical files touched"
+
+approval_rule: "declared-scope-preapproved; anything else escalates"
+
+audit_expectations:
+  - "every declared read is listed"
+  - "draft operator brief path recorded"
+  - "agent activity log path recorded"
+  - "build log path recorded"
+  - "archive note path recorded"
+  - "shadow-mode non-goals recorded"
+
+non_goals:
+  - "no canonical state mutation"
+  - "no project OS edits"
+  - "no knowledge promotion"
+  - "no connector use"
+  - "no ambient repo traversal"
+
+notes: >
+  First live Hermes runtime proof. This workflow exists to validate a bounded
+  runtime adapter under least privilege. It may create only draft/audit
+  artifacts and must not claim broader Hermes enablement.

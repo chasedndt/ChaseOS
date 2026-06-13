@@ -1,0 +1,18 @@
+{
+  "schema_id": "chaseos.siteops.provider_profile.v0",
+  "object_type": "provider_profile",
+  "required": [
+    "provider_id",
+    "display_name",
+    "status",
+    "provider_type",
+    "capabilities",
+    "auth_mode",
+    "credential_boundary",
+    "supports_dry_run",
+    "supports_stub",
+    "blocked_actions"
+  ],
+  "credential_rule": "Provider profiles may name required environment variables but must never store credential values.",
+  "notes": "Schema is documentation for the stdlib validator in runtime/siteops/registry.py."
+}

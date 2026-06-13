@@ -1,0 +1,70 @@
+schema_version: "0.1"
+mission_id: "mission-generic-creator-revenue-os"
+name: "Generic Creator Revenue OS Mission"
+version: "0.1"
+owner: "operator"
+instance_id: "portable-general-markdown-workspace"
+status: "draft"
+created: "2026-05-13"
+updated: "2026-05-13"
+objective: "Turn repeated content creation into an owned-funnel workflow with evidence-backed CTA and conversion review."
+domain: "creator_content"
+target_user: "creator or founder with local content/project evidence"
+success_metric: "approved content batch with CTA evidence and proof card after each pass"
+time_horizon: "90 days"
+capital_or_resource_constraints:
+  - "no paid ads or external posting without approval"
+risk_class: "standard"
+mission_mode:
+  adaptive: true
+  auto_apply_evolution: false
+  approval_required_for_evolution: true
+workflow_packs:
+  - workflow_id: "creator_content_to_market_batch"
+    version: "0.1"
+    role: "primary"
+sub_agents:
+  - role: "mission_supervisor"
+    responsibility: "Maintain mission continuity and review blockers."
+    runtime_preference: "hermes"
+    authority: "advisory"
+    allowed_outputs: ["mission_review", "pass_plan", "blocker_report"]
+    forbidden_actions: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+  - role: "growth_operator"
+    responsibility: "Review content-to-market fit and CTA quality."
+    runtime_preference: "hermes"
+    authority: "proposal_only"
+    allowed_outputs: ["growth_review", "cta_review", "funnel_hypothesis"]
+    forbidden_actions: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+  - role: "critic_validator"
+    responsibility: "Score outputs and check missing evidence."
+    runtime_preference: "strong_model"
+    authority: "review_only"
+    allowed_outputs: ["scorecard", "failure_analysis", "evolution_risk_review"]
+    forbidden_actions: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+runtime_split:
+  hermes: ["mission_supervisor", "growth_operator"]
+  codex: []
+  browser_runtime: []
+  local_runtime: ["deterministic_validation"]
+  human: ["approval", "external_effects"]
+required_inputs: ["content source folder", "target audience", "CTA target", "approval policy"]
+required_context: ["local project evidence", "workflow registry", "proof artifact standard"]
+allowed_tools: ["deterministic_markdown_scan", "schema_validation", "proposal_drafting"]
+forbidden_tools: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+approval_required_for: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_access", "browser_actions_with_external_effect", "browser_skill_activation", "provider_config_mutation", "workflow_evolution_activation", "canonical_promotion"]
+writeback_targets: ["07_LOGS/VentureOps-Missions/", "07_LOGS/Mission-Reviews/"]
+proof_artifact_targets: ["07_LOGS/Workflow-Proofs/"]
+audit_targets: ["07_LOGS/Agent-Activity/"]
+scorecard:
+  status: "not_scored"
+  required_before_evolution: true
+failure_behavior: "fail_closed_and_request_operator_review"
+review_cadence: "weekly"
+evolution_policy:
+  allow_proposals: true
+  allow_dry_run: true
+  allow_auto_apply: false
+  required_approvals: ["human_approval", "gate_review", "mission_owner_acceptance"]
+unsafe_boundaries: ["external_sends", "purchases", "listings", "payments", "live_trading", "protected_file_edits", "credential_reads", "browser_skill_activation", "provider_config_mutation", "canonical_promotion"]
+notes: "Example only; not an active mission."

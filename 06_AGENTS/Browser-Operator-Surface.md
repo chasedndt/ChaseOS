@@ -304,7 +304,7 @@ Plus `runtime/operator_surface/adapters/browser_adapter.py` — the conforming a
 **Playwright toolchain (installed):**
 - `playwright>=1.40` in `pyproject.toml`
 - `playwright install chromium` — downloads headless Chromium (~280MB)
-- Chromium verified: `%USERPROFILE%\AppData\Local\ms-playwright\chromium-1208`
+- Chromium verified: `<WINDOWS_APPDATA>/<path>`
 - Graceful degradation: if Playwright unavailable or launch fails, `_adapter_mode = "stub"` — all handlers continue via `page=None` path
 
 ---

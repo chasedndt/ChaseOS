@@ -1,0 +1,44 @@
+﻿# strikezone_acquisition.yaml — StrikeZone Daily Pre-Brief Acquisition
+# ChaseOS Phase 9 — Acquisition + Normalization Pass 1C
+#
+# Pre-brief acquisition run that must complete before the 0600 ET SBP digest.
+# Reads Now.md + StrikeZone-Crypto-OS.md, builds source pack, writes latest-pointer.
+#
+# Schedule: runtime/schedules/sch-strikezone-acquisition-0550.yaml (0550 ET weekdays)
+# Handler: runtime/workflows/strikezone_acquisition.py
+# Role card: source-pack-builder
+# Downstream: sbp_strikezone_digest reads runtime/acquisition/packs/strikezone-latest.json
+
+id: strikezone_acquisition
+name: "StrikeZone Daily Pre-Brief Acquisition"
+version: "1.0"
+description: "Daily 0550 ET acquisition run that reads vault state (Now.md + StrikeZone-Crypto-OS.md), builds briefing_ready_input_set artifacts, and writes a stable latest-pointer for the 0600 SBP digest."
+task_type: source-pack-builder
+role_card: source-pack-builder
+trigger_type: scheduled
+owner: operator
+status: active
+
+permission_ceiling: acquisition_pack_only
+writeback_targets:
+  - "runtime/acquisition/packs/"
+failure_behavior: escalate
+
+# M-4/N-9 fix 2026-05-21: operator must explicitly disable shadow_mode in the schedule
+# BEFORE this workflow makes live paid API calls. approval_rule set to operator-first-run
+# to require explicit sign-off when shadow_mode is removed.
+approval_rule: operator-first-run
+
+required_reads:
+  - "runtime/acquisition/plans/strikezone-daily.json"
+  - "00_HOME/Now.md"
+  - "01_PROJECTS/StrikeZone/StrikeZone-Crypto-OS.md"
+
+audit_expectations:
+  - "plan_id recorded"
+  - "source_packet_paths recorded"
+  - "briefing_ready_input_set_path recorded"
+  - "latest_pointer written to runtime/acquisition/packs/strikezone-latest.json"
+  - "no canonical mutation performed"
+
+schedule_intent_ref: "runtime/schedules/sch-strikezone-acquisition-0550.yaml"

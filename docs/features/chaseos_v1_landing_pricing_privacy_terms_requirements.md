@@ -30,7 +30,7 @@ V1 copy must follow these boundaries:
 - ChaseOS Studio is the standalone app / graphical control panel.
 - Chaser Forge is the governed marketplace / extension and workflow-pack distribution layer.
 - Hermes and OpenClaw are existing bounded runtime-instance lanes under ChaseOS governance, not the public product brand.
-- Chaser Agent is one of the ChaseOS 24/7 harness/runtime lanes; public product/agency authority remains gated and must not be framed as a V1 blocker.
+- Chaser Agent is a future first-party always-on runtime/agency layer and must not be framed as a V1 blocker.
 - Billing, credits, paid marketplace purchases, hosted provider calls, and account/license enforcement must not be described as implemented unless separately verified.
 
 ## 2. Product-facing landing-page structure
@@ -188,7 +188,7 @@ Plan hypothesis table:
 | Free / Local Starter | Try ChaseOS locally. | ChaseOS Studio, local docs/graph/status, sample workflows, basic feature catalog. | V1 candidate; must match actual download. |
 | Pro | For AI-native builders and founders. | Advanced Studio surfaces, premium templates/workflows, provider/runtime convenience, optional updates/support. | Pricing hypothesis; billing not implemented unless verified. |
 | Forge+ | For power users and teams extending ChaseOS. | Workflow packs, private catalogs, premium extensions, Chaser Forge distribution. | Marketplace preview; paid pack purchase flow not implemented unless verified. |
-| Managed Agent / Agency | For founders/businesses that want outcomes. | Chaser Agent / always-on operator / done-for-you workflows. | Runtime identity exists; public managed-agent product lane remains gated/Post-V1. |
+| Managed Agent / Agency | For founders/businesses that want outcomes. | Chaser Agent / always-on operator / done-for-you workflows. | Post-V1 / future premium lane. |
 | Team / Business | For teams with shared governance needs. | Shared projects, approval logs, team policies, collaboration, private deployment support. | Post-V1. |
 
 ### 3.3 Required pricing disclaimers

@@ -1,0 +1,130 @@
+schema_id: chaseos.browser_skill.v0
+schema_version: 0.1
+status: draft
+created: 2026-04-30
+owner: ChaseOS
+purpose: Machine-readable field contract for Browser Operator Skill Layer skill files.
+
+required_fields:
+  - skill_id
+  - domain
+  - intent
+  - allowed_domains
+  - inputs_schema
+  - outputs_schema
+  - preconditions
+  - steps
+  - selectors
+  - fallbacks
+  - wait_conditions
+  - verification
+  - secret_policy
+  - source_runs
+  - approval_status
+  - risk_level
+  - last_verified
+
+optional_fields:
+  - status
+  - mode
+  - account_required
+  - credentials_required
+  - canonical_writeback
+  - screenshot_policy
+  - coordinate_policy
+  - notes
+
+field_definitions:
+  skill_id:
+    type: string
+    description: Stable unique ID, preferably domain.intent, for example excalidraw.draw_basic_shape.
+  domain:
+    type: string
+    description: Primary website/domain or domain family.
+  intent:
+    type: string
+    description: Human-readable action purpose.
+  allowed_domains:
+    type: list[string]
+    description: Explicit domain/origin allowlist. Empty lists are invalid.
+  inputs_schema:
+    type: mapping
+    description: Inputs accepted by this skill. Must not include credentials or session material.
+  outputs_schema:
+    type: mapping
+    description: Outputs produced by this skill. Must not include canonical writeback by default.
+  preconditions:
+    type: list[string]
+    description: Required starting state before the skill can be used.
+  steps:
+    type: list[mapping]
+    item_required:
+      - step_id
+      - action
+      - target
+    description: Ordered declarative browser actions. These are recipes, not authorization.
+  selectors:
+    type: mapping
+    description: CSS/ARIA/semantic selector candidates. Do not store user-specific state.
+  fallbacks:
+    type: list[mapping]
+    description: Bounded recovery strategies if primary selectors fail.
+  wait_conditions:
+    type: list[mapping]
+    description: Expected page/canvas load or state conditions.
+  verification:
+    type: mapping
+    description: Expected evidence that the skill succeeded.
+  secret_policy:
+    type: mapping
+    description: Explicit declaration that secrets, credentials, cookies, and session tokens are forbidden.
+  source_runs:
+    type: list[string]
+    description: Browser run IDs, run log paths, or candidate paths that informed this skill.
+  approval_status:
+    type: enum
+    allowed_values:
+      - candidate_untrusted
+      - draft
+      - needs_review
+      - approved
+      - rejected
+      - deprecated
+  risk_level:
+    type: enum
+    allowed_values:
+      - low
+      - medium
+      - high
+      - blocked
+  last_verified:
+    type: string|null
+    description: ISO date/time for the latest successful verification. Required for approved skills.
+
+policy_rules:
+  forbidden_data:
+    - credentials
+    - passwords
+    - api_keys
+    - cookies
+    - session_tokens
+    - bearer_tokens
+    - authorization_headers
+    - local_storage
+    - indexeddb
+    - browser_profile_paths
+    - full_browser_history
+  forbidden_actions:
+    - login
+    - credential_fill
+    - form_submit
+    - file_download
+    - shell
+    - execute_shell
+    - raw_cdp
+    - import_cookies
+    - load_personal_profile
+    - read_browser_history
+  coordinate_rule: Raw absolute-only pixel coordinates are invalid. Use selectors, semantic targets, or relative coordinates.
+  candidate_rule: Candidate material remains untrusted until explicit promotion.
+  writeback_rule: Browser skills may not write canonical vault state directly.

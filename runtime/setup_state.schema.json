@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChaseOS Setup State",
+  "type": "object",
+  "properties": {
+    "providers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "configured": { "type": "boolean" },
+          "auth_present": { "type": "boolean" },
+          "api_key_present": { "type": "boolean" },
+          "secret_reference_present": { "type": "boolean" },
+          "secret_reference_kind": { "type": ["string", "null"] },
+          "secret_reference_target": { "type": ["string", "null"] },
+          "default_model": { "type": ["string", "null"] },
+          "reasoning_policy": { "type": ["string", "null"] },
+          "endpoint_present": { "type": "boolean" },
+          "endpoint_url": { "type": ["string", "null"] },
+          "model_target_present": { "type": "boolean" },
+          "launcher_mode": { "type": ["string", "null"] },
+          "base_url_present": { "type": "boolean" },
+          "workflow_scope": { "type": ["string", "null"] },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    },
+    "integrations": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "configured": { "type": "boolean" },
+          "binding_present": { "type": "boolean" },
+          "secret_reference_present": { "type": "boolean" },
+          "secret_reference_kind": { "type": ["string", "null"] },
+          "secret_reference_target": { "type": ["string", "null"] },
+          "notes": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

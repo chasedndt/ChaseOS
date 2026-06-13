@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "ChaseOS Capture to Markdown",
+  "version": "0.1.0",
+  "description": "Exports the current page text as a ChaseOS Capture to Markdown artifact.",
+  "permissions": [
+    "activeTab",
+    "downloads",
+    "scripting",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "action": {
+    "default_title": "Capture to Markdown",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "service_worker.js"
+  }
+}

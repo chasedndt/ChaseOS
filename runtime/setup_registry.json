@@ -1,0 +1,66 @@
+{
+  "providers": [
+    {
+      "id": "claude",
+      "label": "Anthropic Claude",
+      "kind": "provider",
+      "setup_kind": "api-or-auth",
+      "status": "planned",
+      "notes": "Configure Anthropic-backed provider access, model defaults, and approval posture."
+    },
+    {
+      "id": "openai",
+      "label": "OpenAI",
+      "kind": "provider",
+      "setup_kind": "api-key",
+      "status": "planned",
+      "notes": "Configure OpenAI API access, model defaults, and reasoning profile selection."
+    },
+    {
+      "id": "local_oss",
+      "label": "Local OSS Models",
+      "kind": "provider",
+      "setup_kind": "local-endpoint",
+      "status": "planned",
+      "notes": "Configure local model endpoint, launcher assumptions, and model inventory."
+    },
+    {
+      "id": "n8n",
+      "label": "n8n Automation Bridge",
+      "kind": "provider",
+      "setup_kind": "url-auth",
+      "status": "planned",
+      "notes": "Configure n8n bridge URL, auth secret, and workflow ownership boundaries."
+    }
+  ],
+  "integrations": [
+    {
+      "id": "discord",
+      "label": "Discord",
+      "kind": "integration",
+      "setup_kind": "bot-or-channel-binding",
+      "status": "active-reference",
+      "notes": "Configure Discord delivery, operator control surfaces, and runtime-facing channel bindings."
+    },
+    {
+      "id": "telegram",
+      "label": "Telegram",
+      "kind": "integration",
+      "setup_kind": "bot-token",
+      "status": "planned",
+      "notes": "Configure Telegram bot token, chat routing, and delivery settings.",
+      "validation_checks": ["configured", "binding_present", "secret_reference_present"],
+      "secret_reference_kind": "env-var-or-local-secret-ref"
+    },
+    {
+      "id": "slack",
+      "label": "Slack",
+      "kind": "integration",
+      "setup_kind": "app-token",
+      "status": "planned",
+      "notes": "Configure Slack app credentials, workspace bindings, and delivery rules.",
+      "validation_checks": ["configured", "binding_present", "secret_reference_present"],
+      "secret_reference_kind": "env-var-or-local-secret-ref"
+    }
+  ]
+}

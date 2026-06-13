@@ -60,7 +60,7 @@ This note supersedes the older panel-count baseline in this document for source 
 
 Pass 1, `studio-ui-navbar-ia-shell-framing`, is implemented and ready for operator review.
 
-Source of truth for this pass: `%USERPROFILE%\Downloads\ChaseOS_Studio_Final_UI_Refactor_Master_Plan.md`.
+Source of truth for this pass: `<OPERATOR_DOWNLOADS>/<file>`.
 
 Implemented:
 
@@ -87,7 +87,7 @@ Verification:
 
 Pass 2, `studio-ui-home-command-center-productization`, is implemented and ready for operator review.
 
-Source of truth for this pass: `%USERPROFILE%\Downloads\ChaseOS_Studio_Final_UI_Refactor_Master_Plan.md`.
+Source of truth for this pass: `<OPERATOR_DOWNLOADS>/<file>`.
 
 Implemented:
 
@@ -370,7 +370,7 @@ The UI should organize around objects the operator understands.
 | Task | Human or agent work item. | Status, owner/runtime, source context, approvals, output artifacts, logs. |
 | Run | Runtime/AOR/Agent Bus execution or proof run. | Runtime, inputs, outputs, trace, errors, cost/latency when available, authority posture. |
 | Approval | Governed decision packet. | Requested action, exact digest/scope, target path, status, markers, allowed executor. |
-| Agent / Runtime | Hermes, OpenClaw, Codex, Chaser Agent, future runtimes. | Health, daemon state, policies, capabilities, queue, recent runs. |
+| Agent / Runtime | Hermes, OpenClaw, Codex, Archon, future runtimes. | Health, daemon state, policies, capabilities, queue, recent runs. |
 | Source | Captured/imported/reviewed material. | Provenance, trust, transformations, source pack status, downstream readiness. |
 | Memory node | Durable memory/doc/fact/ledger entry. | Trust state, backlinks, extracted facts, attached work, provenance. |
 | Artifact | Output file, proof card, deck, report, generated stub, UI proof. | Source run, owner, status, path, preview, follow-up actions. |
@@ -440,7 +440,7 @@ Notes:
 
 Notes:
 
-- `Agents / Runtimes` should surface Hermes/OpenClaw/Codex/Chaser Agent posture, daemon state, and capability boundaries.
+- `Agents / Runtimes` should surface Hermes/OpenClaw/Codex/Archon posture, daemon state, and capability boundaries.
 - `Tasks` and `Runs` are currently productized together as `Tasks & Runs`; they can be split later only if the operator needs separate work-management and proof-run workflows.
 - `Browser Runtime`, `Site Skills`, and `Tools / MCP` should remain advanced or visibly gated if operator-facing readiness is not clean enough.
 

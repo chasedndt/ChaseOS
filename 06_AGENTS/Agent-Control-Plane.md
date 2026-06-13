@@ -117,7 +117,7 @@ The Studio Chat panel exposes a **Start Runtime / Stop Runtime** button that all
 - Routes through `chaseos runtime daemon --runtime [hermes|openclaw] --synthesize`
 - Spawns a detached background subprocess; PID tracked at `runtime/lifecycle/run/{runtime}-chat-daemon.pid`
 - Supported runtimes: `hermes`, `openclaw` only
-- Blocked: `openhuman` (not yet implemented as a daemon), `claude-code` (session-local, not a daemon)
+- Blocked: `openhuman` (not yet implemented as a daemon), `claude-code`/`archon` (session-local, not a daemon)
 - API methods: `start_runtime_daemon`, `stop_runtime_daemon`, `get_daemon_status` in `runtime/studio/shell/api.py`
 - Authority model: the launched daemon runs under the same bounded authority as any direct `chaseos runtime daemon` invocation; it does not inherit elevated permissions from the Studio shell
 - The `--synthesize` flag enables LLM synthesis in the watch loop; without it, chat tasks return bounded acknowledgments only

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "runtime_behavior_profile",
+  "runtime_id": "claude",
+  "runtime_label": "Claude / Anthropic Agent Harness",
+  "status": "seeded",
+  "updated_at": "2026-04-28T00:00:00Z",
+  "behavioral_profile": {
+    "primary_role": "Vault-writing engineering and documentation harness for the Anthropic lane. Reads vault truth, implements code and docs, writes build logs, and keeps indexes aligned.",
+    "execution_surface": "Claude Code CLI with local filesystem access",
+    "access_mode": "direct vault read/write via filesystem",
+    "trust_tier": "Tier 2 ceiling per Agent Registry",
+    "strengths": [
+      "repo-grounded implementation across all ChaseOS phases",
+      "documentation truth-sync and writeback discipline",
+      "test-driven pass structure with build logs after every meaningful session",
+      "context routing per CLAUDE.md read-order discipline",
+      "precise scoping — does not expand past task boundaries"
+    ],
+    "known_failure_modes": [
+      {
+        "id": "session-memory-staleness",
+        "status": "managed",
+        "description": "Adapter memory can lag behind vault truth after large build days. Mitigated by reading Now.md and Project-OS files at session start.",
+        "evidence_refs": ["06_AGENTS/Claude-Memory-System.md", "CLAUDE.md"]
+      },
+      {
+        "id": "context-drift-in-long-sessions",
+        "status": "managed",
+        "description": "In very long sessions the active task context can drift from current vault state. Mitigated by re-anchoring on Now.md and Project-OS files mid-session.",
+        "evidence_refs": ["CLAUDE.md"]
+      }
+    ],
+    "routing_guidance": [
+      "Read Now.md and the relevant Project-OS file before acting on any project task.",
+      "Prefer narrow context loads — do not load the full vault for single-project tasks.",
+      "Write build logs directly after meaningful implementation or documentation passes.",
+      "Update both Build-Logs-Index and Documentation-History-Index after major passes.",
+      "Do not edit protected files without explicit operator instruction."
+    ],
+    "confidence_signals": [
+      "session starts with Now.md read",
+      "build log written at session close",
+      "relevant Project-OS file read before implementation",
+      "no expansion beyond stated task scope"
+    ]
+  },
+  "governance_boundary": "Layer C memory is advisory only. This profile cannot raise trust tier, grant write scope, approve protected-file edits, or override ChaseOS Gate, Permission Matrix, role cards, manifests, or operator approval."
+}

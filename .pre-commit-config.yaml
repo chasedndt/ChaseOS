@@ -1,0 +1,14 @@
+repos:
+  - repo: local
+    hooks:
+      - id: chaseos-text-integrity
+        name: ChaseOS text integrity
+        entry: python scripts/check_text_integrity.py
+        language: system
+        pass_filenames: false
+      - id: chaseos-agent-doc-guard
+        name: ChaseOS canonical doc diff guard
+        entry: python scripts/agent_doc_guard.py
+        language: system
+        pass_filenames: false
+        stages: [pre-commit]

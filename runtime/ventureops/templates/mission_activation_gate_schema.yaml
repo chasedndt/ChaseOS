@@ -1,0 +1,78 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for the exact-once VentureOps Mission Mode local activation gate."
+approval_required_fields:
+  - schema_version
+  - type
+  - activation_id
+  - approval_decision
+  - approval_status
+  - approved_by
+  - approved_at
+  - operator_approval_statement
+  - mission_id
+  - mission_workspace_path
+  - approved_next_step
+  - runtime_claim_result_marker_path
+  - mission_runtime_result_path
+  - agent_bus_task_id
+  - approved_scope
+  - required_acknowledgements
+  - consumption_policy
+  - consumable
+  - mission_activation_execution_authorized
+  - provider_calls_authorized
+  - browser_actions_authorized
+  - browser_skill_activation_authorized
+  - external_side_effects_authorized
+  - crm_or_payment_mutation_authorized
+  - live_trading_authorized
+  - protected_file_edit_authorized
+  - canonical_promotion_authorized
+  - credential_or_secret_read_authorized
+  - workflow_evolution_apply_authorized
+  - followup_agent_bus_task_authorized
+  - context_errors
+  - activation_digest
+marker_required_fields:
+  - schema_version
+  - type
+  - status
+  - surface
+  - activation_id
+  - approval_path
+  - approval_digest
+  - mission_id
+  - mission_workspace_path
+  - runtime_claim_result_marker_path
+  - mission_runtime_result_path
+  - agent_bus_task_id
+  - consumed_at
+  - mission_activation_performed
+  - mission_manifest_status_after
+  - mission_state_status_after
+  - runtime_task_claimed
+  - aor_dispatch_performed
+  - mission_result_ingested
+  - agent_bus_task_closed
+  - workflow_evolution_applied
+  - provider_call_performed
+  - browser_action_performed
+  - browser_skill_activated
+  - external_send_performed
+  - crm_or_payment_mutation_performed
+  - live_trading_performed
+  - protected_file_edit_performed
+  - credential_or_secret_read_performed
+  - canonical_promotion_performed
+  - marker_path
+approved_next_step_values:
+  - move_local_mission_state_to_active
+consumption_policy_values:
+  - exact_once
+authority_rules:
+  - "Runtime claim/result gate must already be consumed, the mission result must be ingested, and the Agent Bus task must be closed."
+  - "Approval validation must bind exactly to the requested mission workspace path."
+  - "The gate may move only local mission manifest/state-ledger status into active state."
+  - "Workflow evolution remains pending_review/unapplied."
+  - "The gate must not call providers, use browsers, send externally, mutate CRM/payment systems, trade, read credentials, edit protected files, write follow-up Agent Bus tasks, or promote canonical state."

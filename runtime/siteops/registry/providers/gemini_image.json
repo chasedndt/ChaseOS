@@ -1,0 +1,34 @@
+{
+  "object_type": "provider_profile",
+  "provider_id": "gemini_image",
+  "display_name": "Gemini Image",
+  "status": "PARTIAL",
+  "provider_type": "api",
+  "capabilities": [
+    "image_generate",
+    "image_edit",
+    "image_to_image",
+    "multi_image_compose"
+  ],
+  "auth_mode": "env_var",
+  "credential_boundary": "environment_reference_only",
+  "required_env_vars": [
+    "GEMINI_API_KEY"
+  ],
+  "cost_mode": "paid_or_quota",
+  "supports_dry_run": true,
+  "supports_stub": true,
+  "blocked_actions": [
+    "unsafe_image_generation",
+    "rights_unclear_generation"
+  ],
+  "budget_guard": {
+    "max_cost_per_run": "approval_required",
+    "monthly_budget": "approval_required",
+    "requires_user_approval_above": "configured_limit"
+  },
+  "output_targets": {
+    "creative_runs": "07_LOGS/Creative-Runs/",
+    "audit": "07_LOGS/Agent-Activity/"
+  }
+}

@@ -1,0 +1,279 @@
+# ChaseOS Discord Instance Bindings - GitHub-safe example
+#
+# Copy this file to:
+#   .chaseos/discord_instance_bindings.yaml
+#
+# Then fill the copied file with real Discord server, user, bot, application,
+# public-key, and channel IDs for your local ChaseOS instance.
+#
+# Do not commit the copied .chaseos file. It is machine-local personal binding
+# state, not portable ChaseOS framework truth.
+#
+# Webhook URLs and bot tokens are secrets. Put those in .env or another approved
+# local secret source, not in this binding file.
+
+schema_version: "1.0"
+binding_created: "<yyyy-mm-dd>"
+repo_root: "<absolute-path-to-your-chaseos-vault>"
+
+server:
+  id: "<discord-server-id>"
+  name: "<discord-server-name>"
+
+operator:
+  user_id: "<operator-discord-user-id>"
+  display_name: "<operator-display-name>"
+  trust_tier: 1
+  execution_eligible: true
+  allowed_adapters:
+    - openclaw
+    - hermes
+  approval_authority: true
+  note: >
+    The operator user ID must match the real Discord account that may issue
+    approval records. Operator intent is still routed through ChaseOS policy,
+    Gate, role cards, and workflow manifests.
+
+runtimes:
+  openclaw:
+    bot_user_id: "<openclaw-bot-user-id>"
+    application_id: "<openclaw-application-id>"
+    display_name: "ChaseOS // OpenClaw"
+    public_key: "<openclaw-application-public-key>"
+    trust_tier: 2
+    execution_eligible: false
+    allowed_adapters:
+      - openclaw
+    approval_authority: false
+    execution_lane_status: reserved_not_active
+    note: >
+      Set execution_eligible true only after OpenClaw Discord governance,
+      role-card scope, and runtime policy are aligned for this local instance.
+
+  hermes:
+    bot_user_id: "<hermes-bot-user-id>"
+    application_id: "<hermes-application-id>"
+    display_name: "ChaseOS // Hermes"
+    public_key: "<hermes-application-public-key>"
+    trust_tier: 2
+    execution_eligible: false
+    allowed_adapters:
+      - hermes
+    approval_authority: false
+    execution_lane_status: reserved_not_active
+    note: >
+      Set execution_eligible true only after the Hermes bounded Discord lane is
+      approved for this local instance. Hermes must not gain shell, connector,
+      canonical promotion, or protected-file write authority through Discord.
+
+primary_channels:
+  control_plane_routing:
+    id: "<channel-id>"
+    name: "chaseos-ops"
+    channel_class: control-plane-routing
+    bound: false
+    execution_authority: none_directly
+    interactive_eligible_runtimes:
+      - openclaw
+      - hermes
+    interactive_mode: mention_required
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  runtime_chat_openclaw:
+    id: "<channel-id>"
+    name: "openclaw-chat"
+    channel_class: runtime-chat
+    bound: false
+    execution_authority: advisory_only
+    interactive_eligible_runtimes:
+      - openclaw
+    interactive_mode: free_response
+    posting_eligible_runtimes:
+      - openclaw
+
+  runtime_chat_hermes:
+    id: "<channel-id>"
+    name: "hermes-chat"
+    channel_class: runtime-chat
+    bound: false
+    execution_authority: advisory_only
+    interactive_eligible_runtimes:
+      - hermes
+    interactive_mode: free_response
+    posting_eligible_runtimes:
+      - hermes
+
+  approvals:
+    id: "<channel-id>"
+    name: "approvals"
+    channel_class: approvals
+    bound: false
+    execution_authority: approval_unlocks_named_action_only
+    interactive_eligible_runtimes:
+      - operator_only
+    interactive_mode: approval_records_only
+    posting_eligible_runtimes:
+      - operator_only
+
+  audit_writeback:
+    id: "<channel-id>"
+    name: "audit-writeback"
+    channel_class: audit-writeback
+    bound: false
+    execution_authority: none
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  alerts_openclaw:
+    id: "<channel-id>"
+    name: "alerts-openclaw"
+    channel_class: alerts
+    bound: false
+    execution_authority: none
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+
+  alerts_hermes:
+    id: "<channel-id>"
+    name: "alerts-hermes"
+    channel_class: alerts
+    bound: false
+    execution_authority: none
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - hermes
+
+  debug_openclaw:
+    id: "<channel-id>"
+    name: "debug-openclaw"
+    channel_class: debug
+    bound: false
+    execution_authority: none_production
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+
+  debug_hermes:
+    id: "<channel-id>"
+    name: "debug-hermes"
+    channel_class: debug
+    bound: false
+    execution_authority: none_production
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - hermes
+
+  docs_archive:
+    id: "<channel-id>"
+    name: "server-notes"
+    channel_class: docs-archive
+    bound: false
+    execution_authority: none
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+supplemental_channels:
+  artifact_paths:
+    id: "<channel-id>"
+    name: "artifact-paths"
+    channel_class: audit-writeback
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  operator_runs:
+    id: "<channel-id>"
+    name: "operator-runs"
+    channel_class: audit-writeback
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  alerts_workflows:
+    id: "<channel-id>"
+    name: "alerts-workflows"
+    channel_class: alerts
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  alerts_security:
+    id: "<channel-id>"
+    name: "alerts-security"
+    channel_class: alerts
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  debug_adapters:
+    id: "<channel-id>"
+    name: "debug-adapters"
+    channel_class: debug
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  runtime_debug:
+    id: "<channel-id>"
+    name: "runtime-debug"
+    channel_class: debug
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  docs_snippets:
+    id: "<channel-id>"
+    name: "docs-snippets"
+    channel_class: docs-archive
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+  change_log:
+    id: "<channel-id>"
+    name: "change-log"
+    channel_class: docs-archive
+    bound: false
+    interactive_eligible_runtimes: []
+    interactive_mode: output_only
+    posting_eligible_runtimes:
+      - openclaw
+      - hermes
+
+hermes_discord_lane_present: false
+hermes_execution_via_discord_enabled: false
+default_unmapped_policy: deny

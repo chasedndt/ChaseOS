@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "execution_repair",
+  "runtime_id": "hermes",
+  "status": "seeded-empty",
+  "updated_at": "2026-04-27T00:00:00Z",
+  "repair_patterns": [],
+  "incident_candidates": [],
+  "governance_boundary": "Repair memory may inform preflight and operator review, but it cannot bypass Gate policy or apply self-repair without explicit authority."
+}

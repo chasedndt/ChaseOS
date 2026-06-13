@@ -1,0 +1,95 @@
+# ChaseOS Adapter Manifest - Codex Bus Worker
+# Schema: 06_AGENTS/Adapter-Manifest-Standard.md
+
+adapter_id: "codex"
+adapter_name: "Codex Bus Worker"
+personal_runtime_name: "Axiom-Codex"
+retained_runtime_name: "Axiom-Codex"
+legacy_personal_runtime_names:
+  - "Codex-ChaseOS-Worker"
+provider: "openai"
+surface: "codex-cli"
+adapter_class: "harness"
+status: "active"
+trust_ceiling: "tier-2"
+markdown_doc: "06_AGENTS/Codex-Runtime-Profile.md"
+adapter_spec: "runtime/adapters/codex/README.md"
+
+allowed_task_types:
+  - "code.review"
+  - "code.patch"
+  - "repo.inspect"
+  - "test.run"
+
+required_read_sets:
+  default:
+    - "README.md"
+    - "PROJECT_FOUNDATION.md"
+    - "ROADMAP.md"
+    - "00_HOME/Now.md"
+    - "06_AGENTS/Agent-Control-Plane.md"
+    - "06_AGENTS/Permission-Matrix.md"
+    - "06_AGENTS/Trust-Tiers.md"
+    - "06_AGENTS/Codex-Runtime-Profile.md"
+    - "runtime/adapters/codex/README.md"
+    - "runtime/adapters/codex/CODEX_BUS_HANDOFF.md"
+    - "runtime/codex/capabilities.yaml"
+
+allowed_write_targets:
+  standard_outputs: true
+  project_os_files: false
+  knowledge_notes: false
+  inputs_folder: false
+  protected_files: false
+  runtime_activity: true
+  archive_notes: true
+
+explicitly_denied_write_targets:
+  - "00_HOME/**"
+  - "01_PROJECTS/**"
+  - "02_KNOWLEDGE/**"
+  - "03_INPUTS/**"
+  - "04_SOPS/**"
+  - ".claude/**"
+  - ".codex/**"
+  - ".obsidian/**"
+  - ".venv/**"
+  - "secrets/**"
+  - "credentials/**"
+  - ".env"
+
+protected_file_behavior: "explicit-approval-required"
+
+promotion_behavior:
+  may_promote_to_knowledge: "no"
+  gate_conditions_required: false
+  autonomous_promotion: false
+
+external_side_effect_policy:
+  may_call_external_apis: "no"
+  may_write_to_external_systems: "no"
+  approval_scope: "current-session"
+
+coordination_policy:
+  cross_runtime_coordination: "bus-required"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "required"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+approval_mode: "bounded-editor-proposer"
+audit_log_target: "07_LOGS/Agent-Activity/YYYY-MM-DD-codex-[descriptor].md"
+capability_manifest: "runtime/codex/capabilities.yaml"
+adapter_path: "runtime/adapters/codex/"
+run_artifact_target: "runtime/adapters/codex/runs/"
+hook_config: {}
+
+notes: |
+  Codex joins ChaseOS as a bounded development worker on the Agent Bus.
+  It is not the bus owner, not a canonical-state owner, and not a direct writer
+  for Pulse memory, Personal Map, R&D truth-state records, or governed runtime
+  state.
+
+  Codex may claim tasks addressed to bus runtime `Codex` for code review,
+  patch proposal, repository inspection, and test execution. It returns
+  reviewable adapter artifacts under `runtime/adapters/codex/runs/` and maps
+  adapter result kinds back to standard agent-bus events.

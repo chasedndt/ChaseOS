@@ -1,0 +1,28 @@
+schema_version: "0.2"
+status: template
+description: "Required fields for VentureOps internal, client-safe, marketplace, and redacted proof cards."
+required_fields:
+  - workflow_id
+  - run_id
+  - timestamp
+  - before_state
+  - after_state
+  - input_sources
+  - runtimes_used
+  - actions_taken
+  - approvals_used
+  - outputs_generated
+  - files_written
+  - scorecard_summary
+  - result
+  - unresolved_risks
+  - customer_facing_summary
+  - internal_audit_link
+  - cta_or_follow_up
+optional_fields:
+  - screenshots_or_logs
+  - redaction_level
+redaction_rules:
+  - "Never include secrets, raw credentials, wallet keys, seed phrases, cookies, session tokens, or private browser state."
+  - "Redact private client paths unless the operator intentionally prepares an internal-only artifact."
+  - "Public proof cards must remove private customer data and private browser/session details."

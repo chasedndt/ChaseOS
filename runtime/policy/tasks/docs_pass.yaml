@@ -1,0 +1,59 @@
+# ChaseOS Task Profile — Architecture / Docs Pass
+# Corresponds to Session-Prompt-Patterns.md Pattern 1
+#
+# This profile defines the required reads, allowed write targets, and
+# protected-file behavior for an architecture or documentation pass.
+
+task_type: docs-pass
+display_name: "Architecture / Docs Pass — Creating or revising framework docs, SOPs, templates"
+session_pattern_ref: "05_TEMPLATES/Session-Prompt-Patterns.md Pattern 1"
+
+required_reads:
+  - "00_HOME/Now.md"
+  # Plus: relevant Project-OS.md or governance doc
+  # Plus: any files directly in scope
+
+allowed_write_targets:
+  - "04_SOPS/**"               # SOPs (with user direction)
+  - "05_TEMPLATES/**"          # templates (with user direction)
+  - "06_AGENTS/**"             # agent config files (with direction; some have elevated sensitivity)
+  - "01_PROJECTS/**"           # project OS files (with direction)
+  - "02_KNOWLEDGE/**"          # knowledge notes (with direction)
+  - "07_LOGS/Build-Logs/**"    # session build log
+  - "99_ARCHIVE/Documentation-History/**"  # archive note (major passes only)
+
+protected_files:
+  behavior: require-approval   # explicit per-file user approval required
+  approved_by: explicit-session-instruction
+  # User must name the protected file explicitly in the session to authorize editing
+
+explicitly_denied_without_approval:
+  - "SOUL.md"
+  - "00_HOME/Principles.md"
+  - "00_HOME/Operating-System.md"
+  - "00_HOME/Assistant-Contract.md"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+  - "ROADMAP.md"
+  - "FORKING.md"
+  - "CLAUDE.md"
+  - "06_AGENTS/Agent-Control-Plane.md"
+  - "06_AGENTS/Permission-Matrix.md"
+  - "06_AGENTS/Trust-Tiers.md"
+  - "06_AGENTS/Handoff-Protocol.md"
+
+session_close:
+  required:
+    - build_log: "07_LOGS/Build-Logs/YYYY-MM-DD-[Project]-[descriptor].md"
+    - update_build_logs_index: true
+  conditional:
+    - archive_note: "99_ARCHIVE/Documentation-History/YYYY-MM-DD_[descriptor].md"
+      when: "major pass"
+    - update_documentation_history_index: true
+      when: "archive note created"
+    - update_project_os: true
+      when: "project state changed"
+
+approval_mode: per-action
+
+audit_log: "07_LOGS/Build-Logs/YYYY-MM-DD-[Project]-[descriptor].md"

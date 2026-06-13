@@ -1,0 +1,134 @@
+# ChaseOS Adapter Manifest — OpenClaw Runtime Adapter
+# Schema: 06_AGENTS/Adapter-Manifest-Standard.md
+
+adapter_id: "openclaw"
+adapter_name: "OpenClaw Persistent Operator Runtime"
+provider: "openclaw"
+surface: "runtime"
+adapter_class: "runtime"
+status: "active"
+trust_ceiling: "tier-2"
+markdown_doc: "OPENCLAW.md"
+
+# --- SCOPE ---
+allowed_task_types:
+  - "operator-briefing"
+  - "graph-hygiene"
+  - "runtime-binding"
+  - "activity-logging"
+  - "scheduled-briefing"
+  - "source-pack-builder"
+
+required_read_sets:
+  operator_briefing:
+    - "OPENCLAW.md"
+    - "06_AGENTS/OpenClaw-Adapter-Spec.md"
+    - "00_HOME/Now.md"
+    - "07_LOGS/Operator-Briefs/"
+    - "07_LOGS/Agent-Activity/"
+    - "runtime/aor/"
+    - "runtime/workflows/registry/"
+    - "runtime/schedules/"
+    - "06_AGENTS/role-cards/"
+  runtime_navigation:
+    - "06_AGENTS/OpenClaw-Runtime-Profile.md"
+    - "06_AGENTS/Runtime-Navigation-Map.md"
+    - "runtime/memory/nav/openclaw/nav-map.json"
+
+# --- WRITE TARGETS ---
+allowed_write_targets:
+  standard_outputs: true
+  project_os_files: false
+  knowledge_notes: false
+  inputs_folder: false
+  protected_files: false
+  operator_briefs: true
+  scheduled_briefing_runs: true
+  acquisition_packs: true
+  runtime_activity: true
+
+explicitly_denied_write_targets:
+  - "00_HOME/**"
+  - "01_PROJECTS/**"
+  - "02_KNOWLEDGE/**"
+  - "03_INPUTS/**"
+  - "04_SOPS/**"
+  - "05_TEMPLATES/**"
+  - "06_AGENTS/**"
+  - "runtime/**"
+  - ".claude/**"
+  - ".codex/**"
+  - ".obsidian/**"
+  - ".venv/**"
+
+# --- PROTECTED FILE BEHAVIOR ---
+protected_file_behavior: "block"
+
+# --- PROMOTION BEHAVIOR ---
+promotion_behavior:
+  may_promote_to_knowledge: "no"
+  gate_conditions_required: false
+  autonomous_promotion: false
+
+# --- EXTERNAL SIDE EFFECTS ---
+external_side_effect_policy:
+  may_call_external_apis: "no"
+  may_write_to_external_systems: "no"
+  approval_scope: "current-run"
+
+# --- COORDINATION POLICY ---
+coordination_policy:
+  cross_runtime_coordination: "bus-required"
+  direct_runtime_state_in_chat: false
+  actionable_ingress_translation: "required"
+  coordination_source_of_truth: "runtime/agent_bus/"
+
+# --- APPROVAL MODE ---
+approval_mode: "manifest-bounded-per-action"
+
+# --- GOVERNANCE HARDENING ---
+governance_hardening:
+  validated_by: "runtime/adapters/runtime_governance.py"
+  last_verified: "2026-04-28"
+  host_privilege_boundary: "Host-level capability is a risk boundary, not ChaseOS authority."
+  forbidden_authority_expansion:
+    - "canonical_truth_ownership"
+    - "autonomous_promotion"
+    - "ambient_vault_access"
+    - "host_shell_as_chaseos_authority"
+    - "direct_runtime_to_runtime_chat_commands"
+    - "live_trading_or_wallet_execution"
+
+# --- AUDIT ---
+audit_log_target: "07_LOGS/Agent-Activity/YYYY-MM-DD-openclaw-[workflow-id].md"
+
+hook_config: {}
+
+notes: |
+  Active bounded runtime adapter lane.
+
+  OpenClaw may execute ChaseOS-governed work only through bounded AOR paths
+  and declared workflow scope.
+
+  First active bounded scope includes:
+    - operator briefing workflows
+    - graph hygiene proposal workflows
+    - scheduled/source-pack acquisition workflows through declared input envelopes
+    - runtime/activity logging
+    - runtime binding and state-oriented maintenance
+
+  OpenClaw is fail-closed:
+    - no direct canonical vault promotion
+    - no protected file writes
+    - no ambient runtime/ repo mutation outside declared AOR writeback
+    - no external connector side effects in first active phase
+
+  Writes are limited to bounded output surfaces such as:
+    - 07_LOGS/Operator-Briefs/
+    - 07_LOGS/Agent-Activity/
+
+  This manifest should stay aligned with:
+    - 06_AGENTS/OpenClaw-Adapter-Spec.md
+    - OPENCLAW.md
+    - runtime/memory/nav/openclaw/nav-map.json
+    - runtime/state/

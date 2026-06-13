@@ -1,0 +1,1 @@
+{"object": "UserBrowserProfileRef", "required": ["browser_profile_ref_id", "tenant_id", "user_id", "provider", "allowed_domains", "status", "created_at"], "scope_required": ["tenant_id", "user_id"], "session_values_allowed": false}

@@ -1,0 +1,56 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for the exact-once VentureOps Mission Mode manifest-promotion and workflow-evolution review gate."
+required_fields:
+  - schema_version
+  - type
+  - review_id
+  - approval_decision
+  - approval_status
+  - approved_by
+  - reviewed_at
+  - operator_approval_statement
+  - mission_id
+  - mission_workspace_path
+  - activation_approval_consumed
+  - approved_next_step
+  - manifest_status_at_review
+  - manifest_promotion_decision
+  - effective_mission_manifest_status
+  - workflow_evolution_status_at_review
+  - workflow_evolution_review_decision
+  - effective_workflow_evolution_status
+  - approved_scope
+  - required_acknowledgements
+  - consumption_policy
+  - consumable
+  - review_consumed
+  - manifest_promotion_authority_granted
+  - workflow_evolution_review_authority_granted
+  - mission_manifest_file_mutation_authorized
+  - mission_activation_execution_authorized
+  - aor_dispatch_authorized
+  - agent_bus_task_write_authorized
+  - workflow_evolution_apply_authorized
+  - provider_calls_authorized
+  - browser_actions_authorized
+  - browser_skill_activation_authorized
+  - external_side_effects_authorized
+  - crm_or_payment_mutation_authorized
+  - live_trading_authorized
+  - protected_file_edit_authorized
+  - canonical_promotion_authorized
+  - credential_or_secret_read_authorized
+approved_next_step_values:
+  - activation_readiness_gate_only
+manifest_promotion_decision_values:
+  - approved_for_activation_readiness_only
+workflow_evolution_review_decision_values:
+  - reviewed_deferred_no_apply
+consumption_policy_values:
+  - exact_once
+authority_rules:
+  - "Activation approval must already be consumed before this review gate can be consumed."
+  - "The marker clears only readiness blockers for draft manifest state and pending workflow-evolution review."
+  - "The dry-run manifest and workflow-evolution proposal remain unmutated; this is readiness evidence only."
+  - "Mission activation execution, AOR dispatch, Agent Bus task writes, workflow evolution application, provider/browser actions, external sends, CRM/payment mutation, live trading, protected-file edits, credential reads, and canonical promotion remain separate approvals."

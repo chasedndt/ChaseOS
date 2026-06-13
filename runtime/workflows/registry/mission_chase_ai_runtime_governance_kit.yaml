@@ -1,0 +1,69 @@
+---
+id: mission_chase_ai_runtime_governance_kit
+name: "Mission: Chase AI Runtime Governance Kit"
+version: "0.1"
+description: "Local AOR dry-review handler for the VentureOps Mission Mode dry-run workspace. Validates mission artifacts and Agent Bus mission packet preview, then writes local proof/review/audit artifacts only."
+
+task_type: ventureops-mission-dry-review
+role_card: ventureops_mission_dry_reviewer
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: proposal_log_only
+
+inputs:
+  - execution_mode
+  - mission_workspace_path
+  - activation_approval_packet_path
+  - run_id
+  - date
+
+outputs:
+  - proof_path
+  - review_path
+  - audit_path
+  - workspace_review_path
+  - proof_card
+  - scorecard
+  - mission_task_packet_preview
+  - readiness_blockers
+  - authority_boundary
+
+required_reads:
+  - "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/"
+  - "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/activation-approval-packet-draft.json"
+  - "runtime/workflows/missions/mission_chase_ai_runtime_governance_kit.py"
+  - "runtime/agent_bus/mission_tasks.py"
+  - "runtime/agent_bus/schemas/mission_task_packet.schema.json"
+
+writeback_targets:
+  - "07_LOGS/VentureOps-Missions/"
+  - "07_LOGS/Mission-Reviews/"
+  - "07_LOGS/Workflow-Proofs/"
+  - "07_LOGS/Runtime-Audits/"
+
+failure_behavior: escalate
+
+rollback_path: "delete generated dry-review proof artifacts if the operator rejects this internal dry review; no mission, bus, external, or canonical state is modified"
+
+approval_rule: none
+
+audit_expectations:
+  - "workflow_id recorded as mission_chase_ai_runtime_governance_kit"
+  - "mission_id recorded as mission-chase-ai-runtime-governance-kit"
+  - "mission workspace validation recorded"
+  - "Agent Bus mission task packet preview validation recorded"
+  - "proof_path, review_path, audit_path, and workspace_review_path recorded"
+  - "mission_activation_performed remains false"
+  - "agent_bus_task_written remains false"
+  - "workflow_evolution_applied remains false"
+  - "no provider/browser/external-send/payment/CRM/live-trading/canonical/protected-file/credential action attempted"
+
+notes: >
+  This manifest makes the mission handler executable only for a local AOR
+  dry-review. It is not an activation executor. It does not consume approval,
+  change the mission manifest status, enqueue Agent Bus work, apply workflow
+  evolution, contact providers, use a browser, send externally, mutate
+  CRM/payment systems, execute live trading, edit protected files, or promote
+  canonical state.

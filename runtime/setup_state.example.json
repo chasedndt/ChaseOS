@@ -1,0 +1,62 @@
+{
+  "providers": {
+    "claude": {
+      "configured": false,
+      "auth_present": false,
+      "secret_reference_present": false,
+      "secret_reference_kind": null,
+      "secret_reference_target": null,
+      "default_model": null,
+      "reasoning_policy": null,
+      "notes": "Seed example only."
+    },
+    "openai": {
+      "configured": false,
+      "api_key_present": false,
+      "secret_reference_present": false,
+      "secret_reference_kind": null,
+      "secret_reference_target": null,
+      "default_model": null,
+      "reasoning_policy": null,
+      "notes": "Seed example only."
+    },
+    "local_oss": {
+      "configured": false,
+      "endpoint_present": false,
+      "endpoint_url": null,
+      "model_target_present": false,
+      "launcher_mode": null,
+      "notes": "Seed example only."
+    },
+    "n8n": {
+      "configured": false,
+      "base_url_present": false,
+      "auth_present": false,
+      "workflow_scope": null,
+      "notes": "Seed example only."
+    }
+  },
+  "integrations": {
+    "discord": {
+      "configured": true,
+      "binding_present": true,
+      "notes": "Reference/default current surface."
+    },
+    "telegram": {
+      "configured": false,
+      "binding_present": false,
+      "secret_reference_present": false,
+      "secret_reference_kind": null,
+      "secret_reference_target": null,
+      "notes": "Seed example only."
+    },
+    "slack": {
+      "configured": false,
+      "binding_present": false,
+      "secret_reference_present": false,
+      "secret_reference_kind": null,
+      "secret_reference_target": null,
+      "notes": "Seed example only."
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chaseos.local/schemas/creator_engine/edit_plan.schema.json",
+  "title": "Creator Engine Edit Plan",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_type",
+    "job_id",
+    "plan_path",
+    "created_at",
+    "target_formats",
+    "approval_required",
+    "status",
+    "blocked_actions"
+  ],
+  "properties": {
+    "schema_version": { "const": "creator_engine.v1" },
+    "artifact_id": { "type": "string" },
+    "artifact_type": { "const": "edit_plan" },
+    "job_id": { "type": "string" },
+    "plan_path": { "type": "string" },
+    "created_at": { "type": "string" },
+    "target_formats": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "approval_required": { "type": "boolean" },
+    "status": { "type": "string" },
+    "blocked_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

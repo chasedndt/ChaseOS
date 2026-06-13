@@ -1,0 +1,86 @@
+{
+  "object_type": "workflow_manifest",
+  "workflow_id": "canva.poster.magic_layers",
+  "display_name": "Canva Poster Magic Layers Edit",
+  "status": "PARTIAL",
+  "execution_status": "dry_run_ready",
+  "live_execution_status": "NOT BUILT",
+  "workflow_type": "hybrid",
+  "mode": "assisted",
+  "site_profile": "canva",
+  "provider_profile": "gemini_image",
+  "optional_provider_profiles": [
+    "seedream_future"
+  ],
+  "inputs": [
+    {
+      "name": "source_image_path",
+      "required": true
+    },
+    {
+      "name": "edit_prompt",
+      "required": true
+    },
+    {
+      "name": "output_format",
+      "required": false
+    },
+    {
+      "name": "brand_profile",
+      "required": false
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "validate_inputs"
+    },
+    {
+      "step_id": "optionally_generate_or_edit_asset_with_provider",
+      "approval_required": true
+    },
+    {
+      "step_id": "open_canva"
+    },
+    {
+      "step_id": "upload_asset"
+    },
+    {
+      "step_id": "use_magic_layers_if_available"
+    },
+    {
+      "step_id": "apply_text_or_design_edits"
+    },
+    {
+      "step_id": "take_screenshot_for_review"
+    },
+    {
+      "step_id": "request_user_approval",
+      "approval_required": true
+    },
+    {
+      "step_id": "export_after_approval",
+      "approval_required": true
+    }
+  ],
+  "approval_required": [
+    "before_provider_call",
+    "before_export",
+    "before_external_share"
+  ],
+  "blocked_actions": [
+    "publish_publicly",
+    "purchase",
+    "change_billing",
+    "delete_design"
+  ],
+  "outputs": [
+    "exported_asset_path",
+    "screenshot_trace",
+    "browser_run_audit",
+    "provider_run_audit"
+  ],
+  "output_targets": {
+    "creative_runs": "07_LOGS/Creative-Runs/",
+    "website_runs": "07_LOGS/Website-Workflow-Runs/"
+  }
+}

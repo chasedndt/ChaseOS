@@ -1,0 +1,98 @@
+﻿# sbp_strikezone_digest.yaml — StrikeZone Market Digest Publisher
+# ChaseOS Phase 9 — SBP Pass 1E
+#
+# First named SBP instance pipeline.
+# Runs on the generic SBP substrate (runtime/sbp/).
+# Handler: runtime/workflows/sbp_strikezone_digest.py (StrikeZoneDigestHandler)
+# Role card: scheduled-briefing (shared generic card for all SBP pipelines)
+# Schedule: runtime/schedules/sch-sbp-strikezone-digest-0600.yaml
+#
+# Delivery credential: set DISCORD_WEBHOOK_URL env var to the StrikeZone webhook URL.
+# See Credential-Boundaries-SOP.md — never put credentials in this file.
+#
+# Write scope: 07_LOGS/SBP-Runs/ only.
+# This pipeline CANNOT write to 01_PROJECTS/, 02_KNOWLEDGE/, or any protected file.
+
+id: sbp_strikezone_digest
+name: "StrikeZone Market Digest Publisher"
+version: "1.0"
+description: "Daily morning market briefing for StrikeZone community. Reads vault state and StrikeZone project context, generates structured digest, delivers to vault and Discord."
+task_type: scheduled-briefing
+role_card: scheduled-briefing
+trigger_type: scheduled
+owner: operator
+status: active
+
+permission_ceiling: no_protected_file_writes
+writeback_targets:
+  - "07_LOGS/SBP-Runs/"
+failure_behavior: escalate
+
+approval_rule: none
+
+audit_expectations:
+  - "pipeline_id recorded"
+  - "date of run recorded"
+  - "input adapters used listed"
+  - "delivery results recorded"
+  - "writeback path recorded"
+
+sbp_config:
+
+  trigger:
+    type: cron
+    cron_expression: "0 6 * * 1-5"
+    timezone: "America/New_York"
+    max_runs_per_day: 1
+
+  input_adapters:
+    - type: vault-notes
+      trust_tier: 1
+      paths:
+        - "00_HOME/Now.md"
+        - "01_PROJECTS/StrikeZone/StrikeZone-Crypto-OS.md"
+    - type: acquisition-pack
+      trust_tier: 2
+      pack_latest_path: "runtime/acquisition/packs/strikezone-latest.json"
+      optional: true
+      # optional: true — digest runs even if acquisition pack is absent.
+      # pack_latest_path: resolved dynamically from the pointer file written by
+      # the strikezone_acquisition workflow (sch-strikezone-acquisition-0550.yaml).
+      # The pointer file contains the path to the most recently built BRIS artifact.
+
+  execution_adapter: openclaw
+  # execution_adapter: declares which runtime synthesizes this digest.
+  # openclaw = primary operator synthesizer (runs cron jobs).
+  # Model resolved from runtime/openclaw/model_config.yaml at execution time.
+  # To switch runtimes or models: edit model_config.yaml — no code changes required.
+
+  delivery_adapters:
+    - type: vault-local
+    - type: discord
+      channel_hint: "#strikezone-signals"
+      webhook_env_var: STRIKEZONE_DISCORD_WEBHOOK_URL
+      draft_review_required: true
+      # draft_review_required: true — content is written to 07_LOGS/SBP-Runs/_drafts/ first.
+      # Operator must explicitly promote draft to live delivery (chaseos sbp promote-draft).
+      # Prevents unreviewed AI output from posting to the StrikeZone community server.
+      # C-3 security hardening 2026-05-18.
+      # webhook_env_var: declares which env var holds the StrikeZone Discord webhook URL.
+      # This is the StrikeZone community server — separate from the ChaseOS ops Discord.
+      # Set STRIKEZONE_DISCORD_WEBHOOK_URL in your environment (never in this file).
+      # Fallback: if env var unset, delivery is skipped gracefully (vault writeback still occurs).
+      # See Credential-Boundaries-SOP.md — never put the URL itself in this file.
+
+  guardrail:
+    permission_ceiling: no_protected_file_writes
+    write_scope:
+      - "07_LOGS/SBP-Runs/"
+    read_scope:
+      - "00_HOME/"
+      - "01_PROJECTS/StrikeZone/"
+      - "runtime/acquisition/packs/"
+    human_in_loop: required
+    fail_behavior: halt_and_log
+    audit_required: true
+    max_token_budget: 4096
+    # Token budget matches OpenClaw model_config.yaml max_tokens.
+    # If model changes, update both this value and model_config.yaml.

@@ -1,0 +1,28 @@
+{
+  "contract_version": "0.1",
+  "attachment_mode": "attached-personal",
+  "user_binding_present": true,
+  "user_label": "local-personal-instance",
+  "private_state_locations": [
+    "SOUL.md",
+    "00_HOME/Now.md",
+    "00_HOME/Principles.md",
+    "memory/",
+    ".chaseos/discord_instance_bindings.yaml"
+  ],
+  "machine_local_bindings": [
+    "C:/Users/chaseos/.openclaw/",
+    "C:/Users/chaseos/Documents/chaseos_obsidian/.chaseos/"
+  ],
+  "portable_exports_allowed": {
+    "core_safe": true,
+    "personal_safe": false,
+    "notes": "Personal attachment state is not GitHub-safe by default."
+  },
+  "detachment_rules": [
+    "Remove or isolate personal IDs, account bindings, and private memory before core export.",
+    "Do not treat local attachment state as framework truth.",
+    "Runtime governance remains valid after detachment."
+  ],
+  "notes": "Example attachment contract only. Real private state should remain machine-local or sanitized."
+}

@@ -1,0 +1,59 @@
+---
+# drift_scan - Doctrine / Behavior Alignment Workflow
+# ChaseOS AOR Phase 9 - Second-Wave Feature 16
+#
+# Compares declared domain priorities (Operating-System.md) against actual
+# build log activity, Decision Ledger entries, and close-day reports.
+# Produces a structured drift report identifying neglected domains,
+# persistent open loops, and recommended review items.
+# Read-only — doctrine files are NEVER modified.
+#
+id: drift_scan
+name: "Drift Scan"
+version: "1.0"
+description: "Doctrine/behavior alignment scan — compares declared domain priorities against build log activity. Identifies neglected domains, persistent open loops, and recommended review items. Read-only."
+
+task_type: drift-scan
+role_card: drift-scan-readonly
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: report_only
+
+inputs:
+  - lookback_days    # int (default 30) — days of build log history to scan
+  - date             # optional ISO date override for report date; defaults to today
+
+outputs:
+  - neglected_domain_count
+  - active_domain_count
+  - open_loop_count
+  - build_log_count
+  - drift_report_path
+
+writeback_targets:
+  - "07_LOGS/Drift-Reports/"
+
+failure_behavior: escalate
+
+rollback_path: "delete the generated drift report if it is no longer needed; no vault content is modified by this workflow"
+
+approval_rule: none
+
+audit_expectations:
+  - "scan date and lookback window recorded"
+  - "neglected domain count recorded"
+  - "active domain count recorded"
+  - "open loop count recorded"
+  - "build logs scanned count recorded"
+  - "report-only execution recorded"
+
+schedule: null
+
+notes: >
+  Phase 9 Feature 16: drift_scan is a read-only doctrine alignment workflow.
+  It scans build logs (within lookback window), close-day reports, and Decision
+  Ledger entries, then generates a drift report flagging neglected domains and
+  persistent open loops. Doctrine files are never modified — drift_scan surfaces
+  signals for operator review only.

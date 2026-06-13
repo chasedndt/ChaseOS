@@ -1,0 +1,39 @@
+{
+  "contract_version": "0.1",
+  "runtime_id": "hermes",
+  "platform_family": "wsl",
+  "repo_root_resolution": {
+    "strategy": "known-wsl-root-with-windows-interop-awareness",
+    "candidate_paths": [
+      "<VAULT_ROOT>",
+      "C:/Users/chaseos/Documents/chaseos_obsidian"
+    ],
+    "notes": "Hermes currently runs from WSL but must remain aware of the Windows-hosted vault path."
+  },
+  "runtime_identity_sources": [
+    "06_AGENTS/Hermes-Runtime-Profile.md",
+    "runtime/memory/nav/hermes/nav-map.json",
+    "HERMES.md"
+  ],
+  "binding_discovery": {
+    "machine_local_allowed": true,
+    "machine_local_locations": [
+      ".chaseos/",
+      "<WSL_HOME>/runtimes/hermes-home/",
+      "C:/Users/chaseos/Documents/chaseos_obsidian/.chaseos/"
+    ],
+    "github_safe_default": true,
+    "notes": "Hermes may need both WSL-local and Windows-visible binding awareness, but should fail closed if bindings diverge."
+  },
+  "attachment_modes": [
+    "core-only",
+    "runtime-only",
+    "attached-personal"
+  ],
+  "fail_closed_rules": [
+    "If WSL and Windows binding surfaces disagree, escalate rather than infer.",
+    "If personal user binding is absent, remain in core-only or runtime-only mode.",
+    "If runtime identity sources are missing, do not assume Hermes authority expansion."
+  ],
+  "notes": "Example bootstrap contract only. Reflects bounded Hermes lane posture, not new authority."
+}

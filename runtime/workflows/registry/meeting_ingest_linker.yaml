@@ -1,0 +1,64 @@
+---
+# meeting_ingest_linker - Meeting Ingest Linker Workflow
+# ChaseOS AOR Phase 9 - Second-Wave Feature 14
+#
+# Post-capture enrichment for meeting transcripts.
+# Extracts entity mentions, matches to vault nodes, applies CGL eligibility,
+# and writes a link-proposal file for operator review.
+# No vault content is modified — proposals only.
+#
+id: meeting_ingest_linker
+name: "Meeting Ingest Linker"
+version: "1.0"
+description: "Post-capture enrichment for meeting transcripts — extracts entity mentions, matches to vault nodes (projects, knowledge files), applies CGL eligibility check, and writes a link-proposal file for operator review. No vault content is modified."
+
+task_type: meeting-ingest
+role_card: meeting-ingest-readonly
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: report_only
+
+inputs:
+  - transcript_path   # vault-relative or absolute path to captured transcript (required)
+  - capture_id        # optional string ID; defaults to transcript filename stem
+  - date              # optional ISO YYYY-MM-DD; defaults to today UTC
+  - min_confidence    # optional float 0.0–1.0; default 0.4; proposals below threshold excluded
+
+outputs:
+  - proposal_count
+  - entity_count
+  - eligible_count
+  - blocked_count
+  - transcript_path
+  - report_path
+  - report_date
+
+writeback_targets:
+  - "07_LOGS/Link-Proposals/"
+
+failure_behavior: escalate
+
+rollback_path: "delete the generated link proposal file if no longer needed; no vault content is modified by this workflow"
+
+approval_rule: none
+
+audit_expectations:
+  - "transcript path recorded"
+  - "entity count recorded"
+  - "proposal count recorded"
+  - "eligible and blocked counts recorded"
+  - "report path recorded"
+  - "proposal-only execution recorded — no vault writes"
+
+schedule: null
+
+notes: >
+  Phase 9 Feature 14: meeting_ingest_linker is a read-only enrichment workflow.
+  It processes transcripts captured with origin_kind: meeting-transcript and
+  produces link proposals that the operator reviews before any link application.
+  Entity extraction uses three sources: explicit [[wikilink]] mentions (confidence 0.9),
+  project name matches against 01_PROJECTS/ (0.7), and domain keyword coverage (0.5).
+  CGL eligibility is applied before each proposal appears in the output — blocked
+  targets are recorded but flagged. No vault content is ever modified by this workflow.

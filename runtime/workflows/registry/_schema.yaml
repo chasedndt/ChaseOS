@@ -1,0 +1,56 @@
+# _schema.yaml — Workflow Manifest Schema Reference
+# ChaseOS AOR Phase 9
+#
+is_schema: true
+#
+# This file documents the required and optional fields for workflow manifests.
+# It is NOT loaded as a manifest (files starting with _ are skipped by the registry loader).
+#
+# Required fields (validation enforced by registry.py):
+#   id                  — unique workflow identifier; must match filename stem
+#   name                — human-readable name
+#   version             — semantic version string (e.g. "1.0")
+#   description         — one-sentence purpose statement
+#   task_type           — must match an id in task_type_table.yaml
+#   role_card           — must match a file in 06_AGENTS/role-cards/
+#   trigger_type        — one of: manual | scheduled | event
+#   owner               — who owns this workflow (e.g. "operator")
+#   status              — one of: active | draft | disabled
+#   permission_ceiling  — declared max permission level for this workflow
+#   writeback_targets   — list of paths/dirs this workflow may write to
+#   failure_behavior    — what happens on failure: escalate | log_and_continue | abort
+#
+# Optional fields:
+#   inputs              — list of expected input parameter names
+#   outputs             — list of expected output names
+#   approval_rule       — approval required before running (e.g. "operator-explicit")
+#   rollback_path       — how to undo if something goes wrong
+#   audit_expectations  — what the audit record should contain
+#   schedule            — cron expression (for scheduled trigger_type)
+#   runtime_adapter     — adapter ID that owns/expects to invoke the workflow (e.g. openclaw, hermes)
+#   coordination_requirements — optional coordination-sensitive workflow metadata
+#       coordination_sensitive: true|false
+#       via: required structured coordination substrate (e.g. "runtime/agent_bus/")
+#       partner_runtime: expected cross-runtime counterpart when relevant
+#       execution_mode: dispatch | claim-or-consume | other doc-level mode label
+#   notes               — free-form implementation notes
+
+# Example manifest:
+# ---
+# id: my_workflow
+# name: My Workflow
+# version: "1.0"
+# description: "Does a specific bounded thing."
+# task_type: operator-briefing
+# role_card: operator-briefing
+# trigger_type: manual
+# owner: operator
+# status: draft
+# permission_ceiling: no_protected_file_writes
+# writeback_targets:
+#   - "07_LOGS/Daily/"
+# failure_behavior: escalate
+# inputs:
+#   - date
+# outputs:
+#   - daily_summary

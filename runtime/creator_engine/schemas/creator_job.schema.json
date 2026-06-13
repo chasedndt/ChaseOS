@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chaseos.local/schemas/creator_engine/creator_job.schema.json",
+  "title": "Creator Engine Job",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "job_id",
+    "created_at",
+    "updated_at",
+    "status",
+    "source_adapter",
+    "source_recording_id",
+    "target_platforms",
+    "artifact_root",
+    "inputs",
+    "artifacts",
+    "approval_state",
+    "warnings",
+    "blockers"
+  ],
+  "properties": {
+    "schema_version": { "const": "creator_engine.v1" },
+    "job_id": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string" },
+    "updated_at": { "type": "string" },
+    "owner_layer": { "const": "runtime.creator_engine" },
+    "status": {
+      "type": "string",
+      "enum": [
+        "created",
+        "intake_ready",
+        "transcript_ready",
+        "context_ready",
+        "draft_ready",
+        "approval_ready",
+        "approved",
+        "complete",
+        "blocked"
+      ]
+    },
+    "source_adapter": {
+      "type": "string",
+      "enum": ["manual_file", "provided_transcript", "recordly_folder", "obs_folder"]
+    },
+    "source_recording_id": { "type": "string" },
+    "target_platforms": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "artifact_root": { "type": "string" },
+    "inputs": { "type": "object" },
+    "artifacts": { "type": "object" },
+    "approval_state": { "type": "object" },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "blockers": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

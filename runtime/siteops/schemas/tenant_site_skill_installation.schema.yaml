@@ -1,0 +1,1 @@
+{"object": "TenantSiteSkillInstallation", "required": ["installation_id", "tenant_id", "skill_template_id", "enabled", "allowed_workspaces", "allowed_roles", "policy_overrides", "provider_overrides", "approval_overrides", "budget_policy_id", "created_by", "status"], "scope_required": ["tenant_id"], "secret_values_allowed": false}

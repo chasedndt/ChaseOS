@@ -1,0 +1,49 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for VentureOps Mission Mode mission manifests."
+required_fields:
+  - mission_id
+  - name
+  - version
+  - owner
+  - instance_id
+  - status
+  - created
+  - updated
+  - objective
+  - domain
+  - target_user
+  - success_metric
+  - time_horizon
+  - capital_or_resource_constraints
+  - risk_class
+  - mission_mode
+  - workflow_packs
+  - sub_agents
+  - runtime_split
+  - required_inputs
+  - required_context
+  - allowed_tools
+  - forbidden_tools
+  - approval_required_for
+  - writeback_targets
+  - proof_artifact_targets
+  - audit_targets
+  - scorecard
+  - failure_behavior
+  - review_cadence
+  - evolution_policy
+  - unsafe_boundaries
+  - notes
+status_values:
+  - draft
+  - active
+  - paused
+  - blocked
+  - completed
+  - retired
+authority_rules:
+  - "Mission Mode sits above AOR, Gate, Agent Bus, SIC, MCP, BOSL, RPGL, Studio, workflow manifests, role cards, proof artifacts, and audit logs."
+  - "Mission manifests do not grant new runtime authority."
+  - "Workflow evolution defaults to proposal-only, dry-run-capable, approval-required, and auto-apply false."
+  - "External sends, purchases, listings, payments, live trading, protected-file edits, credential access, browser skill activation, provider config mutation, and canonical promotion require human approval."

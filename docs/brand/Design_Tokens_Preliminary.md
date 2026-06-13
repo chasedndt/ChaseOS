@@ -1,4 +1,4 @@
-﻿# ChaseOS Preliminary Design Tokens
+# ChaseOS Preliminary Design Tokens
 
 Status: `DOCS-ONLY / PRELIMINARY / FINAL LOGO AND UI REDESIGN NOT COMPLETE`
 
@@ -84,3 +84,4 @@ Use monospace sparingly for runtime logs, command palettes, permission events, w
 - Final Studio UI redesign: `PLANNED`.
 - Branded installer assets: `PLANNED`.
 - Current pass: brand documentation and preliminary token alignment only.
+

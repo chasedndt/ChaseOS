@@ -1,0 +1,34 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for Mission Mode sub-agent delegation plans."
+required_fields:
+  - mission_id
+  - sub_agents
+  - role
+  - responsibility
+  - runtime_preference
+  - authority
+  - allowed_outputs
+  - forbidden_actions
+authority_values:
+  - advisory
+  - proposal_only
+  - review_only
+  - approval_gated_execution
+  - human_approval_required
+  - blocked
+runtime_preferences:
+  - hermes
+  - codex
+  - openclaw
+  - browser_runtime
+  - openclaw_or_browser_runtime
+  - local_runtime
+  - strong_model
+  - human
+  - none
+  - blocked
+authority_rules:
+  - "Sub-agent assignment never expands runtime authority."
+  - "Each delegated task still requires AOR/Gate/Agent Bus scoping where execution is involved."
+  - "Unknown runtime roles fail closed."

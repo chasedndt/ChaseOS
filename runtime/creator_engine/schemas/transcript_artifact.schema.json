@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chaseos.local/schemas/creator_engine/transcript_artifact.schema.json",
+  "title": "Creator Engine Transcript Artifact",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_type",
+    "job_id",
+    "source_recording_id",
+    "transcript_path",
+    "created_at",
+    "status",
+    "segments",
+    "word_count",
+    "transformation_chain",
+    "warnings"
+  ],
+  "properties": {
+    "schema_version": { "const": "creator_engine.v1" },
+    "artifact_id": { "type": "string" },
+    "artifact_type": { "const": "transcript_artifact" },
+    "job_id": { "type": "string" },
+    "source_recording_id": { "type": "string" },
+    "transcript_path": { "type": "string" },
+    "created_at": { "type": "string" },
+    "language": { "type": ["string", "null"] },
+    "status": { "type": "string" },
+    "segments": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "word_count": { "type": "integer", "minimum": 0 },
+    "transformation_chain": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

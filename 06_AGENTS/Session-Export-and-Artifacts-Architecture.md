@@ -1,7 +1,7 @@
 ﻿# Session Export and Artifacts Architecture
 
 Date: 2026-06-02 (backend foothold 2026-06-03; session lifecycle + N4 adapter 2026-06-06)
-Runtime: Hermes/Optimus (backend foothold: Chaser Agent; lifecycle + N4 adapter passes: Codex)
+Runtime: Hermes/Optimus (backend foothold: Archon; lifecycle + N4 adapter passes: Codex)
 Status: BACKEND PARTIAL - markdown/json export, session metadata lifecycle, and Studio chat export adapter/CLI implemented; UI/zip/generic session CLI planned
 Source handoff: [[ChaseOS_Terminal_ChaserAgent_Fullstack_Implementation_Handoff_v2]]
 Related: [[Terminal-ChaserAgent-Feature-Matrix]] Â· [[ChaserAgent-Architecture]] Â· [[Terminal-Workbench-Architecture]] Â· [[HERMES]] Â· [[Hermes-Runtime-Profile]] Â· [[Agent-Activity-Index]]

@@ -1,0 +1,6 @@
+{
+  "provenance": "declared_demo_fixture",
+  "schema": "chaseos.source.v1",
+  "source_id": "source.launch-handover",
+  "trust": "repo-local"
+}

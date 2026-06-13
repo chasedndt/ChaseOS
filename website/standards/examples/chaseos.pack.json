@@ -1,0 +1,38 @@
+{
+  "approval_required": true,
+  "description": "Example workflow pack manifest for a launch-readiness mission.",
+  "entrypoints": [
+    {
+      "id": "collect_sources",
+      "type": "source.review",
+      "writes": [
+        "source_evidence"
+      ]
+    },
+    {
+      "id": "draft_outputs",
+      "type": "mission.generate",
+      "writes": [
+        "preview_outputs"
+      ]
+    },
+    {
+      "id": "request_approval",
+      "type": "approval.packet",
+      "writes": [
+        "approval_request"
+      ]
+    }
+  ],
+  "external_actions": "blocked_until_operator_approval",
+  "id": "startup_validation_launch",
+  "name": "Startup Validation Launch",
+  "permissions_required": [
+    "read_declared_sources",
+    "write_preview_outputs"
+  ],
+  "preview_notice": "Draft example for public review; not a stable API contract.",
+  "schema": "chaseos.pack.v1.preview",
+  "status": "preview",
+  "version": "0.1.0"
+}

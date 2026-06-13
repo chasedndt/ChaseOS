@@ -1,0 +1,14 @@
+{
+  "routes": [
+    {
+      "id": "graph-labels",
+      "hash": "#/graph",
+      "name": "DOM label pool proof",
+      "capture_delay_ms": 95000,
+      "result_script_timeout_ms": 30000,
+      "screenshot_path": "runtime/studio/shell/qa_graph_full.png",
+      "meta_path": "runtime/studio/shell/qa_graph_full.json",
+      "result_script": "(function(){var out={};try{out.hasGraph3d=!!window.graph3d;if(window.graph3d){var gd=window.graph3d.graphData();out.gdNodes=gd.nodes.length;out.gdLinks=gd.links.length;try{window.graph3d.cameraPosition({x:80,y:80,z:80});}catch(e){out.camErr=String(e);}}out.chip=(document.getElementById('graph-node-count')||{}).textContent||'';out.domLabels=document.querySelectorAll('#graph-label-layer .graph-node-label').length;out.trace=(window.__loadGraphTrace||[]).slice(-8);if(window._graphLabelPoolStats){out.pool=window._graphLabelPoolStats();}}catch(top){out.topErr=String(top);}return JSON.stringify(out);})()"
+    }
+  ]
+}

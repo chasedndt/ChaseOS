@@ -42,7 +42,7 @@ Current truth is no longer "conceptual only." The split is now an active structu
 - `core_export/reports/latest/core-export-dry-run-report.json` records a 57-candidate scanner-clean dry-run preview packet,
 - `core_export/reports/latest/core-export-feature-completion-tracker-2026-05-01.md` records local export verification history and `Git initialized: no`,
 - `core_export/templates/**` and report previews provide sanitized/template-rendered Core output,
-- the guarded local inspection target is `%USERPROFILE%\Documents\chaseos-core`, but its current path presence must be revalidated before any Git/publication step.
+- the guarded local inspection target is `<CHASEOS_CORE_REPO>`, but its current path presence must be revalidated before any Git/publication step.
 
 This plan therefore remains the structural doctrine anchor, but implementation has progressed beyond the seed stage. Remaining gates are license decision, public ignore policy, Git-init approval, public repo setup, push/publication, and canonical promotion.
 

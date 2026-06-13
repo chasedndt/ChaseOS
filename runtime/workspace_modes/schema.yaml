@@ -1,0 +1,41 @@
+allowed_workspace_modes:
+  - personal_os
+  - study_research
+  - founder_venture
+  - business_ops
+  - runtime_agent_ops
+  - unknown
+
+allowed_knowledge_classes:
+  - user-origin
+  - source-derived
+  - synthesized
+  - generated-ideas
+  - system-operational
+  - canonical-state
+
+allowed_adapter_ceiling_values:
+  - tier-2
+  - tier-2-bounded
+  - tier-3
+  - tier-4
+  - tier-4-default-tier-2-bounded
+  - blocked
+
+required_profile_fields:
+  - workspace_id
+  - workspace_name
+  - workspace_mode
+  - description
+  - primary_domains
+  - canonical_state_files
+  - required_read_order
+  - allowed_knowledge_classes
+  - default_output_classes
+  - allowed_workflows
+  - runtime_adapter_ceiling
+  - approval_rules
+  - graph_rules
+  - protected_paths
+  - default_write_targets
+  - escalation_rules

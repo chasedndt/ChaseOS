@@ -11,15 +11,15 @@ This is a concise, non-secret handoff for future agents. It summarizes current r
 
 ## Current State
 
-- Workspace: `%CHASEOS_VAULT_ROOT%`.
+- Workspace: `<VAULT_ROOT>`.
 - Git: this workspace is **not a Git repository**; `git -C ... status --short --branch` returns `fatal: not a git repository`.
 - Current phase: Phase 9 remains active for selected hardening/proof; Phase 10/Studio surfaces are being introduced narrowly, not as a finished desktop/product shell.
-- Hermes startup: Windows Startup now delegates to `%USERPROFILE%\.hermes\gateway.cmd`; the live target launcher was updated to enter WSL `Ubuntu` as user `chaseos`, run from `<WSL_CHASEOS_VAULT_ROOT>`, retry, and log to `%USERPROFILE%\.hermes\gateway-startup.log`. Post-logon proof remains unverified.
+- Hermes startup: Windows Startup now delegates to `<HERMES_HOME>/<path>`; the live target launcher was updated to enter WSL `Ubuntu` as user `chaseos`, run from `<VAULT_ROOT>`, retry, and log to `<HERMES_HOME>/<path>`. Post-logon proof remains unverified.
 - Pulse: backend/local static surfaces exist and now include read-only review queue, Agent Bus handoff preview, and supervised live handoff readiness panels. Live enqueue, approval grants, runtime dispatch, candidate apply, schedule activation, provider calls, and canonical writeback remain blocked.
 - SiteOps / Browser Skill candidate lane: registry, dry-run plans, candidate approvals, readiness summaries, bound approval request projections, and executor/preflight/spec surfaces are read-only or dry-run. Trusted Browser Skill writes, SiteOps Skill Card writes, browser/CDP execution, activation, Agent Bus mutation, provider calls, and canonical writeback remain unbuilt/blocked unless a specific future governed pass proves otherwise.
 - Studio: Hermes/Optimus is the primary Phase 10 Studio surface implementer. Phase 10A0 Acquisition Intake Cockpit has local-only model/CLI/static/localhost footholds, action wrappers, preview-pack visibility, and rehearsal ladder; later Studio and Phase 11 Chat surfaces are operator interfaces over existing ChaseOS contracts, not canonical truth engines. Full desktop/product authority and backend execution remain gated by lower-phase contracts; backend gaps are dependency handoffs, not permission for Studio work to cross into Phase 9-and-below authority.
 - Codex adapter: `runtime/adapters/codex/` contains handoffs for the Codex bus worker and live CLI tests. Codex is expected to join Agent Bus as runtime `Codex` with retained instance `Axiom-Codex`.
-- Chaser Agent: established as named Agent Bus runtime peer for the Claude Code engineering lane, with memory surfaces and `chaser_agent_watch`; current handlers are bounded analysis/engineering handlers, not unrestricted LLM synthesis.
+- Archon: established as named Agent Bus runtime peer for the Claude Code engineering lane, with memory surfaces and `archon_watch`; current handlers are bounded analysis/engineering handlers, not unrestricted LLM synthesis.
 
 ## Recent Passes Inspected
 
@@ -44,8 +44,8 @@ This is a concise, non-secret handoff for future agents. It summarizes current r
 - [[2026-04-30-ChaseOS-optimus-siteops-registry-dry-run-foothold]]
   - Added SiteOps Website Workflow Index, Site Skills registry, validation, dry-run planning, CLI, and audit target.
   - Validation: focused nearby `19 passed`, AOR `580 passed`, syntax and live dry-run/validate smokes.
-- [[2026-04-30_chaser_agent-runtime-identity]]
-  - Established Chaser Agent runtime identity, memory surfaces, role card, task types, and `chaser_agent_watch` with 55 tests.
+- [[2026-04-30_archon-runtime-identity]]
+  - Established Archon runtime identity, memory surfaces, role card, task types, and `archon_watch` with 55 tests.
 - [[2026-04-30_phase10a0-studio-preview-promotion-prefill]] and [[2026-04-30_phase10a0-studio-rehearsal-ladder]]
   - Studio acquisition cockpit gained preview-pack BRIS prefill and a read-only workflow rehearsal ladder while preserving local-only/non-authoritative boundaries.
 - [[2026-04-29-ChaseOS-optimus-pulse-ui-runtime-handoff-alignment]] / [[ChaseOS-Pulse-UI-and-Runtime-Handoff]]
@@ -53,7 +53,7 @@ This is a concise, non-secret handoff for future agents. It summarizes current r
 
 ## Validation Commands to Prefer
 
-Run from `%CHASEOS_VAULT_ROOT%`.
+Run from `<VAULT_ROOT>`.
 
 ```powershell
 # Basic repo/non-repo reality
@@ -94,7 +94,7 @@ Use `.venv\Scripts\python.exe` where a pass specifically depended on the local v
 - Dry-run/read-only expectation is the default for SiteOps, BOSL, provider governance, startup settings, and Pulse handoff previews unless a specific governed writer/executor has been implemented and validated.
 - Do not treat approval request generation, bound request specs, executor preflights, or readiness summaries as approval decisions or execution authority.
 - Do not mutate `02_KNOWLEDGE/`, R&D workbook truth, Pulse memory, Personal Map, provider config, Gate allowlists, browser profiles, credentials, external sites, or canonical ChaseOS truth from these surfaces unless a future task explicitly grants a validated governed write path.
-- Hermes WSL startup still needs post-logon evidence from `%USERPROFILE%\.hermes\gateway-startup.log`; current WSL probe from shell recorded `Wsl/Service/E_ACCESSDENIED`.
+- Hermes WSL startup still needs post-logon evidence from `<HERMES_HOME>/<path>`; current WSL probe from shell recorded `Wsl/Service/E_ACCESSDENIED`.
 - Browser live automation remains unproven for BOSL; Excalidraw shadow proof, CDP adapter, isolated-profile run logging, and promotion pipeline are future work.
 - Broad runtime suite drift exists outside the latest Pulse handoff changes; do not treat broad failures as caused by Pulse without reproducing and isolating them.
 
@@ -107,7 +107,7 @@ Use `.venv\Scripts\python.exe` where a pass specifically depended on the local v
 5. BOSL next safe increment: isolated-profile Excalidraw shadow proof with no login, no credentials, relative coordinates, and run log under `07_LOGS/Browser-Runs/`.
 6. Studio next safe increment: operator-guided real-file rehearsal once local research files are staged; keep action confirmations explicit and local-only.
 7. Codex adapter next safe increment: readiness/mock daemon plus task-level constraint smokes before any live Codex daemon polling.
-8. Chaser Agent next safe increment: add Chaser Agent seeding to `brain_bootstrap.py` and/or scorecard tracking only if backed by tests; keep review routing to Hermes unless docs change.
+8. Archon next safe increment: add Archon seeding to `brain_bootstrap.py` and/or scorecard tracking only if backed by tests; keep review routing to Hermes unless docs change.
 
 ## Runtime-Specific Ownership / Evidence
 
@@ -120,7 +120,7 @@ Use `.venv\Scripts\python.exe` where a pass specifically depended on the local v
 | Browser / BOSL | Feature surface, not evidenced here as an autonomous runtime owner. BOSL scaffold and Browser Operator Surface are governed under AOR/Gate. | Skill/candidate validation and future isolated shadow runs only; live browser/CDP/account authority remains unbuilt/blocked. |
 | Pulse | Native ChaseOS proactive intelligence feature family, not a generic digest. | Local deck/candidate/review/handoff surfaces are partial and read-only/pending-review; no schedule activation, memory approval, live dispatch, or canonical writeback. |
 | Studio | Phase 10 interface/product-shell surface; Hermes/Optimus-owned implementation lane for bounded surface/readiness work; Phase 10A0 acquisition cockpit is the narrow live foothold. | Local-only UI/service wrappers with explicit confirmations; backend blockers must be reported with missing contract, affected Phase 10/11 surface, lower-phase owner/surface, minimum proof needed, and blocked action reason; full Studio desktop and startup toggles UI/executor remain unbuilt. |
-| Chaser Agent | Named Agent Bus runtime peer / Claude Code engineering lane with memory surfaces and `chaser_agent_watch`. | Bounded engineering/analysis handlers; review remains Hermes-routed; LLM synthesis and full scorecard wiring are future gaps. |
+| Archon | Named Agent Bus runtime peer / Claude Code engineering lane with memory surfaces and `archon_watch`. | Bounded engineering/analysis handlers; review remains Hermes-routed; LLM synthesis and full scorecard wiring are future gaps. |
 
 ## Source Links
 

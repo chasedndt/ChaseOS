@@ -40,7 +40,7 @@ This matrix maps the public `chaseos.ai` route set to current repo truth. It is 
 | `/security` | Security posture | Permission Matrix, Trust Tiers, approvals, Gate, provenance, audit logs | Static implemented | Explain boundaries; no enterprise/compliance claims. |
 | `/terms` | Early access terms | AI output risk, external action responsibility, preview software | Static implemented | Mark draft/not lawyer-reviewed. |
 | `/license` | License/open-core boundary | Core export, open-core, source-available/commercial split, Forge examples | Static implemented 2026-06-06 | Do not call commercial-restricted code open-source until final license exists. |
-| `/companions` | Companion/runtime posture | Hermes, OpenClaw, Claude Code/Chaser Agent, Chaser Agent, Agent Bus | Static implemented 2026-06-06 | Position companions as bounded lanes; Chaser Agent remains future public managed lane. |
+| `/companions` | Companion/runtime posture | Hermes, OpenClaw, Claude Code/Archon, Chaser Agent, Agent Bus | Static implemented 2026-06-06 | Position companions as bounded lanes; Chaser Agent remains future public managed lane. |
 | `/support` | Support/contact route | Early access support, security contact, creator support | Static implemented | Keep support desk as early access until backend/staffing exists. |
 | `/creators` | Creator landing | Chaser Forge, Product Workflow Packs, Creator Engine, standards | Static implemented | Recruit pack creators; paid/certified/payout lanes remain future. |
 | `/submit-pack` | Creator interest form | Forge, standards, approval/external action declaration | Static implemented | Browser-only validation; no submission storage in static build. |

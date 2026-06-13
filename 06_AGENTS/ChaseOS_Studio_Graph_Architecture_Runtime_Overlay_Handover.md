@@ -860,7 +860,7 @@ Use consistent runtime colors:
 Hermes = green/cyan/gold
 OpenClaw = amber/cyan
 Codex = blue/violet
-Claude/Chaser Agent = amber/violet/cyan
+Claude/Archon = amber/violet/cyan
 User/manual = white/teal
 System/Gate = gray/gold
 ```
@@ -920,7 +920,7 @@ Questions answered:
 Hermes-touched nodes = green/cyan glow
 Codex-touched nodes = blue/violet glow
 OpenClaw-touched nodes = amber/cyan ring
-Claude/Chaser Agent-touched nodes = amber/violet glow
+Claude/Archon-touched nodes = amber/violet glow
 Multiple runtimes = stacked/split ring
 Untouched/stale = dim
 ```

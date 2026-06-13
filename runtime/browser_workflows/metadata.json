@@ -1,0 +1,29 @@
+{
+  "record_type": "browser_workflow_cache_metadata",
+  "schema_version": "browser.workflow_cache.v1",
+  "status": "inactive_review_cache",
+  "generated_at": "2026-05-02T10:50:00Z",
+  "activation_allowed": false,
+  "replay_allowed": false,
+  "trusted_write_allowed": false,
+  "external_code_copied": false,
+  "license_notes": [
+    "ChaseOS workflow cache is native code.",
+    "browser-use/workflow-use is AGPL-3.0 reference only; no code copied."
+  ],
+  "workflows": [
+    {
+      "workflow_id": "wf-127-0-0-1-vincisos-product-ui-safe-panel-inspection-trial-20260502",
+      "domain": "127.0.0.1",
+      "status": "reviewed_for_trial",
+      "path": "runtime/browser_workflows/workflows/wf-127-0-0-1-vincisos-product-ui-safe-panel-inspection-trial-20260502.workflow.json",
+      "source_run_id": "vincisos_product_ui_browser_proof_20260502_success",
+      "activation_allowed": false,
+      "replay_allowed": true,
+      "trusted_write_allowed": false,
+      "external_code_copied": false,
+      "trial_candidate": true
+    }
+  ],
+  "updated_at": "2026-05-02T19:18:12.424377Z"
+}

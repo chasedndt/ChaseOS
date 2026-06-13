@@ -1,0 +1,31 @@
+{
+  "runtime_id": "openclaw",
+  "updated": "2026-04-24",
+  "selection_policy": "Prefer tasks that improve legibility, self-description, routing clarity, and bounded runtime continuity before expanding authority.",
+  "recommended": [
+    {
+      "id": "wire_self_orientation_into_profile",
+      "priority": 1,
+      "status": "active-now",
+      "summary": "Link the human-readable OpenClaw runtime profile to machine-readable self-state files so the runtime can orient through both forms."
+    },
+    {
+      "id": "add_runtime_self_report_contract",
+      "priority": 2,
+      "status": "ready",
+      "summary": "Extend runtime/memory/nav/Runtime-Navigation-Folder-Guide.md with a formal self-orientation contract so runtimes can expose identity, capabilities, posture, and valid next actions consistently."
+    },
+    {
+      "id": "promote_nav_seed_to_evidence_records",
+      "priority": 3,
+      "status": "ready",
+      "summary": "Evolve seeded nav-map routes into evidence-backed runtime route records tied to observed runs, writebacks, and stable operator paths."
+    }
+  ],
+  "explicitly_not_next": [
+    {
+      "id": "browser_policy_pass",
+      "reason": "Useful, but it expands an adjacent governance layer before the runtime can cleanly describe itself from structured state."
+    }
+  ]
+}

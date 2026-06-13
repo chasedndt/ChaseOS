@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "surface_id": "browser.skill.memory",
+  "display_name": "Browser Skill Memory",
+  "surface_family": "siteops_skill_runtime",
+  "surface_type": "siteops_skill",
+  "owner_layer": "runtime/browser_skills",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/browser_skills/candidates.py",
+    "runtime/browser_skills/registry.py",
+    "runtime/browser_skills/validator.py",
+    "runtime/runtime_surfaces/browser_skill_memory.py"
+  ],
+  "docs_refs": [
+    "06_AGENTS/Browser-Skill-Memory.md",
+    "06_AGENTS/Browser-Runtime-Skill-Memory.md",
+    "06_AGENTS/Browser-Operator-Skill-Layer.md"
+  ],
+  "trust_ceiling": "tier-2",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "browser.skill_memory.inventory",
+      "maps_to": "browser_skill_memory_inventory",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "browser.skill_candidate.inspect",
+      "maps_to": "browser_skill_candidate_inspect",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "browser.skill_candidate.promotion_request",
+      "maps_to": "browser_skill_candidate_promotion_request",
+      "risk_class": "proposal_write",
+      "approval_required": "conditional"
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "03_INPUTS/Browser-Skill-Candidates/",
+    "runtime/browser_skills/skills/",
+    "runtime/siteops/registry/skill_cards/",
+    "runtime/siteops/registry/workflows/",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "audit_targets": [
+    "03_INPUTS/Browser-Skill-Candidates/",
+    "runtime/siteops/registry/",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/browser_skills"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  }
+}

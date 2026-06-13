@@ -1,0 +1,78 @@
+---
+# archon_watch — Archon Bus Watch Loop
+# ChaseOS Phase 9 — Agent Bus Coordination
+#
+# Autonomous polling loop: Archon claims and dispatches open tasks from the
+# coordination bus without requiring manual per-task invocation.
+#
+# Run once:     chaseos run archon_watch
+# Run looping:  chaseos run archon_watch --input interval_seconds=60
+#
+# Dispatch table (as of this manifest version):
+#   implementation       -> bounded analysis + bus result + Agent-Activity writeback
+#   code-review          -> bounded code review + bus result + Agent-Activity writeback
+#   architecture-review  -> bounded architecture review + bus result + Agent-Activity writeback
+#   others               -> escalated (blocked on bus, operator notified)
+#
+id: archon_watch
+name: "Archon Watch Loop"
+version: "1.0"
+description: "Archon polls the coordination bus for open tasks addressed to it, claims them, and dispatches implementation, code-review, and architecture-review tasks. Run once or with an interval for continuous operation."
+task_type: coordination
+role_card: archon-engineering
+trigger_type: scheduled
+owner: operator
+status: active
+runtime_adapter: archon
+schedule_intent_ref: sch-archon-watch-every-minute
+
+permission_ceiling: bus_result_only
+
+coordination_requirements:
+  coordination_sensitive: true
+  via: "runtime/agent_bus/"
+  partner_runtimes:
+    - "Hermes"
+    - "OpenClaw"
+  execution_mode: "poll-and-claim"
+
+inputs:
+  - interval_seconds    # optional int — if set, loop continuously; if omitted, run once
+  - max_tasks_per_cycle # optional int — max tasks to claim per cycle (default: 2)
+
+outputs:
+  - cycles_run
+  - tasks_dispatched
+  - tasks_escalated
+  - cycle_summaries
+  - writebacks
+
+writeback_targets:
+  - "07_LOGS/Agent-Activity/"
+
+failure_behavior: escalate
+
+approval_rule: none
+
+audit_expectations:
+  - "cycle count recorded"
+  - "tasks dispatched per cycle recorded"
+  - "tasks escalated per cycle recorded"
+  - "heartbeat upserted each cycle"
+
+notes: >
+  This workflow is the autonomous bus-receiver entry point for Archon.
+  Each cycle: upsert heartbeat → list open tasks → claim + dispatch → upsert heartbeat.
+
+  The dispatch table in archon_watch.py maps task_type to handler. All three current
+  handlers (implementation, code-review, architecture-review) are bounded analysis
+  handlers: they consume only the bus task packet and return a bus result plus an
+  Agent-Activity audit writeback. They do not read external systems, execute shell
+  commands, access credentials, mutate canonical vault state, or promote knowledge.
+
+  Archon's primary engineering mode is direct session-driven work (governed by CLAUDE.md).
+  This watch loop is the parallel coordination-bus receiver that allows Hermes and
+  OpenClaw to delegate structured work to Archon asynchronously.
+
+  Heartbeat is upserted at cycle start (idle) and cycle end (busy if dispatched, else idle).
+  This ensures the router's staleness detection sees Archon as live during active polling.

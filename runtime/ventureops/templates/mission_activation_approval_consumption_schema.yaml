@@ -1,0 +1,43 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for consumable VentureOps Mission Mode activation approval artifacts."
+required_fields:
+  - schema_version
+  - type
+  - approval_id
+  - approval_decision
+  - approval_status
+  - approved_by
+  - approved_at
+  - operator_approval_statement
+  - mission_id
+  - mission_workspace_path
+  - approved_next_step
+  - approved_scope
+  - required_acknowledgements
+  - consumption_policy
+  - consumable
+  - approval_consumed
+  - activation_authority_granted
+  - activation_authority_scope
+  - mission_activation_execution_authorized
+  - aor_dispatch_authorized
+  - agent_bus_task_write_authorized
+  - workflow_evolution_apply_authorized
+  - provider_calls_authorized
+  - browser_actions_authorized
+  - browser_skill_activation_authorized
+  - external_side_effects_authorized
+  - crm_or_payment_mutation_authorized
+  - live_trading_authorized
+  - protected_file_edit_authorized
+  - canonical_promotion_authorized
+  - credential_or_secret_read_authorized
+approved_next_step_values:
+  - mission_activation_gate_only
+consumption_policy_values:
+  - exact_once
+authority_rules:
+  - "Approval artifacts are consumable only after explicit operator approval and an exact mission/workspace match."
+  - "The exact-once consumption marker clears only the activation-approval-missing readiness blocker."
+  - "Mission activation execution, AOR dispatch, Agent Bus task writes, workflow evolution application, provider/browser actions, external sends, CRM/payment mutation, live trading, protected-file edits, credential reads, and canonical promotion remain separate approvals."

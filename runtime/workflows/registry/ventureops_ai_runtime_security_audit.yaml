@@ -1,0 +1,79 @@
+---
+id: ventureops_ai_runtime_security_audit
+name: "VentureOps AI Runtime Security Audit"
+version: "0.1"
+description: "Exact VentureOps P0 security-audit workflow id. Executes the bounded runtime governance audit over declared local governance/runtime files and writes internal proof artifacts only."
+
+task_type: ventureops-runtime-audit
+role_card: security_reviewer
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: proposal_log_only
+
+inputs:
+  - date
+  - run_id
+  - source_paths
+  - include_offer_packet
+  - include_delivery_approval_contract
+  - include_delivery_packet_preview
+  - include_approval_request_artifact
+  - include_approval_consumption_proof
+  - approval_decision_id
+  - approval_decision
+  - approval_decision_actor
+  - approval_request_run_id
+
+outputs:
+  - proof_path
+  - client_report_path
+  - scorecard_path
+  - proof_card
+  - scorecard
+  - source_count
+  - signal_counts
+
+required_reads:
+  - "06_AGENTS/Agent-Control-Plane.md"
+  - "06_AGENTS/Permission-Matrix.md"
+  - "06_AGENTS/Trust-Tiers.md"
+  - "06_AGENTS/Backends-Supported.md"
+  - "runtime/codex/capabilities.yaml"
+  - "runtime/workflows/registry/use_case_registry.yaml"
+
+writeback_targets:
+  - "07_LOGS/Workflow-Proofs/"
+  - "07_LOGS/Runtime-Audits/"
+
+failure_behavior: escalate
+
+rollback_path: "delete generated proof artifacts if the operator rejects this internal proof; no canonical state is modified"
+
+approval_rule: none
+
+alias_of: agent_runtime_governance_audit
+
+audit_expectations:
+  - "workflow_id recorded as ventureops_ai_runtime_security_audit"
+  - "input_sources recorded"
+  - "source_count recorded"
+  - "proof_path recorded"
+  - "blocked surfaces recorded"
+  - "secret-like paths fail closed"
+  - "no provider/browser/external-send action attempted"
+  - "no provider config mutation attempted"
+  - "no shell mutation attempted"
+  - "no credential read attempted"
+  - "no canonical promotion attempted"
+
+notes: >
+  Exact P0 VentureOps AI Runtime Security Audit manifest. The handler reuses the
+  hardened agent runtime governance audit implementation but writes proof,
+  report, and scorecard artifacts under the exact
+  ventureops_ai_runtime_security_audit workflow id. It reads declared local
+  governance/runtime files only and performs no provider call, browser action,
+  external send, provider config mutation, credential read, shell mutation,
+  canonical promotion, payment/CRM mutation, live remediation, or live client
+  workflow.

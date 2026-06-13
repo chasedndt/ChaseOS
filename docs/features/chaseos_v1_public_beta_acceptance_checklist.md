@@ -1,7 +1,7 @@
 ---
 title: ChaseOS V1 Public-User Beta Acceptance Checklist
 created: 2026-05-30
-updated: 2026-05-30
+updated: 2026-06-12
 runtime: hermes-optimus
 type: release-acceptance-checklist
 status: DRAFT / V1-A1 PM HANDOFF
@@ -28,20 +28,20 @@ Use this product identity consistently in public-user beta copy, Studio UI, docs
 | ChaseOS | Platform/product: local-first AI operating system and agent control plane. | Public product name. Do not reduce it to a chatbot, vault, or template pack. |
 | ChaseOS Studio | Standalone app / graphical control panel for ChaseOS. | Main V1 user-facing app. |
 | Chaser Forge | Governed marketplace / extension and workflow-pack distribution layer. | V1 preview/partial path unless public domain/index is live. |
-| Chaser Agent | First-party ChaseOS 24/7 harness/runtime lane. | Runtime identity exists; public managed-agent product authority remains gated/Post-V1 and must not block beta. |
+| Chaser Agent | Future first-party always-on runtime / managed agent family. | Upcoming/Post-V1. Must not block beta. |
 | Hermes / OpenClaw | Existing bounded runtime-instance lanes under ChaseOS governance. | Internal/proof/runtime-compatibility lanes, not product brand. |
 
 ## 2. Release gate verdict
 
 Current PM verdict: **not beta-ready until Ship and Ship-Minimum gates below are verified**.
 
-The beta may still show Preview, Upcoming, and Blocked features if they are clearly labeled, safe, and non-deceptive. V1 public-user beta must not imply that external delivery, payments, broad browser automation, marketplace purchase flows, Chaser Agent public managed-agent actions, or uncontrolled runtime execution are live unless separately proven and approved.
+The beta may still show Preview, Upcoming, and Blocked features if they are clearly labeled, safe, and non-deceptive. V1 public-user beta must not imply that external delivery, payments, broad browser automation, marketplace purchase flows, Chaser Agent, or uncontrolled runtime execution are live unless separately proven and approved.
 
 ## 3. Ship gates — must work for first public users
 
 | Gate | Acceptance checklist | Evidence needed |
 |---|---|---|
-| Standalone ChaseOS Studio launch | App opens from a public-user path; user can select or detect a vault/root; no private machine assumptions in public flow. | Launch smoke result plus path/leak scan. |
+| Standalone ChaseOS Studio launch | App opens from a public-user path; user can select or detect a vault/root; no `No vault root found`; no hardcoded `C:\\Users\\chaseos`, `<WSL_HOME>`, or private machine assumptions in public flow. | Launch smoke result plus path/leak scan. |
 | Home / Command Center | First screen explains ChaseOS in under 60 seconds; shows current capability, readiness, first useful action, and preview/upcoming states without internal-only jargon. | Route/page audit and screenshot or static render proof. |
 | Settings / privacy / providers | User can see local data location, provider/API-key status, runtime status, privacy/data controls, open-folder/export/reset/help, and legal/privacy links. | Settings smoke plus privacy/legal page existence. |
 | Privacy / terms / AI warnings | Privacy notice, terms/disclaimer, AI limitations warning, personal-data warning, external-send/upload/credential/payment warnings. | Linked docs/pages included in app and README. |
@@ -69,27 +69,38 @@ The beta may still show Preview, Upcoming, and Blocked features if they are clea
 | Graph / Memory visibility | Preview/Partial. | Read-only graph/memory/status is acceptable; writes/promotions must be gated/disabled. |
 | Chaser Forge | Preview/Partial. | Local marketplace proof and static/public index path may be visible; live hosted fetch waits for domain/public `index.json`. |
 | Capture / Acquisition + Normalization | Preview/Partial. | Local/import readiness only; do not overclaim live connectors. |
-| AOR/runtime adapter authority | Preview/Partial. | Show bounded workflow status and governance boundaries; no uncontrolled execution. |
+| AOR/runtime adapter authority | Preview/Partial. | Show bounded workflow status and NB-035 governed-by-design labels: `Live / local` mission artifacts, `Preview / governed` Agent Bus/reviewer-gate lanes, and `Blocked / approval required` ambient/provider/browser/external/canonical authority. No uncontrolled execution. |
 | ChaseOS Pulse | Preview/Partial. | Show schedule/readiness/status honestly; full proactive intelligence is not required for beta. |
 | Browser Runtime / SiteOps | Preview/Partial. | Readiness/proof/status only unless live bounded executor is separately verified. |
 | VentureOps / Mission Mode | Preview/Partial. | Founder/business positioning is allowed; external revenue/client delivery remains blocked unless approved. |
-| MCP | Preview. | Developer/advanced integration mention only; expansion not required. |
+| MCP | Preview. | Developer/advanced integration mention only; V1 server/hub readiness can be shown, broader expansion not required. |
 | Agent role cards / memory architecture / runtime maps | Preview/Partial. | Useful governance surfaces; not a beta blocker unless the app claims they are live product features. |
+| Voice Mode | Preview/Partial. | Mounted page/local browser-native surface may be shown; live microphone/provider/runtime handoff must be labeled gated unless proven. |
+| Companion Surface | Preview/Partial. | Studio companion/roster/readiness may be shown; mobile/tablet/memory-write/execution-routing expansions remain gated. |
+| Phase 11 Chat live dispatch lanes | Preview/Partial / Decision. | Runtime-dispatch foundation may be shown; provider/browser/target-mutation/result-writeback lanes must be proven or deferred. |
+| Live Operator Shell / Agent Operating Console | Ship-Minimum / Preview. | A governed visual control surface may be shown if it uses action envelopes and no fake shell/provider/browser authority. |
+| Visual Capture Markdown Ingestion | Preview/Partial. | Governed local capture/source-pack readiness can be shown; downstream writeback/promotion stays gated. |
+| Sub-Agent Presets | Preview/Partial. | Presets can shape bounded task packets; they must not imply uncontrolled dispatch. |
+| Product Workflow Packs / Missions | Ship-Minimum/Preview. | Product navigation should expose packs/missions as their own feature-family row. Local Studio cards/run records/proof artifacts may be shown as preview-live; external delivery, payment, hosted publication, remote install, and approval consumption stay blocked unless separately proven and approved. |
+| Creator Engine | Preview/Partial. | Product preview allowed; live generation/posting/provider execution must be labeled gated. |
+| Adaptive Runtime Surface Layer | Preview/Partial. | Read-only runtime-surface trust/routing labels allowed; execution/authority grant remains blocked. |
+| Chaser Forge extension install/import contract | Preview/Decision. | Local import-intent, package/manifest validation, permission disclosure, and review handoff may be shown; live remote install, hosted publication, payment/license checkout, seller accounts, network fetch/upload, and approval consumption require a separate release decision. |
 
 ## 6. Upcoming / Post-V1 — must not block beta
 
 | Area | Beta label | Rule |
 |---|---|---|
-| Chaser Agent | Runtime identity exists / product authority gated | First-party 24/7 runtime lane; do not present public managed-agent authority as required for Studio beta. |
-| AISO | Upcoming | Roadmap/mission preview only. |
-| Voice Mode | Upcoming / Preview | Page/status is okay; microphone/provider capture not required. |
-| Companion surface | Upcoming | No beta dependency. |
+| Chaser Agent | Upcoming / Post-V1 | Future first-party runtime or managed-agent layer; do not present as required for Studio beta. |
+| AISO | Upcoming / active `/goal` | Roadmap/mission preview plus local dry-run proof chain; do not claim live submission/send/upload. |
+
 | Full Phase 9 second-wave features | Post-V1 | Do not let second-wave automation delay Studio beta. |
 | Layer C durable generated artifacts | Post-V1 | Promotion path can remain future. |
 | Outcome scoring and scheduler integration | Post-V1 | Not first-user beta critical. |
 | Credits, license server, paid marketplace packs, seller accounts | Post-V1 / Decision | Define direction; implementation can wait. |
 | Team/business/enterprise collaboration | Post-V1 | Mention high-level only. |
 | Managed Chaser Agent / agency | Post-V1 | Premium future/agency wedge. |
+| Broad automated agent execution | Post-V1 / Governed-by-design | Do not unblock as ambient autonomy; beta can show the bounded mission/workflow/Agent Bus/reviewer-gate status slice only, with provider/browser/account mutation, external delivery, approval consumption, host mutation, and canonical promotion labeled blocked unless separately approved. |
+| Core/Personal full public export | Post-V1 / Decision | Active split can be documented; full public export/repo publication remains gated until scanner-clean proof. |
 
 ## 7. Blocked / Decision — beta gate only when trust/install depends on it
 
@@ -116,6 +127,20 @@ Before public-user beta can be called ready, complete and record these checks:
 7. Domain/package audit: landing/download/waitlist path selected; Forge public-index path named even if preview.
 8. Smoke evidence recorded in build log or release-readiness note.
 
+## 8A. 2026-06-12 NB-022/NB-036 recovery evidence slice
+
+This recovery pass converts the standalone governed Studio and public beta acceptance rows from stale Deferred/Partial wording into an explicit Ship / Ship-Minimum evidence checklist. Product-facing proof artifact: `07_LOGS/Visual-QA/2026-06-12-nb022-nb036-studio-beta-acceptance/2026-06-12-nb022-nb036-studio-beta-acceptance.html`; machine-readable sidecar: `07_LOGS/Visual-QA/2026-06-12-nb022-nb036-studio-beta-acceptance/2026-06-12-nb022-nb036-studio-beta-acceptance.json`.
+
+| Evidence row | Current proof | Beta verdict impact |
+|---|---|---|
+| Standalone Studio route surface | 12/12 required product routes are mounted in `runtime/studio/shell/frontend/index.html`. | Supports NB-022 Ship evidence; not final launch/package proof. |
+| Feature/status labeling | 12/12 required routes are present in the fallback feature catalog with Live/Local/Inspect/Approval-gated labels after adding the `studio-status` / Studio Status catalog entry. | Supports Ship-Minimum labeling; still requires full route/copy smoke before beta-ready. |
+| Legal/privacy/trust source docs | Site map, privacy/security/terms baseline, and public launch checklist all exist and include privacy/terms/beta-warning posture. | Trust copy source exists; public app/README/legal-link wiring still needs final smoke. |
+| Public beta gate | NB-036 remains Ship and NO-GO until Ship and Ship-Minimum gates are verified. | Prevents overclaiming public beta readiness. |
+| Packaging/release smoke | JSON-shape crash hardening landed for Visual-QA report scanners and focused tests pass; latest fix-forward smoke reports packaging readiness `status=ready_for_local_packaging_proof` with `icon_configured=true`, and `mvp-closure-gate --json` returns inside the WSL smoke budget with `closed=false`. Current blockers are `decision_packet_missing_or_invalid` and `pass10b_installer_zip_proof_not_complete`. | Blocks final beta-ready verdict until decision-packet and installer/package proof close; route remaining release proof to packaging/release lanes instead of deferring NB-022/NB-036 generically. |
+
+Authority preserved: this slice did not perform provider calls, browser/account mutation, host mutation, external delivery, approval consumption, canonical promotion, or release/package writes.
+
 ## 9. Proposed follow-on Track A gates
 
 These are PM/reviewer gates, not implementation scope for V1-A1:
@@ -136,7 +161,7 @@ These are PM/reviewer gates, not implementation scope for V1-A1:
 
 ## 11. PM handoff summary
 
-V1 public-user beta should be cut around a truthful ChaseOS Studio product shell, local-first setup, settings/privacy/provider visibility, feature catalog status labeling, docs/inspector access, public repo hygiene, and a repeatable smoke/leak suite. Chaser Forge can ship as preview/partial, Chaser Agent public managed-agent authority and AISO remain gated, and live external delivery/payments/browser/runtime authority must stay blocked or preview-only unless separately proven. The next release decision should be evidence-driven: the beta is ready only after Ship and Ship-Minimum gates have recorded proof and no public-trust blocker remains.
+V1 public-user beta should be cut around a truthful ChaseOS Studio product shell, local-first setup, settings/privacy/provider visibility, feature catalog status labeling, docs/inspector access, public repo hygiene, and a repeatable smoke/leak suite. Chaser Forge can ship as preview/partial, Chaser Agent and AISO remain upcoming, and live external delivery/payments/browser/runtime authority must stay blocked or preview-only unless separately proven. The next release decision should be evidence-driven: the beta is ready only after Ship and Ship-Minimum gates have recorded proof and no public-trust blocker remains.
 
 ## 12. Graph links
 

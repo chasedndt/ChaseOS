@@ -16,8 +16,8 @@ promotion.
 ## Source Evidence
 
 - Workflow: `wf-127-0-0-1-vincisos-product-ui-safe-panel-inspection-trial-20260502`
-- Browser run log: `%CHASEOS_VAULT_ROOT%/07_LOGS/Browser-Runs/safe-local-workflow-replay-execution-proof-20260503_success.json`
-- Screenshot: `%CHASEOS_VAULT_ROOT%/07_LOGS/Browser-Runs/safe-local-workflow-replay-execution-proof-20260503_screenshot.png`
+- Browser run log: `C:/Users/chaseos/Documents/chaseos_obsidian/07_LOGS/Browser-Runs/safe-local-workflow-replay-execution-proof-20260503_success.json`
+- Screenshot: `C:/Users/chaseos/Documents/chaseos_obsidian/07_LOGS/Browser-Runs/safe-local-workflow-replay-execution-proof-20260503_screenshot.png`
 
 ## Durable Patterns
 

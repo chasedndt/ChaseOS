@@ -125,6 +125,30 @@ def _parse_simple_yaml(text: str) -> dict[str, Any]:
                 subkey = subkey.strip()
                 if not subkey:
                     raise CapabilityError(f"Empty mapping key on line {i + 1}")
+                if subvalue.strip() == "":
+                    i += 1
+                    nested_items: list[Any] = []
+                    saw_nested_child = False
+                    while i < len(lines):
+                        grandchild = lines[i].rstrip()
+                        grandchild_stripped = grandchild.strip()
+                        if not grandchild_stripped or grandchild_stripped.startswith("#"):
+                            i += 1
+                            continue
+                        if not grandchild.startswith("    "):
+                            break
+                        saw_nested_child = True
+                        if not grandchild_stripped.startswith("- "):
+                            raise CapabilityError(f"Unsupported YAML syntax on line {i + 1}: {grandchild}")
+                        nested_item_value = grandchild_stripped[2:].strip()
+                        if not nested_item_value:
+                            raise CapabilityError(f"Empty list item on line {i + 1}")
+                        nested_items.append(_coerce_scalar(nested_item_value))
+                        i += 1
+                    if not saw_nested_child:
+                        raise CapabilityError(f"Expected indented block after '{subkey}:'")
+                    nested[subkey] = nested_items
+                    continue
                 nested[subkey] = _coerce_scalar(subvalue.strip())
                 i += 1
             if not saw_child:

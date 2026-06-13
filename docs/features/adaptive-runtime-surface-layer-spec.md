@@ -11,7 +11,7 @@ session: 2026-05-03_adaptive-runtime-surface-layer-audit
 
 ## Status
 
-PARTIAL. The 2026-05-03 Phase 1 pass implemented the read-only runtime surface manifest schema, validated manifest model, registry loader, first-party manifests, and focused tests. The 2026-05-03 Phase 2 pass added normalized risk taxonomy and policy classification helpers. The 2026-05-03 Phase 3 pass added a read-only routing proposal helper. The 2026-05-03 Phase 4 pass added read-only browser skill memory normalization. The 2026-05-03 Phase 5 pass added append-only routing decision ledger support. The 2026-05-03 Phase 6 pass exposed a curated read-only ARSL summary through Runtime MCP. The 2026-05-04 canonical-docs pass added protected framework-control docs for ARSL and the Runtime Surface Manifest Standard. The 2026-05-04 CLI-inspection pass added read-only operator CLI summaries for registry and capability-policy inspection. The 2026-05-04 manifest-expansion passes added Hermes, OpenClaw, and Chaser Agent runtime manifests plus bounded OpenAI dry-run and local Ollama timeout-contract provider manifests. The 2026-05-04 client/embedded audit pass added the Studio sandboxed static artifact mount manifest. The 2026-05-04 route-review pass added a read-only operator route review contract and CLI preview. ARSL still does not execute work, activate browser skills, grant new authority, expose raw manifests, or provide MCP tools.
+PARTIAL. The 2026-05-03 Phase 1 pass implemented the read-only runtime surface manifest schema, validated manifest model, registry loader, first-party manifests, and focused tests. The 2026-05-03 Phase 2 pass added normalized risk taxonomy and policy classification helpers. The 2026-05-03 Phase 3 pass added a read-only routing proposal helper. The 2026-05-03 Phase 4 pass added read-only browser skill memory normalization. The 2026-05-03 Phase 5 pass added append-only routing decision ledger support. The 2026-05-03 Phase 6 pass exposed a curated read-only ARSL summary through Runtime MCP. The 2026-05-04 canonical-docs pass added protected framework-control docs for ARSL and the Runtime Surface Manifest Standard. The 2026-05-04 CLI-inspection pass added read-only operator CLI summaries for registry and capability-policy inspection. The 2026-05-04 manifest-expansion passes added Hermes, OpenClaw, and Archon Agent Bus runtime manifests plus bounded OpenAI dry-run and local Ollama timeout-contract provider manifests. The 2026-05-04 client/embedded audit pass added the Studio sandboxed static artifact mount manifest. The 2026-05-04 route-review pass added a read-only operator route review contract and CLI preview. ARSL still does not execute work, activate browser skills, grant new authority, expose raw manifests, or provide MCP tools.
 
 Implemented files:
 
@@ -19,7 +19,7 @@ Implemented files:
 - `runtime/runtime_surfaces/models.py`
 - `runtime/runtime_surfaces/registry.py`
 - `runtime/runtime_surfaces/manifests/*.yaml`
-- `runtime/runtime_surfaces/manifests/agent_bus_chaser_agent.yaml`
+- `runtime/runtime_surfaces/manifests/agent_bus_archon.yaml`
 - `runtime/runtime_surfaces/manifests/agent_bus_hermes.yaml`
 - `runtime/runtime_surfaces/manifests/agent_bus_openclaw.yaml`
 - `runtime/runtime_surfaces/manifests/client_studio_sandboxed_static_mount.yaml`
@@ -214,7 +214,7 @@ Target files:
 
 First-party manifests:
 
-- `runtime/runtime_surfaces/manifests/agent_bus_chaser_agent.yaml`
+- `runtime/runtime_surfaces/manifests/agent_bus_archon.yaml`
 - `runtime/runtime_surfaces/manifests/agent_bus_codex.yaml`
 - `runtime/runtime_surfaces/manifests/agent_bus_hermes.yaml`
 - `runtime/runtime_surfaces/manifests/agent_bus_openclaw.yaml`
@@ -457,33 +457,33 @@ Implemented behavior:
 - Preserves Agent Bus as the authority layer for these runtime lanes.
 - Adds no Agent Bus enqueueing, watch-loop activation, AOR dispatch, provider call, browser action, or canonical writeback.
 
-### Phase 10: Chaser Agent Runtime Manifest Expansion
+### Phase 10: Archon Agent Runtime Manifest Expansion
 
 Status: COMPLETE TARGETED / MANIFEST-ONLY REGISTRY EXPANSION.
 
-Register Chaser Agent as a first-party 24/7 ChaseOS harness/runtime identity in ARSL without adding execution authority.
+Register repo-existing Archon Agent Bus runtime lane in ARSL without making Archon always-on or adding execution authority.
 
 Implemented manifest:
 
-- `runtime/runtime_surfaces/manifests/agent_bus_chaser_agent.yaml`
+- `runtime/runtime_surfaces/manifests/agent_bus_archon.yaml`
 
 Registered surface ID:
 
-- `agent.chaser_agent.bus`
+- `agent.archon.bus`
 
 Repo-truth anchors:
 
-- `runtime/chaser_agent/capabilities.yaml`
-- `templates/runtime/chaser_agent.lifecycle.example.yaml`
-- `runtime/workflows/chaser_agent_watch.py`
-- `runtime/workflows/registry/chaser_agent_watch.yaml`
-- `docs/runtime/Chaser-Agent-Runtime-Profile.example.md`
-- `docs/runtime/Chaser-Agent-Adapter-Spec.example.md`
+- `runtime/archon/capabilities.yaml`
+- `runtime/lifecycle/archon.lifecycle.yaml`
+- `runtime/workflows/archon_watch.py`
+- `runtime/workflows/registry/archon_watch.yaml`
+- `06_AGENTS/Archon-Runtime-Profile.md`
+- `06_AGENTS/role-cards/archon-engineering.yaml`
 
 Implemented behavior:
 
 - Adds validated manifest metadata only.
-- Keeps personal Claude Code instance naming out of portable runtime identity; Chaser Agent is the Core runtime identity for this lane.
+- Preserves Archon as session-scoped and reachable only when Claude Code / `archon_watch` is running.
 - Keeps `routing_policy.default: deny_unknown`.
 - Keeps `credential_policy.credentials_allowed: false`.
 - Keeps `credential_policy.cookies_allowed: false`.

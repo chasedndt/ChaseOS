@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Join ChaseOS Studio Early Access - ChaseOS</title>
+  <meta name="description" content="Register interest without creating an account or sending data to a model provider." />
+  <link rel="canonical" href="https://chaseos.ai/waitlist" />
+  <meta property="og:title" content="Join ChaseOS Studio Early Access - ChaseOS" />
+  <meta property="og:description" content="Register interest without creating an account or sending data to a model provider." />
+  <meta property="og:url" content="https://chaseos.ai/waitlist" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body data-page="waitlist">
+  <header class="site-header"><a class="brand" href="../">ChaseOS</a><nav class="nav" aria-label="Primary"><a href="../">Home</a><a href="../studio/">Studio</a><a href="../demo/">Demo</a><a href="../forge/">Forge</a><a href="../standards/">Standards</a><a href="../docs/">Docs</a><a href="../waitlist/">Waitlist</a></nav></header>
+  <main>
+<section class="split">
+  <div>
+    <h1>Join the early access waitlist.</h1>
+    <p class="lead">Tell us what kind of AI-native work you want ChaseOS to help govern. Safe static placeholder validation runs in the browser only; Production storage is not enabled in this repository.</p>
+    <ul class="check-list"><li>No outbound email campaign is wired.</li><li>No provider/model calls run on waitlist data.</li><li>Backend/storage decision required before real signup capture: choose an approved database/form backend, retention policy, admin auth, and export owner.</li></ul>
+  </div>
+  <form id="waitlist-form" class="panel" novalidate>
+    <label>Email <input name="email" type="email" autocomplete="email" required /></label>
+    <label>Name <input name="name" type="text" autocomplete="name" required /></label>
+    <label>Persona <select name="persona" required><option value="">Select one</option><option>AI builder</option><option>Founder</option><option>Developer</option><option>Creator-builder</option><option>Researcher</option><option>Team lead</option><option>Other</option></select></label>
+    <label>Current tools <textarea name="current_tools" required placeholder="AI chats, docs, repos, Notion, Linear, browser automations, agents, etc."></textarea></label>
+    <label>Biggest AI-workflow pain <textarea name="biggest_ai_workflow_pain" required></textarea></label>
+    <label>Use case <textarea name="use_case" required></textarea></label>
+    <label>Interest type <select name="interest_type" required><option value="">Select one</option><option>Studio Early Access</option><option>Chaser Forge creator</option><option>Team/private deployment</option><option>Standards / open-core collaboration</option><option>Other</option></select></label>
+    <label>Operating system <select name="operating_system" required><option value="">Select one</option><option>Windows</option><option>macOS</option><option>Linux</option><option>WSL</option><option>Mixed / team environment</option><option>Other</option></select></label>
+    <label>Willingness to pay <select name="willingness_to_pay" required><option value="">Select one</option><option>Free/local only</option><option>Would consider Pro</option><option>Would consider team plan</option><option>Would consider setup sprint</option><option>Undecided</option></select></label>
+    <label>Source/UTM <input name="source_utm" type="text" required placeholder="Launch post, referral, search, event, utm_campaign" /></label>
+    <input type="hidden" name="created_at" value="client_generated_on_submit" />
+    <label class="consent"><input name="consent_to_contact" type="checkbox" required /> I consent to be contacted about ChaseOS early access. No outbound email campaign is wired in this static build.</label>
+    <button type="submit">Validate waitlist entry locally</button>
+    <p id="waitlist-result" role="status"></p>
+  </form>
+</section>
+</main>
+  <footer><span>Start at https://chaseos.ai.</span><span>ChaseOS Studio Early Access / Developer Preview. Payments, managed agents, and live external actions are not enabled.</span></footer>
+  <script src="../site.js"></script>
+</body>
+</html>

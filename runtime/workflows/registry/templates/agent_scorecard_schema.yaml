@@ -1,0 +1,36 @@
+schema_version: "0.2"
+status: template
+description: "Required fields and metric dimensions for VentureOps workflow/agent scorecards."
+required_fields:
+  - workflow_id
+  - run_id
+  - runtime
+  - operator
+  - timestamp
+  - status
+  - metrics
+  - evidence_links
+  - unresolved_risks
+  - recommended_next_action
+status_values:
+  - untested
+  - dry_run_passed
+  - internal_run_passed
+  - client_ready
+  - monetized
+  - blocked
+  - retired
+metrics:
+  - success_rate
+  - cost
+  - latency
+  - human_approvals_required
+  - tool_call_failure_rate
+  - retrieval_quality
+  - writeback_correctness
+  - proof_artifact_quality
+  - security_risk
+  - customer_value
+  - revenue_impact_if_evidenced
+  - time_saved_if_measured
+  - failure_modes

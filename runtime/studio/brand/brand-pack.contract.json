@@ -1,0 +1,68 @@
+{
+  "contract_id": "studio-brand-pack-v1",
+  "status": "PLANNED / CONTRACT SEEDED / NO ASSETS GENERATED",
+  "created": "2026-05-12",
+  "product": {
+    "framework_name": "ChaseOS",
+    "studio_product_name": "ChaseOS Studio",
+    "phase11_chat_alias": "ChaseOS Chat",
+    "canonical_tagline": "Human intent. Agentic execution. Private control.",
+    "brand_foundation": "docs/brand/",
+    "candidate_direction_doc": "docs/brand/ChaseOS_Logo_Candidate_Directions.md",
+    "asset_generation_plan": "docs/brand/Studio_Brand_Asset_Generation_Plan.md",
+    "selected_direction": null
+  },
+  "required_asset_targets": [
+    {
+      "id": "logo_source_svg",
+      "path": "runtime/studio/brand/source/chaseos-studio-logo.svg",
+      "purpose": "editable source mark for Studio and installer derivatives"
+    },
+    {
+      "id": "logo_source_png",
+      "path": "runtime/studio/brand/source/chaseos-studio-logo.png",
+      "purpose": "source bitmap export for review and documentation"
+    },
+    {
+      "id": "windows_icon",
+      "path": "runtime/studio/brand/icons/chaseos-studio.ico",
+      "purpose": "Windows window/taskbar/shortcut icon bundle"
+    },
+    {
+      "id": "png_icon_set",
+      "path": "runtime/studio/brand/icons/png/",
+      "purpose": "16, 24, 32, 48, 64, 128, 256, 512, and 1024 pixel PNG exports"
+    },
+    {
+      "id": "installer_assets",
+      "path": "runtime/studio/brand/installer/",
+      "purpose": "future installer wizard/sidebar/banner assets if an installer technology is adopted"
+    },
+    {
+      "id": "ui_tokens",
+      "path": "runtime/studio/brand/tokens/studio-brand-tokens.json",
+      "purpose": "stable UI token source for Studio shell, Chat cards, and companion roster previews"
+    }
+  ],
+  "ui_surfaces_affected": [
+    "desktop shell title/sidebar",
+    "chat panel welcome/status cards",
+    "companion roster/picker",
+    "dashboard and slash response cards",
+    "installer metadata",
+    "shortcut/start menu previews",
+    "release evidence screenshots"
+  ],
+  "blocked_authority": {
+    "assets_generated": false,
+    "ui_mutated": false,
+    "installer_rebuilt": false,
+    "signing_executed": false,
+    "startup_or_shortcut_mutated": false,
+    "release_promoted": false,
+    "host_mutated": false,
+    "canonical_state_mutated": false
+  },
+  "manual_guidepack": "06_AGENTS/ChaseOS-Studio-Manual-Branding-Guidepack.md",
+  "next_recommended_pass": "studio-brand-operator-direction-selection"
+}

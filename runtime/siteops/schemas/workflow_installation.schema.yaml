@@ -1,0 +1,1 @@
+{"object": "WorkflowInstallation", "required": ["workflow_installation_id", "tenant_id", "workflow_template_id", "enabled", "allowed_users", "allowed_roles", "configured_inputs", "policy_overrides", "provider_account_binding", "browser_profile_binding", "status"], "scope_required": ["tenant_id"], "optional_scope": ["workspace_id"], "secret_values_allowed": false}

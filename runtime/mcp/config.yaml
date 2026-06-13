@@ -1,0 +1,48 @@
+server:
+  identity: chaseos-runtime-mcp
+  version: "0.1.0"
+  transport: stdio
+
+safety:
+  default_mode: read_only
+  allowed_modes:
+    - read_only
+    - read_plus_proposal
+    - draft_execution
+  fail_closed_surfaces:
+    - proposal.submit
+    - workflow.invoke_bounded
+  fail_open_surface_classes:
+    - resource
+    - prompt
+  fail_open_surfaces:
+    - proposal.validate
+    - proposal.diff_preview
+    - approval_request.create
+    - vault.maintain
+
+paths:
+  staging_dir: ".chaseos/mcp-proposals"
+  audit_dir: "07_LOGS/Agent-Activity"
+  operator_briefs_dir: "07_LOGS/Operator-Briefs"
+
+runtimes:
+  openclaw:
+    trust_tier: "internal_runtime"
+    allowed_modes:
+      - read_only
+      - read_plus_proposal
+      - draft_execution
+  claude_code:
+    trust_tier: "operator_runtime"
+    allowed_modes:
+      - read_only
+      - read_plus_proposal
+  n8n:
+    trust_tier: "external_orchestrator"
+    allowed_modes:
+      - read_only
+  _unregistered:
+    trust_tier: "unknown"
+    allowed_modes:
+      - read_only

@@ -1,0 +1,61 @@
+runtime_id: hermes
+adapter_id: hermes
+trust_ceiling: tier-2
+allowed_task_types:
+- operator-briefing-shadow
+required_read_rules:
+- .chaseos/hermes_config.yaml
+- 06_AGENTS/role-cards/hermes-operator-shadow.yaml
+- runtime/workflows/registry/hermes_operator_today_shadow.yaml
+writeback_targets:
+- archive_notes
+- draft_outputs
+- operator_briefs
+- runtime_activity
+- standard_outputs
+promotion_rules:
+  may_promote_to_knowledge: 'no'
+  gate_conditions_required: false
+  autonomous_promotion: false
+audit_log_target: 07_LOGS/Agent-Activity/YYYY-MM-DD-hermes-[workflow-id].md
+escalation_boundaries:
+  protected_file_behavior: block
+  explicitly_denied_write_targets:
+  - 00_HOME/**
+  - 01_PROJECTS/**
+  - 02_KNOWLEDGE/**
+  - 03_INPUTS/**
+  - 04_SOPS/**
+  - 05_TEMPLATES/**
+  - 06_AGENTS/**
+  - runtime/**
+  - .claude/**
+  - .codex/**
+  - .obsidian/**
+  - .venv/**
+  coordination_policy:
+    cross_runtime_coordination: bus-required
+    direct_runtime_state_in_chat: false
+    actionable_ingress_translation: required
+    coordination_source_of_truth: runtime/agent_bus/
+  approval_mode: manifest-bounded-per-action
+task_type_contracts:
+- task_type: operator-briefing-shadow
+  required_reads:
+  - 00_HOME/Now.md
+  - HERMES.md
+  optional_reads:
+  - 01_PROJECTS/ChaseOS/
+  - 07_LOGS/Build-Logs/
+  permission_ceiling: shadow_log_only
+  runtime_class: read-heavy
+  writeback_expectations: draft operator brief + agent activity + build log + archive
+    note only; no canonical mutations
+  escalation_trigger:
+  - protected file write requested
+  - write outside declared writeback_targets
+  - any connector or external network request
+  - any canonical state mutation request
+  - any undeclared read
+policy_binding_complete: true
+generated_at: '2026-04-26T02:58:46.157791Z'

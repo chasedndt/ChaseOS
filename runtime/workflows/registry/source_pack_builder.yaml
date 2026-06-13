@@ -1,0 +1,82 @@
+---
+# source_pack_builder - Acquisition + Normalization first foothold
+#
+# ChaseOS-owned feature family. Adapter-capable. Not provider-owned.
+# Reads declared file sources only and writes first-wave source-pack artifacts.
+#
+id: source_pack_builder
+name: "Source Pack Builder"
+version: "1.0"
+description: "Builds bounded first-wave Acquisition + Normalization artifacts from declared source files."
+
+task_type: source-pack-builder
+role_card: source-pack-builder
+trigger_type: manual
+owner: operator
+status: active
+
+mode: bounded
+permission_ceiling: acquisition_pack_only
+
+inputs:
+  - objective
+  - project_scope
+  - pack_id
+  - acquirer_identity
+  - acquirer_trust_tier_ceiling
+  - adapter_id
+  - browser_scope
+  - sources
+  - requested_outputs
+  - write_target_root
+
+outputs:
+  - source_packet_paths
+  - normalized_source_pack_path
+  - briefing_ready_input_set_path
+
+writeback_targets:
+  - "runtime/acquisition/packs/"
+  - "07_LOGS/Acquisition-Packs/"
+
+repo_scope:
+  primary_repo: "."
+  extra_dirs: []
+  cross_repo_access: false
+
+connector_policy:
+  network_connectors: disabled
+  gateway_inputs: disabled
+  delivery_connectors: disabled
+  browser_automation: disabled
+
+failure_behavior: escalate
+
+rollback_path: "delete generated artifacts inside runtime/acquisition/packs/ or 07_LOGS/Acquisition-Packs/; no canonical files are touched"
+
+approval_rule: "declared-source-scope-only; anything outside declared scope escalates"
+
+audit_expectations:
+  - "objective recorded"
+  - "project_scope recorded"
+  - "source classes recorded"
+  - "files_read recorded"
+  - "source_packet_paths recorded"
+  - "normalized_source_pack_path recorded"
+  - "briefing_ready_input_set_path recorded"
+  - "no canonical mutation recorded"
+
+non_goals:
+  - "no canonical state mutation"
+  - "no memory candidate artifact"
+  - "no action-ready runtime packet"
+  - "no delivery-ready summary packet"
+  - "no outcome scoring engine"
+  - "no connector/API/network calls"
+  - "no live browser automation"
+  - "no MCP expansion"
+  - "no native cron"
+
+notes: >
+  First bounded implementation foothold for Acquisition + Normalization.
+  Generic by design so StrikeZone can use it without owning the feature.

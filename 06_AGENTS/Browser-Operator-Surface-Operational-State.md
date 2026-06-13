@@ -69,7 +69,7 @@ Workflow routes:
 - 18 action types with real Playwright execution (all passing contract + integration tests)
 - `page=None` stub path preserved — all handlers continue safely when Playwright is unavailable
 - `_adapter_mode` field records "playwright" or "stub" in audit payload
-- Chromium installed at `%USERPROFILE%\AppData\Local\ms-playwright\chromium-1208`
+- Chromium installed at `<WINDOWS_APPDATA>/<path>`
 
 ### Security Posture
 
@@ -150,7 +150,7 @@ Run these to verify the lane still works after any shared-runtime change:
 
 ### Unit / contract tests (no browser required)
 ```bash
-cd %CHASEOS_VAULT_ROOT%
+cd <VAULT_ROOT>
 .venv/Scripts/python.exe -m pytest runtime/operator_surface/tests/test_browser_pass2.py -q
 .venv/Scripts/python.exe -m pytest runtime/operator_surface/tests/test_browser_pass5.py -q
 ```

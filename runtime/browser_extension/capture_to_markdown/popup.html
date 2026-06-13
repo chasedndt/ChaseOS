@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ChaseOS Capture</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        width: 280px;
+        margin: 0;
+        padding: 14px;
+        font-family: Segoe UI, Arial, sans-serif;
+        color: #172026;
+        background: #f6f8f8;
+      }
+      h1 {
+        margin: 0 0 10px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+      button {
+        width: 100%;
+        border: 1px solid #0f6b65;
+        background: #0f6b65;
+        color: #fff;
+        border-radius: 6px;
+        padding: 9px 10px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+      #status {
+        min-height: 34px;
+        margin-top: 10px;
+        font-size: 12px;
+        line-height: 1.4;
+        color: #516064;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Capture to Markdown</h1>
+    <button id="capture" type="button">Export page artifact</button>
+    <div id="status">Exports selected text or visible page text as a local ChaseOS artifact.</div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,7 +1,7 @@
 ﻿# Terminal Workbench Architecture
 
 Date: 2026-06-02 (CLI + Studio backend wired 2026-06-03; Studio frontend mounted 2026-06-05; read-only detail hardening, pre-N6 proposal packets, N6A approval requests, N6R executor readiness, initial N6 gated CLI executor, N7 internal gateway ingress, N8 authority audit, N9 approved file-create lane, N10 approved file-copy lane, N11 read-only Chaser Board dashboard, and N12 source visual QA 2026-06-06)
-Runtime: Hermes/Optimus (2026-06-03 pass: Chaser Agent; 2026-06-06 read-only hardening: Codex)
+Runtime: Hermes/Optimus (2026-06-03 pass: Archon; 2026-06-06 read-only hardening: Codex)
 Status: PARTIAL - adapter + CLI + run-audit/detail readback + Studio backend + Studio frontend preview/history/detail mount + pre-N6 proposal packets + N6A approval-request queue + N6R executor-readiness contract + initial N6 gated CLI executor + N7 internal gateway ingress + N8 authority audit + N9 approved `touch` file-create lane + N10 approved `copy`/`cp` file-copy lane + N11 read-only Chaser Board dashboard + N12 source-rendered Chaser Board visual QA BUILT; N13 packaged proof harness BUILT but current packaged proof PARTIAL because the executable does not mount `#/chaser-board`; broader write/content verbs, kill/stop controls, external/network gateway ingress, package rebuild recovery, and ChaserAgent live runtime wiring PLANNED
 Source handoff: [[ChaseOS_Terminal_ChaserAgent_Fullstack_Implementation_Handoff_v2]]
 Related: [[Terminal-ChaserAgent-Feature-Matrix]] Â· [[ChaserAgent-Architecture]] Â· [[Session-Export-and-Artifacts-Architecture]] Â· [[Chaser-Gateway-Architecture]] Â· [[Terminal-ChaserAgent-Agent-Bus-Handover]] Â· [[HERMES]] Â· [[Hermes-Runtime-Profile]] Â· [[Agent-Activity-Index]]

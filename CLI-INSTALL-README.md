@@ -42,12 +42,16 @@ chaseos setup provider wizard openai --apply --json
 chaseos gate validate
 ```
 
-If `chaseos` is installed but not recognized, the likely issue is PATH rather than packaging. Add the Python user Scripts directory for the current machine to PATH, or invoke the installed script by its fully qualified local path.
+If `chaseos` is installed but not recognized, the likely issue is PATH rather than packaging. On this machine, pip reported the installed script directory as:
 
-Example validation command after PATH is configured:
+```text
+<WINDOWS_APPDATA>/<path>
+```
+
+That means validation can still be performed directly through:
 
 ```powershell
-chaseos runtime inventory --json
+<WINDOWS_APPDATA>/<path> runtime inventory --json
 ```
 
 ## Why this matters

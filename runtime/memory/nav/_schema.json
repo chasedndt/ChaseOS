@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ChaseOS Runtime Navigation Map",
+  "type": "object",
+  "required": [
+    "runtime_id",
+    "version",
+    "status",
+    "updated",
+    "preferred_read_routes",
+    "trusted_zones",
+    "safe_write_paths",
+    "risk_zones",
+    "escalation_points",
+    "index_alignment",
+    "standalone_mapping"
+  ],
+  "properties": {
+    "runtime_id": {"type": "string"},
+    "version": {"type": "string"},
+    "status": {"type": "string"},
+    "updated": {"type": "string"},
+    "preferred_read_routes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["task_class", "route"],
+        "properties": {
+          "task_class": {"type": "string"},
+          "route": {"type": "array", "items": {"type": "string"}},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "trusted_zones": {"type": "array", "items": {"type": "string"}},
+    "safe_write_paths": {"type": "array", "items": {"type": "string"}},
+    "risk_zones": {"type": "array", "items": {"type": "string"}},
+    "escalation_points": {"type": "array", "items": {"type": "string"}},
+    "successful_route_patterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "workflow_id": {"type": "string"},
+          "reads": {"type": "array", "items": {"type": "string"}},
+          "recorded_at": {"type": "string"},
+          "notes": {"type": "string"}
+        }
+      }
+    },
+    "index_alignment": {
+      "type": "object",
+      "required": ["primary_indexes", "routing_docs"],
+      "properties": {
+        "primary_indexes": {"type": "array", "items": {"type": "string"}},
+        "routing_docs": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": "string"}
+      }
+    },
+    "standalone_mapping": {
+      "type": "object",
+      "required": ["representation_goal", "stable_paths"],
+      "properties": {
+        "representation_goal": {"type": "string"},
+        "stable_paths": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,812 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "execution_repair",
+  "runtime_id": "openclaw",
+  "status": "active",
+  "updated_at": "2026-05-28T00:00:27.960213+00:00",
+  "repair_patterns": [],
+  "incident_candidates": [
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:55:08.490902+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:55:08.650222+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:55:08.802252+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:55:08.954553+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:56:04.022442+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:56:04.381906+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:56:05.082034+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:56:05.683592+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:56:06.229375+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:56:06.752695+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:56:07.717995+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:57:03.640470+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:57:03.895517+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:57:04.126162+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:57:04.353344+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:57:04.603570+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:57:04.969944+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:57:05.416562+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:58:11.785565+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:58:12.170872+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:58:12.692567+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:58:13.541054+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:58:15.113969+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:58:16.328949+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:58:17.612371+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:59:05.730987+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:59:06.251431+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:59:06.983866+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:59:07.774794+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:59:08.571891+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:59:09.349222+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-19T23:59:10.029894+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:00:07.838114+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:00:08.748350+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:00:09.585653+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:00:10.386014+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:00:11.122081+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:00:12.010643+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:00:12.826521+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:01:09.380895+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:01:09.906013+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:01:10.593792+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:01:11.359805+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:01:12.113164+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:01:12.901085+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:01:13.655730+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:02:09.955201+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:02:10.544435+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:02:11.166489+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:02:11.901134+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:02:12.626553+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:02:13.373506+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:02:14.073509+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:03:10.127652+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:03:10.645078+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:03:11.202337+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:03:11.920712+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:03:12.669108+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:03:13.413941+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:03:14.121650+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:04:10.206950+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:04:10.695829+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:04:11.396693+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:04:12.164637+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:04:13.051900+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:04:13.781119+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:04:14.602416+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:05:12.220623+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:05:13.170746+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:05:14.115932+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:05:14.840208+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:05:15.613644+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:05:16.396410+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:05:17.089678+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:06:01.502091+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:06:01.769361+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:06:02.025137+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:06:02.295126+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:06:02.550468+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:06:02.817129+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T00:06:03.065238+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T12:34:07.343707+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T12:34:07.560120+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T12:34:07.742218+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T12:34:07.927741+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T12:34:08.124187+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T12:34:08.319928+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T12:34:08.515194+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:10:30.361786+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:10:31.875700+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:10:33.696374+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:10:35.713817+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:10:37.010103+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:10:38.057015+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:10:39.288495+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "sbp_strikezone_digest",
+      "outcome": "escalated",
+      "escalation_reason": "generate_content raised in 'sbp_strikezone_digest': Missing API key: environment variable 'ANTHROPIC_API_KEY' is not set. Set it before running synthesis workflows.",
+      "notes": "",
+      "recorded_at": "2026-05-20T23:11:32.636018+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "hermes_operator_today_shadow",
+      "outcome": "escalated",
+      "escalation_reason": "workflow 'hermes_operator_today_shadow' not found in registry \u2014 no workflow runs without a registry entry",
+      "notes": "",
+      "recorded_at": "2026-05-21T13:08:09.793814+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "hermes_operator_today_shadow",
+      "outcome": "escalated",
+      "escalation_reason": "workflow 'hermes_operator_today_shadow' not found in registry \u2014 no workflow runs without a registry entry",
+      "notes": "",
+      "recorded_at": "2026-05-21T13:08:27.330222+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "hermes_operator_today_shadow",
+      "outcome": "escalated",
+      "escalation_reason": "workflow 'hermes_operator_today_shadow' not found in registry \u2014 no workflow runs without a registry entry",
+      "notes": "",
+      "recorded_at": "2026-05-21T13:08:49.501082+00:00",
+      "operator_reviewed": false
+    },
+    {
+      "workflow_id": "source_pack_builder",
+      "outcome": "escalated",
+      "escalation_reason": "task_type 'source-pack-builder' is not in the task type table \u2014 unclassified tasks are never executed",
+      "notes": "",
+      "recorded_at": "2026-05-28T00:00:27.960193+00:00",
+      "operator_reviewed": false
+    }
+  ],
+  "governance_boundary": "Repair memory may inform preflight and operator review, but it cannot bypass Gate policy or apply self-repair without explicit authority."
+}

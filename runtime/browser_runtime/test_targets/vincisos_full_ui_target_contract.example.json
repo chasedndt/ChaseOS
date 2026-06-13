@@ -1,0 +1,45 @@
+{
+  "contract_version": "vincisos.full_ui_target.v1",
+  "target_name": "ChaseOS Studio Product UI Test Target",
+  "target_url": "http://127.0.0.1:8770/",
+  "target_kind": "product_ui",
+  "mode": "shadow",
+  "safe_mode_asserted": true,
+  "safe_mode_evidence": [
+    "Repo-registered local ChaseOS Studio Product UI Test Target for future safe-mode browser proof.",
+    "No real accounts, saved browser profile, credentials, cookies, CDP, Browser Harness, Browser Use live run, trusted writes, Agent Bus enqueue, provider calls, Gate mutation, or canonical writeback are authorized by this contract."
+  ],
+  "allowed_hosts": [
+    "127.0.0.1",
+    "localhost"
+  ],
+  "allowed_actions": [
+    "open",
+    "read_state",
+    "capture_screenshot",
+    "harmless_click",
+    "close"
+  ],
+  "expected_artifacts": [
+    "browser_run_log",
+    "agent_activity_log",
+    "screenshot",
+    "draft_skill_candidate"
+  ],
+  "draft_only": true,
+  "require_running_target": false,
+  "probe_reachability": false,
+  "forbidden_authority": {
+    "allow_real_profile": false,
+    "allow_credentials": false,
+    "allow_cdp": false,
+    "allow_browser_harness": false,
+    "allow_browser_use_cli_live": false,
+    "allow_trusted_skill_write": false,
+    "allow_skill_activation": false,
+    "allow_agent_bus_enqueue": false,
+    "allow_provider_call": false,
+    "allow_gate_mutation": false,
+    "allow_canonical_writeback": false
+  }
+}

@@ -1,0 +1,56 @@
+schema_version: "0.1"
+status: template
+description: "Required fields and authority rules for the VentureOps Mission Mode external/client evidence gate."
+required_fields:
+  - schema_version
+  - surface
+  - status
+  - mission_id
+  - mission_workspace_path
+  - mission_active_local
+  - mission_readiness_status
+  - external_action_type
+  - operator_approval_statement_present
+  - scope_packet_path
+  - revenue_packet_path
+  - live_client_proof_path
+  - delivery_proof_path
+  - required_external_evidence
+  - evidence_intake_status
+  - scope_evidence_valid
+  - scope_approval_artifact_valid
+  - scope_sources_valid
+  - live_client_proof_artifact_valid
+  - delivery_proof_artifact_valid
+  - revenue_evidence_valid
+  - ready_for_guarded_live_client_workflow_proof
+  - ready_for_operator_attested_delivery_review
+  - ready_for_proof_only_live_revenue_gate
+  - ready_for_external_send
+  - ready_for_crm_or_payment_mutation
+  - ready_for_provider_or_browser_action
+  - ready_for_workflow_evolution_apply
+  - blockers
+  - warnings
+  - mission_readiness
+  - evidence_intake
+  - delivery_proof_validation
+  - next_required_action
+  - next_command
+  - safe_followup_plan
+  - authority_boundary
+status_values:
+  - blocked_missing_external_client_evidence
+  - ready_for_guarded_live_client_workflow_proof
+  - ready_for_operator_attested_delivery_review
+  - ready_for_proof_only_live_revenue_gate
+external_action_type_values:
+  - live-client-workflow-proof
+  - operator-attested-delivery-proof
+  - live-revenue-proof
+authority_rules:
+  - "The Mission Mode workspace must already report mission_active_local."
+  - "The gate must fail closed when external_action_type, operator_approval_statement, or required typed evidence paths are missing."
+  - "All supplied evidence paths must resolve inside the vault root and point to files."
+  - "The gate may recommend only the next guarded proof/review command; it must not execute the command."
+  - "The gate must never authorize external sends, provider/browser action, CRM/payment mutation, credential reads, protected edits, workflow evolution apply, live trading, or canonical promotion."

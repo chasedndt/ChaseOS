@@ -1,0 +1,22 @@
+{
+  "builder": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor",
+  "canonical_mutation_allowed": false,
+  "created_at": "2026-05-27T01:04:34.980877+00:00",
+  "edge_count": 8,
+  "generated_from_read_only_scan": true,
+  "identity_registry_version": "node_identity_registry.v1",
+  "node_count": 9,
+  "schema_version": "graph_snapshot_manifest.v1",
+  "scope": [
+    "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-310dd4bc2b1e09e3.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260526-155104-source-visual-captur_35e125d65080.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/workspace.json",
+    "03_INPUTS/00_QUARANTINE/Sources/20260526-155104__source__visual-capture__markdown-guide-basic-syntax-web-capture-pass.md"
+  ],
+  "snapshot_id": "vcmi-ba2db78ce1f20d98",
+  "snapshot_path": "runtime/graph/store/snapshots/vcmi-ba2db78ce1f20d98.json",
+  "source_file_count": 4,
+  "source_hashes_path": null,
+  "source_model": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor.v1",
+  "vault_root_hash": null
+}

@@ -34,6 +34,9 @@ handles:
   - task_type: review
     priority: secondary
     notes: "Can perform reviews if Hermes is unavailable"
+  - task_type: chat
+    priority: secondary
+    notes: "Studio Chat replies through OpenClaw's Agent Bus handler only; no provider calls, shell access, credential reads, or canonical writeback are granted by this capability"
 
 max_concurrent_tasks: 3
 heartbeat_stale_seconds: 900
@@ -43,4 +46,8 @@ governance_notes:
   validated_by: "runtime/adapters/runtime_governance.py"
   last_verified: "2026-04-28"
   authority_boundary: "Capability discovery does not grant authority; AOR/Gate manifests still govern execution."
-  forbidden_expansion: "host_shell_as_chaseos_authority, credential_access, wallet_or_exchange_execution, autonomous_canonical_writeback"
+  forbidden_expansion:
+    - "host_shell_as_chaseos_authority"
+    - "credential_access"
+    - "wallet_or_exchange_execution"
+    - "autonomous_canonical_writeback"

@@ -1,0 +1,23 @@
+version: 0.1
+updated: 2026-04-24
+owner: Optimus
+purpose: >-
+  Machine-readable registry of approved browser-origin groups for bounded browser work.
+  This registry is documentation-first and standalone-ready; adding an origin here does not bypass role cards,
+  approvals, or workflow scope.
+origin_groups:
+  public-docs-and-reference:
+    description: Public documentation/reference pages suitable for read-only bounded browsing.
+    allowed_origins: []
+    task_classes:
+      - declared_url_research_sweep
+      - public_page_health_check
+      - known_selector_structured_extraction
+    notes: Preserve markdown/index continuity when logging outputs.
+  public-status-and-monitoring:
+    description: Public status or watchlisted pages suitable for bounded monitoring.
+    allowed_origins: []
+    task_classes:
+      - public_page_health_check
+      - watchlisted_page_change_monitor
+    notes: No recursive crawling. No authenticated surfaces.

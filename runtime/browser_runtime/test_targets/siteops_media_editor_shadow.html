@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SiteOps Local Media Editor Shadow Target</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+    }
+    aside {
+      background: #ffffff;
+      border-right: 1px solid #d8deea;
+      padding: 18px;
+    }
+    main {
+      padding: 20px;
+    }
+    h1 {
+      font-size: 20px;
+      margin: 0 0 14px;
+    }
+    .toolbar {
+      display: grid;
+      gap: 8px;
+    }
+    button {
+      border: 1px solid #b8c3d8;
+      background: #f8fafc;
+      color: #172033;
+      border-radius: 6px;
+      padding: 9px 10px;
+      text-align: left;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #edf3ff;
+    }
+    button.danger {
+      border-color: #d18f8f;
+      background: #fff7f7;
+    }
+    .stage {
+      width: min(500px, 100%);
+      aspect-ratio: 16 / 10;
+      border: 1px solid #cad3e4;
+      background:
+        linear-gradient(90deg, rgba(27, 45, 74, 0.05) 1px, transparent 1px),
+        linear-gradient(rgba(27, 45, 74, 0.05) 1px, transparent 1px),
+        #ffffff;
+      background-size: 32px 32px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 18px 48px rgba(20, 31, 52, 0.16);
+    }
+    .layer {
+      position: absolute;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+    .media {
+      left: 48px;
+      top: 42px;
+      width: 210px;
+      height: 145px;
+      border: 3px solid #2b7de9;
+      background: linear-gradient(135deg, #dceaff, #f7fbff);
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      color: #1d4e9a;
+    }
+    .shape {
+      left: 300px;
+      top: 92px;
+      width: 142px;
+      height: 104px;
+      background: rgba(20, 166, 139, 0.22);
+      border: 3px solid #12947d;
+    }
+    .title {
+      left: 58px;
+      top: 222px;
+      font-size: 30px;
+      font-weight: 800;
+      color: #172033;
+    }
+    .filter {
+      filter: saturate(1.35) contrast(1.08);
+    }
+    .status {
+      margin-top: 14px;
+      padding: 10px 12px;
+      border: 1px solid #ccd7e8;
+      background: #ffffff;
+      border-radius: 6px;
+      min-height: 22px;
+    }
+    .notice {
+      margin-top: 12px;
+      color: #6b4b00;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <aside>
+    <h1>Local Media Editor</h1>
+    <div class="toolbar" aria-label="editor toolbar">
+      <button data-testid="add-media-layer">Add media layer</button>
+      <button data-testid="add-text-layer">Add title text</button>
+      <button data-testid="add-shape-layer">Add shape layer</button>
+      <button data-testid="apply-filter">Apply filter</button>
+      <button class="danger" data-testid="export-file">Export file</button>
+      <button class="danger" data-testid="account-settings">Account settings</button>
+    </div>
+    <div class="notice">
+      This is a ChaseOS local-only test target. It contains no account, session,
+      credential, upload, billing, or public-share path.
+    </div>
+  </aside>
+  <main>
+    <div class="stage" data-testid="editor-canvas" aria-label="editable media canvas"></div>
+    <div class="status" data-testid="status-line">Ready for local shadow proof.</div>
+  </main>
+  <script>
+    const state = {
+      mediaLayerAdded: false,
+      textLayerAdded: false,
+      shapeLayerAdded: false,
+      filterApplied: false,
+      exportBlocked: false,
+      accountSettingsBlocked: false,
+      layers: []
+    };
+    window.__siteopsMediaEditorState = state;
+
+    const stage = document.querySelector('[data-testid="editor-canvas"]');
+    const statusLine = document.querySelector('[data-testid="status-line"]');
+
+    function setStatus(text) {
+      statusLine.textContent = text;
+    }
+
+    function addLayer(className, text) {
+      const layer = document.createElement('div');
+      layer.className = 'layer ' + className;
+      layer.textContent = text || '';
+      stage.appendChild(layer);
+      state.layers.push(className);
+    }
+
+    document.querySelector('[data-testid="add-media-layer"]').addEventListener('click', () => {
+      if (!state.mediaLayerAdded) addLayer('media', 'Media');
+      state.mediaLayerAdded = true;
+      setStatus('Media layer added.');
+    });
+
+    document.querySelector('[data-testid="add-text-layer"]').addEventListener('click', () => {
+      if (!state.textLayerAdded) addLayer('title', 'ChaseOS');
+      state.textLayerAdded = true;
+      setStatus('Text layer added.');
+    });
+
+    document.querySelector('[data-testid="add-shape-layer"]').addEventListener('click', () => {
+      if (!state.shapeLayerAdded) addLayer('shape', '');
+      state.shapeLayerAdded = true;
+      setStatus('Shape layer added.');
+    });
+
+    document.querySelector('[data-testid="apply-filter"]').addEventListener('click', () => {
+      stage.classList.add('filter');
+      state.filterApplied = true;
+      setStatus('Filter applied.');
+    });
+
+    document.querySelector('[data-testid="export-file"]').addEventListener('click', () => {
+      state.exportBlocked = true;
+      setStatus('Export requires approval and was blocked.');
+    });
+
+    document.querySelector('[data-testid="account-settings"]').addEventListener('click', () => {
+      state.accountSettingsBlocked = true;
+      setStatus('Account settings are blocked in this local proof.');
+    });
+  </script>
+</body>
+</html>

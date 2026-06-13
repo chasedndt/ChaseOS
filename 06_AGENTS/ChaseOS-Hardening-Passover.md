@@ -4,7 +4,7 @@ title: ChaseOS All-Phase Hardening Passover
 version: 1.1
 created: 2026-05-11
 updated: 2026-05-11
-author: Chaser Agent (security-analysis + cross-phase audit session)
+author: Archon (security-analysis + cross-phase audit session)
 scope: All phases Phase 1–9 runtime — complete hardening register with autonomy classification
 supersedes: 06_AGENTS/Phase9-Hardening-Passover.md
 canonical_audit_source: security/permission-audit-2026-05-11.md
@@ -29,8 +29,8 @@ kernel_index: kernel/PERMISSION_MATRIX.md
 
 ## How to Use This Document
 
-- **Chaser Agent (Claude Code):** This is the routing anchor for any hardening session. Read the Sprint Plan at the bottom first — it gives the current queue in priority order. Do not derive work order from source files; use this document.
-- **Hermes:** Do not implement any item autonomously. Use as context for review tasks. Escalate implementation to Chaser Agent or operator.
+- **Archon (Claude Code):** This is the routing anchor for any hardening session. Read the Sprint Plan at the bottom first — it gives the current queue in priority order. Do not derive work order from source files; use this document.
+- **Hermes:** Do not implement any item autonomously. Use as context for review tasks. Escalate implementation to Archon or operator.
 - **OpenClaw:** C-1 is still OPEN. Do not enable `sch-strikezone-acquisition-0550` until C-1 is resolved. C-2 and C-3 are complete.
 - **Any new agent/runtime:** Read `kernel/PERMISSION_MATRIX.md` for current permission state, then read this document for open remediations.
 
@@ -148,7 +148,7 @@ Eliminated: `00_HOME/**`, `01_PROJECTS/**`, `02_KNOWLEDGE/**`, `03_INPUTS/**`, `
 
 **Status:** ✅ COMPLETE 2026-05-11
 
-Operator confirmed: Chaser Agent=480/day, Hermes=720/day, OpenClaw=720/day (Hermes=OpenClaw — equal authority).
+Operator confirmed: Archon=480/day, Hermes=720/day, OpenClaw=720/day (Hermes=OpenClaw — equal authority).
 
 `runtime/aor/rate_guard.py` new module: daily cycle counter per workflow in `<vault>/.chaseos/rate_guard.json`; resets at UTC midnight; fail-open throughout. `max_cycles_per_day` added to all three watch schedule YAMLs + `ScheduleIntent` dataclass + loader validation. Engine pre-stage `rate_check` fires after context_boot; escalates with `stage_reached="rate_check"` when limit is reached. `record_execution` called on success path. 37 tests. See: `07_LOGS/Build-Logs/2026-05-11-h3-rate-guard.md`
 
@@ -311,7 +311,7 @@ Section 5 added to `06_AGENTS/Permission-Matrix.md`: `none` / `operator-first-ru
 
 **Status:** ✅ COMPLETE — 2026-05-11 M-Pass
 
-Git operations table added to Section 1 of `06_AGENTS/Permission-Matrix.md`. Covers: `git commit`, `git push`, `git push --force` (any branch + main/master), branch create/delete, `git reset --hard`, amending published commits. All non-Chaser Agent runtimes are ❌. See: `07_LOGS/Build-Logs/2026-05-11-m-pass-trivial-hardening.md`
+Git operations table added to Section 1 of `06_AGENTS/Permission-Matrix.md`. Covers: `git commit`, `git push`, `git push --force` (any branch + main/master), branch create/delete, `git reset --hard`, amending published commits. All non-Archon runtimes are ❌. See: `07_LOGS/Build-Logs/2026-05-11-m-pass-trivial-hardening.md`
 
 ---
 
@@ -440,7 +440,7 @@ Items that cannot be implemented without an operator decision:
 |---|---|---|
 | Are `PERPLEXITY_API_KEY`, `XAI_API_KEY`, `GOOGLE_OAUTH_TOKEN`, IMAP credentials set in env? | C-1, M-2, D-6 | Operator confirms yes/no |
 | C-1: `shadow_mode: true` vs `approval_rule: operator-first-run`? | C-1 | `shadow_mode` = safer/faster; `approval_rule` = more granular |
-| H-3: Acceptable `max_cycles_per_day` per watch loop? | H-3 | Suggested: Chaser Agent=480, Hermes=288, OpenClaw=720 |
+| H-3: Acceptable `max_cycles_per_day` per watch loop? | H-3 | Suggested: Archon=480, Hermes=288, OpenClaw=720 |
 
 ---
 
@@ -511,7 +511,7 @@ Do not implement these without surfacing the decision to the operator first.
 | Item | Blocked On | Decision Needed |
 |------|-----------|-----------------|
 | C-1 | `sch-strikezone-acquisition-0550.yaml` enabled=true | (1) Run `echo $PERPLEXITY_API_KEY $XAI_API_KEY` — if either set, disable schedule immediately. (2) Choose: `shadow_mode: true` vs `approval_rule: operator-first-run` |
-| H-3 | All three `* * * * *` watch schedules disabled but no rate guard | Confirm acceptable `max_cycles_per_day` per runtime. Suggested: Chaser Agent=480, Hermes=288, OpenClaw=720 |
+| H-3 | All three `* * * * *` watch schedules disabled but no rate guard | Confirm acceptable `max_cycles_per_day` per runtime. Suggested: Archon=480, Hermes=288, OpenClaw=720 |
 | M-2 / P-D2 | `email_adapter.py` + `google_adapter.py` have no enabled guard | Confirm whether `GOOGLE_OAUTH_TOKEN` and IMAP credentials are set in env |
 
 ---
@@ -556,7 +556,7 @@ Do not implement these without surfacing the decision to the operator first.
 | `runtime/aor/registry.py` | L-1 (loader) | 3 |
 | `runtime/schedules/sch-strikezone-acquisition-0550.yaml` | C-1 | 4 |
 | `runtime/workflows/registry/strikezone_acquisition.yaml` | C-1, M-4 | 4 |
-| `runtime/schedules/sch-chaser-agent-watch-every-minute.yaml` | H-3 | 4 |
+| `runtime/schedules/sch-archon-watch-every-minute.yaml` | H-3 | 4 |
 | `runtime/schedules/sch-hermes-watch-every-minute.yaml` | H-3 | 4 |
 | `runtime/schedules/sch-openclaw-watch-every-minute.yaml` | H-3 | 4 |
 | `runtime/aor/engine.py` | H-3 | 4 |

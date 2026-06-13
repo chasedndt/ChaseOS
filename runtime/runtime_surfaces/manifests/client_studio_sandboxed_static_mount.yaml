@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "surface_id": "client.studio.sandboxed_static_mount",
+  "display_name": "Studio Sandboxed Static Artifact Mount",
+  "surface_family": "client_embedded_runtime",
+  "surface_type": "client_embedded",
+  "owner_layer": "runtime/studio",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/studio/desktop_shell_app.py",
+    "runtime/studio/graph_view_shell_panel.py",
+    "runtime/studio/pulse_product_shell_panel.py",
+    "runtime/studio/approval_queue_panel.py",
+    "runtime/studio/test_desktop_shell_app.py"
+  ],
+  "docs_refs": [
+    "06_AGENTS/ChaseOS-Studio-Architecture.md",
+    "06_AGENTS/ChaseOS-Studio-Graph-View-Shell-Panel-Mount.md",
+    "06_AGENTS/ChaseOS-Pulse-Studio-Product-Shell-Mount.md",
+    "06_AGENTS/ChaseOS-Studio-Node-Inspector-Shell-Panel-Mount.md"
+  ],
+  "trust_ceiling": "tier-2",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md",
+    "06_AGENTS/ChaseOS-Studio-Architecture.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "client.embedded.static_artifact.inspect",
+      "maps_to": "studio_desktop_shell_static_artifact_contract_inspect",
+      "risk_class": "read_local_scoped",
+      "approval_required": false,
+      "notes": "Inspects bounded Studio panel contracts and static artifact metadata only."
+    },
+    {
+      "capability_id": "client.embedded.static_artifact.mount_read_only",
+      "maps_to": "studio_desktop_shell_sandboxed_iframe_mount",
+      "risk_class": "read_local_scoped",
+      "approval_required": false,
+      "notes": "Represents local-only read-only iframe/webview mounting with empty iframe sandbox and no script-bearing shell HTML."
+    },
+    {
+      "capability_id": "client.embedded.local_http_smoke",
+      "maps_to": "studio_desktop_shell_bounded_http_smoke",
+      "risk_class": "read_local_scoped",
+      "approval_required": false,
+      "notes": "Loopback-only HTTP smoke over Studio shell routes; server is stopped by the smoke runner."
+    },
+    {
+      "capability_id": "client.embedded.artifact_refresh.plan",
+      "maps_to": "studio_static_artifact_refresh_command_plan",
+      "risk_class": "draft_only",
+      "approval_required": false,
+      "notes": "Describes explicit operator refresh commands; ARSL does not run them."
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "07_LOGS/Studio-Graph-Views/",
+    "07_LOGS/Pulse-Decks/product-shell/",
+    "07_LOGS/Pulse-Decks/approval-queue/",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "audit_targets": [
+    "07_LOGS/Studio-Graph-Views/",
+    "07_LOGS/Pulse-Decks/product-shell/",
+    "07_LOGS/Pulse-Decks/approval-queue/",
+    "07_LOGS/Agent-Activity/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/studio"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  },
+  "negative_scope": [
+    "No WebAssembly inference runtime is implemented or registered by this manifest.",
+    "No WebGPU/local model execution runtime is implemented or registered by this manifest.",
+    "No WebContainer-style code execution runtime is implemented or registered by this manifest.",
+    "No browser-hosted agent environment is implemented or registered by this manifest.",
+    "No script execution, form submission, approval execution, Agent Bus write, provider call, connector call, schedule activation, or canonical writeback is allowed through this manifest."
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "runtime_id": "openclaw",
+  "updated": "2026-04-24",
+  "capabilities": {
+    "active": [
+      {
+        "id": "bounded_aor_execution",
+        "label": "Bounded AOR execution",
+        "details": "Can execute declared ChaseOS workflows through the active bounded OpenClaw lane."
+      },
+      {
+        "id": "schedule_aware_operation",
+        "label": "Schedule-aware runtime operation",
+        "details": "Can orient through runtime schedules and the OpenClaw schedule bridge without becoming the source of schedule truth."
+      },
+      {
+        "id": "audit_and_brief_writeback",
+        "label": "Audit and operator brief writeback",
+        "details": "Can participate in AOR-governed writeback to operator briefs and agent activity logs."
+      },
+      {
+        "id": "runtime_self_orientation",
+        "label": "Runtime self-orientation",
+        "details": "Can describe identity, boundaries, trusted zones, and valid next actions from machine-readable runtime state."
+      },
+      {
+        "id": "structured_dual_runtime_coordination",
+        "label": "Structured dual-runtime coordination",
+        "details": "Can participate in bounded Hermes ↔ OpenClaw task routing through runtime/agent_bus/ without treating Discord as machine-state authority."
+      }
+    ],
+    "blocked": [
+      {
+        "id": "canonical_promotion",
+        "label": "Canonical promotion",
+        "details": "May not promote content into canonical knowledge or protected governance surfaces."
+      },
+      {
+        "id": "unmanifested_connector_expansion",
+        "label": "Undeclared connector expansion",
+        "details": "May not add or use undeclared connectors or external publication paths outside declared workflow scope."
+      },
+      {
+        "id": "multi_repo_expansion",
+        "label": "Multi-repo expansion",
+        "details": "May not roam across additional repos without explicit manifest scope and approval."
+      }
+    ],
+    "deferred": [
+      {
+        "id": "browser_governance_linkage",
+        "label": "Browser governance linkage",
+        "details": "Browser autonomy policy, task classes, and registry linkage remain future work and are not this pass."
+      },
+      {
+        "id": "native_self_report_surface",
+        "label": "Native runtime self-report surface",
+        "details": "A future command or UI surface should read these files directly and present runtime self-state to the operator."
+      }
+    ]
+  }
+}

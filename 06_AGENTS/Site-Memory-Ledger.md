@@ -16,13 +16,13 @@ It must not import real browser history, cookies, session tokens, credentials, p
 ### example.com
 
 - ChaseOS run count: 2
-- Last run log: `%CHASEOS_VAULT_ROOT%\07_LOGS\Browser-Runs\browser_runtime_20260430_022607_example-com.json`
+- Last run log: `<VAULT_ROOT>\07_LOGS\Browser-Runs\browser_runtime_20260430_022607_example-com.json`
 - Promotion status: candidate
 - Candidate skills:
-  - `%CHASEOS_VAULT_ROOT%\03_INPUTS\Browser-Skill-Candidates\example-com\20260430__candidate-browser-runtime-20260430-022443-example-com.md`
-  - `%CHASEOS_VAULT_ROOT%\06_AGENTS\Browser-Skills\_drafts\draft-browser-runtime-20260430-022443-example-com.md`
-  - `%CHASEOS_VAULT_ROOT%\03_INPUTS\Browser-Skill-Candidates\example-com\20260430__candidate-browser-runtime-20260430-022607-example-com.md`
-  - `%CHASEOS_VAULT_ROOT%\06_AGENTS\Browser-Skills\_drafts\draft-browser-runtime-20260430-022607-example-com.md`
+  - `<VAULT_ROOT>\03_INPUTS\Browser-Skill-Candidates\example-com\20260430__candidate-browser-runtime-20260430-022443-example-com.md`
+  - `<VAULT_ROOT>\06_AGENTS\Browser-Skills\_drafts\draft-browser-runtime-20260430-022443-example-com.md`
+  - `<VAULT_ROOT>\03_INPUTS\Browser-Skill-Candidates\example-com\20260430__candidate-browser-runtime-20260430-022607-example-com.md`
+  - `<VAULT_ROOT>\06_AGENTS\Browser-Skills\_drafts\draft-browser-runtime-20260430-022607-example-com.md`
 - Common tasks:
   - Safe Browser Runtime Adapter shadow proof against a public test page.
 

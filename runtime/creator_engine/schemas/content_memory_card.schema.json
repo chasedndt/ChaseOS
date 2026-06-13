@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chaseos.local/schemas/creator_engine/content_memory_card.schema.json",
+  "title": "Creator Engine Content Memory Card",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "artifact_id",
+    "artifact_type",
+    "job_id",
+    "card_path",
+    "created_at",
+    "summary",
+    "source_refs",
+    "canonical_promotion_allowed",
+    "approval_required",
+    "status"
+  ],
+  "properties": {
+    "schema_version": { "const": "creator_engine.v1" },
+    "artifact_id": { "type": "string" },
+    "artifact_type": { "const": "content_memory_card" },
+    "job_id": { "type": "string" },
+    "card_path": { "type": "string" },
+    "created_at": { "type": "string" },
+    "summary": { "type": "string" },
+    "source_refs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "canonical_promotion_allowed": { "type": "boolean" },
+    "approval_required": { "type": "boolean" },
+    "status": { "type": "string" }
+  },
+  "additionalProperties": true
+}

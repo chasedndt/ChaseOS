@@ -1,0 +1,391 @@
+{
+  "families": {
+    "acquisition": {
+      "description": "Build and inspect governed acquisition and normalization inputs before they become workflow-ready operating packets.",
+      "use_case": "Use acquisition commands when checking whether research or source material is ready for a briefing, digest, or downstream workflow."
+    },
+    "agent": {
+      "description": "Inspect registered agent/runtime identities and their bounded operating posture.",
+      "use_case": "Use agent commands when deciding which runtime lane exists and what identity ChaseOS currently recognizes."
+    },
+    "agent-bus": {
+      "description": "Inspect or operate the ChaseOS Agent Bus task and runtime coordination surface.",
+      "use_case": "Use Agent Bus commands when checking task queues, runtime heartbeats, or bounded worker readiness."
+    },
+    "audit": {
+      "description": "Run repo-safe audits that classify risky references without exposing raw secrets or mutating vault state.",
+      "use_case": "Use audit commands when validating secret hygiene boundaries with placeholders, sentinels, and private-env skips before trusting a release or runtime handoff."
+    },
+    "capture": {
+      "description": "Capture external or local material into the governed quarantine-first intake flow.",
+      "use_case": "Use capture commands when bringing new source material into ChaseOS without promoting it directly to knowledge or canonical state."
+    },
+    "config": {
+      "description": "Inspect and summarize runtime/operator configuration posture without reading secrets.",
+      "use_case": "Use config commands when validating whether the local instance is configured enough for a workflow or operator surface."
+    },
+    "context": {
+      "description": "Resolve narrow boot context for a runtime or task instead of loading broad vault state.",
+      "use_case": "Use context commands when a runtime needs a bounded orientation packet before acting."
+    },
+    "core-export": {
+      "description": "Readiness and governance surfaces for future ChaseOS Core export work.",
+      "use_case": "Use core-export commands when checking whether the current repo can be safely separated into reusable Core and personal layers."
+    },
+    "develop": {
+      "description": "Developer co-development helper surfaces for explaining, planning, and reviewing repo work.",
+      "use_case": "Use develop commands when turning an operator question into a bounded implementation brief or dry-run explanation."
+    },
+    "doctor": {
+      "description": "Local health checks for CLI entrypoints, shims, and ratchet-backed command integrity.",
+      "use_case": "Use doctor commands before trusting the local CLI in a development or operator session."
+    },
+    "events": {
+      "description": "Inspect, validate, emit, dispatch, and watch ChaseOS event routing surfaces.",
+      "use_case": "Use events commands when checking event rules or dry-running event-triggered workflow dispatch."
+    },
+    "gate": {
+      "description": "Inspect and validate ChaseOS Gate policy decisions before writes or sensitive operations.",
+      "use_case": "Use gate commands when you need to know whether an operation, adapter, write, or task is permitted."
+    },
+    "health": {
+      "description": "Check runtime lifecycle, gateway, and session-heartbeat health for configured runtime lanes such as OpenClaw, Hermes, Codex, and Archon.",
+      "use_case": "Use health commands before routing work through a runtime gateway or diagnosing why a runtime lane or session-scoped worker is unavailable."
+    },
+    "intake": {
+      "description": "Inspect quarantine intake artifacts, sidecars, and deduplication state.",
+      "use_case": "Use intake commands when reviewing what has entered ChaseOS before routing or promotion."
+    },
+    "maintain": {
+      "description": "Run maintenance and hygiene inspection surfaces over the vault/runtime state.",
+      "use_case": "Use maintain commands for broad drift or hygiene checks, preferably through fixture or dry-run profiles."
+    },
+    "memory": {
+      "description": "Inspect runtime memory layers, task-local memory, and seeded runtime identity records.",
+      "use_case": "Use memory commands when a runtime needs to understand what durable memory surfaces exist without mutating them."
+    },
+    "models": {
+      "description": "List and inspect model registry entries and provider-backed model configuration.",
+      "use_case": "Use models commands when checking which model targets are declared before provider routing or runtime execution."
+    },
+    "mvp": {
+      "description": "Inspect and validate the current ChaseOS MVP consolidation gate, operator blockers, and no-secret handoff packets.",
+      "use_case": "Use MVP commands when deciding what is actually usable now and what operator input is still required before live proof work."
+    },
+    "n8n": {
+      "description": "Inspect and prepare the n8n workflow runtime lane under ChaseOS governance.",
+      "use_case": "Use n8n commands when checking workflow-runtime readiness before any live n8n execution is considered."
+    },
+    "operate": {
+      "description": "Inspect governed operation surfaces such as browser policy and future visible-control lanes.",
+      "use_case": "Use operate commands when reviewing whether an action lane is allowed before running a visible operator-controlled task."
+    },
+    "osril": {
+      "description": "Inspect Operator Surface Runtime Interaction Layer state, resume readiness, and session handoff posture.",
+      "use_case": "Use OSRIL commands when deciding whether operator-facing runtime sessions can resume or need manual intervention."
+    },
+    "providers": {
+      "description": "Inspect provider setup, validity, fallback, and governance status without exposing secrets.",
+      "use_case": "Use providers commands before model-bound work to confirm routing and fail-closed provider posture."
+    },
+    "pulse": {
+      "description": "Inspect ChaseOS Pulse deck, evidence, schedule, approval, and final-product readiness surfaces.",
+      "use_case": "Use pulse commands when checking whether Pulse artifacts are ready, blocked, or awaiting approval."
+    },
+    "run": {
+      "description": "Launch or dry-run governed AOR workflows through ChaseOS workflow manifests.",
+      "use_case": "Use run commands when invoking operator workflows such as daily briefs, closeout, graph hygiene, or idea graduation."
+    },
+    "runtime": {
+      "description": "Inspect runtime status, lifecycle health, provider governance, startup surfaces, and runtime coordination.",
+      "use_case": "Use runtime commands when diagnosing the local operating layer before dispatching work."
+    },
+    "sbp": {
+      "description": "Inspect Scheduled Briefing Pipeline health, readiness, and delivery posture.",
+      "use_case": "Use SBP commands when validating briefing pipelines and delivery health before relying on scheduled outputs."
+    },
+    "scaffold": {
+      "description": "Preview or generate bounded scaffold artifacts for projects, brain/workspace setup, or framework structure.",
+      "use_case": "Use scaffold commands when preparing new ChaseOS-compatible structure under explicit write authority."
+    },
+    "schedule": {
+      "description": "Inspect, validate, and export ChaseOS schedule intent for external runtime adapters.",
+      "use_case": "Use schedule commands when checking whether scheduled workflows are declared correctly before OpenClaw or another adapter consumes them."
+    },
+    "scorecard": {
+      "description": "Inspect runtime scorecard and reliability memory surfaces.",
+      "use_case": "Use scorecard commands when reviewing runtime behavior history or reliability posture."
+    },
+    "setup": {
+      "description": "Inspect or prepare provider, integration, and onboarding setup state.",
+      "use_case": "Use setup commands when bootstrapping a ChaseOS instance or checking non-secret setup readiness."
+    },
+    "siteops": {
+      "description": "Inspect SiteOps tenants, candidates, approvals, skills, runs, and browser-operation governance.",
+      "use_case": "Use SiteOps commands when reviewing browser/runtime candidate evidence before any activation or trusted artifact flow."
+    },
+    "studio": {
+      "description": "Inspect or operate ChaseOS Studio product surfaces, QA runners, approval previews, and read-only panel contracts.",
+      "use_case": "Use studio commands when validating the native Studio shell, panel contracts, or approval-gated product workflows."
+    },
+    "subagents": {
+      "description": "Inspect task-scoped sub-agent presets, preview ChaseOS runtime routing, build review-only approval packet previews, and optionally write pending approval requests without dispatch.",
+      "use_case": "Use sub-agent commands when choosing a bounded preset, validating runtime availability, previewing which ChaseOS runtime would receive a task, or preparing a governed pending approval request for operator review."
+    },
+    "test": {
+      "description": "Run ChaseOS-local verification targets such as the CLI contract ratchet.",
+      "use_case": "Use test commands when proving that parser, contract, docs, JSON actions, and representative smokes are aligned."
+    },
+    "watch": {
+      "description": "Inspect and operate watched-folder intake automation.",
+      "use_case": "Use watch commands when managing local folder watches that feed the quarantine-first capture pipeline."
+    }
+  },
+  "commands": {
+    "acquisition visual-capture-downstream-gate": {
+      "purpose": "Evaluate one reviewed Capture to Markdown quarantine artifact for downstream gate readiness without writing source packs or dispatching AOR/SIC.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-downstream-gate 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --json",
+      "scenario": "Use this after acquisition visual-capture-preview when you need read-only evidence that a reviewed capture is ready for a future source-pack write approval preview while downstream execution remains blocked."
+    },
+    "acquisition visual-capture-preview": {
+      "purpose": "Preview one reviewed Capture to Markdown quarantine artifact as Acquisition source-pack artifacts without writing or dispatching.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-preview 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --json",
+      "scenario": "Use this after Intake review to inspect source-packet provenance, trust, and blocked AOR/SIC/canonical actions before any future handoff."
+    },
+    "acquisition visual-capture-source-pack-aor-dispatch-approval-consumption": {
+      "purpose": "Preview or consume one guarded AOR dispatch approval decision by reserving the exact-once marker before writing the consumption artifact.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-aor-dispatch-approval-consumption 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --expected-approval-request-digest <sha256> --approval-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/<approval-id>.json --decision approved --approval-decision-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/_decisions/<approval-id>-approved.json --expected-approval-decision-digest <sha256> --expected-approval-consumption-digest <sha256> --operator-statement \"I consume VCMI AOR dispatch approval decision <approval-id> with request digest <sha256> and decision digest <sha256> for a future no-ambient AOR dispatch pass.\" --write-consumption-marker --write-approval-consumption --json",
+      "scenario": "Use this only after visual-capture-source-pack-aor-dispatch-approval-decision has written an approved or rejected decision artifact. It can create one exact-once consumption marker and one consumption artifact with exact request, decision, consumption digest, and statement matching while keeping Agent Bus task writes, AOR dispatch, SIC, graph, canonical, provider, external-send, and attachment cleanup blocked."
+    },
+    "acquisition visual-capture-source-pack-aor-dispatch-approval-decision": {
+      "purpose": "Preview or write one guarded AOR dispatch approval decision artifact for an already written reviewed Capture to Markdown source-pack approval request.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-aor-dispatch-approval-decision 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --expected-approval-request-digest <sha256> --approval-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/<approval-id>.json --decision approved --expected-approval-decision-digest <sha256> --operator-statement \"I approve VCMI AOR dispatch approval request <approval-id> with digest <sha256> for a future no-ambient approval decision pass.\" --write-approval-decision --json",
+      "scenario": "Use this only after visual-capture-source-pack-aor-dispatch-approval-decision-consumption-readiness. It can create one source-specific approved/rejected decision artifact with exact request digest, decision digest, and statement matching while keeping approval consumption, marker reservation, Agent Bus task writes, AOR dispatch, SIC, graph, canonical, provider, external-send, and attachment cleanup blocked."
+    },
+    "acquisition visual-capture-source-pack-aor-dispatch-approval-decision-consumption-readiness": {
+      "purpose": "Validate that a pending AOR dispatch approval request for an already written reviewed Capture to Markdown source pack is ready for a future decision/consumption pass without writing or consuming anything.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-aor-dispatch-approval-decision-consumption-readiness 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --expected-approval-request-digest <sha256> --approval-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/<approval-id>.json --json",
+      "scenario": "Use this only after visual-capture-source-pack-aor-dispatch-approval-request has written a pending request artifact. It verifies the artifact binding, pending decision state, unconsumed status, and future decision/consumption contract while keeping approval decision writes, approval consumption, marker writes, Agent Bus task writes, AOR dispatch, SIC, graph, canonical, provider, external-send, and attachment cleanup blocked."
+    },
+    "acquisition visual-capture-source-pack-aor-dispatch-approval-design": {
+      "purpose": "Preview the future AOR dispatch approval design for an already written reviewed Capture to Markdown source pack without writing approval artifacts.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-aor-dispatch-approval-design 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --json",
+      "scenario": "Use this only after visual-capture-source-pack-aor-dispatch-readiness. It returns a deterministic future approval packet preview while keeping approval request writes, approval artifacts, approval consumption, Agent Bus task writes, AOR run/dry-run calls, AOR/OSRIL audit writes, SIC, graph, canonical, provider, external-send, and attachment cleanup blocked."
+    },
+    "acquisition visual-capture-source-pack-aor-dispatch-approval-request": {
+      "purpose": "Preview or write a pending AOR dispatch approval request for an already written reviewed Capture to Markdown source pack.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-aor-dispatch-approval-request 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --expected-approval-request-digest <sha256> --operator-statement \"I approve dispatching this reviewed VCMI source pack through AOR.\" --write-approval-request --json",
+      "scenario": "Use this only after visual-capture-source-pack-aor-dispatch-approval-design. It can create one pending approval request artifact with exact digest and statement matching while keeping approval decisions, approval consumption, Agent Bus task writes, AOR dispatch, SIC, graph, canonical, provider, external-send, and attachment cleanup blocked."
+    },
+    "acquisition visual-capture-source-pack-aor-dispatch-readiness": {
+      "purpose": "Preview AOR dispatch readiness for an already written reviewed Capture to Markdown source pack without dispatching.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-aor-dispatch-readiness 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --json",
+      "scenario": "Use this only after visual-capture-source-pack-write. It verifies the exact-once marker, persisted source-pack artifacts, source-pack-builder workflow, task type, role card, and AOR engine handler while keeping Agent Bus task writes, AOR run/dry-run calls, AOR/OSRIL audit writes, SIC, graph, canonical, provider, external-send, and attachment cleanup blocked."
+    },
+    "acquisition visual-capture-source-pack-approval-preview": {
+      "purpose": "Preview the exact reviewed Capture to Markdown source-pack write approval request without writing approval artifacts or source packs.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-approval-preview 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --json",
+      "scenario": "Use this after visual-capture-downstream-gate when you need the operator-facing request digest, required approval statement, and future write targets while all execution remains blocked."
+    },
+    "acquisition visual-capture-source-pack-sic-ingestion-approval-consumption": {
+      "purpose": "Consume one guarded Source Intelligence Core ingestion approval decision by writing one exact-once marker and one create-only consumption artifact after exact decision digest, consumption digest, and operator-statement validation.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-sic-ingestion-approval-consumption 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --full-dispatch-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/_full_dispatch/<run-id>.json --expected-full-dispatch-artifact-digest <sha256> --expected-sic-ingestion-readiness-packet-digest <sha256> --expected-sic-ingestion-approval-request-digest <sha256> --approval-artifact-path 07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/<approval-id>.json --decision approved --approval-decision-artifact-path 07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_decisions/<approval-id>.json --expected-sic-ingestion-approval-decision-digest <sha256> --expected-sic-ingestion-approval-consumption-digest <sha256> --operator-statement \"I consume Source Intelligence Core ingestion approval decision <approval-id> with request digest <sha256> and decision digest <sha256> for a future no-ambient Source Intelligence Core ingestion executor pass.\" --target-workspace-id vcmi-reviewed-captures --write-consumption-marker --write-approval-consumption --json",
+      "scenario": "Use this only after the Source Intelligence Core approval decision artifact has been written. It consumes that decision with a marker-before-artifact write pattern while keeping actual Source Intelligence Core ingestion, graph indexing, canonical promotion, provider calls, external sends, and attachment deletion blocked."
+    },
+    "acquisition visual-capture-source-pack-sic-ingestion-approval-decision": {
+      "purpose": "Write one approved or rejected Source Intelligence Core ingestion approval decision for a reviewed Capture to Markdown source pack after exact request digest, decision digest, and operator-statement validation.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-sic-ingestion-approval-decision 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --full-dispatch-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/_full_dispatch/<run-id>.json --expected-full-dispatch-artifact-digest <sha256> --expected-sic-ingestion-readiness-packet-digest <sha256> --expected-sic-ingestion-approval-request-digest <sha256> --approval-artifact-path 07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/<approval-id>.json --decision approved --expected-sic-ingestion-approval-decision-digest <sha256> --operator-statement \"I approve Source Intelligence Core ingestion approval request <approval-id> with digest <sha256> for a future no-ambient approval decision pass.\" --target-workspace-id vcmi-reviewed-captures --write-approval-decision --json",
+      "scenario": "Use this only after Source Intelligence Core approval decision/consumption readiness succeeds. It writes one create-only approval decision artifact while keeping approval consumption, exact-once marker writing, Source Intelligence Core ingestion, graph indexing, canonical promotion, provider calls, external sends, and attachment deletion blocked."
+    },
+    "acquisition visual-capture-source-pack-sic-ingestion-approval-decision-consumption-readiness": {
+      "purpose": "Validate that a pending Source Intelligence Core ingestion approval request is ready for a future decision writer and consumption executor, without writing or consuming anything.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-sic-ingestion-approval-decision-consumption-readiness 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --full-dispatch-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/_full_dispatch/<run-id>.json --expected-full-dispatch-artifact-digest <sha256> --expected-sic-ingestion-readiness-packet-digest <sha256> --expected-sic-ingestion-approval-request-digest <sha256> --approval-artifact-path 07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/<approval-id>.json --target-workspace-id vcmi-reviewed-captures --json",
+      "scenario": "Use this only after the pending Source Intelligence Core approval request has been written. It validates pending/unconsumed state and previews future decision/consumption contracts while keeping decision writing, approval consumption, ingestion, graph indexing, canonical promotion, provider calls, external sends, and attachment deletion blocked."
+    },
+    "acquisition visual-capture-source-pack-sic-ingestion-approval-design": {
+      "purpose": "Preview the future Source Intelligence Core ingestion approval packet for a reviewed Capture to Markdown source pack, without writing approval artifacts or Source Intelligence Core records.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-sic-ingestion-approval-design 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --full-dispatch-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/_full_dispatch/<run-id>.json --expected-full-dispatch-artifact-digest <sha256> --expected-sic-ingestion-readiness-packet-digest <sha256> --target-workspace-id vcmi-reviewed-captures --json",
+      "scenario": "Use this after Source Intelligence Core ingestion readiness succeeds. It previews the approval packet needed by a later request writer while keeping request writing, ingestion, graph indexing, canonical promotion, provider calls, external sends, and attachment deletion blocked."
+    },
+    "acquisition visual-capture-source-pack-sic-ingestion-approval-request": {
+      "purpose": "Write one pending Source Intelligence Core ingestion approval request for a reviewed Capture to Markdown source pack after exact digest and operator-statement validation.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-sic-ingestion-approval-request 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --full-dispatch-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/_full_dispatch/<run-id>.json --expected-full-dispatch-artifact-digest <sha256> --expected-sic-ingestion-readiness-packet-digest <sha256> --expected-sic-ingestion-approval-request-digest <sha256> --operator-statement \"I approve ingesting this reviewed Visual Capture Markdown Ingestion source pack into Source Intelligence Core workspace vcmi-reviewed-captures after readiness packet <sha256>; no graph indexing, canonical promotion, provider call, external send, or attachment deletion is authorized by this approval.\" --target-workspace-id vcmi-reviewed-captures --write-approval-request --json",
+      "scenario": "Use this only after Source Intelligence Core approval design succeeds. It writes a create-only pending approval request artifact while keeping decision writing, approval consumption, ingestion, graph indexing, canonical promotion, provider calls, external sends, and attachment deletion blocked."
+    },
+    "acquisition visual-capture-source-pack-sic-ingestion-readiness": {
+      "purpose": "Validate Source Intelligence Core ingestion readiness for a reviewed Capture to Markdown source pack after guarded full dispatch, without writing Source Intelligence Core records.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-sic-ingestion-readiness 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --full-dispatch-artifact-path 07_LOGS/Agent-Activity/_vcmi_aor_dispatch_approvals/_full_dispatch/<run-id>.json --expected-full-dispatch-artifact-digest <sha256> --target-workspace-id vcmi-reviewed-captures --json",
+      "scenario": "Use this only after the guarded full-dispatch artifact exists. It validates source-pack writeback evidence and previews a future Source Intelligence Core ingestion packet while keeping ingestion, graph indexing, canonical promotion, provider calls, external sends, and attachment deletion blocked."
+    },
+    "acquisition visual-capture-source-pack-write": {
+      "purpose": "Write approved reviewed Capture to Markdown source-pack artifacts after matching the preview request digest and exact required operator statement.",
+      "example": "python -m runtime.cli.main acquisition visual-capture-source-pack-write 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --request-digest <sha256> --operator-statement \"I approve writing this reviewed VCMI capture as an acquisition source pack.\" --json",
+      "scenario": "Use this only after visual-capture-source-pack-approval-preview. It writes create-only source-pack JSON artifacts plus an exact-once marker under runtime/acquisition/packs/ and keeps approval artifacts, AOR, SIC, graph, canonical, provider, external-send, and attachment cleanup blocked."
+    },
+    "audit secrets": {
+      "purpose": "Classify placeholder/sentinel secret references separately from high-confidence live secrets while skipping private env files and aliases.",
+      "example": "python -m runtime.cli.main audit secrets --vault-root runtime/cli/fixtures/secret_audit_vault --json",
+      "scenario": "Use this as a bounded read-only secret hygiene check; results redact matches and report private-env skips rather than reading or emitting raw env values."
+    },
+    "capture markdown preview": {
+      "purpose": "Build a no-write Visual Capture to Markdown preview from explicit text, a local file, saved HTML, confined controlled HTML, screenshot attachment, or stdin.",
+      "example": "python -m runtime.cli.main capture markdown preview --title \"Research clip\" --text \"visible source text\" --json",
+      "scenario": "Use this before saving captured material when you want to inspect the packet, Markdown, and authority boundary without writing quarantine artifacts. Use --from-controlled-html only for Browser Runtime or Studio webview artifacts under allowed vault-local evidence dirs with --url declared. Use --from-screenshot only for explicit vault-local image attachments; OCR remains disabled."
+    },
+    "capture markdown recent": {
+      "purpose": "List recent Visual Capture to Markdown quarantine artifacts from Phase 8 sidecars without writing.",
+      "example": "python -m runtime.cli.main capture markdown recent --limit 10 --json",
+      "scenario": "Use this to confirm the latest VCMI saves before opening Intake or running a later reviewed handoff."
+    },
+    "capture markdown review": {
+      "purpose": "Update one Visual Capture to Markdown raw-quarantine artifact review state without rewriting content or promoting it.",
+      "example": "python -m runtime.cli.main capture markdown review 03_INPUTS/00_QUARANTINE/Sources/example.visual_capture.json --decision reviewed --json",
+      "scenario": "Use this after operator inspection to mark a saved VCMI artifact reviewed, rejected, needing redaction, or reopened before running acquisition preview."
+    },
+    "capture markdown save": {
+      "purpose": "Save an explicit Visual Capture to Markdown artifact through Phase 8 raw quarantine only.",
+      "example": "python -m runtime.cli.main capture markdown save --title \"Research clip\" --from-file source.md --vault-root . --json",
+      "scenario": "Use this after preview when the operator wants a raw intake artifact plus sidecar and VCMI packet for later review. Controlled HTML saves remain confined local-artifact reads and do not read browser history, cookies, sessions, profiles, forms, or downloads. Screenshot attachment saves copy the selected image into quarantine-local _attachments, mark it retain-until-operator-review, and record no-OCR/no-runtime-delete posture only; they do not capture the screen, call OCR, or clean up copied attachments."
+    },
+    "capture validate": {
+      "purpose": "Validate the capture/intake no-write posture against a fixture or selected vault root without connector calls.",
+      "example": "python -m runtime.cli.main capture validate --vault-root runtime/cli/fixtures/intake_vault --json",
+      "scenario": "Use this before promoting capture-family coverage to prove the command layer can inspect capture readiness without writing quarantine artifacts or fetching external sources."
+    },
+    "creator approval-consumption-dry-run": {
+      "purpose": "Validate a pending Creator Engine approval request artifact and expected approval digest without consuming approval.",
+      "example": "python -m runtime.cli.main creator approval-consumption-dry-run --approval-artifact-path 07_LOGS/Agent-Activity/_creator_engine_approvals/example.json --expected-approval-digest SHA256 --json",
+      "scenario": "Use this after a Creator Engine approval request exists to prove the future consumption boundary while approval grant, decision write, consumption, marker write, timeline execution, publish/upload, governed memory, and canonical writes remain blocked."
+    },
+    "creator generate-stubs": {
+      "purpose": "Write or dry-run deterministic runtime-local draft artifacts for a context-ready Creator Engine job.",
+      "example": "python -m runtime.cli.main creator generate-stubs --job-id example-job --target short-form --dry-run --json",
+      "scenario": "Use this after a Creator Engine context pack exists to preview or create local draft artifact stubs while provider calls, source-intelligence queries, publishing, and canonical writes remain blocked."
+    },
+    "doctor cli": {
+      "purpose": "Check CLI entrypoints and optionally run the parser/contract/docs/smoke ratchet.",
+      "example": "python -m runtime.cli.main doctor cli --contract-ratchet-smoke --json",
+      "scenario": "Run this before trusting local CLI behavior after command or docs changes."
+    },
+    "health": {
+      "purpose": "Check one runtime gateway, lifecycle, or session-heartbeat health probe and return canonical readiness evidence.",
+      "example": "python -m runtime.cli.main health codex --json",
+      "scenario": "Run this before trusting OpenClaw or Hermes as live gateway lanes, or before treating Codex/Archon session workers as currently live."
+    },
+    "maintain": {
+      "purpose": "Run maintenance status or dry-run hygiene checks, with fixture-root mode for safe routine ratchet coverage.",
+      "example": "python -m runtime.cli.main maintain --dry-run --fixture-root runtime/cli/fixtures/maintain_vault --json",
+      "scenario": "Use fixture-root dry runs to verify maintenance JSON and stage summaries without scanning or mutating the live vault."
+    },
+    "mvp completion-audit": {
+      "purpose": "Show the prompt-to-artifact completion audit for the active 10-pass MVP objective, including the canonical no-secret handoff card path.",
+      "example": "python -m runtime.cli.main mvp completion-audit --json",
+      "scenario": "Use this before deciding whether the MVP objective is achieved; it is the authority for safe goal completion."
+    },
+    "mvp current-state": {
+      "purpose": "Show the clean no-secret MVP current-state map with sector, 10 pass statuses, scope lock, usable-now, blocked-now, parked/later lanes, canonical handoff card, and next operator action.",
+      "example": "python -m runtime.cli.main mvp current-state --json",
+      "scenario": "Use this when consolidating multiple Codex or operator sessions and you need the shortest truthful MVP state surface."
+    },
+    "mvp operator-action-required": {
+      "purpose": "Show whether operator-owned input is currently blocking MVP completion, including the canonical no-secret handoff card path.",
+      "example": "python -m runtime.cli.main mvp operator-action-required --json",
+      "scenario": "Use this as the stop/continue gate when Codex may be out of safe autonomous MVP passes."
+    },
+    "mvp operator-input-template": {
+      "purpose": "Show or write a no-secret operator input template for the current MVP blockers.",
+      "example": "python -m runtime.cli.main mvp operator-input-template --json",
+      "scenario": "Use this when creating the operator-filled packet that should contain reference names and paths only, never API key values."
+    },
+    "mvp operator-unblock-packet": {
+      "purpose": "Show the compact no-secret MVP operator handoff with next actions, safe commands, typed schema, and fillable template.",
+      "example": "python -m runtime.cli.main mvp operator-unblock-packet --json",
+      "scenario": "Use this when the operator needs the exact next action queue and input fields without parsing the full readiness gate."
+    },
+    "mvp readiness-gate": {
+      "purpose": "Show the full no-secret MVP readiness gate with pass status, blockers, completion matrix, canonical handoff card, and authority boundary.",
+      "example": "python -m runtime.cli.main mvp readiness-gate --json",
+      "scenario": "Use this when auditing whether the 10-pass MVP objective is actually complete or still blocked."
+    },
+    "mvp validate-operator-input": {
+      "purpose": "Validate a filled no-secret MVP operator input packet without echoing candidate values or executing follow-up actions.",
+      "example": "python -m runtime.cli.main mvp validate-operator-input --input operator-input.json --json",
+      "scenario": "Use this after filling the operator input template to check references, paths, and decisions before any setup write, VentureOps authoring, or approval consumption."
+    },
+    "n8n dry-run": {
+      "purpose": "Build a no-live-call n8n workflow call draft from the registry without writing drafts or executing workflows.",
+      "example": "python -m runtime.cli.main n8n dry-run send_discord_draft_alert --caller chaseos_runtime_mcp --json",
+      "scenario": "Use this to verify execution-adjacent n8n policy shape while keeping live workflow execution out of routine preflight."
+    },
+    "n8n readiness": {
+      "purpose": "Inspect n8n runtime readiness posture before any live workflow execution is considered.",
+      "example": "python -m runtime.cli.main n8n readiness --json",
+      "scenario": "Use this to see whether n8n is configured, deployed, and allowed before attempting workflow work."
+    },
+    "runtime health": {
+      "purpose": "Check runtime lifecycle health through the runtime command family.",
+      "example": "python -m runtime.cli.main runtime health --runtime hermes --json",
+      "scenario": "Use this when diagnosing runtime readiness from the broader runtime inspection surface."
+    },
+    "subagents agent-bus-task-packet-preview": {
+      "purpose": "Preview the inert Agent Bus task packet that would be enqueued after request, decision, and marker artifacts are bound.",
+      "example": "python -m runtime.cli.main subagents agent-bus-task-packet-preview --approval-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/example.json --decision-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/_decisions/example.json --consumption-marker-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/_consumption_markers/example.json --expected-work-fingerprint SHA256 --json",
+      "scenario": "Use this after an exact-once marker is recorded to inspect the future Agent Bus packet shape. The command never creates a bus task, starts a daemon, dispatches a runtime, calls providers, or mutates canonical state."
+    },
+    "subagents approval-consumption-decision-binding": {
+      "purpose": "Validate a pending sub-agent approval request plus a recorded approved decision artifact without consuming either artifact.",
+      "example": "python -m runtime.cli.main subagents approval-consumption-decision-binding --approval-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/example.json --decision-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/_decisions/example.json --expected-work-fingerprint SHA256 --json",
+      "scenario": "Use this after approval-review-decision writes an approved decision artifact to prove the decision-bound consumption preflight is ready for a future executor while approval consumption, marker writing, Agent Bus enqueue, daemon start, runtime dispatch, provider calls, and canonical writes remain blocked."
+    },
+    "subagents approval-consumption-dry-run": {
+      "purpose": "Validate a pending sub-agent approval request artifact, exact work fingerprint, recomputed route, and future marker path without consuming approval.",
+      "example": "python -m runtime.cli.main subagents approval-consumption-dry-run --approval-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/example.json --expected-work-fingerprint SHA256 --json",
+      "scenario": "Use this after a pending approval request artifact exists to prove the future consumption boundary and show that operator approval decision, Agent Bus enqueue, daemon start, runtime dispatch, provider calls, and canonical writes remain blocked."
+    },
+    "subagents approval-consumption-exact-once-marker-contract": {
+      "purpose": "Preview or write one exact-once approval consumption marker after a pending request and approved decision artifact are bound.",
+      "example": "python -m runtime.cli.main subagents approval-consumption-exact-once-marker-contract --approval-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/example.json --decision-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/_decisions/example.json --expected-work-fingerprint SHA256 --write-consumption-marker --json",
+      "scenario": "Use this after approval-consumption-decision-binding is ready to reserve the exact-once marker for a future executor. The command does not mutate the request or decision artifacts and still blocks Agent Bus enqueue, daemon start, runtime dispatch, provider calls, and canonical writes."
+    },
+    "subagents approval-preview": {
+      "purpose": "Build a deterministic, review-only approval packet preview for future sub-agent activation or Agent Bus enqueue.",
+      "example": "python -m runtime.cli.main subagents approval-preview site-ops-worker --mode site_ops --json",
+      "scenario": "Use this when an operator needs the exact preset, mode, route, blocked effects, and work fingerprint before any approval artifact writer or executor exists."
+    },
+    "subagents approval-review-decision": {
+      "purpose": "Preview or write one immutable approve/deny decision artifact for a pending sub-agent activation approval request without consuming approval.",
+      "example": "python -m runtime.cli.main subagents approval-review-decision --approval-artifact-path 07_LOGS/Agent-Activity/_subagent_activation_approvals/example.json --decision approve --expected-work-fingerprint SHA256 --write-approval-decision --json",
+      "scenario": "Use this after approval-consumption-dry-run validates the pending request and the operator wants to record a decision artifact only. The command still blocks approval consumption, Agent Bus enqueue, daemon start, runtime dispatch, provider calls, and canonical writes."
+    },
+    "subagents list": {
+      "purpose": "List task-scoped ChaseOS sub-agent presets and safe authority flags.",
+      "example": "python -m runtime.cli.main subagents list --json",
+      "scenario": "Use this before selecting a preset for a bounded task or team template."
+    },
+    "subagents route-preview": {
+      "purpose": "Preview the selected runtime and activation context for one preset without dispatch.",
+      "example": "python -m runtime.cli.main subagents route-preview site-ops-worker --mode site_ops --json",
+      "scenario": "Use this when deciding whether a task should route to Hermes, OpenClaw, Codex, or Archon before creating any bus task."
+    },
+    "subagents show": {
+      "purpose": "Show one sub-agent preset contract without starting a runtime.",
+      "example": "python -m runtime.cli.main subagents show qa-testing-worker --json",
+      "scenario": "Use this when reviewing the allowed modes, runtime preferences, and writeback policy for one preset."
+    },
+    "subagents validate": {
+      "purpose": "Validate sub-agent preset structure and runtime availability without execution or writes.",
+      "example": "python -m runtime.cli.main subagents validate --json",
+      "scenario": "Use this after editing preset files or runtime capability declarations."
+    },
+    "subagents write-approval-request": {
+      "purpose": "Build or write a pending sub-agent activation approval request only when the exact approval-preview work fingerprint is supplied.",
+      "example": "python -m runtime.cli.main subagents write-approval-request site-ops-worker --mode site_ops --expected-work-fingerprint SHA256 --write-approval-request --json",
+      "scenario": "Use this after reviewing approval-preview output to persist a governed pending approval artifact without granting approval, consuming approval, creating an Agent Bus task, starting a daemon, dispatching a runtime, or calling a provider."
+    },
+    "test cli-contract": {
+      "purpose": "Run the direct CLI contract ratchet.",
+      "example": "python -m runtime.cli.main test cli-contract --json",
+      "scenario": "Use this in development when parser, command contract, generated docs, JSON actions, or smoke profiles may have drifted."
+    }
+  }
+}

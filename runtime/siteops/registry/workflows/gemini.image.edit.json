@@ -1,0 +1,63 @@
+{
+  "object_type": "workflow_manifest",
+  "workflow_id": "gemini.image.edit",
+  "display_name": "Gemini Image Edit",
+  "status": "PARTIAL",
+  "execution_status": "dry_run_ready",
+  "live_execution_status": "NOT BUILT",
+  "workflow_type": "creative_provider",
+  "mode": "assisted",
+  "provider_profile": "gemini_image",
+  "inputs": [
+    {
+      "name": "source_image_path",
+      "required": true
+    },
+    {
+      "name": "edit_prompt",
+      "required": true
+    },
+    {
+      "name": "variations",
+      "required": false
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "validate_inputs"
+    },
+    {
+      "step_id": "validate_budget_guard"
+    },
+    {
+      "step_id": "dry_run_prompt_plan"
+    },
+    {
+      "step_id": "request_user_approval_before_provider_call",
+      "approval_required": true
+    },
+    {
+      "step_id": "generate_or_edit_images"
+    },
+    {
+      "step_id": "save_outputs_to_creative_runs"
+    },
+    {
+      "step_id": "write_provider_audit"
+    }
+  ],
+  "approval_required": [
+    "before_provider_call",
+    "above_budget_limit"
+  ],
+  "blocked_actions": [
+    "unsafe_image_generation",
+    "rights_unclear_generation",
+    "canonical_promotion"
+  ],
+  "outputs": [
+    "generated_asset_paths",
+    "provider_run_audit",
+    "creative_run_folder"
+  ]
+}

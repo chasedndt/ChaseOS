@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "forge.extension.v1",
+  "id": "ugc-campaign-studio",
+  "name": "UGC Campaign Studio",
+  "description": "A sandbox-safe workspace page for planning creator briefs, drafts, and campaign reports.",
+  "version": "0.1.0",
+  "status": "draft",
+  "createdBy": {
+    "runtime": "Codex",
+    "surface": "Chaser Forge MVP demo"
+  },
+  "compatibility": {
+    "minChaseOS": "2026.05",
+    "requiresStudio": true
+  },
+  "risk": {
+    "level": "medium",
+    "reason": "Uses extension-owned data writes and approval-gated agent/workflow templates only."
+  },
+  "permissions": [
+    "workspace.read.basic",
+    "extension.data.read",
+    "extension.data.write",
+    "ui.render.preview",
+    "ui.render.workspace_page",
+    "dashboard.widget.render",
+    "report.render",
+    "agent.run.approval_gated",
+    "workflow.run.approval_gated"
+  ],
+  "extensionPoints": [
+    {
+      "type": "sidebar.nav.item",
+      "id": "ugc-campaign-studio.nav",
+      "label": "UGC Campaign Studio",
+      "icon": "FG",
+      "route": "/workspace/{workspaceId}/extensions/ugc-campaign-studio"
+    },
+    {
+      "type": "workspace.page",
+      "id": "ugc-campaign-studio.page",
+      "title": "UGC Campaign Studio",
+      "route": "/workspace/{workspaceId}/extensions/ugc-campaign-studio",
+      "component": {
+        "type": "studio_panel",
+        "entry": "extensions/ugc-campaign-studio/ui/page.json"
+      },
+      "permissions": [
+        "workspace.read.basic",
+        "extension.data.read",
+        "extension.data.write"
+      ]
+    },
+    {
+      "type": "dashboard.widget",
+      "id": "ugc-campaign-studio.widget",
+      "title": "Campaign Pipeline",
+      "component": {
+        "type": "dashboard_widget",
+        "entry": "extensions/ugc-campaign-studio/ui/widget.json"
+      },
+      "permissions": [
+        "dashboard.widget.render",
+        "extension.data.read"
+      ]
+    },
+    {
+      "type": "agent.preset",
+      "id": "ugc-campaign-studio.brief-agent",
+      "name": "Campaign Brief Drafter",
+      "permissions": [
+        "agent.run.approval_gated"
+      ]
+    },
+    {
+      "type": "workflow.template",
+      "id": "ugc-campaign-studio.review-workflow",
+      "name": "Creator Brief Review",
+      "permissions": [
+        "workflow.run.approval_gated"
+      ]
+    },
+    {
+      "type": "marketplace.template",
+      "id": "ugc-campaign-studio.marketplace",
+      "category": "creator-engine",
+      "version": "0.1.0",
+      "license": "local-review-only",
+      "provenance": {
+        "source": "runtime.forge.examples",
+        "publisher": "Chaser Forge demo"
+      }
+    }
+  ],
+  "ui": {
+    "routes": [
+      "/workspace/{workspaceId}/extensions/ugc-campaign-studio"
+    ],
+    "components": [
+      {
+        "type": "studio_panel",
+        "entry": "extensions/ugc-campaign-studio/ui/page.json"
+      },
+      {
+        "type": "dashboard_widget",
+        "entry": "extensions/ugc-campaign-studio/ui/widget.json"
+      }
+    ]
+  },
+  "workflows": [
+    {
+      "id": "ugc-campaign-studio.brief-review",
+      "steps": [
+        {
+          "type": "preview.render"
+        },
+        {
+          "type": "approval.request"
+        },
+        {
+          "type": "extension.data.write"
+        },
+        {
+          "type": "report.render"
+        }
+      ],
+      "approvalRule": "operator-explicit"
+    }
+  ],
+  "agents": [
+    {
+      "id": "ugc-campaign-studio.brief-agent",
+      "tools": [
+        "content.generate",
+        "content.review",
+        "data.read.extension",
+        "data.write.extension",
+        "workflow.run.approval_gated"
+      ],
+      "memoryScopes": [
+        "extension.local",
+        "project.reference",
+        "session.ephemeral"
+      ]
+    }
+  ],
+  "dataSchemas": [
+    {
+      "collection": "ext_ugc_campaign_studio_campaigns",
+      "fields": [
+        "campaign_id",
+        "brief",
+        "creator",
+        "status",
+        "report"
+      ]
+    }
+  ],
+  "preview": {
+    "productionWrites": false,
+    "externalCalls": false,
+    "scheduleActivation": false,
+    "secretsAccess": false
+  },
+  "install": {
+    "targetPaths": [
+      "extensions/ugc-campaign-studio/manifest.json",
+      "extensions/ugc-campaign-studio/ui/page.json",
+      "extensions/ugc-campaign-studio/ui/widget.json",
+      "extensions/ugc-campaign-studio/workflows/brief-review.json"
+    ],
+    "lifecycle": [
+      "draft",
+      "preview",
+      "sandbox",
+      "active",
+      "disabled",
+      "archived"
+    ],
+    "liveInstallRequires": [
+      "operator_approval",
+      "clean_validation",
+      "rollback_snapshot"
+    ]
+  },
+  "rollback": {
+    "strategy": "disable_extension_and_restore_previous_registry_snapshot",
+    "snapshotPolicy": "manifest_and_extension_owned_data",
+    "versionRetention": 3
+  }
+}

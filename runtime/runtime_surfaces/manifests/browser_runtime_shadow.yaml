@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "surface_id": "browser.runtime.shadow",
+  "display_name": "Browser Runtime Shadow Skill Candidate Layer",
+  "surface_family": "browser_operator",
+  "surface_type": "browser",
+  "owner_layer": "runtime/browser_runtime",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/browser_runtime/candidates.py",
+    "runtime/browser_runtime/skills.py",
+    "runtime/browser_runtime/site_memory.py",
+    "runtime/browser_runtime/workflows.py",
+    "runtime/browser_runtime/workflow_replay_executor.py"
+  ],
+  "docs_refs": [
+    "06_AGENTS/Browser-Runtime-Skill-Memory.md",
+    "06_AGENTS/Browser-Runtime-Harness.md",
+    "06_AGENTS/Browser-Workflow-Replay-Executor.md"
+  ],
+  "trust_ceiling": "tier-2",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "browser.runtime.evidence.inspect",
+      "maps_to": "browser_runtime_evidence_inspect",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "browser.runtime.skill_candidate.propose",
+      "maps_to": "browser_runtime_skill_candidate_propose",
+      "risk_class": "proposal_write",
+      "approval_required": "conditional"
+    },
+    {
+      "capability_id": "browser.runtime.workflow_cache.inspect",
+      "maps_to": "browser_runtime_workflow_cache_inspect",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "03_INPUTS/Browser-Skill-Candidates/",
+    "06_AGENTS/Browser-Skills/_drafts/",
+    "07_LOGS/Browser-Runs/",
+    "07_LOGS/Site-Activity/"
+  ],
+  "audit_targets": [
+    "07_LOGS/Browser-Runs/",
+    "07_LOGS/Agent-Activity/",
+    "07_LOGS/Site-Activity/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/browser_runtime"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  }
+}

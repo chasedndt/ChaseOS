@@ -1,0 +1,29 @@
+{
+  "approval_required": true,
+  "author": "ChaseOS",
+  "authority_boundary": {
+    "auto_install_enabled": false,
+    "external_actions": "blocked_pending_operator_approval",
+    "license_enforcement_enabled": false,
+    "payment_required": false,
+    "untrusted_remote_install_allowed": false
+  },
+  "category": "developer-ops",
+  "compatibility": {
+    "chaseos": ">=0.8.0",
+    "studio": "early-access"
+  },
+  "description": "Creates repo-inspection, patch, and test-run packets for bounded developer-agent workflows.",
+  "docs_url": "https://chaseos.ai/forge",
+  "id": "local_developer_ops_pack",
+  "license": "example-free-preview-no-entitlement",
+  "name": "Local Developer Ops Pack",
+  "package_scope": "example_preview_metadata",
+  "permissions_required": [
+    "read_declared_sources",
+    "write_preview_outputs"
+  ],
+  "schema": "chaseos.pack.v1",
+  "status": "preview",
+  "version": "0.1.0"
+}

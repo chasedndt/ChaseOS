@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "runtime_behavior_profile",
+  "runtime_id": "hermes",
+  "runtime_label": "Optimus",
+  "personal_runtime_name": "Optimus",
+  "status": "seeded",
+  "updated_at": "2026-04-27T00:00:00Z",
+  "sources": [
+    "06_AGENTS/Hermes-Runtime-Profile.md",
+    "06_AGENTS/Hermes-Memory-Boundary.md",
+    "runtime/memory/nav/hermes/nav-map.json",
+    "runtime/agent_bus/"
+  ],
+  "behavioral_profile": {
+    "primary_role": "coordination partner and Discord-lane runtime",
+    "strengths": [
+      "coordination-bus participation through structured task/event/heartbeat state",
+      "Discord lane awareness when ingress metadata is present",
+      "bounded synthesis/coordination work through declared watch surfaces"
+    ],
+    "known_failure_modes": [
+      {
+        "id": "scorecard-not-yet-populated",
+        "status": "not_observed",
+        "description": "No Hermes scorecard file is currently present, so behavioral claims must stay seeded and evidence-light until executions accumulate.",
+        "evidence_refs": []
+      }
+    ],
+    "routing_guidance": [
+      "use runtime/agent_bus/ for coordination-sensitive work",
+      "preserve lane identity when Discord channel/thread context exists",
+      "escalate broader workflow authority or connector expansion"
+    ],
+    "confidence_signals": [
+      "navigation overlay exists",
+      "scorecard evidence is not yet populated"
+    ]
+  },
+  "governance_boundary": "Layer C memory is advisory and cannot override Gate, role cards, workflow manifests, or operator approval."
+}

@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "layer": "C",
+  "memory_family": "runtime_behavior_profile",
+  "runtime_id": "codex",
+  "personal_runtime_name": "Axiom-Codex",
+  "lane_class": "session",
+  "status": "seeded",
+  "updated_at": "2026-05-29T00:00:00Z",
+  "sources": [
+    "06_AGENTS/Codex-Runtime-Profile.md"
+  ],
+  "behavioral_profile": {
+    "primary_role": "bounded development runtime — scoped implementation, testing, and documentation inside ChaseOS",
+    "strengths": [
+      "scoped repo-aware development work on declared task boundaries",
+      "test-driven implementation with evidence preservation",
+      "product-language hardening across source cards, review states, and CLI surfaces",
+      "packaged executable build and proof verification"
+    ],
+    "known_failure_modes": [
+      {
+        "id": "scope-boundary-enforcement",
+        "status": "managed",
+        "description": "Codex operates strictly within declared task boundaries. Escalates any request that would exceed declared scope rather than expanding unilaterally.",
+        "evidence_refs": ["06_AGENTS/Codex-Runtime-Profile.md"]
+      }
+    ],
+    "routing_guidance": [
+      "orient through Codex-Runtime-Profile.md before acting on any task",
+      "escalate protected-file, canonical-promotion, and undeclared connector expansion requests",
+      "no provider/model call, no external send, no secret, no credential read"
+    ],
+    "confidence_signals": [
+      "profile seeded from 06_AGENTS/Codex-Runtime-Profile.md",
+      "recent bounded activity verified with packaged EXE proof evidence"
+    ]
+  },
+  "governance_boundary": "Layer C memory is advisory and cannot override Gate, role cards, workflow manifests, or operator approval."
+}

@@ -4,10 +4,39 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "chaseos"
-version = "0.1.0"
-description = "ChaseOS Core production-safe baseline"
+version = "0.8.2"
+description = "ChaseOS - privacy-first agentic operating system for human-agent collaboration"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "playwright>=1.40",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.0",
+    "pytest-cov>=7.0.0",
+    "PyYAML>=6.0.0",
+]
+studio = [
+    "pywebview==6.2.1",
+    "PyQt6>=6.11.0",
+    "PyQt6-WebEngine>=6.11.0",
+    "qtpy>=2.4.0",
+    # Docs / Inspector "Export to PDF" — pure-Python HTML→PDF (no system libs on Windows).
+    "xhtml2pdf>=0.2.16",
+    # Real interactive Studio terminal (ConPTY) on Windows. Without this the
+    # Studio terminal degrades to the non-interactive subprocess fallback.
+    "pywinpty>=2.0; sys_platform == 'win32'",
+]
+studio-packaging = [
+    "pyinstaller>=6.0",
+    "pywebview==6.2.1",
+    "PyQt6>=6.11.0",
+    "PyQt6-WebEngine>=6.11.0",
+    "qtpy>=2.4.0",
+    # ConPTY backend must be present in packaged Windows builds.
+    "pywinpty>=2.0; sys_platform == 'win32'",
+]
 
 [project.scripts]
 chaseos = "runtime.cli.main:main"
@@ -18,8 +47,58 @@ py-modules = ["chaseos"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["runtime", "runtime.*"]
+include = ["runtime*"]
+
+[tool.setuptools.package-data]
+"runtime.cli" = [
+    "command_contract.json",
+    "operator_handbook_metadata.json",
+    "fixtures/browser_skill_candidates_vault/README.md",
+    "fixtures/browser_skill_candidates_vault/03_INPUTS/Browser-Skill-Candidates/example-com/*.md",
+    "fixtures/browser_skill_candidates_vault/runtime/siteops/tenants/*.yaml",
+    "fixtures/intake_vault/README.md",
+    "fixtures/intake_vault/.chaseos/*.json",
+    "fixtures/intake_vault/03_INPUTS/00_QUARANTINE/Sources/*.md",
+    "fixtures/intake_vault/03_INPUTS/00_QUARANTINE/Sources/*.json",
+    "fixtures/setup_state/*.json",
+]
+"runtime.studio.shell" = [
+    "frontend/*.css",
+    "frontend/*.html",
+    "frontend/*.js",
+    "frontend/assets/*.js",
+]
 
 [tool.pytest.ini_options]
+# Keep pytest cache writes inside the repo so Windows temp ACL issues do not
+# block local Studio verification slices.
 cache_dir = ".pytest_tmp_env/cache"
-norecursedirs = [".pytest_tmp_env"]
+# Ignore generated acquisition temp fixture roots; stale Windows ACLs in these
+# folders can otherwise block collection before real tests are reached.
+norecursedirs = [
+    "_tmp_cli_test",
+    "_tmp_pytest",
+    "codex-test-temp-probe",
+]
+
+# ── Notes ──────────────────────────────────────────────────────────────────────
+#
+# Setup:
+#   .venv/Scripts/pip install -e .
+#   chaseos doctor
+#
+# After install, both `chaseos` and `chase` are available in .venv/Scripts/.
+#
+# Version convention: MAJOR.PHASE.PASS
+#   0.8.2 = pre-release, Phase 8, Pass 2
+#
+# Dependencies:
+#   playwright>=1.40 — Browser Operator Surface (Phase 9 FSOS sub-track).
+#     After install: playwright install chromium
+#     (downloads ~130MB Chromium browser binary — required for live browser execution)
+#     Without this step the BrowserAdapter falls back to stub mode automatically.
+#   PyYAML — used by hook scripts; already in venv; not declared here.
+#
+#   Full browser setup:
+#     .venv/Scripts/pip install -e .
+#     .venv/Scripts/playwright install chromium

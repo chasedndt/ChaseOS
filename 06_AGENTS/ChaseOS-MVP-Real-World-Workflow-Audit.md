@@ -162,7 +162,7 @@ MVP success:
 
 ### Loop 3 - Agent Bus Runtime Lifecycle
 
-Goal: prove that Codex, Hermes, OpenClaw, or Chaser Agent can be operated as workers instead of chat-only personas.
+Goal: prove that Codex, Hermes, OpenClaw, or Archon can be operated as workers instead of chat-only personas.
 
 Current bus truth:
 - Agent Bus local storage is readable.

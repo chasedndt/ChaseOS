@@ -1,0 +1,25 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for Mission Mode mission-local state ledgers."
+required_fields:
+  - mission_id
+  - current_status
+  - current_phase
+  - active_workflow_versions
+  - last_run_id
+  - last_review_date
+  - progress_summary
+  - scorecard_summary
+  - active_hypotheses
+  - active_blockers
+  - pending_approvals
+  - approved_evolutions
+  - rejected_evolutions
+  - next_recommended_pass
+  - evidence_links
+  - proof_cards
+  - audit_links
+authority_rules:
+  - "The mission state ledger is mission-local operational state."
+  - "It does not replace canonical project truth, roadmap truth, proof artifacts, or audit logs."
+  - "Approved and rejected evolution entries must link to proposal artifacts."

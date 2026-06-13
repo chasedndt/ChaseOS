@@ -1,0 +1,92 @@
+{
+  "runtime_id": "archon",
+  "version": "0.1",
+  "status": "seeded-doc-first",
+  "updated": "2026-04-30",
+  "preferred_read_routes": [
+    {
+      "task_class": "engineering-and-implementation-work",
+      "route": [
+        "CLAUDE.md",
+        "00_HOME/Now.md",
+        "01_PROJECTS/ChaseOS/ChaseOS-OS.md",
+        "07_LOGS/Build-Logs/Build-Logs-Index.md",
+        "06_AGENTS/Vault-Map.md"
+      ],
+      "notes": "Archon should always orient through CLAUDE.md (routing anchor) and Now.md (sprint state) before implementing. Project-OS resolves current pass context."
+    },
+    {
+      "task_class": "runtime-coordination-and-bus-work",
+      "route": [
+        "06_AGENTS/Archon-Runtime-Profile.md",
+        "06_AGENTS/Runtime-InterAgent-Coordination-Bus.md",
+        "runtime/agent_bus/Agent-Bus-Folder-Guide.md",
+        "00_HOME/Now.md"
+      ],
+      "notes": "When receiving or dispatching bus tasks, orient through the runtime profile and coordination bus before acting."
+    },
+    {
+      "task_class": "docs-and-architecture-pass",
+      "route": [
+        "CLAUDE.md",
+        "README.md",
+        "PROJECT_FOUNDATION.md",
+        "ROADMAP.md",
+        "06_AGENTS/Vault-Map.md"
+      ],
+      "notes": "Documentation passes require the full architectural context before touching protected docs."
+    }
+  ],
+  "trusted_zones": [
+    "07_LOGS/Build-Logs/",
+    "07_LOGS/Agent-Activity/",
+    "99_ARCHIVE/Documentation-History/",
+    "runtime/ (implementation targets)",
+    "06_AGENTS/ (read-heavy governance docs)"
+  ],
+  "safe_write_paths": [
+    "07_LOGS/Build-Logs/",
+    "07_LOGS/Agent-Activity/",
+    "99_ARCHIVE/Documentation-History/",
+    "runtime/",
+    "runtime/memory/nav/archon/"
+  ],
+  "risk_zones": [
+    "SOUL.md",
+    "00_HOME/Principles.md",
+    "00_HOME/Assistant-Contract.md",
+    "00_HOME/Operating-System.md",
+    "CLAUDE.md",
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "any protected file without explicit operator instruction"
+  ],
+  "escalation_points": [
+    "Any request to edit protected files without explicit operator approval",
+    "Any task that expands scope beyond declared boundaries",
+    "Any canonical promotion or protected-file mutation",
+    "Any request to bypass Gate or hooks"
+  ],
+  "index_alignment": {
+    "primary_indexes": [
+      "07_LOGS/Build-Logs/Build-Logs-Index.md",
+      "99_ARCHIVE/Documentation-History/Documentation-History-Index.md",
+      "07_LOGS/Agent-Activity/Agent-Activity-Index.md"
+    ],
+    "routing_docs": [
+      "CLAUDE.md",
+      "06_AGENTS/Archon-Runtime-Profile.md",
+      "06_AGENTS/Vault-Map.md"
+    ],
+    "notes": "Archon must update both Build-Logs-Index and Documentation-History-Index at session close. These are the primary audit trail for all implementation passes."
+  },
+  "standalone_mapping": {
+    "representation_goal": "Preserve implementation runtime navigation semantics across markdown-first and standalone surfaces.",
+    "stable_paths": [
+      "runtime/memory/nav/archon/nav-map.json",
+      "06_AGENTS/Archon-Runtime-Profile.md",
+      "CLAUDE.md"
+    ],
+    "notes": "These paths should become stable nodes in the future standalone representation."
+  }
+}

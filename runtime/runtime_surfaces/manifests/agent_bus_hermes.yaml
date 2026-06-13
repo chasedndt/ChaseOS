@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "surface_id": "agent.hermes.bus",
+  "display_name": "Hermes Agent Bus Runtime",
+  "surface_family": "agent_runtime",
+  "surface_type": "agent",
+  "owner_layer": "runtime/agent_bus",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/agent_bus/capabilities.py",
+    "runtime/agent_bus/router.py",
+    "runtime/hermes/capabilities.yaml",
+    "runtime/hermes/coordination_bridge.md",
+    "runtime/lifecycle/hermes.lifecycle.yaml",
+    "runtime/workflows/hermes_watch.py"
+  ],
+  "docs_refs": [
+    "HERMES.md",
+    "06_AGENTS/Hermes-Runtime-Profile.md",
+    "06_AGENTS/Hermes-Adapter-Spec.md",
+    "06_AGENTS/Runtime-InterAgent-Coordination-Bus.md"
+  ],
+  "trust_ceiling": "tier-2",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "review",
+      "maps_to": "review",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "planning",
+      "maps_to": "planning",
+      "risk_class": "draft_only",
+      "approval_required": false
+    },
+    {
+      "capability_id": "shadow-audit",
+      "maps_to": "shadow-audit",
+      "risk_class": "read_local_scoped",
+      "approval_required": false
+    },
+    {
+      "capability_id": "operator-briefing",
+      "maps_to": "operator-briefing",
+      "risk_class": "proposal_write",
+      "approval_required": "conditional"
+    },
+    {
+      "capability_id": "developer-co-development",
+      "maps_to": "developer-co-development",
+      "risk_class": "proposal_write",
+      "approval_required": "conditional"
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "runtime/agent_bus/",
+    "runtime/memory/nav/hermes/",
+    "07_LOGS/Agent-Activity/",
+    "07_LOGS/Operator-Briefs/"
+  ],
+  "audit_targets": [
+    "runtime/agent_bus/",
+    "runtime/lifecycle/run/hermes-coordination-watch.log",
+    "07_LOGS/Agent-Activity/",
+    "07_LOGS/Operator-Briefs/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/agent_bus"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  }
+}

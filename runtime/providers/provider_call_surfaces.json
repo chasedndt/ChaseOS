@@ -1,0 +1,724 @@
+{
+  "schema_version": 1,
+  "updated": "2026-04-28",
+  "owner": "ChaseOS runtime provider governance",
+  "purpose": "Classify provider, model, connector, delivery, and dry-run adapter call surfaces so provider-status governance can distinguish provider-state ledger evidence from connector-health and Source Intelligence telemetry.",
+  "classification_values": {
+    "provider_state_policy": {
+      "emit_provider_state_ledger": "Surface directly emits provider-state ledger events.",
+      "emit_provider_state_ledger_via_shared_adapter": "Surface routes model execution through the shared adapter, which emits provider-state ledger events.",
+      "source_intelligence_telemetry": "Surface belongs to Source Intelligence generation, embedding, or retrieval telemetry, not runtime provider fallback governance.",
+      "connector_health_telemetry": "Surface belongs to capture or acquisition connector health telemetry, not runtime provider fallback governance.",
+      "delivery_health_telemetry": "Surface belongs to external delivery health telemetry, not runtime provider fallback governance.",
+      "runtime_health_telemetry": "Surface belongs to runtime lifecycle or setup health probes, not provider fallback governance.",
+      "dry_run_control_plane_audit": "Surface prepares governed dry-run payloads or call drafts only; no live provider call is made."
+    },
+    "status": [
+      "VERIFIED",
+      "IMPLEMENTED",
+      "PARTIAL",
+      "PLANNED",
+      "NOT BUILT",
+      "DOCS-ONLY",
+      "CONFIGURED BUT UNVERIFIED",
+      "DEFERRED"
+    ]
+  },
+  "surfaces": [
+    {
+      "id": "runtime.execution_adapter",
+      "path": "runtime/execution_adapters/execute.py",
+      "related_paths": [
+        "runtime/openclaw/model_config.yaml",
+        "runtime/hermes/model_config.yaml",
+        "runtime/providers/state_ledger.py"
+      ],
+      "layer": "runtime_model_execution",
+      "call_kind": "model_generation",
+      "providers": [
+        "anthropic",
+        "openai"
+      ],
+      "credential_refs": [
+        "ANTHROPIC_API_KEY",
+        "OPENAI_API_KEY"
+      ],
+      "entry_points": [
+        "execute_synthesis",
+        "_call_provider",
+        "_call_anthropic",
+        "_call_openai_chat_completions"
+      ],
+      "evidence_markers": [
+        "def execute_synthesis(",
+        "_call_provider(",
+        "_call_openai_chat_completions(",
+        "append_provider_state_event",
+        "ProviderStateEvent(",
+        "provider.fallback_activated"
+      ],
+      "provider_state_policy": "emit_provider_state_ledger",
+      "provider_state_ledger_status": "VERIFIED",
+      "telemetry_owner": "runtime/providers/state_ledger.py",
+      "status": "VERIFIED",
+      "notes": "Shared OpenClaw/Hermes model-chain adapter emits request, rate-limit, fallback, and primary-recovery-completed provider-state events; provider credentials are resolved only inside the runtime adapter."
+    },
+    {
+      "id": "workflow.sbp_strikezone_digest",
+      "path": "runtime/workflows/sbp_strikezone_digest.py",
+      "related_paths": [
+        "runtime/execution_adapters/execute.py",
+        "runtime/workflows/registry/sbp_strikezone_digest.yaml"
+      ],
+      "layer": "aor_workflow",
+      "call_kind": "shared_runtime_model_generation",
+      "providers": [
+        "configured_runtime_provider"
+      ],
+      "credential_refs": [
+        "runtime execution adapter provider credential"
+      ],
+      "entry_points": [
+        "StrikeZoneDigestHandler.generate_content"
+      ],
+      "evidence_markers": [
+        "from runtime.execution_adapters.execute import",
+        "execute_synthesis(",
+        "execution_adapter=execution_adapter",
+        "Feature code does not import SDKs, call providers, or read provider secrets."
+      ],
+      "provider_state_policy": "emit_provider_state_ledger_via_shared_adapter",
+      "provider_state_ledger_status": "VERIFIED",
+      "telemetry_owner": "runtime/providers/state_ledger.py",
+      "status": "VERIFIED",
+      "notes": "SBP synthesis routes through the shared execution adapter and does not read provider secrets or call providers directly; provider-state events are emitted by runtime.execution_adapter."
+    },
+    {
+      "id": "workflow.hermes_review_synthesis",
+      "path": "runtime/workflows/hermes_review_execute.py",
+      "related_paths": [
+        "runtime/execution_adapters/execute.py",
+        "runtime/hermes/model_config.yaml"
+      ],
+      "layer": "aor_review_workflow",
+      "call_kind": "shared_runtime_model_generation",
+      "providers": [
+        "configured_hermes_provider"
+      ],
+      "credential_refs": [
+        "ANTHROPIC_API_KEY"
+      ],
+      "entry_points": [
+        "_execute_synthesis",
+        "run_hermes_review_execute"
+      ],
+      "evidence_markers": [
+        "from runtime.execution_adapters.execute import execute_synthesis",
+        "execution_adapter=\"hermes\"",
+        "return None"
+      ],
+      "provider_state_policy": "emit_provider_state_ledger_via_shared_adapter",
+      "provider_state_ledger_status": "VERIFIED",
+      "telemetry_owner": "runtime/providers/state_ledger.py",
+      "status": "VERIFIED",
+      "notes": "Hermes review synthesis is fail-open but now calls the shared adapter, so successful model attempts append provider-state evidence."
+    },
+    {
+      "id": "source_intelligence.output_anthropic_generation",
+      "path": "runtime/source_intelligence/output/generator.py",
+      "related_paths": [
+        "runtime/source_intelligence/output/test_generator.py"
+      ],
+      "layer": "source_intelligence_output_generation",
+      "call_kind": "source_intelligence_generation",
+      "providers": [
+        "anthropic",
+        "local_stub"
+      ],
+      "credential_refs": [
+        "ANTHROPIC_API_KEY"
+      ],
+      "entry_points": [
+        "AnthropicGenerationAdapter.generate",
+        "get_generation_adapter",
+        "generate_output"
+      ],
+      "evidence_markers": [
+        "class AnthropicGenerationAdapter",
+        "ANTHROPIC_API_KEY",
+        "self._client.messages.create("
+      ],
+      "provider_state_policy": "source_intelligence_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/source_intelligence",
+      "status": "PARTIAL",
+      "notes": "This is a Source Intelligence generation adapter, not the runtime fallback chain. A later pass should decide whether to migrate it to the shared provider adapter or add SIC-specific provider telemetry."
+    },
+    {
+      "id": "source_intelligence.openai_embedding",
+      "path": "runtime/source_intelligence/indexes/providers/openai_embedder.py",
+      "related_paths": [
+        "runtime/source_intelligence/indexes/backend_registry.py",
+        "runtime/source_intelligence/indexes/embedder.py"
+      ],
+      "layer": "source_intelligence_indexing",
+      "call_kind": "embedding_generation",
+      "providers": [
+        "openai",
+        "local_stub",
+        "local_word"
+      ],
+      "credential_refs": [
+        "OPENAI_API_KEY"
+      ],
+      "entry_points": [
+        "OpenAIEmbedder.embed",
+        "check_availability"
+      ],
+      "evidence_markers": [
+        "class OpenAIEmbedder",
+        "OPENAI_API_KEY",
+        "self._client.embeddings.create("
+      ],
+      "provider_state_policy": "source_intelligence_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/source_intelligence/indexes",
+      "status": "PARTIAL",
+      "notes": "Embedding calls are SIC indexing telemetry and should not drive runtime primary/fallback governance without a separate migration decision."
+    },
+    {
+      "id": "connector.perplexity_capture",
+      "path": "runtime/capture/connectors/perplexity_connector.py",
+      "related_paths": [
+        "runtime/acquisition/live_sources.py",
+        "runtime/cli/main.py",
+        "runtime/acquisition/connector_health.py"
+      ],
+      "layer": "capture_connector",
+      "call_kind": "external_ai_capture_digest",
+      "providers": [
+        "perplexity"
+      ],
+      "credential_refs": [
+        "PERPLEXITY_API_KEY"
+      ],
+      "entry_points": [
+        "query_perplexity",
+        "capture_from_perplexity"
+      ],
+      "evidence_markers": [
+        "PERPLEXITY_API_KEY",
+        "https://api.perplexity.ai/chat/completions",
+        "urllib.request.urlopen(req"
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition/connector_health.py",
+      "status": "VERIFIED",
+      "notes": "Perplexity is a capture/acquisition connector that produces quarantined or staged source material. Acquisition live-source runs now record success/failure connector-health events rather than runtime fallback-governance events."
+    },
+    {
+      "id": "connector.grok_capture",
+      "path": "runtime/capture/connectors/grok_connector.py",
+      "related_paths": [
+        "runtime/acquisition/live_sources.py",
+        "runtime/cli/main.py",
+        "runtime/acquisition/connector_health.py"
+      ],
+      "layer": "capture_connector",
+      "call_kind": "external_ai_capture_digest",
+      "providers": [
+        "xai"
+      ],
+      "credential_refs": [
+        "XAI_API_KEY"
+      ],
+      "entry_points": [
+        "query_grok",
+        "capture_from_grok"
+      ],
+      "evidence_markers": [
+        "XAI_API_KEY",
+        "https://api.x.ai/v1/chat/completions",
+        "urllib.request.urlopen(req"
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition/connector_health.py",
+      "status": "VERIFIED",
+      "notes": "Grok is a capture/acquisition connector. Acquisition live-source runs now record success/failure connector-health events rather than runtime provider fallback evidence."
+    },
+    {
+      "id": "acquisition.live_sources_orchestrator",
+      "path": "runtime/acquisition/live_sources.py",
+      "related_paths": [
+        "runtime/capture/connectors/perplexity_connector.py",
+        "runtime/capture/connectors/grok_connector.py",
+        "runtime/acquisition/adapters/rss_live_adapter.py",
+        "runtime/acquisition/adapters/web_scrape_adapter.py",
+        "runtime/acquisition/adapters/email_adapter.py",
+        "runtime/acquisition/adapters/google_adapter.py",
+        "runtime/acquisition/connector_health.py"
+      ],
+      "layer": "acquisition_orchestration",
+      "call_kind": "connector_orchestration",
+      "providers": [
+        "perplexity",
+        "xai",
+        "rss",
+        "web",
+        "imap",
+        "google"
+      ],
+      "credential_refs": [
+        "PERPLEXITY_API_KEY",
+        "XAI_API_KEY",
+        "IMAP_HOST",
+        "IMAP_USER",
+        "IMAP_PASSWORD",
+        "GMAIL_IMAP_USER",
+        "GMAIL_APP_PASSWORD",
+        "GOOGLE_OAUTH_TOKEN",
+        "GOOGLE_API_KEY"
+      ],
+      "entry_points": [
+        "run_live_captures",
+        "run_all_live_acquisitions"
+      ],
+      "evidence_markers": [
+        "run_live_captures",
+        "_run_perplexity_query",
+        "_run_grok_query",
+        "append_connector_health_event",
+        "run_rss_acquisitions",
+        "run_web_scrape_acquisitions",
+        "run_email_acquisitions",
+        "run_google_doc_acquisitions"
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition",
+      "status": "VERIFIED",
+      "notes": "Live acquisition intentionally treats connector failures as non-fatal skipped sources. Perplexity/Grok outcomes are now recorded in the acquisition connector-health ledger, not the provider-state ledger."
+    },
+    {
+      "id": "acquisition.connector_health_ledger",
+      "path": "runtime/acquisition/connector_health.py",
+      "related_paths": [
+        "runtime/acquisition/live_sources.py",
+        "runtime/cli/main.py",
+        "runtime/tests/test_acquisition_connector_health.py"
+      ],
+      "layer": "acquisition_telemetry",
+      "call_kind": "connector_health_event_ledger",
+      "providers": [
+        "perplexity",
+        "xai",
+        "rss",
+        "web",
+        "imap",
+        "google",
+        "unknown_connector"
+      ],
+      "credential_refs": [],
+      "entry_points": [
+        "append_connector_health_event",
+        "record_connector_health_event",
+        "load_connector_health_events",
+        "summarize_connector_health"
+      ],
+      "evidence_markers": [
+        "CONNECTOR_HEALTH_RELATIVE_PATH",
+        "connector.capture_succeeded",
+        "connector.capture_failed",
+        "record_connector_health_event",
+        "summarize_connector_health"
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition/connector_health.py",
+      "status": "VERIFIED",
+      "notes": "Acquisition-owned JSONL telemetry for connector success, failure, and skipped-provider outcomes. This ledger is explicitly separate from runtime provider fallback governance."
+    },
+    {
+      "id": "acquisition.google_docs_drive",
+      "path": "runtime/acquisition/adapters/google_adapter.py",
+      "related_paths": [
+        "runtime/acquisition/live_sources.py",
+        "runtime/acquisition/connector_health.py"
+      ],
+      "layer": "acquisition_connector",
+      "call_kind": "document_and_drive_fetch",
+      "providers": [
+        "google"
+      ],
+      "credential_refs": [
+        "GOOGLE_OAUTH_TOKEN",
+        "GOOGLE_API_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_FILE"
+      ],
+      "entry_points": [
+        "acquire_google_doc",
+        "acquire_google_drive_folder",
+        "_fetch_url"
+      ],
+      "evidence_markers": [
+        "GOOGLE_OAUTH_TOKEN",
+        "GOOGLE_API_KEY",
+        "urllib.request.urlopen(req",
+        "record_connector_health_event",
+        "connector_id=\"google_docs\"",
+        "connector_id=\"google_drive\""
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition/connector_health.py",
+      "status": "VERIFIED",
+      "notes": "Google Docs and Drive acquisition now records success/failure/skipped connector-health events without emitting provider-state fallback governance events."
+    },
+    {
+      "id": "acquisition.email_imap",
+      "path": "runtime/acquisition/adapters/email_adapter.py",
+      "related_paths": [
+        "runtime/acquisition/live_sources.py",
+        "runtime/acquisition/connector_health.py"
+      ],
+      "layer": "acquisition_connector",
+      "call_kind": "imap_email_fetch",
+      "providers": [
+        "imap"
+      ],
+      "credential_refs": [
+        "IMAP_HOST",
+        "IMAP_USER",
+        "IMAP_PASSWORD",
+        "GMAIL_IMAP_USER",
+        "GMAIL_APP_PASSWORD"
+      ],
+      "entry_points": [
+        "acquire_email_messages",
+        "run_email_acquisitions"
+      ],
+      "evidence_markers": [
+        "def acquire_email_messages(",
+        "imaplib.IMAP4_SSL",
+        "record_connector_health_event",
+        "connector_id=\"email_imap\""
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition/connector_health.py",
+      "status": "VERIFIED",
+      "notes": "IMAP email acquisition now records success, credential failure, mailbox failure, no-message skip, and empty-content skip outcomes as connector health."
+    },
+    {
+      "id": "acquisition.rss_fetch",
+      "path": "runtime/acquisition/adapters/rss_live_adapter.py",
+      "related_paths": [
+        "runtime/capture/connectors/rss_connector.py",
+        "runtime/acquisition/connector_health.py"
+      ],
+      "layer": "capture_and_acquisition_connector",
+      "call_kind": "rss_atom_fetch",
+      "providers": [
+        "rss"
+      ],
+      "credential_refs": [],
+      "entry_points": [
+        "acquire_rss_feed",
+        "run_rss_acquisitions"
+      ],
+      "evidence_markers": [
+        "fetch_feed",
+        "parse_rss",
+        "record_connector_health_event",
+        "connector_id=\"rss\""
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition/connector_health.py",
+      "status": "VERIFIED",
+      "notes": "RSS acquisition now records success, failure, connector-unavailable skip, empty-feed skip, and empty-content skip outcomes as connector health."
+    },
+    {
+      "id": "acquisition.web_scrape",
+      "path": "runtime/acquisition/adapters/web_scrape_adapter.py",
+      "related_paths": [
+        "runtime/acquisition/live_sources.py",
+        "runtime/capture/connectors/browser_connector.py",
+        "runtime/acquisition/connector_health.py"
+      ],
+      "layer": "acquisition_connector",
+      "call_kind": "web_page_fetch",
+      "providers": [
+        "web"
+      ],
+      "credential_refs": [],
+      "entry_points": [
+        "acquire_web_page",
+        "_fetch_html"
+      ],
+      "evidence_markers": [
+        "def _fetch_html(",
+        "urllib.request.urlopen(req",
+        "html_to_markdown",
+        "record_connector_health_event",
+        "connector_id=\"web_scrape\""
+      ],
+      "provider_state_policy": "connector_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/acquisition/connector_health.py",
+      "status": "VERIFIED",
+      "notes": "Web scrape acquisition now records success, failure, connector-unavailable skip, and empty-content skip outcomes as connector health."
+    },
+    {
+      "id": "delivery.discord_webhook",
+      "path": "runtime/sbp/delivery_adapters.py",
+      "related_paths": [
+        "runtime/workflows/sbp_strikezone_digest.py",
+        "runtime/sbp/delivery_health.py",
+        "runtime/tests/test_sbp_delivery_health.py"
+      ],
+      "layer": "delivery_adapter",
+      "call_kind": "external_webhook_delivery",
+      "providers": [
+        "discord"
+      ],
+      "credential_refs": [
+        "DISCORD_WEBHOOK_URL",
+        "manifest_declared_webhook_env_var"
+      ],
+      "entry_points": [
+        "DiscordDeliveryAdapter.deliver",
+        "DiscordDeliveryAdapter._post_embeds"
+      ],
+      "evidence_markers": [
+        "class DiscordDeliveryAdapter",
+        "DISCORD_WEBHOOK_URL",
+        "urllib.request.urlopen(req",
+        "record_delivery_health_event",
+        "adapter_id=self.adapter_type"
+      ],
+      "provider_state_policy": "delivery_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/sbp/delivery_health.py",
+      "status": "VERIFIED",
+      "notes": "Discord delivery is not model execution. It emits delivery-health success/failure telemetry and does not feed provider fallback governance."
+    },
+    {
+      "id": "delivery.whop_api",
+      "path": "runtime/sbp/delivery_adapters.py",
+      "related_paths": [
+        "runtime/aor/test_phase9_sbp_whop.py",
+        "runtime/sbp/delivery_health.py",
+        "runtime/tests/test_sbp_delivery_health.py"
+      ],
+      "layer": "delivery_adapter",
+      "call_kind": "external_forum_post_delivery",
+      "providers": [
+        "whop"
+      ],
+      "credential_refs": [
+        "WHOP_API_KEY",
+        "manifest_declared_webhook_env_var",
+        "manifest_declared_channel_id"
+      ],
+      "entry_points": [
+        "WhopDeliveryAdapter.deliver",
+        "WhopDeliveryAdapter._post_whop"
+      ],
+      "evidence_markers": [
+        "class WhopDeliveryAdapter",
+        "WHOP_API_KEY",
+        "urllib.request.urlopen(req",
+        "record_delivery_health_event",
+        "provider=\"whop\""
+      ],
+      "provider_state_policy": "delivery_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/sbp/delivery_health.py",
+      "status": "VERIFIED",
+      "notes": "Whop delivery is not model execution. It emits delivery-health success/failure telemetry and does not feed provider fallback governance."
+    },
+    {
+      "id": "delivery.health_ledger",
+      "path": "runtime/sbp/delivery_health.py",
+      "related_paths": [
+        "runtime/sbp/delivery_adapters.py",
+        "runtime/cli/main.py",
+        "runtime/tests/test_sbp_delivery_health.py"
+      ],
+      "layer": "delivery_telemetry",
+      "call_kind": "append_only_delivery_health_ledger",
+      "providers": [
+        "discord",
+        "whop"
+      ],
+      "credential_refs": [],
+      "entry_points": [
+        "record_delivery_health_event",
+        "append_delivery_health_event",
+        "summarize_delivery_health"
+      ],
+      "evidence_markers": [
+        "DELIVERY_HEALTH_RELATIVE_PATH",
+        "DeliveryHealthEvent",
+        "summarize_delivery_health"
+      ],
+      "provider_state_policy": "delivery_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/sbp/delivery_health.py",
+      "status": "VERIFIED",
+      "notes": "Delivery-health is adjacent telemetry for external delivery adapters. It is read by sbp delivery-health and remains separate from provider-state fallback governance."
+    },
+    {
+      "id": "runtime.lifecycle_http_health_probe",
+      "path": "runtime/lifecycle/health_cli.py",
+      "related_paths": [
+        "runtime/lifecycle"
+      ],
+      "layer": "runtime_lifecycle",
+      "call_kind": "runtime_health_probe",
+      "providers": [
+        "runtime_endpoint"
+      ],
+      "credential_refs": [],
+      "entry_points": [
+        "check_health",
+        "_probe_http_url"
+      ],
+      "evidence_markers": [
+        "def _probe_http_url(",
+        "urllib.request.urlopen(url",
+        "healthy"
+      ],
+      "provider_state_policy": "runtime_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/lifecycle",
+      "status": "IMPLEMENTED",
+      "notes": "Lifecycle HTTP probes establish adapter/runtime health for provider-status but do not emit provider fallback events."
+    },
+    {
+      "id": "setup.endpoint_probe",
+      "path": "runtime/setup_cli.py",
+      "related_paths": [
+        "runtime/setup_state.py",
+        "runtime/policy/gateway_allowlists.json"
+      ],
+      "layer": "setup_validation",
+      "call_kind": "endpoint_and_secret_reference_probe",
+      "providers": [
+        "configured_endpoint"
+      ],
+      "credential_refs": [
+        "declared_secret_reference_only"
+      ],
+      "entry_points": [
+        "_probe_http_endpoint",
+        "_probe_secret_reference"
+      ],
+      "evidence_markers": [
+        "def _probe_http_endpoint(",
+        "urllib.request.urlopen(url",
+        "secret_reference_probe"
+      ],
+      "provider_state_policy": "runtime_health_telemetry",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/setup_cli.py",
+      "status": "IMPLEMENTED",
+      "notes": "Setup probes validate references and endpoints. They are not model execution or fallback control events."
+    },
+    {
+      "id": "adapter.openai_responses_mcp_dry_run",
+      "path": "runtime/adapters/openai/responses_mcp_payload.py",
+      "related_paths": [
+        "runtime/workflows/openai_shadow.py",
+        "runtime/policy/adapters/openai_config.yaml"
+      ],
+      "layer": "adapter_control_plane",
+      "call_kind": "dry_run_payload_builder",
+      "providers": [
+        "openai"
+      ],
+      "credential_refs": [],
+      "entry_points": [
+        "build_responses_mcp_payload",
+        "validate_payload_policy",
+        "write_payload_draft"
+      ],
+      "evidence_markers": [
+        "dry_run",
+        "live_api_call",
+        "False",
+        "build_responses_mcp_payload"
+      ],
+      "provider_state_policy": "dry_run_control_plane_audit",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/adapters/openai",
+      "status": "VERIFIED",
+      "notes": "This is an OpenAI Responses/MCP payload template builder. It does not call OpenAI or read credentials."
+    },
+    {
+      "id": "adapter.n8n_call_draft",
+      "path": "runtime/adapters/n8n/workflow_policy.py",
+      "related_paths": [
+        "runtime/workflows/openai_shadow.py",
+        "runtime/policy/adapters/n8n_workflows.yaml"
+      ],
+      "layer": "adapter_control_plane",
+      "call_kind": "dry_run_workflow_call_builder",
+      "providers": [
+        "n8n"
+      ],
+      "credential_refs": [
+        "declared_workflow_secret_reference_only"
+      ],
+      "entry_points": [
+        "build_n8n_call_draft",
+        "validate_registry",
+        "validate_workflow_policy"
+      ],
+      "evidence_markers": [
+        "def build_n8n_call_draft(",
+        "live_http_call",
+        "False"
+      ],
+      "provider_state_policy": "dry_run_control_plane_audit",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/adapters/n8n",
+      "status": "VERIFIED",
+      "notes": "n8n call drafts are governed dry-run templates. They are not live provider calls."
+    },
+    {
+      "id": "workflow.openai_operator_research_shadow",
+      "path": "runtime/workflows/openai_shadow.py",
+      "related_paths": [
+        "runtime/adapters/openai/responses_mcp_payload.py",
+        "runtime/adapters/n8n/workflow_policy.py",
+        "runtime/workflows/registry/openai_operator_research_shadow.yaml"
+      ],
+      "layer": "aor_shadow_workflow",
+      "call_kind": "dry_run_adapter_orchestration",
+      "providers": [
+        "openai",
+        "n8n"
+      ],
+      "credential_refs": [],
+      "entry_points": [
+        "run_openai_operator_research_shadow"
+      ],
+      "evidence_markers": [
+        "never calls",
+        "live_api_calls",
+        "False",
+        "build_responses_mcp_payload",
+        "build_n8n_call_draft"
+      ],
+      "provider_state_policy": "dry_run_control_plane_audit",
+      "provider_state_ledger_status": "NOT EMITTING",
+      "telemetry_owner": "runtime/workflows/openai_shadow.py",
+      "status": "VERIFIED",
+      "notes": "The OpenAI shadow workflow prepares local drafts and governed request templates only. It should remain outside provider-state fallback governance until live model calls are enabled."
+    }
+  ]
+}

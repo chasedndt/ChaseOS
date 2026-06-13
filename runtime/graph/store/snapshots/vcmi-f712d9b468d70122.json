@@ -1,0 +1,280 @@
+{
+  "snapshot_id": "vcmi-f712d9b468d70122",
+  "created_at": "2026-05-28T00:11:45.486024+00:00",
+  "vault_root": "C:\\Users\\chaseos\\Documents\\chaseos_obsidian",
+  "extraction_scope": [
+    "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-45b4926d09432788.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260528-001133-source-visual-captur_4d18f3a392bf.json",
+    "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/workspace.json",
+    "03_INPUTS/00_QUARANTINE/Sources/20260528-001133__source__visual-capture__packaged-capture-action-pass64-full-downstrea.md"
+  ],
+  "nodes": [
+    {
+      "node_id": "0836bb451aa09657",
+      "label": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-45b4926d09432788.json",
+      "node_type": "source_intelligence_core_ingestion_artifact",
+      "source_file": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-45b4926d09432788.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "artifact_digest": "0917fe89106cf02479323365bb91ce52daea1858b213c54cc23f28ff184797b6",
+        "ingestion_digest": "a1b5acd6669fcc52e802d687bf865b97d521b318fe432c0c6eee32afaa872ac1",
+        "pass_id": "visual-capture-markdown-ingestion-pass35-source-pack-sic-ingestion-executor"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:ingestion_artifact"
+    },
+    {
+      "node_id": "4f3d1f6d17366a0a",
+      "label": "Packaged Capture Action pass64-full-downstream-20260528-r2",
+      "node_type": "source_intelligence_core_source_package",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260528-001133-source-visual-captur_4d18f3a392bf.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb",
+        "source_type": "markdown",
+        "user_trust_level": "reviewed",
+        "chunk_count": 6,
+        "normalized_text_char_count": 7298,
+        "origin_path": "C:\\Users\\chaseos\\Documents\\chaseos_obsidian\\03_INPUTS\\00_QUARANTINE\\Sources\\20260528-001133__source__visual-capture__packaged-capture-action-pass64-full-downstrea.md",
+        "origin_url": "https://example.test/chaseos/packaged-capture-action/pass64-full-downstream-20260528-r2"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package"
+    },
+    {
+      "node_id": "bf9463323c332252",
+      "label": "vcmi-reviewed-captures",
+      "node_type": "source_intelligence_core_workspace",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/workspace.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "workspace_slug": "vcmi-reviewed-captures",
+        "workspace_uuid": "621130db-575e-46fe-a9c6-556add2519d3",
+        "source_count": 3,
+        "index_status": "not-indexed"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:workspace"
+    },
+    {
+      "node_id": "32a546d80fac3374",
+      "label": "20260528-001133__source__visual-capture__packaged-capture-action-pass64-full-downstrea",
+      "node_type": "file",
+      "source_file": "03_INPUTS/00_QUARANTINE/Sources/20260528-001133__source__visual-capture__packaged-capture-action-pass64-full-downstrea.md",
+      "source_line": null,
+      "domain": "capture",
+      "project": null,
+      "properties": {
+        "language": "markdown"
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:capture_markdown"
+    },
+    {
+      "node_id": "c2bf9f536325c664",
+      "label": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0000",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260528-001133-source-visual-captur_4d18f3a392bf.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb",
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0000",
+        "chunk_index": 1,
+        "text_sha256": "cad437017611aad066e230acd86bd69caeb2b3b34f6ed87140d3c292020db06b",
+        "text_char_count": 1046
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "dba648554c171ee6",
+      "label": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0001",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260528-001133-source-visual-captur_4d18f3a392bf.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb",
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0001",
+        "chunk_index": 2,
+        "text_sha256": "22035399f5ee621e00d1c9e218ab564c971cb4982049611a1d4eeb0c6bd0caf0",
+        "text_char_count": 391
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "630d0256579ed187",
+      "label": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0002",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260528-001133-source-visual-captur_4d18f3a392bf.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb",
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0002",
+        "chunk_index": 3,
+        "text_sha256": "fbf13c196d35195126cb4bada313017bcc3ae201f33b061ddc5999c19c0241c8",
+        "text_char_count": 1120
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "c6155d430f9d4b34",
+      "label": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0003",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260528-001133-source-visual-captur_4d18f3a392bf.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb",
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0003",
+        "chunk_index": 4,
+        "text_sha256": "45a46d3a99930bb5d68078106a625d02d3c5c5df3388509cca86c24d9b4d1697",
+        "text_char_count": 1105
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    },
+    {
+      "node_id": "ca18176aa176be23",
+      "label": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0004",
+      "node_type": "source_intelligence_core_chunk",
+      "source_file": "runtime/source_intelligence/workspaces/vcmi-reviewed-captures/source_packages/20260528-001133-source-visual-captur_4d18f3a392bf.json",
+      "source_line": null,
+      "domain": "sic",
+      "project": null,
+      "properties": {
+        "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb",
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0004",
+        "chunk_index": 5,
+        "text_sha256": "9fe4239c060ca50cde6cb46f86f6fc646b211eaa83e7f11e6c972d5ca811ee93",
+        "text_char_count": 469
+      },
+      "confidence": "EXTRACTED",
+      "provenance": "vcmi_pass36:source_package_chunk"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "bdc652a655050669",
+      "source_id": "0836bb451aa09657",
+      "target_id": "4f3d1f6d17366a0a",
+      "relation": "ingested_source_package",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb"
+      },
+      "provenance": "vcmi_pass36:ingestion_artifact_to_source_package"
+    },
+    {
+      "edge_id": "0f8bd6e0376e8be5",
+      "source_id": "4f3d1f6d17366a0a",
+      "target_id": "bf9463323c332252",
+      "relation": "belongs_to_workspace",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "workspace_slug": "vcmi-reviewed-captures"
+      },
+      "provenance": "vcmi_pass36:source_package_to_workspace"
+    },
+    {
+      "edge_id": "ed9c6e98012fadb0",
+      "source_id": "4f3d1f6d17366a0a",
+      "target_id": "32a546d80fac3374",
+      "relation": "derived_from_capture_markdown",
+      "confidence": "EXTRACTED",
+      "properties": {},
+      "provenance": "vcmi_pass36:source_package_to_capture_markdown"
+    },
+    {
+      "edge_id": "d8e1d7f7875caf0c",
+      "source_id": "4f3d1f6d17366a0a",
+      "target_id": "c2bf9f536325c664",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0000"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "f3b03395a138f73c",
+      "source_id": "4f3d1f6d17366a0a",
+      "target_id": "dba648554c171ee6",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0001"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "8f34c2fccca11f01",
+      "source_id": "4f3d1f6d17366a0a",
+      "target_id": "630d0256579ed187",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0002"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "d1b52ae3042c26c9",
+      "source_id": "4f3d1f6d17366a0a",
+      "target_id": "c6155d430f9d4b34",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0003"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    },
+    {
+      "edge_id": "4cfad752fd7b533d",
+      "source_id": "4f3d1f6d17366a0a",
+      "target_id": "ca18176aa176be23",
+      "relation": "contains_chunk",
+      "confidence": "EXTRACTED",
+      "properties": {
+        "chunk_id": "9c641351-7a7d-4651-acdb-2245b82f56bb_c0004"
+      },
+      "provenance": "vcmi_pass36:source_package_to_chunk"
+    }
+  ],
+  "community_assignments": {},
+  "build_info": {
+    "builder": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor",
+    "source_model": "acquisition.visual_capture_source_pack_sic_graph_indexing_executor.v1",
+    "source_readiness_pass_id": "visual-capture-markdown-ingestion-pass36-source-pack-sic-graph-indexing-readiness",
+    "source_readiness_policy_id": "vcmi.reviewed_capture_source_pack_sic_graph_indexing_readiness.v1",
+    "source_intelligence_core_ingestion_artifact_path": "07_LOGS/Agent-Activity/_vcmi_sic_ingestion_approvals/_ingestions/vcmi-sic-ingestion-appr-45b4926d09432788.json",
+    "source_intelligence_core_ingestion_artifact_digest": "0917fe89106cf02479323365bb91ce52daea1858b213c54cc23f28ff184797b6",
+    "source_intelligence_core_ingestion_digest": "a1b5acd6669fcc52e802d687bf865b97d521b318fe432c0c6eee32afaa872ac1",
+    "graph_index_preview_packet_digest": "f712d9b468d7012217c4030c8803350d45cb55b780605b692df144d6312d2d3d",
+    "graph_snapshot_written": true,
+    "canonical_mutation_performed": false
+  },
+  "metadata": {
+    "policy_id": "vcmi.reviewed_capture_source_pack_sic_graph_indexing_executor.v1",
+    "pass_id": "visual-capture-markdown-ingestion-pass37-source-pack-graph-indexing-executor",
+    "record_type": "vcmi_source_pack_source_intelligence_core_graph_snapshot",
+    "source_package_id": "9c641351-7a7d-4651-acdb-2245b82f56bb",
+    "target_workspace_id": "vcmi-reviewed-captures",
+    "canonical_mutation_allowed": false,
+    "canonical_knowledge_promotion_performed": false
+  }
+}

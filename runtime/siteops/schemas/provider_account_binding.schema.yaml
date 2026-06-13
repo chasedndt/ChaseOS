@@ -1,0 +1,1 @@
+{"object": "ProviderAccountBinding", "required": ["provider_account_binding_id", "tenant_id", "provider_id", "credential_ref_id", "budget_policy_id", "allowed_capabilities", "status"], "scope_required": ["tenant_id"], "optional_scope": ["user_id"], "secret_values_allowed": false}

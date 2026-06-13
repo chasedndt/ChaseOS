@@ -1,0 +1,42 @@
+---
+schema_id: real_client_scope_approval
+name: Real Client Scope Approval
+version: "0.1"
+status: active
+required_fields:
+  - type
+  - approval_id
+  - client_label
+  - client_approved_scope_id
+  - approval_status
+  - approval_decision
+  - approved_read_paths
+  - redaction_policy
+  - delivery_boundary
+  - operator_attested_scope_approved
+  - external_send_authorized
+  - payment_mutation_authorized
+  - crm_mutation_authorized
+  - provider_calls_authorized
+  - browser_actions_authorized
+  - revenue_claim_authorized
+field_rules:
+  type: must equal ventureops-real-client-scope-approval
+  approval_status: must equal approved
+  approval_decision: must equal approved
+  operator_attested_scope_approved: must equal true
+  approved_read_paths: declared relative paths only; no secrets, credentials, env files, parent traversal, or broad filesystem roots
+  redaction_policy: client_safe_summary_only, metadata_only, or redacted_extracts_only
+  delivery_boundary: must equal no_external_delivery for scope approval
+  side_effect_authority_flags: external_send/payment/crm/provider/browser/revenue authorization fields must all be false
+forbidden_fields:
+  - api_key
+  - token
+  - secret
+  - password
+  - seed_phrase
+  - private_key
+  - cookie
+completion_boundary: >
+  This schema validates operator scope approval only. It is not proof of a live
+  client workflow, live external delivery, payment, CRM mutation, or revenue.

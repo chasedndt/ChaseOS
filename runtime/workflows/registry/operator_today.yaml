@@ -1,0 +1,64 @@
+---
+# operator_today — Daily Operator Briefing Workflow
+# ChaseOS AOR Phase 9 — First-Wave Workflow
+#
+# Generates the daily operator briefing from vault state:
+# active sprint, open projects, recent captures, pending decisions.
+#
+id: operator_today
+name: "Operator Today Briefing"
+version: "2.0"
+description: "Daily operator briefing — four-layer model (CANONICAL / CARRY-FORWARD / SOURCED / SYNTHESIS). Reads Now.md, ROADMAP.md, active project OS files, carry-forward from last close note, AOR activity, and decision ledger."
+
+task_type: operator-briefing
+role_card: operator-briefing
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: no_protected_file_writes
+
+inputs:
+  - date            # ISO date string (YYYY-MM-DD); defaults to today if not provided
+  - output_format   # "markdown" | "json"; defaults to "markdown"
+
+outputs:
+  - briefing_text   # structured briefing as markdown
+  - brief_path      # path to the written operator brief
+
+writeback_targets:
+  - "07_LOGS/Operator-Briefs/"
+
+failure_behavior: escalate
+
+rollback_path: "delete any partial operator brief written during this run"
+
+approval_rule: none  # manual trigger; operator runs this explicitly
+
+audit_expectations:
+  - "workflow_id recorded"
+  - "date of briefing recorded"
+  - "files read listed in outputs"
+  - "brief path recorded"
+  - "contradictions_flagged count recorded"
+  - "carry_forward_date recorded"
+
+schedule: cron  # 0 7 * * 1-5 America/New_York via OpenClaw; governed by ChaseOS native schedule intent
+schedule_intent_ref: "runtime/schedules/sch-operator-today-0700.yaml"  # Phase 9 Schedule Layer — live
+
+briefing_architecture_ref: "06_AGENTS/Operator-Briefing-Architecture.md"  # v2 — IMPLEMENTED
+
+notes: >
+  Phase 9 Briefing V2: operator_today now implements the four-layer briefing model
+  defined in 06_AGENTS/Operator-Briefing-Architecture.md.
+
+  Layers:
+    [CANONICAL]     Now.md + ROADMAP.md + active Project-OS files (exact vault state)
+    [CARRY-FORWARD] Most recent close note from 07_LOGS/Operator-Briefs/ (v1 and v2 formats)
+    [SOURCED]       Build-Logs/ (5 recent), Agent-Activity/ (last 48h), Decision-Ledger/Index.md
+    [SYNTHESIS]     AI-synthesized recommendations — labeled, not canonical
+
+  Contradictions between Now.md and ROADMAP.md phase lines are flagged explicitly.
+  Files read are logged in handler output and in the brief document itself.
+  Schedule: 0 7 * * 1-5 America/New_York via OpenClaw → chaseos run → AOR path.
+  ChaseOS native schedule intent: runtime/schedules/sch-operator-today-0700.yaml (live).

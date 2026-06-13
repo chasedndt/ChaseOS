@@ -1,0 +1,53 @@
+{
+  "object_type": "workflow_manifest",
+  "workflow_id": "tradingview.indicator.review",
+  "display_name": "TradingView Indicator Review",
+  "status": "PARTIAL",
+  "execution_status": "dry_run_ready",
+  "live_execution_status": "NOT BUILT",
+  "workflow_type": "browser_capture_plus_analysis",
+  "mode": "assisted",
+  "site_profile": "tradingview",
+  "inputs": [
+    {
+      "name": "indicator_source",
+      "required": true
+    },
+    {
+      "name": "rulebook_ref",
+      "required": false
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "validate_inputs"
+    },
+    {
+      "step_id": "capture_indicator_description_or_user_provided_code"
+    },
+    {
+      "step_id": "compare_against_trading_rulebook"
+    },
+    {
+      "step_id": "draft_review_note"
+    },
+    {
+      "step_id": "write_run_audit"
+    }
+  ],
+  "approval_required": [
+    "before_project_writeback",
+    "before_alert_setup"
+  ],
+  "blocked_actions": [
+    "publish_publicly",
+    "connect_broker",
+    "place_trade",
+    "create_live_alert"
+  ],
+  "outputs": [
+    "indicator_review_note_candidate",
+    "screenshot_trace",
+    "browser_run_audit"
+  ]
+}

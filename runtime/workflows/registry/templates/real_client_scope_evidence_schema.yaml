@@ -1,0 +1,33 @@
+---
+schema_id: real_client_scope_evidence
+name: Real Client Scope Evidence
+version: "0.1"
+status: active
+required_fields:
+  - type
+  - client_approved_scope_id
+  - client_label
+  - approval_id
+  - approval_status
+  - approval_artifact_path
+  - approved_read_paths
+  - redaction_policy
+  - delivery_boundary
+field_rules:
+  type: must equal ventureops-real-client-scope-evidence
+  approval_status: must equal approved
+  approval_artifact_path: declared relative path to a typed ventureops-real-client-scope-approval artifact inside the workspace
+  approved_read_paths: declared relative paths only; no secrets, credentials, env files, parent traversal, or broad filesystem roots
+  redaction_policy: client_safe_summary_only, metadata_only, or redacted_extracts_only
+  delivery_boundary: must equal no_external_delivery for the proof gate
+forbidden_fields:
+  - api_key
+  - token
+  - secret
+  - password
+  - seed_phrase
+  - private_key
+  - cookie
+completion_boundary: >
+  This schema validates scope evidence for the pre-live proof gate only. It is
+  not proof of a live client workflow, live external delivery, or live revenue.

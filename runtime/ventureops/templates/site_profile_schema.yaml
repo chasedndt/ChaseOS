@@ -1,0 +1,30 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for browser/site profile proposal artifacts."
+required_fields:
+  - site_name
+  - domain
+  - purpose
+  - user_approved_workflow_use_cases
+  - safe_read_actions
+  - safe_proposal_actions
+  - approval_required_actions
+  - forbidden_actions
+  - known_navigation_patterns
+  - known_friction_points
+  - selector_candidates
+  - screenshot_proof_requirements
+  - credential_boundaries
+  - cookie_session_token_handling
+  - browser_skill_candidates
+  - last_reviewed_date
+  - status
+status_values:
+  - candidate
+  - review
+  - approved
+  - retired
+authority_rules:
+  - "Site profiles are candidate/proposal artifacts until BOSL/Gate review."
+  - "No credential, cookie, token, password, API key, seed phrase, or session file may be read or stored."
+  - "Browser skill candidates cannot be activated directly by Mission Mode."

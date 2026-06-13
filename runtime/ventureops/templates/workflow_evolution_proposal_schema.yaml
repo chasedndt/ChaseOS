@@ -1,0 +1,42 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for approval-gated workflow evolution proposals."
+required_fields:
+  - proposal_id
+  - mission_id
+  - workflow_id
+  - current_workflow_version
+  - proposed_workflow_version
+  - proposal_type
+  - reason
+  - evidence
+  - risk_review
+  - expected_benefit
+  - failure_mode
+  - dry_run_plan
+  - approval_required
+  - auto_apply_allowed
+  - status
+status_values:
+  - draft
+  - pending_review
+  - approved
+  - rejected
+  - superseded
+  - applied
+proposal_types:
+  - threshold_change
+  - new_required_input
+  - new_blocked_condition
+  - new_approval_gate
+  - new_browser_skill_candidate
+  - new_site_profile
+  - new_scorecard_metric
+  - new_runtime_routing_rule
+  - new_domain_playbook_rule
+  - workflow_deprecation
+authority_rules:
+  - "Workflow evolution proposals are observe-score-propose-approve-versioned-update artifacts."
+  - "Evidence-backed proposals require proof cards and scorecards."
+  - "Auto-apply defaults false."
+  - "Weak-provider fallback cannot perform high-authority workflow evolution review."

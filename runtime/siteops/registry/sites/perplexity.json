@@ -1,0 +1,44 @@
+{
+  "object_type": "site_profile",
+  "site_id": "perplexity",
+  "display_name": "Perplexity",
+  "status": "PARTIAL",
+  "profile_status": "draft",
+  "category": "research_capture",
+  "risk_level": "medium",
+  "allowed_domains": [
+    "perplexity.ai"
+  ],
+  "auth_mode": "user_browser_session_or_api_adapter",
+  "known_workflows": [
+    "perplexity.research.capture"
+  ],
+  "allowed_actions": [
+    "browser.open",
+    "browser.inspect",
+    "browser.screenshot",
+    "browser.read_visible_text",
+    "api.query",
+    "file.write_quarantine"
+  ],
+  "blocked_actions": [
+    "publish_publicly",
+    "change_billing",
+    "change_account_settings",
+    "external_share"
+  ],
+  "approval_required": [
+    "paid_api_call_above_budget",
+    "external_share",
+    "canonical_promotion"
+  ],
+  "common_ui_anchors": {
+    "answer": "Answer",
+    "citations": "Sources"
+  },
+  "output_targets": {
+    "quarantine": "03_INPUTS/00_QUARANTINE/source/",
+    "source_packages": "07_LOGS/Source-Packages/",
+    "audit": "07_LOGS/Agent-Activity/"
+  }
+}

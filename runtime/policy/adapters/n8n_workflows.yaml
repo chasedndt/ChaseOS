@@ -1,0 +1,114 @@
+registry_id: "n8n-mcp-workflow-exposure"
+status: "dry_run_policy_with_call_governance"
+owner: "ChaseOS"
+default_exposed_to_mcp: false
+default_approval_required: true
+
+workflows:
+  - workflow_id: "send_discord_draft_alert"
+    purpose: "Prepare a Discord alert draft for operator review; no production post."
+    exposed_to_mcp: true
+    trigger_type: "mcp_tool"
+    approval_required: true
+    allowed_callers:
+      - "openai_operator_research_shadow"
+      - "chaseos_runtime_mcp"
+    reads:
+      - "07_LOGS/Operator-Briefs/_drafts/"
+    writes:
+      - "07_LOGS/Agent-Activity/"
+      - "07_LOGS/Operator-Briefs/_drafts/"
+    secrets_required:
+      - "discord_draft_webhook_reference"
+    current_status: "dry_run_candidate"
+
+  - workflow_id: "create_calendar_review_block"
+    purpose: "Draft a calendar review block request for approval."
+    exposed_to_mcp: false
+    trigger_type: "manual_or_mcp_tool"
+    approval_required: true
+    allowed_callers:
+      - "chaseos_runtime_mcp"
+    reads:
+      - "07_LOGS/Agent-Activity/"
+    writes:
+      - "07_LOGS/Agent-Activity/"
+    secrets_required:
+      - "calendar_oauth_reference"
+    current_status: "planned"
+
+  - workflow_id: "capture_research_digest"
+    purpose: "Capture a research digest draft into quarantine or draft logs after approval."
+    exposed_to_mcp: true
+    trigger_type: "mcp_tool"
+    approval_required: true
+    allowed_callers:
+      - "openai_operator_research_shadow"
+      - "chaseos_runtime_mcp"
+      - "n8n"
+    reads:
+      - "07_LOGS/Operator-Briefs/_drafts/"
+    writes:
+      - "03_INPUTS/00_QUARANTINE/"
+      - "07_LOGS/Agent-Activity/"
+    secrets_required: []
+    current_status: "dry_run_candidate"
+
+  - workflow_id: "route_webhook_to_quarantine"
+    purpose: "Route an external webhook payload into quarantine with Tier 4 handling."
+    exposed_to_mcp: false
+    trigger_type: "webhook"
+    approval_required: true
+    allowed_callers:
+      - "n8n"
+    reads: []
+    writes:
+      - "03_INPUTS/00_QUARANTINE/"
+      - "07_LOGS/Agent-Activity/"
+    secrets_required:
+      - "webhook_auth_reference"
+    current_status: "planned"
+
+  - workflow_id: "prepare_trade_journal_draft"
+    purpose: "Prepare a trade journal draft; no exchange action and no order placement."
+    exposed_to_mcp: true
+    trigger_type: "mcp_tool"
+    approval_required: true
+    allowed_callers:
+      - "chaseos_runtime_mcp"
+    reads:
+      - "07_LOGS/Trade-Journal/"
+    writes:
+      - "07_LOGS/Trade-Journal/"
+      - "07_LOGS/Agent-Activity/"
+    secrets_required: []
+    current_status: "dry_run_candidate"
+
+  - workflow_id: "notify_operator_for_approval"
+    purpose: "Notify the operator that a ChaseOS approval is pending."
+    exposed_to_mcp: true
+    trigger_type: "mcp_tool"
+    approval_required: true
+    allowed_callers:
+      - "openai_operator_research_shadow"
+      - "chaseos_runtime_mcp"
+      - "n8n"
+    reads:
+      - "07_LOGS/Agent-Activity/"
+    writes:
+      - "07_LOGS/Agent-Activity/"
+    secrets_required:
+      - "operator_notification_reference"
+    current_status: "dry_run_candidate"
+
+  - workflow_id: "execute_trade_order"
+    purpose: "Blocked live trading workflow placeholder; must not be exposed or executed."
+    exposed_to_mcp: false
+    trigger_type: "manual"
+    approval_required: true
+    allowed_callers: []
+    reads: []
+    writes: []
+    secrets_required:
+      - "exchange_api_key_reference"
+    current_status: "blocked"

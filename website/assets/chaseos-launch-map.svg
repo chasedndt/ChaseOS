@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">ChaseOS launch graph preview</title>
+  <desc id="desc">A visual map of ChaseOS Studio connecting graph, sources, runtimes, approvals, missions, standards, and Forge.</desc>
+  <rect width="900" height="620" rx="24" fill="#eef2ed"/>
+  <rect x="52" y="52" width="796" height="516" rx="22" fill="#ffffff" stroke="#d7ddd5"/>
+  <text x="92" y="112" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" fill="#151716">ChaseOS Launch Graph</text>
+  <text x="92" y="146" font-family="Inter, Arial, sans-serif" font-size="18" fill="#5e6661">local memory + bounded agents + approval visibility</text>
+  <g fill="none" stroke="#9eb4a5" stroke-width="3">
+    <path d="M450 300 L210 208"/><path d="M450 300 L690 208"/><path d="M450 300 L210 420"/><path d="M450 300 L690 420"/>
+    <path d="M450 300 L450 500"/><path d="M450 300 L450 130"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">
+    <circle cx="450" cy="300" r="84" fill="#2f6b4f"/><text x="450" y="292" text-anchor="middle" fill="#fff">ChaseOS</text><text x="450" y="318" text-anchor="middle" fill="#dce9df">Studio</text>
+    <rect x="112" y="168" width="196" height="80" rx="16" fill="#e6f0ea" stroke="#bad0c1"/><text x="210" y="214" text-anchor="middle" fill="#1d3f30">Sources</text>
+    <rect x="592" y="168" width="196" height="80" rx="16" fill="#e9f0f2" stroke="#b8cdd0"/><text x="690" y="214" text-anchor="middle" fill="#1f5c63">Runtimes</text>
+    <rect x="112" y="380" width="196" height="80" rx="16" fill="#f5eee4" stroke="#dfc7a3"/><text x="210" y="426" text-anchor="middle" fill="#83591d">Missions</text>
+    <rect x="592" y="380" width="196" height="80" rx="16" fill="#f2e8e6" stroke="#d8b7b2"/><text x="690" y="426" text-anchor="middle" fill="#73352e">Approvals</text>
+    <rect x="354" y="90" width="192" height="80" rx="16" fill="#eef4ec" stroke="#c4d9bc"/><text x="450" y="136" text-anchor="middle" fill="#2f6b4f">Standards</text>
+    <rect x="354" y="460" width="192" height="80" rx="16" fill="#edf0fa" stroke="#c5cbe0"/><text x="450" y="506" text-anchor="middle" fill="#343f75">Forge</text>
+  </g>
+</svg>

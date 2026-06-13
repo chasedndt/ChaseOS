@@ -1,0 +1,19 @@
+schema_version: "0.1"
+status: template
+description: "Required fields for periodic Mission Mode reviews."
+required_fields:
+  - mission_id
+  - review_id
+  - period
+  - runs_reviewed
+  - proof_cards
+  - scorecards
+  - what_worked
+  - what_failed
+  - repeated_patterns
+  - proposed_changes
+  - approvals_needed
+  - next_pass
+authority_rules:
+  - "Reviews summarize evidence; they do not apply workflow changes."
+  - "Proposed changes require linked workflow evolution proposals and approvals."

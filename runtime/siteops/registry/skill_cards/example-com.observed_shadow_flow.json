@@ -1,0 +1,35 @@
+{
+  "object_type": "skill_card",
+  "skill_id": "example-com.observed_shadow_flow",
+  "display_name": "Example.com / Observed Shadow Flow",
+  "family": "ChaseOS SiteOps",
+  "user_tab": "Site Skills",
+  "status": "PARTIAL",
+  "execution_status": "SHADOW_PROOF_ONLY",
+  "workflow_id": "example-com.observed_shadow_flow",
+  "site_profile": "example-com",
+  "category": "browser_research",
+  "risk_level": "low",
+  "activation_allowed": false,
+  "required_auth": "public",
+  "required_provider": "none",
+  "approval_points": [
+    "before_live_execution",
+    "before_trusted_artifact_write"
+  ],
+  "outputs": [
+    "shadow run audit",
+    "browser run evidence"
+  ],
+  "provenance": {
+    "approval_id": "approval_siteops_candidate_bound_replacement_candidate-browser-runtime-20260430-022607-exampl_976914bf1181_browser_skill_candidate_promote",
+    "candidate_id": "candidate_browser_runtime_20260430_022607_example-com",
+    "promotion_gate_operation": "siteops.browser_skill_candidate.apply_trusted_artifacts",
+    "source": "browser_skill_candidate"
+  },
+  "created_by": "local-user",
+  "tenant_id": "local",
+  "workspace_id": "default",
+  "success_rate": null,
+  "last_tested": null
+}

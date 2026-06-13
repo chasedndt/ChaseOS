@@ -1,0 +1,25 @@
+goal_id: strikezone-daily-evidence-gate
+status: ready_for_operator_or_goal_agent
+owner: operator
+runtime_lane: hermes-optimus
+objective: "Run and continuously harden the StrikeZone BTC/ETH/SOL evidence-gated thesis workflow."
+latest_validated_run_slug: "2026-05-31-strikezone-next-capture-markdown-evidence-gate"
+next_action: "Run a fresh end-to-end wrapper run under a new slug, validate all gates, generate prediction candidates, and write local-only summary."
+allowed_write_scopes:
+  - "07_LOGS/SBP-Runs/StrikeZone/"
+  - "runtime/acquisition/state/"
+  - "runtime/scorecards/"
+forbidden_actions:
+  - trade_execution
+  - public_posting_without_operator_approval
+  - account_mutation
+  - credential_extraction
+  - canonical_promotion
+validation_commands:
+  - "PYTHONPATH=. python3 runtime/acquisition/strikezone_cdp_readiness.py --check --json"
+  - "PYTHONPATH=. python3 runtime/acquisition/run_strikezone_daily_pipeline_wrapper.py --validate-existing --run-slug <run-slug> --json"
+  - "PYTHONPATH=. python3 runtime/acquisition/run_strikezone_score_predictions_once.py --create-template --run-slug <run-slug>"
+completion_standard:
+  - "pipeline_validation_report ok=true"
+  - "prediction_candidates.json exists"
+  - "operator summary states no external delivery and no trade execution"

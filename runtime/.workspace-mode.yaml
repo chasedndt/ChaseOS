@@ -1,0 +1,68 @@
+workspace_id: runtime
+workspace_name: Runtime
+workspace_mode: runtime_agent_ops
+description: Workspace Mode profile for runtime/.
+primary_domains:
+  - AI Engineering
+  - Runtime Governance
+  - Agent Operations
+canonical_state_files:
+  - 00_HOME/Now.md
+  - ROADMAP.md
+  - PROJECT_FOUNDATION.md
+required_read_order:
+  - README.md
+  - PROJECT_FOUNDATION.md
+  - ROADMAP.md
+  - 00_HOME/Now.md
+  - 06_AGENTS/Agent-Control-Plane.md
+  - 06_AGENTS/Permission-Matrix.md
+  - 06_AGENTS/Trust-Tiers.md
+allowed_knowledge_classes:
+  - user-origin
+  - source-derived
+  - synthesized
+  - generated-ideas
+  - system-operational
+  - canonical-state
+default_output_classes:
+  - build-log
+  - agent-activity-log
+  - operator-brief
+  - proposal
+allowed_workflows:
+  - operator_today
+  - operator_close_day
+runtime_adapter_ceiling:
+  claude: tier-2
+  codex: tier-2
+  openclaw: tier-2-bounded
+  hermes: tier-2-bounded
+approval_rules:
+  canonical_state_write: explicit_user_approval_required
+  generated_idea_creation: allowed_with_label
+  generated_idea_endorsement: human_only
+  source_promotion: gate_required
+  protected_file_write: explicit_per_file_approval_required
+  shell_execution: blocked_by_default
+  external_connector_action: blocked_by_default
+graph_rules:
+  update_domain_index_on_promotion: true
+  backlinks_required_for_durable_notes: true
+  orphan_notes_flagged: true
+protected_paths:
+  - .env
+  - secrets/
+  - credentials/
+  - 00_HOME/Now.md
+  - ROADMAP.md
+  - PROJECT_FOUNDATION.md
+default_write_targets:
+  - 07_LOGS/Build-Logs/
+  - 07_LOGS/Agent-Activity/
+  - 99_ARCHIVE/Documentation-History/
+escalation_rules:
+  unknown_mode: stop_and_request_mode
+  protected_write: require_explicit_approval
+  external_action: require_explicit_approval
+  runtime_authority_unclear: fail_closed

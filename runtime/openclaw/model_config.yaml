@@ -1,0 +1,19 @@
+# OpenClaw Runtime — Model Configuration
+# Primary synthesizer for StrikeZone digest and scheduled briefing pipelines.
+# Fallback chain is tried in order when the primary model fails.
+# Credential errors halt immediately (no fallback resolves a missing API key).
+#
+# To change models: edit this file. No code changes required.
+
+runtime: openclaw
+description: "Default operator synthesizer — runs cron-triggered AOR workflows"
+
+primary:
+  model_id: gpt-5.5
+  max_tokens: 4096
+  temperature: 0.3
+
+fallbacks:
+  - model_id: claude-haiku-4-5-20251001
+    max_tokens: 4096
+    temperature: 0.3

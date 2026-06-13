@@ -1,0 +1,65 @@
+workflow_id: agent_runtime_governance_audit
+workflow_aliases:
+  - "ventureops_ai_runtime_security_audit"
+name: "Safe Agent Runtime Governance Kit"
+version: "0.1.0"
+owner: "ChaseOS"
+customer: "AI-native founder, team, or ChaseOS operator"
+problem: "Agent/runtime setups often blur read, write, execute, network, credential, and approval authority."
+offer: "A governed audit report with permission map, risk findings, approval policy draft, red-team checklist, scorecard, and proof card."
+task_type: "audit-review"
+trigger: "manual"
+required_inputs:
+  - "approved runtime/agent paths"
+  - "permission goals"
+  - "operator approval boundary"
+required_context:
+  - "06_AGENTS/Agent-Control-Plane.md"
+  - "06_AGENTS/Permission-Matrix.md"
+  - "06_AGENTS/Trust-Tiers.md"
+  - "06_AGENTS/Backends-Supported.md"
+role_cards:
+  - "Security Reviewer"
+  - "Runtime Operator"
+  - "Supervisor"
+allowed_tools:
+  - "repo read"
+  - "schema validation"
+  - "local tests"
+forbidden_tools:
+  - "secret reads"
+  - "credential display"
+  - "permission escalation"
+  - "external send"
+  - "production mutation"
+runtime_split:
+  AOR: "routes task, enforces manifest/gate/audit posture"
+  Codex: "repo-aware implementation, tests, docs, pack scaffolding"
+  Hermes: "research/planning/advisory draft if approved"
+  OpenClaw: "not required for first dry run"
+  Human: "final authority for policy changes and external delivery"
+approval_mode: "human_approval_required_for_policy_mutation_or_external_delivery"
+writeback_targets:
+  - "07_LOGS/Workflow-Proofs/"
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Runtime-Audits/"
+proof_artifact: "07_LOGS/Workflow-Proofs/agent_runtime_governance_audit-<run_id>.md"
+alias_proof_artifact: "07_LOGS/Workflow-Proofs/ventureops_ai_runtime_security_audit-<run_id>.md"
+runtime_audit_report: "07_LOGS/Runtime-Audits/2026-05-13-ventureops-ai-runtime-security-audit.md"
+audit_target: "07_LOGS/Agent-Activity/<date>-ventureops-agent-runtime-governance-audit.md"
+failure_behavior: "fail_closed_and_log_blocker"
+monetization_model: "fixed-fee runtime audit service / governance kit template"
+success_metric: "validated permission map plus red-team checklist with no secret exposure"
+scorecard:
+  status: "internal_run_passed"
+  required_metrics:
+    - "security_risk"
+    - "writeback_correctness"
+    - "proof_artifact_quality"
+    - "customer_value"
+status: "verified_internal"
+implementation_status: "PARTIAL - AOR-backed internal proof/report/scorecard verified for agent_runtime_governance_audit and exact alias ventureops_ai_runtime_security_audit; no real client run, external delivery, provider call, browser action, CRM/payment mutation, or live remediation"
+risk_notes:
+  - "credential exposure"
+  - "overbroad filesystem read"
+  - "policy mutation without approval"

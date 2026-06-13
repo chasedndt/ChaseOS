@@ -1,0 +1,22 @@
+{
+  "object_type": "provider_profile",
+  "provider_id": "seedream_future",
+  "display_name": "Seedream / Cdream Future",
+  "status": "PLANNED",
+  "provider_type": "future_adapter",
+  "capabilities": [
+    "image_generate",
+    "image_edit"
+  ],
+  "auth_mode": "provider_verification_required",
+  "credential_boundary": "not_configured",
+  "cost_mode": "unknown",
+  "supports_dry_run": true,
+  "supports_stub": true,
+  "blocked_actions": [
+    "live_api_call",
+    "unsafe_image_generation",
+    "rights_unclear_generation"
+  ],
+  "notes": "Placeholder until exact provider/API identity is verified; no live paid calls."
+}

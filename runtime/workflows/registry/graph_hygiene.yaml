@@ -1,0 +1,58 @@
+---
+# graph_hygiene - Vault Graph Hygiene Workflow
+# ChaseOS AOR Phase 9 - First-Wave Workflow
+#
+# Identifies broken links, orphan files, stale frontmatter,
+# and index drift. Produces a hygiene report only.
+#
+id: graph_hygiene
+name: "Graph Hygiene"
+version: "1.0"
+description: "Vault graph hygiene scan - proposal-only report for broken links, orphan notes, stale frontmatter, index drift, and aging quarantine items."
+
+task_type: graph-hygiene
+role_card: vault-maintenance
+trigger_type: manual
+owner: operator
+status: active
+
+permission_ceiling: proposal_log_only
+
+inputs:
+  - date                 # ISO date string; defaults to today
+  - scan_scope           # list or comma-separated paths; defaults to bounded canonical surfaces
+  - quarantine_age_days  # integer threshold for aging quarantine items
+  - max_entries          # cap findings per section
+
+outputs:
+  - broken_link_count
+  - orphan_count
+  - stale_frontmatter_count
+  - index_drift_count
+  - aging_quarantine_count
+  - hygiene_report_path
+
+writeback_targets:
+  - "07_LOGS/Hygiene-Reports/"
+
+failure_behavior: escalate
+
+rollback_path: "delete the generated hygiene report if it is no longer needed; no vault content is modified"
+
+approval_rule: none
+
+audit_expectations:
+  - "broken link count recorded"
+  - "orphan count recorded"
+  - "stale frontmatter count recorded"
+  - "index drift count recorded"
+  - "aging quarantine count recorded"
+  - "scan_scope recorded"
+
+schedule: null
+
+notes: >
+  Phase 9 Pass 4: proposal-only graph hygiene workflow is live. The handler scans
+  declared repo scope, writes a report to 07_LOGS/Hygiene-Reports/, and does not
+  mutate vault content. Any repair or promotion work must happen in a separate
+  explicit follow-up pass.

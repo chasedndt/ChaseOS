@@ -1,0 +1,42 @@
+{
+  "runtime_id": "openhuman",
+  "version": "0.2",
+  "status": "retired-reference-product-study",
+  "updated": "2026-05-18",
+  "active_runtime": false,
+  "notes": "OpenHuman is unwired from ChaseOS runtime integration. Retained only as reference product / feature extraction source.",
+  "reference_routes": [
+    {
+      "task_class": "feature-extraction-planning",
+      "route": [
+        "docs/features/openhuman-reference-feature-extraction-plan.md",
+        "06_AGENTS/OpenHuman-Runtime-Profile.md",
+        "06_AGENTS/OpenHuman-Adapter-Spec.md"
+      ],
+      "notes": "Use for product/UX/architecture comparison only."
+    }
+  ],
+  "safe_write_paths": [
+    "docs/features/",
+    "07_LOGS/Agent-Activity/",
+    "07_LOGS/Build-Logs/"
+  ],
+  "forbidden_runtime_actions": [
+    "Agent Bus consumption",
+    "knowledge-graph access tests",
+    "provider credential storage",
+    "OpenHuman watchdog/supervision",
+    "local sandbox tasks",
+    "external sends/connectors through OpenHuman",
+    "canonical writeback"
+  ],
+  "historical_local_runtime": {
+    "windows_ui_path": "C:\\Users\\chaseos\\AppData\\Local\\OpenHuman\\OpenHuman.exe",
+    "wsl_source_path": "<WSL_HOME>/runtimes/openhuman",
+    "wsl_core_binary": "<WSL_HOME>/.local/bin/openhuman-core",
+    "former_windows_app_port": "127.0.0.1:7788",
+    "former_wsl_core_port": "127.0.0.1:7790",
+    "former_verified_method": "openhuman.health_snapshot",
+    "watchdog_removed": "2026-05-18"
+  }
+}

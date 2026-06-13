@@ -18,7 +18,7 @@ status: open
 | ✅ Done | Detail |
 |---------|--------|
 | Option C — Hermes self-contained cron | `hermes_watch.py` now polls all schedules itself each cycle. One Task Scheduler entry replaces per-workflow cron entries. 51 tests pass. |
-| WSL Gateway fix | `%USERPROFILE%\.hermes\gateway.cmd` rewritten with two-phase approach: Phase 1 explicitly starts Ubuntu (`wsl -d Ubuntu -- exit`, retries every 5s up to 20x), Phase 2 launches the gateway (retries every 60s up to 6x). Replaces broken `timeout` with reliable `ping -n` delays. |
+| WSL Gateway fix | `<HERMES_HOME>/<path>` rewritten with two-phase approach: Phase 1 explicitly starts Ubuntu (`wsl -d Ubuntu -- exit`, retries every 5s up to 20x), Phase 2 launches the gateway (retries every 60s up to 6x). Replaces broken `timeout` with reliable `ping -n` delays. |
 | Google Gemini clarification | `Operator-Setup-Checklist.md` updated: Gemini subscription ≠ Google Docs/Drive API access. `google_enabled: false` is the right setting. |
 | `tzdata` + `pip` + `pyyaml` installed | `tzdata` required for cron timezone evaluation. `pip` was missing from venv — bootstrapped and reinstalled. `pyyaml` reinstalled (required by ChaseOS Gate hook). |
 
@@ -87,9 +87,9 @@ This is the one external trigger that activates Option C. Hermes then handles al
    - For a duration of: Indefinitely
 5. **Actions tab → New:**
    - Action: Start a program
-   - Program: `%CHASEOS_VAULT_ROOT%\.venv\Scripts\python.exe`
-   - Arguments: `%CHASEOS_VAULT_ROOT%\chaseos.py run hermes_watch`
-   - Start in: `%CHASEOS_VAULT_ROOT%`
+   - Program: `<VAULT_ROOT>\.venv\Scripts\python.exe`
+   - Arguments: `<VAULT_ROOT>\chaseos.py run hermes_watch`
+   - Start in: `<VAULT_ROOT>`
 6. **Conditions tab:** Uncheck "Start only if on AC power" if on a laptop
 7. Click OK
 
@@ -119,7 +119,7 @@ The remaining 6 are deferred architecture items with no immediate action require
 
 All read-only/audit passes are complete. Portable installer ZIP is built and verified.
 
-Six executor lanes remain and each requires an explicit operator authority decision before Chaser Agent can proceed:
+Six executor lanes remain and each requires an explicit operator authority decision before Archon can proceed:
 
 | Lane | Blocked on |
 |------|-----------|
@@ -130,7 +130,7 @@ Six executor lanes remain and each requires an explicit operator authority decis
 | Approval target mutation executor | Operator approves |
 | Agent Bus / canonical writeback | Operator approves |
 
-**To activate a lane:** open a new session and name which one you want. Chaser Agent runs only that governed pass.
+**To activate a lane:** open a new session and name which one you want. Archon runs only that governed pass.
 **To close Phase 11 as-is:** say "close Phase 11 at the current read-only boundary".
 
 ---
@@ -141,7 +141,7 @@ Six executor lanes remain and each requires an explicit operator authority decis
 |------|-----|
 | `runtime/schedules/sch-strikezone-acquisition-0550.yaml` | C-1 shadow_mode toggle |
 | `runtime/workflows/registry/strikezone_acquisition.yaml` | C-1 approval_rule change |
-| `%USERPROFILE%\.hermes\gateway.cmd` | WSL gateway (fixed — review if needed) |
+| `<HERMES_HOME>/<path>` | WSL gateway (fixed — review if needed) |
 | `06_AGENTS/Operator-Setup-Checklist.md` | Full checklist with all steps |
 
 ---

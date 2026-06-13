@@ -1,4 +1,4 @@
-﻿---
+---
 title: Graph Hygiene CLI and Hermes/OpenClaw Cron Runbook
 type: operator-runbook
 status: CURRENT
@@ -47,7 +47,7 @@ Important distinction:
 Run these from the vault root:
 
 ```powershell
-cd %CHASEOS_VAULT_ROOT%
+cd <VAULT_ROOT>
 ```
 
 Use the repo Python surface:
@@ -117,7 +117,7 @@ The failed alert for job `0c42e5b6b468` showed two environment symptoms:
 
 Hermes/Optimus repaired that runtime path later on 2026-05-14 by installing
 `PyYAML` into the Windows ChaseOS venv and patching the WSL wrapper to `pushd`
-into `<WSL_CHASEOS_VAULT_ROOT>` before invoking
+into `<VAULT_ROOT>` before invoking
 `cmd.exe`. Repo-side verification after the repair:
 
 ```powershell

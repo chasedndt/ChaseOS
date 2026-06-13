@@ -1,4 +1,4 @@
-﻿# ChaseOS Brand Copy Bank
+# ChaseOS Brand Copy Bank
 
 Status: `DOCS-ONLY / CANONICAL COPY SOURCE`
 
@@ -105,3 +105,4 @@ Longer-term audiences include students, creators, knowledge workers, operators, 
 Use `ChaseOS`.
 
 Avoid `ChaserOS`, `Chase OS`, `CHASE OS`, `Chase AI OS`, and `Chase Operating System` in current docs or copy. If a legacy name must be mentioned, label it as historical or retired.
+

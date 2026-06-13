@@ -1,0 +1,2157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChaseOS Studio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="assets/highlight.github-dark.min.css">
+</head>
+<body>
+
+<!-- Startup overlay, removed when the Studio bridge is ready -->
+<div id="loading-overlay">
+  <div class="spinner"></div>
+  <div class="loading-text">ChaseOS Studio</div>
+</div>
+
+<!-- Shell grid -->
+<div id="shell" data-panel-registry="native-shell-v1">
+
+  <!-- Drag-to-resize handles for the side rails -->
+  <div id="sidebar-resize-handle" class="rail-resize-handle" role="separator" aria-orientation="vertical" aria-label="Resize sidebar" title="Drag to resize sidebar"></div>
+  <div id="inspector-resize-handle" class="rail-resize-handle" role="separator" aria-orientation="vertical" aria-label="Resize inspector" title="Drag to resize inspector"></div>
+
+  <!-- Top bar -->
+  <header id="topbar">
+    <div class="topbar-left">
+      <span id="topbar-logo"><svg class="topbar-logo-mark" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M16.5 4.5A7.5 7.5 0 1 0 16.5 17.5" stroke="#39e6d2" stroke-width="2.2" stroke-linecap="round"/><circle cx="11" cy="11" r="2.8" fill="#39e6d2"/><circle cx="17" cy="4.5" r="1.8" fill="#7c5cff"/><circle cx="17" cy="17.5" r="1.8" fill="#7c5cff"/><line x1="15.5" y1="5.5" x2="13.2" y2="9" stroke="#7c5cff" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/><line x1="15.5" y1="16.5" x2="13.2" y2="13" stroke="#7c5cff" stroke-width="1.1" stroke-linecap="round" opacity="0.55"/></svg>ChaseOS<span class="topbar-logo-studio"> Studio</span></span>
+      <button id="topbar-workspace-btn" class="topbar-workspace" type="button" data-authority="direct-safe" title="Open Workspaces" aria-label="Open Workspaces">
+        <span class="topbar-kicker">Workspace</span>
+        <span id="topbar-vault">Workspace</span>
+      </button>
+      <span id="topbar-mode" class="mode-chip" title="Local-first observe mode">Local-first</span>
+    </div>
+    <label id="topbar-command" class="topbar-command" title="Open command search" aria-label="Command search">
+      <span class="command-prefix">/</span>
+      <input id="global-command-input" type="search" placeholder="Search ChaseOS or open command palette" autocomplete="off" spellcheck="false">
+      <span class="command-hint">Ctrl K</span>
+    </label>
+    <div class="topbar-live-state" aria-label="Live Studio state">
+      <button id="topbar-runs-btn" class="topbar-state-chip" type="button" data-authority="direct-safe" data-short="R" title="Open Tasks &amp; Runs">
+        <span>Runs</span><strong id="topbar-active-runs-count">0</strong>
+      </button>
+      <button id="topbar-approvals-btn" class="topbar-state-chip" type="button" data-authority="direct-safe" data-short="A" title="Open Approvals">
+        <span>Approvals</span><strong id="topbar-approvals-count">0</strong>
+      </button>
+      <button id="topbar-review-btn" class="topbar-state-chip" type="button" data-authority="direct-safe" data-short="Q" title="Open Review Queue">
+        <span>Review</span><strong id="topbar-review-count">0</strong>
+      </button>
+      <button id="topbar-quick-create-btn" class="topbar-icon-btn" type="button" data-authority="proposal-only" title="Quick create is proposal-only">+</button>
+      <button id="topbar-voice-btn" class="topbar-icon-btn muted" type="button" data-authority="coming-soon" disabled title="Voice input coming soon">Mic</button>
+      <span id="topbar-status" class="observe">Local shell ready</span>
+      <button id="topbar-feature-help-btn" class="icon-btn" title="Open Studio feature guide" aria-label="Open Studio feature guide">?</button>
+      <button id="topbar-settings-btn" class="icon-btn" title="Graph Settings" aria-label="Graph Settings">Settings</button>
+    </div>
+  </header>
+
+  <!-- Left sidebar navigation -->
+  <nav id="sidebar" aria-label="Studio navigation">
+
+    <!-- Collapse toggle -->
+    <div class="sidebar-header">
+      <button id="sidebar-collapse-btn" class="sidebar-collapse-btn" title="Collapse sidebar" aria-label="Toggle sidebar">‹</button>
+    </div>
+
+    <!-- MAIN -->
+    <div class="nav-section">
+      <div class="nav-section-header">Main</div>
+      <button class="nav-btn active" data-panel="dashboard" data-panel-id="dashboard" data-state="live" data-description="Operating home for current work, attention, and next safe actions." data-help="Operating home for current work, attention, and next safe actions." aria-label="Home" aria-current="page" title="Home — command center overview">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="1.5" width="5.5" height="5.5" rx="1.2"/><rect x="9" y="1.5" width="5.5" height="5.5" rx="1.2"/><rect x="1.5" y="9" width="5.5" height="5.5" rx="1.2"/><rect x="9" y="9" width="5.5" height="5.5" rx="1.2"/></svg></span><span class="nav-label">Home</span><span class="nav-shortcut">1</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="chat" data-panel-id="chat" data-state="write-capable" data-description="Conversational control surface; actions remain governed and approval-gated." data-help="Conversational control surface; actions remain governed and approval-gated." aria-label="Chat" title="Chat — conversational command surface">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3a1 1 0 011-1h10a1 1 0 011 1v7a1 1 0 01-1 1H5l-3 2V3z"/></svg></span><span class="nav-label">Chat</span><span class="nav-shortcut">2</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="project-workspace" data-panel-id="project-workspace" data-state="read-only" data-description="Workspace and project context hub." data-help="Workspace and project context hub." aria-label="Workspaces" title="Workspaces — project and vault context">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2l6 3-6 3-6-3 6-3z"/><path d="M2 8l6 3 6-3"/><path d="M2 11.5l6 3 6-3"/></svg></span><span class="nav-label">Workspaces</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="chaser-forge" data-panel-id="chaser-forge" data-state="write-capable" data-description="Extension validation, marketplace import, sandbox, install, and rollback surfaces." data-help="Extension validation, marketplace import, sandbox, install, and rollback surfaces." aria-label="Extensions" title="Extensions — Chaser Forge module lifecycle">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.5L14 5v6L8 14.5 2 11V5L8 1.5z"/><line x1="8" y1="1.5" x2="8" y2="8.5"/><path d="M14 5L8 8.5 2 5"/></svg></span><span class="nav-label">Extensions</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="workflow-packs" data-panel-id="workflow-packs" data-state="write-capable" data-description="Mission and workflow-pack runs with local artifacts and gated resume lanes." data-help="Mission and workflow-pack runs with local artifacts and gated resume lanes." aria-label="Missions" title="Missions — workflow packs and repeatable runs">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="5.5"/><circle cx="8" cy="8" r="2"/><line x1="8" y1="1" x2="8" y2="5.5"/><line x1="8" y1="10.5" x2="8" y2="15"/><line x1="1" y1="8" x2="5.5" y2="8"/><line x1="10.5" y1="8" x2="15" y2="8"/></svg></span><span class="nav-label">Missions</span><span class="nav-help">?</span>
+      </button>
+    </div>
+
+    <div class="nav-section-divider"></div>
+
+    <!-- KNOWLEDGE GRAPH -->
+    <div class="nav-section">
+      <div class="nav-section-header">Knowledge Graph</div>
+      <button class="nav-btn" data-panel="graph" data-panel-id="graph" data-state="write-capable" data-description="Search, filter, and inspect the vault graph; writes remain approval-gated." data-help="Search, filter, and inspect the vault graph; writes remain approval-gated." aria-label="Graph" title="Graph — 3D knowledge graph explorer">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="2.5" r="1.5" fill="currentColor" stroke="none"/><circle cx="2.5" cy="13" r="1.5" fill="currentColor" stroke="none"/><circle cx="13.5" cy="13" r="1.5" fill="currentColor" stroke="none"/><circle cx="8" cy="9" r="1.5" fill="currentColor" stroke="none"/><line x1="8" y1="4" x2="8" y2="7.5"/><line x1="3.5" y1="12" x2="6.5" y2="10"/><line x1="12.5" y1="12" x2="9.5" y2="10"/></svg></span><span class="nav-label">Graph</span><span class="nav-shortcut">3</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="node-inspector" data-panel-id="node-inspector" data-state="write-capable" data-description="Formatted docs, node detail, backlinks, local graph, and provenance inspection." data-help="Formatted docs, node detail, backlinks, local graph, and provenance inspection." aria-label="Docs / Inspector" title="Docs / Inspector — formatted Markdown and node detail">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 1.5h7l3 3V14a.5.5 0 01-.5.5h-9a.5.5 0 01-.5-.5V2a.5.5 0 01.5-.5z"/><path d="M10 1.5V4.5H13"/><line x1="5.5" y1="7" x2="10.5" y2="7"/><line x1="5.5" y1="9.5" x2="10.5" y2="9.5"/><line x1="5.5" y1="12" x2="8" y2="12"/></svg></span><span class="nav-label">Docs / Inspector</span><span id="node-inspector-tab-count" class="nav-count" hidden>0</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="graph-hygiene" data-panel-id="graph-hygiene" data-state="write-capable" data-description="Review graph hygiene debt, loose nodes, duplicates, and gated decisions." data-help="Review graph hygiene debt, loose nodes, duplicates, and gated decisions." aria-label="Graph Hygiene" title="Graph Hygiene — duplicates, orphans, and debt review">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1L2 4v4c0 3.5 2.5 5.5 6 7 3.5-1.5 6-3.5 6-7V4L8 1z"/><polyline points="5 8 7 10 11 6"/></svg></span><span class="nav-label">Graph Hygiene</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="provenance-explorer" data-panel-id="provenance-explorer" data-state="read-only" data-description="View origin trails, source state, and history paths." data-help="View origin trails, source state, and history paths." aria-label="Provenance" title="Provenance — origin trails and source chain">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="3" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/><circle cx="13" cy="11" r="1.5" fill="currentColor" stroke="none"/><line x1="4.5" y1="5.5" x2="6.5" y2="7.5"/><line x1="9.5" y1="8.5" x2="11.5" y2="10.5"/></svg></span><span class="nav-label">Provenance</span><span class="nav-help">?</span>
+      </button>
+    </div>
+
+    <div class="nav-section-divider"></div>
+
+    <!-- CONTENT -->
+    <div class="nav-section">
+      <div class="nav-section-header">Content</div>
+      <button class="nav-btn" data-panel="intake" data-panel-id="intake" data-state="write-capable" data-description="Review new captures before they join the knowledge base." data-help="Review new captures before they join the knowledge base." aria-label="Intake" title="Intake - review new captures">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 8.5V13a1 1 0 001 1h10a1 1 0 001-1V8.5"/><path d="M2 8.5l2-6h8l2 6"/><line x1="5.5" y1="8.5" x2="10.5" y2="8.5"/></svg></span><span class="nav-label">Intake</span><span class="nav-shortcut">4</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="acquisition" data-panel-id="acquisition" data-state="write-capable" data-description="Source intake, acquisition readiness, and proposal planning." data-help="Source intake, acquisition readiness, and proposal planning." aria-label="Sources" title="Sources — acquisition pipeline and source packs">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="8" cy="4" rx="5.5" ry="2"/><path d="M2.5 4v8c0 1.1 2.46 2 5.5 2s5.5-.9 5.5-2V4"/><path d="M2.5 8c0 1.1 2.46 2 5.5 2s5.5-.9 5.5-2"/></svg></span><span class="nav-label">Sources</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="sic" data-panel-id="sic" data-state="read-only" data-description="Research collections, source packages, and retrieval posture." data-help="Browse research collections, source packages, and retrieval posture." aria-label="Research Collections" title="Research Collections - source collections and retrieval posture">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="10" height="10" rx="1"/><path d="M4.5 3H14a1 1 0 011 1v9.5"/><line x1="5" y1="7.5" x2="9" y2="7.5"/><line x1="5" y1="10" x2="9" y2="10"/></svg></span><span class="nav-label">Research Collections</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="capture-markdown" data-panel-id="capture-markdown" data-state="write-capable" data-description="Capture source text to reviewable Markdown in raw quarantine." data-help="Drafting does not write files. Save writes only to raw quarantine. Review updates only Capture to Markdown sidecar and packet evidence." aria-label="Capture" title="Capture source text to Markdown">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 6A1 1 0 012.5 5h1.7l1.3-2h5l1.3 2h1.7a1 1 0 011 1v6a1 1 0 01-1 1h-11a1 1 0 01-1-1V6z"/><circle cx="8" cy="9" r="2.5"/></svg></span><span class="nav-label">Capture</span><span class="nav-help">?</span>
+      </button>
+    </div>
+
+    <div class="nav-section-divider"></div>
+
+    <!-- RUNTIME -->
+    <div class="nav-section">
+      <div class="nav-section-header">Runtime</div>
+      <button class="nav-btn" data-panel="runtime-cockpit" data-panel-id="runtime-cockpit" data-state="write-capable" data-description="Agent and runtime health, readiness, and approval request controls." data-help="Agent and runtime health, readiness, and approval request controls." aria-label="Agents / Runtimes" title="Agents / Runtimes — health, queue, and approval posture">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="8" height="8" rx="1.5"/><line x1="4" y1="6.5" x2="2" y2="6.5"/><line x1="4" y1="9.5" x2="2" y2="9.5"/><line x1="12" y1="6.5" x2="14" y2="6.5"/><line x1="12" y1="9.5" x2="14" y2="9.5"/><line x1="6.5" y1="4" x2="6.5" y2="2"/><line x1="9.5" y1="4" x2="9.5" y2="2"/><line x1="6.5" y1="12" x2="6.5" y2="14"/><line x1="9.5" y1="12" x2="9.5" y2="14"/></svg></span><span class="nav-label">Agents / Runtimes</span><span class="nav-shortcut">6</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="aor" data-panel-id="aor" data-state="read-only" data-description="Task and run history with verification trails." aria-label="Tasks &amp; Runs" title="Tasks &amp; Runs — execution board and audit trails">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="2" y1="4" x2="10" y2="4"/><line x1="2" y1="7.5" x2="8" y2="7.5"/><line x1="2" y1="11" x2="6" y2="11"/><polygon points="11 7 15 9.5 11 12" fill="currentColor" stroke="none"/></svg></span><span class="nav-label">Tasks &amp; Runs</span><span class="nav-shortcut">8</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="bus" data-panel-id="bus" data-state="read-only" data-description="Agent Bus queue, tasks, heartbeats, and events." aria-label="Agent Bus" title="Agent Bus — coordination queue and heartbeat state">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/><line x1="8" y1="1.5" x2="8" y2="5.5"/><line x1="8" y1="10.5" x2="8" y2="14.5"/><line x1="1.5" y1="8" x2="5.5" y2="8"/><line x1="10.5" y1="8" x2="14.5" y2="8"/></svg></span><span class="nav-label">Agent Bus</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="schedules" data-panel-id="schedules" data-state="write-capable" data-description="Automated routines and schedule proposals." aria-label="Schedules" title="Schedules — schedule intents and automation timelines">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><polyline points="8 4.5 8 8.5 10.5 11"/></svg></span><span class="nav-label">Schedules</span><span class="nav-shortcut">7</span><span class="nav-help">?</span>
+      </button>
+      <details class="nav-advanced">
+        <summary>Advanced Runtime</summary>
+        <button class="nav-btn" data-panel="browser-runtime" data-panel-id="browser-runtime" data-state="read-only" data-description="Browser automation readiness only; no browser control is granted." aria-label="Browser Runtime" title="Browser Runtime — readiness state only">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5"/><line x1="1.5" y1="6" x2="14.5" y2="6"/><circle cx="4" cy="4.25" r=".75" fill="currentColor" stroke="none"/><circle cx="6.5" cy="4.25" r=".75" fill="currentColor" stroke="none"/></svg></span><span class="nav-label">Browser Runtime</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="siteops" data-panel-id="siteops" data-state="read-only" data-description="Site operation run records and approval posture." aria-label="Site Skills" title="Site Skills — site operation records">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="10 2 5 9 8 9 6 14 11 7 8 7 10 2"/></svg></span><span class="nav-label">Site Skills</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="runtime-navigation" data-panel-id="runtime-navigation" data-state="read-only" data-description="Runtime navigation maps and routing posture." aria-label="Runtime Navigation" title="Runtime Navigation — topological maps">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.5"/><polygon points="10.5 5.5 6 10 5.5 10.5 10 6" fill="currentColor" stroke="none"/></svg></span><span class="nav-label">Runtime Navigation</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="agent-identity" data-panel-id="agent-identity" data-state="read-only" data-description="Runtime identity ledgers and drift signals." aria-label="Agent Identity" title="Agent Identity — ledgers and drift signals">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="4" width="13" height="9" rx="1.5"/><circle cx="5.5" cy="8" r="2" fill="currentColor" stroke="none"/><line x1="9.5" y1="6.5" x2="13" y2="6.5"/><line x1="9.5" y1="9.5" x2="12" y2="9.5"/></svg></span><span class="nav-label">Agent Identity</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="runtime-support-loops" data-panel-id="runtime-support-loops" data-state="read-only" data-description="Runtime support loop review without applying repairs." aria-label="Support Loops" title="Support Loops — repair patterns and incident candidates">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8A5 5 0 103 8"/><polyline points="1.5 5.5 3 8 4.5 5.5"/></svg></span><span class="nav-label">Support Loops</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="voice-mode" data-panel-id="voice-mode" data-state="planned" data-description="Voice interaction roadmap and readiness; no microphone or speech provider is mounted." data-help="Voice Mode planning page. Capture, transcription, synthesis, provider calls, file writes, and runtime dispatch remain blocked." aria-label="Voice Mode" title="Voice Mode — planned spoken control surface">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2a2 2 0 00-2 2v4a2 2 0 004 0V4a2 2 0 00-2-2z"/><path d="M4 7v1a4 4 0 008 0V7"/><line x1="8" y1="12" x2="8" y2="15"/><line x1="5.5" y1="15" x2="10.5" y2="15"/></svg></span><span class="nav-label">Voice Mode</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn nav-coming-soon" type="button" data-state="coming-soon" data-description="Tools and MCP permissions are not a top-level surface yet." disabled title="Tools / MCP — coming soon">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2a3.5 3.5 0 00-5 4.5L2 13.5a1.5 1.5 0 002 2l7-7A3.5 3.5 0 0014 2z"/><line x1="11.5" y1="4.5" x2="13" y2="6"/></svg></span><span class="nav-label">Tools / MCP</span><span class="nav-help">?</span>
+        </button>
+      </details>
+    </div>
+
+    <div class="nav-section-divider"></div>
+
+    <!-- PERSONAL MEMORY -->
+    <div class="nav-section">
+      <div class="nav-section-header">Personal Memory</div>
+      <button class="nav-btn" data-panel="runtime-memory-inspector" data-panel-id="runtime-memory-inspector" data-state="read-only" data-description="Memory manager over runtime profiles, ledgers, navigation maps, and repair notes." aria-label="Memory Manager" title="Memory Manager — profiles, ledgers, and nav maps">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="11" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="8" cy="9" r="2" fill="currentColor" stroke="none"/><circle cx="5" cy="14" r="1.5" fill="currentColor" stroke="none"/><circle cx="11" cy="14" r="1.5" fill="currentColor" stroke="none"/><line x1="5.7" y1="5.2" x2="7" y2="7.3"/><line x1="10.3" y1="5.2" x2="9" y2="7.3"/><line x1="6.5" y1="10.5" x2="5.5" y2="12.5"/><line x1="9.5" y1="10.5" x2="10.5" y2="12.5"/></svg></span><span class="nav-label">Memory Manager</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn nav-coming-soon" type="button" data-state="coming-soon" data-description="Dedicated personal memory graph is not available yet." disabled title="Memory Graph — coming soon">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="5"/><circle cx="8" cy="8" r="2"/><line x1="3" y1="3" x2="6.5" y2="6.5"/><line x1="13" y1="3" x2="9.5" y2="6.5"/><line x1="3" y1="13" x2="6.5" y2="9.5"/><line x1="13" y1="13" x2="9.5" y2="9.5"/></svg></span><span class="nav-label">Memory Graph</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn nav-coming-soon" type="button" data-state="coming-soon" data-description="Dedicated personal Markdown docs surface is not available yet." disabled title="Docs / Markdown — coming soon">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 1.5h7l3 3V14a.5.5 0 01-.5.5h-9a.5.5 0 01-.5-.5V2a.5.5 0 01.5-.5z"/><path d="M10 1.5V4.5H13"/><line x1="5.5" y1="7" x2="10.5" y2="7"/><line x1="5.5" y1="9.5" x2="10.5" y2="9.5"/></svg></span><span class="nav-label">Docs / Markdown</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="context-import" data-panel-id="context-import" data-state="approval-gated" data-description="Personal context import, fixture, and governed promotion lanes." aria-label="Context Import" title="Context Import — governed personal context ingestion">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 11v3a1 1 0 001 1h10a1 1 0 001-1v-3"/><line x1="8" y1="2" x2="8" y2="9.5"/><polyline points="5 6.5 8 9.5 11 6.5"/></svg></span><span class="nav-label">Context Import</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="memory-ledger" data-panel-id="memory-ledger" data-state="read-only" data-description="Advisory memory ledger and review posture." aria-label="Memory Ledger" title="Memory Ledger — durable records with trust states">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 1.5h8a1 1 0 011 1V14a1 1 0 01-1 1H3a2 2 0 01-2-2V3.5a2 2 0 012-2z"/><line x1="13.5" y1="4" x2="13.5" y2="13"/><line x1="5" y1="6" x2="9.5" y2="6"/><line x1="5" y1="9" x2="9.5" y2="9"/><line x1="5" y1="12" x2="7" y2="12"/></svg></span><span class="nav-label">Memory Ledger</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="pulse-schedule-proof" data-panel-id="pulse-schedule-proof" data-state="read-only" data-description="Proactive briefing schedule and evidence posture." aria-label="Proactive Briefings" title="Proactive Briefings — schedules and briefing outputs">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1.5A5 5 0 013 6.5V9l-1.5 2.5h13L13 9V6.5A5 5 0 018 1.5z"/><path d="M6.5 12.5a1.5 1.5 0 003 0"/></svg></span><span class="nav-label">Proactive Briefings</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="pulse-enqueue" data-panel-id="pulse-enqueue" data-state="read-only" data-description="Proactive intelligence review queue and command drafts." aria-label="Review Queue" title="Review Queue — candidates and feedback items">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="2" y1="4" x2="9" y2="4"/><line x1="2" y1="7.5" x2="7" y2="7.5"/><line x1="2" y1="11" x2="5" y2="11"/><circle cx="12" cy="11" r="3.5"/><line x1="12" y1="9" x2="12" y2="11"/><line x1="12" y1="11" x2="13.5" y2="12.5"/></svg></span><span class="nav-label">Review Queue</span><span class="nav-help">?</span>
+      </button>
+    </div>
+
+    <div class="nav-section-divider"></div>
+
+    <!-- GOVERNANCE -->
+    <div class="nav-section">
+      <div class="nav-section-header">Governance</div>
+      <button class="nav-btn" data-panel="approval-center" data-panel-id="approval-center" data-state="read-only" data-description="Approval queue inspection. Decisions remain governed by their own flows." aria-label="Approvals" title="Approvals — unified approval center">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1L2 4v4c0 3.5 2.5 5.5 6 7 3.5-1.5 6-3.5 6-7V4L8 1z"/><polyline points="5.5 8 7 9.5 11 6.5"/></svg></span><span class="nav-label">Approvals</span>
+        <span id="approval-queue-badge" class="approval-badge" style="display:none;" title="Pending approvals"></span>
+        <span class="nav-shortcut">5</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="build-logs" data-panel-id="build-logs" data-state="read-only" data-description="Activity history, audit records, and verification notes." aria-label="History / Audit" title="History / Audit — activity and agent records">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 101.5-4"/><polyline points="2 2 2 6.5 5.5 6.5"/><polyline points="8 5 8 8.5 10.5 11"/></svg></span><span class="nav-label">History / Audit</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="decision-ledger" data-panel-id="decision-ledger" data-state="read-only" data-description="Decision records and historical rationale." aria-label="Decisions" title="Decisions — decision and pivot ledger">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 1L15 8 8 15 1 8 8 1z"/><line x1="8" y1="1" x2="8" y2="5.5"/><line x1="8" y1="10.5" x2="8" y2="15"/></svg></span><span class="nav-label">Decisions</span><span class="nav-help">?</span>
+      </button>
+      <button class="nav-btn" data-panel="settings" data-panel-id="settings" data-state="read-only" data-description="Settings posture, provider/config summaries, and local update checks." aria-label="Settings" title="Settings — appearance, connections, and config">
+        <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2M3.4 3.4l1.4 1.4M11.2 11.2l1.4 1.4M3.4 12.6l1.4-1.4M11.2 4.8l1.4-1.4"/></svg></span><span class="nav-label">Settings</span><span class="nav-help">?</span>
+      </button>
+      <details class="nav-advanced">
+        <summary>Advanced</summary>
+        <button class="nav-btn" data-panel="qa-proof" data-panel-id="qa-proof" data-state="read-only" data-description="Quality review hub; no test execution is triggered here." aria-label="Quality Review" title="Quality Review - evidence posture">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2v5.5L2 14.5h12L10 7.5V2"/><line x1="5.5" y1="2" x2="10.5" y2="2"/><circle cx="7" cy="11" r=".75" fill="currentColor" stroke="none"/></svg></span><span class="nav-label">Quality Review</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="feature-filter" data-panel-id="feature-filter" data-state="read-only" data-description="Feature audit and triage references." aria-label="Feature Audit" title="Feature Audit — triage register and filter SOP">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="1.5"/><polyline points="5 8 7 10 11 6"/><line x1="5" y1="5" x2="11" y2="5"/></svg></span><span class="nav-label">Feature Audit</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="workflow-registry" data-panel-id="workflow-registry" data-state="read-only" data-description="Workflow registry browser; no workflows can run from here." aria-label="Workflow Registry" title="Workflow Registry — manifest browser">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="1.5" width="4" height="4" rx=".7"/><rect x="6.5" y="6.5" width="4" height="4" rx=".7"/><rect x="10.5" y="10.5" width="4" height="4" rx=".7"/><line x1="5.5" y1="4" x2="8" y2="6.5"/><line x1="10.5" y1="9" x2="13" y2="10.5"/></svg></span><span class="nav-label">Workflow Registry</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="role-cards" data-panel-id="role-cards" data-state="read-only" data-description="Role cards and permission profile browser." aria-label="Role Cards" title="Role Cards — permission profiles per runtime">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="12" height="10" rx="1.5"/><line x1="5" y1="6.5" x2="11" y2="6.5"/><line x1="5" y1="9.5" x2="9" y2="9.5"/></svg></span><span class="nav-label">Role Cards</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="pivot-log" data-panel-id="pivot-log" data-state="read-only" data-description="Recorded pivots and direction changes." aria-label="Pivot Log" title="Pivot Log — recorded direction changes">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.5 2A7 7 0 103 9.5"/><polyline points="11.5 2 11.5 6 7.5 6"/></svg></span><span class="nav-label">Pivot Log</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="app-launcher" data-panel-id="app-launcher" data-state="read-only" data-description="Discovery index for Studio surfaces." aria-label="App Launcher" title="App Launcher — surface discovery index">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="4" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="8" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="4" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="8" r="1.5" fill="currentColor" stroke="none"/><circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="8" r="1.5" fill="currentColor" stroke="none"/><circle cx="4" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="8" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/></svg></span><span class="nav-label">App Launcher</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="workspace-entry" data-panel-id="workspace-entry" data-state="read-only" data-description="Workspace detection and bootstrap readiness." aria-label="Workspace Entry" title="Workspace Entry — bootstrap and vault detection">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 2H3a1 1 0 00-1 1v10a1 1 0 001 1h7"/><path d="M13 8H6.5"/><polyline points="10.5 5.5 13 8 10.5 10.5"/></svg></span><span class="nav-label">Workspace Entry</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn" data-panel="studio-status" data-panel-id="studio-status" data-state="read-only" data-description="Studio build status, VentureOps readiness, and release lane tracking." aria-label="Studio Status" title="Studio Status — build grade, VentureOps, and release lanes">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="9" width="3" height="5.5" rx=".7"/><rect x="6.5" y="5.5" width="3" height="9" rx=".7"/><rect x="11.5" y="1.5" width="3" height="13" rx=".7"/><line x1="1.5" y1="6" x2="5" y2="3.5"/><line x1="6.5" y1="3.5" x2="10" y2="1.5"/></svg></span><span class="nav-label">Studio Status</span><span class="nav-help">?</span>
+        </button>
+        <button class="nav-btn nav-coming-soon" type="button" data-state="coming-soon" data-description="Companion Surface is API/status-only." disabled title="Companion Surface — coming soon">
+          <span class="nav-icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="8" r="4.5"/><circle cx="10" cy="8" r="4.5"/></svg></span><span class="nav-label">Companion Surface</span><span class="nav-help">?</span>
+        </button>
+      </details>
+    </div>
+
+  </nav>
+
+  <!-- Main panel area -->
+  <main id="main">
+
+    <!-- Graph panel -->
+    <section id="panel-graph" class="panel" data-panel-id="graph" data-panel-status="mounted" data-read-only="false" data-write-mode="approval-gated">
+      <!-- Graph overlay stack — header, preset bar, filters all flow in column, no fixed tops -->
+      <div id="graph-overlay-top">
+        <div class="graph-product-header">
+          <div class="graph-product-copy">
+            <div class="panel-kicker">KNOWLEDGE GRAPH</div>
+            <h2>Graph</h2>
+            <p>Explore docs, sources, runs, approvals, and memory relationships across the local vault.</p>
+            <div class="graph-authority-row" aria-label="Graph action posture">
+              <span>Direct-safe exploration</span>
+              <span>Approval required</span>
+              <span>Provenance trace</span>
+              <span>Local graph focus</span>
+            </div>
+          </div>
+          <div class="graph-product-controls" aria-label="Graph controls">
+            <div id="graph-toolbar">
+              <input id="graph-search" type="text" placeholder="Search nodes…" autocomplete="off" spellcheck="false">
+            </div>
+            <button id="graph-quick-switch-btn" class="graph-shell-btn" type="button" title="Quick Switch (Ctrl+O)">⌘ Switch</button>
+            <button id="graph-filter-toggle" class="graph-shell-btn" type="button" aria-expanded="false" title="Filters (Ctrl+F)">Filters</button>
+            <button id="graph-quality-chip" class="graph-quality-chip" type="button" title="Graphics quality — press G to open" data-quality-preset="balanced">⚡ Balanced</button>
+            <button id="graph-dim-toggle" class="graph-shell-btn" type="button" title="Toggle 2D / 3D view (press D)" data-dim="3d">3D</button>
+            <div class="graph-focus-controls" aria-label="Local graph focus">
+              <span>Local Graph</span>
+              <button class="graph-focus-btn" type="button" data-graph-focus-depth="0" aria-pressed="false">All</button>
+              <button class="graph-focus-btn" type="button" data-graph-focus-depth="1" aria-pressed="true">1h</button>
+              <button class="graph-focus-btn" type="button" data-graph-focus-depth="2" aria-pressed="false">2h</button>
+            </div>
+            <!-- Preset selector — inline dropdown, no separate bar row -->
+            <div id="graph-preset-bar" aria-label="Graph presets"></div>
+            <button id="graph-open-inspector" class="graph-shell-btn" type="button" title="Docs / Inspector">Docs</button>
+            <button id="graph-open-hygiene" class="graph-shell-btn" type="button" title="Graph Hygiene panel">Hygiene</button>
+            <button id="graph-open-provenance" class="graph-shell-btn" type="button" title="Provenance explorer">Provenance</button>
+          </div>
+        </div>
+        <div id="graph-filter-panel" class="graph-filter-bar" aria-label="Graph filters" hidden>
+        <div class="filter-panel-head">
+          <span>Filters</span>
+          <button id="graph-filter-reset" type="button">Reset</button>
+        </div>
+        <div id="graph-active-filters" class="active-filter-bar" aria-label="Active graph filters"></div>
+        <div class="filter-group">
+          <div class="filter-label">Node types</div>
+          <div id="node-type-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Families</div>
+          <div id="node-family-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Subtypes</div>
+          <div id="node-subtype-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Trust states</div>
+          <div id="trust-state-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Domains</div>
+          <div id="domain-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Projects</div>
+          <div id="project-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Sources</div>
+          <div id="source-class-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Generated / canonical</div>
+          <div id="generated-canonical-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Warnings</div>
+          <div id="warning-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Confidence</div>
+          <div id="confidence-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Status</div>
+          <div id="status-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Recency</div>
+          <div id="recency-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Relations</div>
+          <div id="relation-filters" class="filter-options"></div>
+        </div>
+        <div class="filter-group">
+          <div class="filter-label">Edge layers</div>
+          <div id="edge-layer-filters" class="filter-options"></div>
+        </div>
+      </div>
+      </div><!-- /#graph-overlay-top -->
+      <div id="graph-legend">
+        <button id="graph-legend-toggle" class="graph-legend-toggle" aria-expanded="false" title="Toggle node/edge legend">Legend ▾</button>
+        <div id="graph-legend-content" class="graph-legend-content" aria-hidden="true"></div>
+      </div>
+      <div id="graph-3d"></div>
+      <div id="graph-status-dock" class="graph-status-dock" aria-label="Graph status">
+        <span id="graph-link-overlay-summary" class="graph-status-chip">Links syncing</span>
+        <span id="graph-overlay-summary" class="graph-status-chip">Views syncing</span>
+        <span id="graph-parser-summary" class="graph-status-chip">Index syncing</span>
+        <span id="graph-node-count" class="graph-status-chip">Syncing</span>
+      </div>
+      <div id="graph-truncation-warning">Graph truncated</div>
+    </section>
+
+    <!-- Node Inspector page panel -->
+    <section id="panel-node-inspector" class="panel" data-panel-id="node-inspector" data-panel-status="mounted" data-read-only="false" data-write-mode="approval-gated" data-graph-provenance-inspector="mounted">
+      <div id="inspector" class="node-inspector-workspace docs-cockpit">
+        <!-- Compact single-row toolbar -->
+        <div class="docs-cockpit-toolbar" aria-label="Docs / Inspector controls">
+          <div class="docs-cockpit-toolbar-left">
+            <button id="docs-explorer-toggle" class="icon-btn" type="button" title="Toggle file explorer">☰</button>
+            <h2>Docs / Inspector</h2>
+            <span id="docs-breadcrumb" class="docs-breadcrumb" title="No file open">No file open</span>
+          </div>
+          <div class="docs-cockpit-toolbar-mid">
+            <div class="docs-inspector-search-wrap">
+              <input id="docs-inspector-search" class="docs-inspector-search" type="search" placeholder="Search or open Markdown file…" autocomplete="off" spellcheck="false">
+              <div id="docs-inspector-results" class="docs-inspector-results" hidden></div>
+            </div>
+          </div>
+          <div class="docs-cockpit-toolbar-right">
+            <span id="docs-trust-badge" class="docs-trust-badge" hidden></span>
+            <div class="docs-inspector-mode-group" role="group" aria-label="Document mode">
+              <button id="docs-mode-reading" class="docs-mode-btn active" type="button" data-doc-mode="reading">Reading</button>
+              <button id="docs-mode-edit" class="docs-mode-btn" type="button" data-doc-mode="edit" title="Live preview editing">Edit</button>
+              <button id="docs-mode-source" class="docs-mode-btn" type="button" data-doc-mode="source" title="Raw markdown source">Source</button>
+            </div>
+            <span id="docs-save-state" class="docs-save-state">No file open</span>
+            <button id="node-inspector-quick-switch-btn" class="icon-btn" type="button" title="Quick Switch (Ctrl+O)">⌕</button>
+            <button id="node-inspector-open-file-btn" class="icon-btn" type="button" title="Show in File Explorer">⧉</button>
+            <button id="docs-side-toggle" class="icon-btn" type="button" title="Toggle info panel (Outline / Backlinks / Provenance / Properties)">ⓘ</button>
+            <button id="node-action-more-btn" class="icon-btn" type="button" title="More actions">⋮</button>
+          </div>
+        </div>
+
+        <!-- Three-zone cockpit: explorer · document · info panel -->
+        <div class="docs-cockpit-grid">
+          <!-- LEFT: file explorer -->
+          <aside id="docs-explorer" class="docs-explorer" aria-label="File explorer">
+            <div class="docs-explorer-head">
+              <input id="docs-explorer-filter" class="docs-explorer-filter" type="search" placeholder="Filter files…" autocomplete="off" spellcheck="false">
+              <div class="docs-explorer-tools">
+                <button id="docs-explorer-refresh" class="icon-btn icon-btn--xs" type="button" title="Reload">⟳</button>
+                <button id="docs-explorer-expand" class="icon-btn icon-btn--xs" type="button" title="Expand all">⊞</button>
+                <button id="docs-explorer-collapse" class="icon-btn icon-btn--xs" type="button" title="Collapse all">⊟</button>
+                <button id="docs-explorer-reveal" class="icon-btn icon-btn--xs" type="button" title="Reveal active file">◎</button>
+              </div>
+            </div>
+            <div id="docs-explorer-tree" class="docs-explorer-tree" role="tree">
+              <div class="docs-explorer-empty">Loading files…</div>
+            </div>
+          </aside>
+
+          <!-- CENTER: document -->
+          <div class="docs-center">
+            <!-- Node tab strip (multi-tab browsing) -->
+            <div id="node-tab-strip" class="node-tab-strip"></div>
+            <!-- Node identity header -->
+            <div id="inspector-header" class="inspector-header">
+              <span id="inspector-title" class="inspector-node-title">No node selected</span>
+              <span id="inspector-trust" class="ts-raw"></span>
+            </div>
+            <!-- Inner detail tabs bar -->
+            <div id="inspector-tabs" class="inspector-tabs-bar" role="tablist" aria-label="Inspector tabs"></div>
+            <!-- Tab content container -->
+            <div id="inspector-body" class="inspector-body">
+              <div id="inspector-empty" class="inspector-empty-state inspector-empty-state--landing">
+                <div class="hint">◈</div>
+                <div>Open from Graph, Quick Switch, backlinks, or a wiki link.</div>
+                <div class="inspector-empty-title">No document open</div>
+                <div class="inspector-empty-copy">Choose a file from the explorer on the left, search Markdown above, or open from the graph. This surface renders Markdown, headings, backlinks, provenance, and safe node actions.</div>
+                <div class="docs-empty-actions">
+                  <button id="docs-empty-explorer" class="btn-secondary" type="button">Show file explorer</button>
+                  <button id="docs-empty-search" class="btn-secondary" type="button">Search files</button>
+                </div>
+                <div id="docs-empty-recent" class="docs-landing-grid"></div>
+              </div>
+              <div id="inspector-tab-body" style="display:none;"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: info panel (outline / backlinks / provenance / properties) -->
+          <aside id="docs-side" class="docs-side" aria-label="Document info panel">
+            <div class="docs-side-tabs" role="tablist">
+              <button class="docs-side-tab active" type="button" data-side-tab="outline" role="tab">Outline</button>
+              <button class="docs-side-tab" type="button" data-side-tab="links" role="tab">Links</button>
+              <button class="docs-side-tab" type="button" data-side-tab="backlinks" role="tab">Backlinks</button>
+              <button class="docs-side-tab" type="button" data-side-tab="provenance" role="tab">Provenance</button>
+              <button class="docs-side-tab" type="button" data-side-tab="properties" role="tab">Properties</button>
+            </div>
+            <div id="docs-side-body" class="docs-side-body">
+              <div class="docs-side-empty">Open a document to see its outline, backlinks, provenance, and properties.</div>
+            </div>
+          </aside>
+        </div>
+        <!-- Node action context menu (hidden by default) -->
+        <div id="node-action-menu" class="node-action-menu" hidden></div>
+      </div>
+    </section>
+
+    <!-- Graph Hygiene panel -->
+    <section id="panel-graph-hygiene" class="panel" data-panel-id="graph-hygiene" data-panel-status="mounted" data-read-only="false">
+      <div class="graph-hygiene-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">APPROVAL-GATED</div>
+            <h2>Graph Hygiene</h2>
+            <p class="panel-subtitle">Review vault graph issues, duplicate candidates, local provenance, and approval-gated cleanup drafts.</p>
+            <div class="runtime-authority-row" aria-label="Graph hygiene action posture">
+              <span>Review queue</span>
+              <span>Decision drafts</span>
+              <span>Approval required</span>
+              <span>Changes require approval</span>
+            </div>
+          </div>
+          <span id="graph-hygiene-status" class="status-pill">Syncing</span>
+        </div>
+        <!-- Phase 1: review data (metrics, run info, queue summary) -->
+        <div id="graph-hygiene-body" class="graph-hygiene-body">
+          <div style="color:var(--text-muted);font-size:12px">Open this panel to load graph hygiene review data.</div>
+        </div>
+        <!-- Phase 2+3: decision draft workflow (lazy-loaded) -->
+        <div id="graph-hygiene-draft-body" class="graph-hygiene-draft-body" hidden></div>
+      </div>
+    </section>
+
+    <!-- Home / Command Center panel -->
+    <section id="panel-dashboard" class="panel active" data-panel-id="dashboard" data-panel-status="mounted" data-read-only="true">
+      <div id="panel-registry-status" class="panel-registry-status" data-testid="native-panel-registry-status" hidden>Panel registry pending</div>
+      <!-- Ambient background layer — JS applies: ambient--opt1 / ambient--opt2 / empty = off -->
+      <div id="home-ambient" aria-hidden="true"></div>
+      <div id="dashboard-body">
+        <div style="color:var(--text-muted);font-size:12px">Preparing Home</div>
+      </div>
+    </section>
+
+    <!-- Studio Status panel (Dev Tools → Advanced) -->
+    <section id="panel-studio-status" class="panel" data-panel-id="studio-status" data-panel-status="mounted" data-read-only="true">
+      <div id="studio-status-body">
+        <div style="color:var(--text-muted);font-size:12px;padding:12px">Open this panel to load Studio build status.</div>
+      </div>
+    </section>
+
+    <!-- App Launcher panel -->
+    <section id="panel-app-launcher" class="panel" data-panel-id="app-launcher" data-panel-status="mounted" data-read-only="true">
+      <div class="studio-app-launcher-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">DIRECTORY</div>
+            <h2>App Launcher</h2>
+            <p class="panel-subtitle">Discover Studio pages, governed action surfaces, and their live/inspection/blocked state.</p>
+            <div class="runtime-authority-row" aria-label="App launcher action posture">
+              <span>Discovery</span>
+              <span>Routes</span>
+              <span>Inspect</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span class="panel-status-pill">Ready</span>
+        </div>
+        <div id="app-launcher-summary" class="studio-app-launcher-summary"></div>
+        <div id="app-launcher-body" class="studio-app-launcher-grid">
+          <div style="color:var(--text-muted);font-size:12px">Syncing app launcher</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Browser Runtime panel -->
+    <section id="panel-browser-runtime" class="panel" data-panel-id="browser-runtime" data-panel-status="mounted" data-read-only="true">
+      <div class="browser-runtime-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">BROWSER</div>
+            <h2>Browser Runtime</h2>
+            <p class="panel-subtitle">Inspect browser automation readiness, verification contracts, blockers, and dependency posture.</p>
+            <div class="runtime-authority-row" aria-label="Browser runtime action posture">
+              <span>Readiness</span>
+              <span>Verification records</span>
+              <span>Approval required</span>
+              <span>No browser control</span>
+            </div>
+          </div>
+          <span id="browser-runtime-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="browser-runtime-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workspace Entry panel -->
+    <section id="panel-workspace-entry" class="panel" data-panel-id="workspace-entry" data-panel-status="mounted" data-read-only="true">
+      <div class="workspace-entry-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">WORKSPACES</div>
+            <h2>Workspace Entry</h2>
+            <p class="panel-subtitle">Review workspace detection, bootstrap readiness, compatibility, and upgrade approval posture.</p>
+            <div class="runtime-authority-row" aria-label="Workspace entry action posture">
+              <span>Detection</span>
+              <span>Plan</span>
+              <span>Upgrade gated</span>
+              <span>Setup guide</span>
+            </div>
+          </div>
+          <span id="workspace-entry-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="workspace-entry-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Settings panel -->
+    <section id="panel-settings" class="panel" data-panel-id="settings" data-panel-status="mounted" data-read-only="false" data-write-mode="operator-control">
+      <div class="studio-settings-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">LOCAL</div>
+            <h2>Settings</h2>
+            <p class="panel-subtitle">Local configuration posture, provider readiness, update checks, Capture shortcuts, and operator-started runtime controls.</p>
+            <div class="runtime-authority-row" aria-label="Settings action posture">
+              <span>Local config</span>
+              <span>Runtime controls</span>
+              <span>Secrets hidden</span>
+              <span>Host changes gated</span>
+            </div>
+          </div>
+          <span id="settings-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="settings-runtime-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ChaseOS Chat panel -->
+    <section id="panel-chat" class="panel" data-panel-id="chat" data-panel-status="mounted" data-read-only="false" data-write-mode="approval-gated">
+      <div class="phase11-chat-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">CHAT</div>
+            <h2>ChaseOS Chat</h2>
+            <p class="panel-subtitle">Saved conversations with local runtimes, folders, attachments, and governed actions.</p>
+          </div>
+          <span id="chat-status" class="panel-status-pill">Ready</span>
+        </div>
+
+        <div class="phase11-chat-shell">
+          <aside class="phase11-chat-left-rail" aria-label="Chat folders and threads">
+        <div class="chat-rail-topline">
+          <div>
+            <span>Chats</span>
+            <strong id="chat-selected-folder-label">Folders</strong>
+          </div>
+          <div class="chat-rail-top-actions">
+            <button id="chat-folder-dropdown-button" type="button" class="chat-icon-button chat-folder-toggle" title="Show folders" aria-label="Show folders" aria-expanded="false">All folders</button>
+            <button id="chat-new-thread-button" type="button" class="chat-icon-button" title="New chat" aria-label="New chat">+</button>
+          </div>
+        </div>
+        <div id="chat-folder-dropdown-menu" class="chat-folder-dropdown-menu" hidden></div>
+        <div class="chat-rail-actions">
+          <button id="chat-new-folder-button" type="button" class="chat-rail-action">+ Folder</button>
+        </div>
+        <div id="chat-create-panel" class="chat-create-panel" hidden>
+          <div class="chat-create-panel-head">
+            <strong id="chat-create-title">New chat</strong>
+            <button id="chat-create-cancel-button" type="button" aria-label="Cancel">x</button>
+          </div>
+          <input id="chat-create-input" type="text" autocomplete="off" spellcheck="true" placeholder="Name">
+          <button id="chat-create-submit-button" type="button">Create</button>
+        </div>
+        <input id="chat-thread-search" class="chat-thread-search" type="search" autocomplete="off" spellcheck="false" placeholder="Search chats and folders">
+        <div id="chat-adapter-selector" aria-label="Select chat runtime">
+          <div class="adapter-card adapter-card--selected" data-adapter="hermes" tabindex="0" role="button" aria-pressed="true"
+               title="Hermes — AI review, synthesis &amp; coordination runtime. Runs as a 24/7 Agent Bus poll loop. Handles research tasks, document reviews, and LLM-backed analysis.">
+            <div class="adapter-card-inner">
+              <span class="adapter-mark">H</span>
+              <span class="adapter-name">Hermes</span>
+              <span class="adapter-desc">Review · Synthesis · Chat</span>
+            </div>
+            <span class="adapter-status-pip" id="adapter-pip-hermes"></span>
+          </div>
+          <div class="adapter-card" data-adapter="openclaw" tabindex="0" role="button" aria-pressed="false"
+               title="OpenClaw — Windows operator automation runtime. Dispatches briefings, hygiene tasks, and scheduled workflows. Runs on Windows via the Agent Bus.">
+            <div class="adapter-card-inner">
+              <span class="adapter-mark">O</span>
+              <span class="adapter-name">OpenClaw</span>
+              <span class="adapter-desc">Workflows · Briefings · Ops</span>
+            </div>
+            <span class="adapter-status-pip" id="adapter-pip-openclaw"></span>
+          </div>
+        </div>
+        <div id="chat-runtime-offline-banner" class="chat-runtime-offline-banner" role="status"></div>
+
+        <div id="chat-daemon-control" class="chat-daemon-control"
+             title="Start, stop, or resync the selected local runtime.">
+          <button id="chat-daemon-start-btn" type="button" class="daemon-btn daemon-btn--start">Start</button>
+          <button id="chat-daemon-stop-btn" type="button" class="daemon-btn daemon-btn--stop" style="display:none;">Stop</button>
+          <span id="chat-daemon-status-label" class="daemon-status-label">Checking…</span>
+        </div>
+        <div id="chat-thread-navigator" class="chat-thread-navigator" aria-label="Chat folders and threads">
+          <div class="chat-thread-navigator-empty">Syncing folders and threads.</div>
+        </div>
+          </aside>
+
+          <main class="phase11-chat-main" aria-label="Chat workspace">
+        <div id="chat-send-status" style="display:none;font-size:12px;margin:6px 0;color:var(--text-muted);"></div>
+        <div id="chat-provider-readiness" class="phase11-chat-readiness">
+          <div style="color:var(--text-muted);font-size:12px">Connecting to local services.</div>
+        </div>
+        <div id="chat-preview-body" class="phase11-chat-preview">
+          <div style="color:var(--text-muted);font-size:12px">Opening saved workspace threads.</div>
+        </div>
+        <div class="phase11-chat-composer" aria-label="Message composer">
+          <div id="chat-attachment-tray" class="chat-attachment-tray" aria-live="polite"></div>
+          <div class="phase11-chat-composer-box">
+            <textarea id="chat-message-input" rows="3" autocomplete="off" spellcheck="true" placeholder="Message the selected runtime..."></textarea>
+            <div id="chat-slash-command-menu" class="chat-slash-command-menu" role="listbox" aria-label="Slash command suggestions" hidden></div>
+            <div class="phase11-chat-actions">
+              <button id="chat-attach-file-button" type="button" class="chat-tool-button" title="Attach file">File</button>
+              <button id="chat-attach-image-button" type="button" class="chat-tool-button" title="Attach image">Image</button>
+              <span id="chat-authority-note"></span>
+              <button id="chat-send-button" type="button" aria-label="Send message">Send</button>
+            </div>
+          </div>
+          <input id="chat-file-input" type="file" multiple style="display:none">
+          <input id="chat-image-input" type="file" accept="image/*" multiple style="display:none">
+        </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <!-- Voice Mode panel -->
+    <section id="panel-voice-mode" class="panel" data-panel-id="voice-mode" data-panel-status="mounted" data-read-only="true">
+      <div class="voice-mode-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">PLANNED SURFACE</div>
+            <h2>Voice Mode</h2>
+            <p class="panel-subtitle">Roadmap and readiness page for spoken ChaseOS interaction. This page is mounted so Voice Mode is visible in the product map, but it grants no microphone, transcription, speech synthesis, provider, file-write, or runtime-dispatch authority.</p>
+            <div class="runtime-authority-row" aria-label="Voice Mode authority posture">
+              <span>Readiness</span>
+              <span>No microphone</span>
+              <span>No provider call</span>
+              <span>No runtime dispatch</span>
+            </div>
+          </div>
+          <span class="panel-status-pill">Planned</span>
+        </div>
+        <div class="operator-surface-grid">
+          <article class="operator-surface-card">
+            <div class="operator-surface-kicker">Current slice</div>
+            <h3>Product placeholder</h3>
+            <p>Voice Mode is now a first-class Studio route for planning, backlog mapping, and operator review.</p>
+            <div class="operator-surface-meta"><span>Route #/voice-mode</span><span>Read-only</span></div>
+          </article>
+          <article class="operator-surface-card">
+            <div class="operator-surface-kicker">Blocked authority</div>
+            <h3>Execution remains gated</h3>
+            <p>Audio capture, speech-to-text, text-to-speech, wake words, provider/model calls, runtime handoff, and memory writes require separate contracts and approvals.</p>
+            <div class="operator-surface-meta"><span>Approval required</span><span>No side effects</span></div>
+          </article>
+          <article class="operator-surface-card">
+            <div class="operator-surface-kicker">Backlog link</div>
+            <h3>Next design work</h3>
+            <p>Define capture boundary, transcript storage, provider routing, accessibility UX, and runtime command confirmation before enabling any live voice action.</p>
+            <div class="operator-surface-meta"><span>NB-030</span><span>docs/features/chaseos_not_built_backlog.md</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Approval Center panel -->
+    <section id="panel-approval-center" class="panel" data-panel-id="approval-center" data-panel-status="mounted" data-read-only="true">
+      <div class="approval-center-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">INSPECT</div>
+            <h2>Approvals</h2>
+            <p class="panel-subtitle">Review governed requests, source-specific handoffs, digest scope, and execution boundaries.</p>
+            <div class="runtime-authority-row" aria-label="Approvals action posture">
+              <span>Queue</span>
+              <span>Decisions</span>
+              <span>Digest review</span>
+              <span>Decide in flow</span>
+            </div>
+          </div>
+          <span id="approval-center-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="approval-center-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Runtime Cockpit panel -->
+    <section id="panel-runtime-cockpit" class="panel" data-panel-id="runtime-cockpit" data-panel-status="mounted" data-read-only="false" data-write-mode="approval-gated">
+      <div class="runtime-cockpit-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">RUNTIMES</div>
+            <h2>Agents / Runtimes</h2>
+            <p class="panel-subtitle">Runtime health, worker posture, runtime service readiness, and approval-request controls.</p>
+            <div class="runtime-authority-row" aria-label="Agents and runtimes action posture">
+              <span>Health</span>
+              <span>Runtime services</span>
+              <span>Approval requests</span>
+              <span>Controlled actions</span>
+            </div>
+          </div>
+          <span id="runtime-cockpit-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="runtime-cockpit-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Provenance Explorer panel -->
+    <section id="panel-provenance-explorer" class="panel" data-panel-id="provenance-explorer" data-panel-status="mounted" data-read-only="true">
+      <div class="runtime-intelligence-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">INSPECT</div>
+            <h2>Provenance Explorer</h2>
+          </div>
+          <span id="provenance-explorer-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="provenance-explorer-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Context Import panel -->
+    <section id="panel-context-import" class="panel" data-panel-id="context-import" data-panel-status="mounted" data-read-only="false">
+      <div class="runtime-intelligence-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">MEMORY IMPORT</div>
+            <h2>Context Import</h2>
+            <p class="panel-subtitle">Preview personal context imports, fixture coverage, runtime references, and governed promotion paths.</p>
+            <div class="runtime-authority-row" aria-label="Context import action posture">
+              <span>Plan</span>
+              <span>Digest gated</span>
+              <span>Runtime refs only</span>
+              <span>No Personal Map apply</span>
+            </div>
+          </div>
+          <span id="context-import-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="context-import-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Memory Ledger panel -->
+    <section id="panel-memory-ledger" class="panel" data-panel-id="memory-ledger" data-panel-status="mounted" data-read-only="true">
+      <div class="runtime-intelligence-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">INSPECT</div>
+            <h2>Memory Ledger</h2>
+            <p class="panel-subtitle">Review runtime memory coverage, active task context, attention items, and provenance posture.</p>
+            <div class="runtime-authority-row" aria-label="Memory ledger action posture">
+              <span>Ledger</span>
+              <span>Memory records</span>
+              <span>Inspect</span>
+              <span>No canonical promotion</span>
+            </div>
+          </div>
+          <span id="memory-ledger-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="memory-ledger-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Identity panel -->
+    <section id="panel-agent-identity" class="panel" data-panel-id="agent-identity" data-panel-status="mounted" data-read-only="true">
+      <div class="runtime-intelligence-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">IDENTITY</div>
+            <h2>Agent Identity</h2>
+          </div>
+          <span id="agent-identity-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="agent-identity-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Runtime Navigation Map panel -->
+    <section id="panel-runtime-navigation" class="panel" data-panel-id="runtime-navigation" data-panel-status="mounted" data-read-only="true">
+      <div class="runtime-intelligence-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">RUNTIME MAP</div>
+            <h2>Runtime Navigation Map</h2>
+            <p class="panel-subtitle">Review runtime read routes, trusted zones, risk zones, and routing posture.</p>
+            <div class="runtime-authority-row" aria-label="Runtime navigation action posture">
+              <span>Maps</span>
+              <span>Read routes</span>
+              <span>Inspect</span>
+              <span>No routing grant</span>
+            </div>
+          </div>
+          <span id="runtime-navigation-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="runtime-navigation-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Runtime Support Loops panel -->
+    <section id="panel-runtime-support-loops" class="panel" data-panel-id="runtime-support-loops" data-panel-status="mounted" data-read-only="true">
+      <div class="runtime-intelligence-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">SUPPORT</div>
+            <h2>Support Loops</h2>
+            <p class="panel-subtitle">Review runtime support signals, suggested repairs, usage context, and verification queues without applying changes.</p>
+            <div class="runtime-authority-row" aria-label="Support loops action posture">
+              <span>Review signals</span>
+              <span>Suggest only</span>
+              <span>No repair apply</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span id="runtime-support-loops-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="runtime-support-loops-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Workspace panel -->
+    <section id="panel-project-workspace" class="panel" data-panel-id="project-workspace" data-panel-status="mounted" data-read-only="true">
+      <div class="project-workspace-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">WORKSPACES</div>
+            <h2>Workspaces</h2>
+            <p class="panel-subtitle">Project, client, and context hubs for docs, tasks, runs, memory, and artifacts.</p>
+            <div class="runtime-authority-row" aria-label="Workspaces action posture">
+              <span>Projects</span>
+              <span>Focus</span>
+              <span>Docs</span>
+              <span>Tasks</span>
+            </div>
+          </div>
+          <span id="project-workspace-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="sprint-focus-section" class="sprint-focus-section">
+          <div class="sprint-focus-header">Sprint Focus</div>
+          <div id="sprint-focus-body" class="sprint-focus-body"></div>
+        </div>
+        <div id="project-workspace-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Chaser Forge panel -->
+    <section id="panel-chaser-forge" class="panel" data-panel-id="chaser-forge" data-panel-status="mounted" data-read-only="true">
+      <div class="chaser-forge-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">EXTENSIONS</div>
+            <h2>Extensions</h2>
+            <p class="panel-subtitle">Manage local ChaseOS extensions, review installs, and prepare distribution materials through Chaser Forge guardrails.</p>
+            <div class="runtime-authority-row" aria-label="Extensions action posture">
+              <span>Local catalog</span>
+              <span>Review gates</span>
+              <span>Distribution prep</span>
+              <span>No ambient install</span>
+            </div>
+          </div>
+          <span id="chaser-forge-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="chaser-forge-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflow Packs panel -->
+    <section id="panel-workflow-packs" class="panel" data-panel-id="workflow-packs" data-panel-status="mounted" data-read-only="false" data-write-mode="approval-gated">
+      <div class="workflow-packs-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">MISSIONS</div>
+            <h2>Missions</h2>
+            <p class="panel-subtitle">Run local mission packs, review generated outputs, and complete governed local resume lanes.</p>
+            <div class="runtime-authority-row" aria-label="Missions action posture">
+              <span>Local outputs</span>
+              <span>Approvals</span>
+              <span>Results</span>
+              <span>Local only</span>
+            </div>
+          </div>
+          <span id="workflow-packs-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="workflow-packs-tabs" role="tablist">
+          <button class="workflow-packs-tab workflow-packs-tab--active" data-workflow-packs-tab="new-run" role="tab" aria-selected="true">Catalog</button>
+          <button class="workflow-packs-tab" data-workflow-packs-tab="runs" role="tab" aria-selected="false">Active</button>
+          <button class="workflow-packs-tab" data-workflow-packs-tab="review" role="tab" aria-selected="false">Approval Required</button>
+          <button class="workflow-packs-tab" data-workflow-packs-tab="proof" role="tab" aria-selected="false">Results</button>
+        </div>
+        <div id="workflow-packs-body" class="workflow-packs-body">
+          <div id="workflow-packs-tab-new-run" class="workflow-packs-tab-body">
+            <div id="workflow-packs-operating-context" class="workflow-packs-context-panel"></div>
+            <div id="workflow-packs-board" class="workflow-packs-board-panel"></div>
+            <div id="workflow-packs-readiness" class="workflow-packs-readiness-panel"></div>
+            <div id="workflow-packs-feature-coverage" class="workflow-packs-feature-coverage"></div>
+            <div class="workflow-packs-new-run">
+              <label>
+                <span>Mission Pack</span>
+                <select id="workflow-packs-pack-select"></select>
+              </label>
+              <label>
+                <span>Title</span>
+                <input id="workflow-packs-title-input" type="text" autocomplete="off" spellcheck="false" />
+              </label>
+              <label>
+                <span>Goal</span>
+                <textarea id="workflow-packs-goal-input" rows="3" spellcheck="true"></textarea>
+              </label>
+              <div id="workflow-packs-automation-audit-fields" class="workflow-packs-automation-audit-fields">
+                <label>
+                  <span>Work Domains</span>
+                  <input id="workflow-packs-work-domains-input" type="text" autocomplete="off" spellcheck="true" placeholder="Ops, content, sales" />
+                </label>
+                <label>
+                  <span>Repeated Tasks</span>
+                  <textarea id="workflow-packs-repeated-tasks-input" rows="4" spellcheck="true" placeholder="One repeated task per line"></textarea>
+                </label>
+                <label>
+                  <span>Pain Points</span>
+                  <textarea id="workflow-packs-pain-points-input" rows="3" spellcheck="true" placeholder="Where work feels slow, risky, or easy to forget"></textarea>
+                </label>
+              </div>
+              <div id="workflow-packs-creative-studio-fields" class="workflow-packs-creative-studio-fields">
+                <label>
+                  <span>Campaign Type</span>
+                  <input id="workflow-packs-campaign-type-input" type="text" autocomplete="off" spellcheck="true" placeholder="Indie product landing" />
+                </label>
+                <label>
+                  <span>Offer</span>
+                  <input id="workflow-packs-offer-input" type="text" autocomplete="off" spellcheck="true" placeholder="Product, service, or launch" />
+                </label>
+                <label>
+                  <span>Audience</span>
+                  <input id="workflow-packs-audience-input" type="text" autocomplete="off" spellcheck="true" placeholder="Who this is for" />
+                </label>
+                <label>
+                  <span>Tone</span>
+                  <input id="workflow-packs-tone-input" type="text" autocomplete="off" spellcheck="true" placeholder="Clear, useful, trustworthy" />
+                </label>
+                <label>
+                  <span>Channels</span>
+                  <input id="workflow-packs-channels-input" type="text" autocomplete="off" spellcheck="true" placeholder="Landing page, social, email" />
+                </label>
+                <label>
+                  <span>Primary CTA</span>
+                  <input id="workflow-packs-primary-cta-input" type="text" autocomplete="off" spellcheck="true" placeholder="Join waitlist" />
+                </label>
+                <label class="workflow-packs-field-wide">
+                  <span>Brand Profile</span>
+                  <textarea id="workflow-packs-brand-profile-input" rows="3" spellcheck="true" placeholder="Brand feel, verification notes, constraints, and must-keep details"></textarea>
+                </label>
+              </div>
+              <div id="workflow-packs-research-intelligence-fields" class="workflow-packs-research-intelligence-fields">
+                <label>
+                  <span>Evaluation Lens</span>
+                  <input id="workflow-packs-research-mode-input" type="text" autocomplete="off" spellcheck="true" placeholder="feature integration" />
+                </label>
+                <label>
+                  <span>Decision Goal</span>
+                  <input id="workflow-packs-decision-goal-input" type="text" autocomplete="off" spellcheck="true" placeholder="Adopt, watchlist, reject, or defer" />
+                </label>
+                <label>
+                  <span>Audience</span>
+                  <input id="workflow-packs-research-audience-input" type="text" autocomplete="off" spellcheck="true" placeholder="Founders, builders, developers" />
+                </label>
+                <label>
+                  <span>Output Focus</span>
+                  <input id="workflow-packs-output-focus-input" type="text" autocomplete="off" spellcheck="true" placeholder="Delivery brief, R&D export" />
+                </label>
+                <label class="workflow-packs-field-wide">
+                  <span>Pasted Source</span>
+                  <textarea id="workflow-packs-source-material-input" rows="5" spellcheck="true" placeholder="Paste notes, repo summary, thread excerpt, paper notes, or screenshot notes"></textarea>
+                </label>
+                <label class="workflow-packs-field-wide">
+                  <span>URL / Repo References</span>
+                  <textarea id="workflow-packs-source-urls-input" rows="3" spellcheck="false" placeholder="One URL or repo reference per line. Metadata only."></textarea>
+                </label>
+                <label class="workflow-packs-field-wide">
+                  <span>Product Context</span>
+                  <textarea id="workflow-packs-product-context-input" rows="3" spellcheck="true" placeholder="Product/module/workflow-pack context to evaluate against"></textarea>
+                </label>
+              </div>
+              <div id="workflow-packs-agent-governance-fields" class="workflow-packs-agent-governance-fields">
+                <label>
+                  <span>Agent Name</span>
+                  <input id="workflow-packs-agent-name-input" type="text" autocomplete="off" spellcheck="true" placeholder="Codex" />
+                </label>
+                <label>
+                  <span>Runtime Surface</span>
+                  <input id="workflow-packs-runtime-name-input" type="text" autocomplete="off" spellcheck="true" placeholder="agent bus worker" />
+                </label>
+                <label>
+                  <span>Runtime Status</span>
+                  <input id="workflow-packs-runtime-status-input" type="text" autocomplete="off" spellcheck="true" placeholder="configured but unverified" />
+                </label>
+                <label>
+                  <span>Approval Mode</span>
+                  <input id="workflow-packs-approval-mode-input" type="text" autocomplete="off" spellcheck="true" placeholder="review required before sensitive action" />
+                </label>
+                <label class="workflow-packs-field-wide">
+                  <span>Tools / Capabilities</span>
+                  <textarea id="workflow-packs-tools-input" rows="3" spellcheck="true" placeholder="One tool or capability per line"></textarea>
+                </label>
+                <label>
+                  <span>Reads From</span>
+                  <textarea id="workflow-packs-reads-from-input" rows="4" spellcheck="true" placeholder="Declared inputs, folders, queues, or APIs"></textarea>
+                </label>
+                <label>
+                  <span>Writes To</span>
+                  <textarea id="workflow-packs-writes-to-input" rows="4" spellcheck="true" placeholder="Artifact folders or approval-gated write surfaces"></textarea>
+                </label>
+                <label>
+                  <span>External Actions</span>
+                  <textarea id="workflow-packs-external-actions-input" rows="4" spellcheck="true" placeholder="send_email, publish_content, browser_action"></textarea>
+                </label>
+                <label>
+                  <span>Permission Surfaces</span>
+                  <textarea id="workflow-packs-permission-surfaces-input" rows="4" spellcheck="true" placeholder="Repo files, approval queue, graph promotion"></textarea>
+                </label>
+                <label class="workflow-packs-field-wide">
+                  <span>Workflow Manifest</span>
+                  <textarea id="workflow-packs-workflow-manifest-input" rows="7" spellcheck="false" placeholder="Paste draft manifest text. It will be linted locally and not executed."></textarea>
+                </label>
+              </div>
+              <button id="workflow-packs-create-demo-run" class="btn-secondary" type="button">Create Local Mission</button>
+              <div id="workflow-packs-create-result" class="workflow-packs-create-result"></div>
+            </div>
+            <div id="workflow-packs-overview" class="workflow-packs-overview"></div>
+          </div>
+          <div id="workflow-packs-tab-runs" class="workflow-packs-tab-body" style="display:none;">
+            <div id="workflow-packs-runs" class="workflow-packs-list"></div>
+          </div>
+          <div id="workflow-packs-tab-review" class="workflow-packs-tab-body" style="display:none;">
+            <div id="workflow-packs-review-queue" class="workflow-packs-list"></div>
+          </div>
+          <div id="workflow-packs-tab-proof" class="workflow-packs-tab-body" style="display:none;">
+            <div id="workflow-packs-proof-cards" class="workflow-packs-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research Collections panel (Pass 10H, productized for V1) -->
+    <section id="panel-sic" class="panel" data-panel-id="sic" data-panel-status="mounted" data-read-only="true">
+      <div class="sic-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">RESEARCH</div>
+            <h2>Research Collections</h2>
+            <p class="panel-subtitle">Browse organized source collections, retrieval coverage, review posture, and generated outputs.</p>
+            <div class="runtime-authority-row" aria-label="Research collections action posture">
+              <span>Collections</span>
+              <span>Source packages</span>
+              <span>Retrieval posture</span>
+              <span>Approval for changes</span>
+            </div>
+          </div>
+          <span id="sic-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="sic-summary-row" class="sic-summary-row"></div>
+        <div class="sic-filter-row">
+          <input id="sic-search-input" class="sic-search-input" type="search" placeholder="Search collections or sources..." aria-label="Search research collections">
+          <select id="sic-status-filter" class="sic-filter-select" title="Filter by collection status">
+            <option value="">All states</option>
+          </select>
+          <button id="sic-refresh-btn" class="btn-secondary sic-refresh-btn" title="Refresh collections">Refresh</button>
+        </div>
+        <div id="sic-breadcrumb" class="sic-breadcrumb" style="display:none;">
+          <button id="sic-back-btn" class="btn-secondary sic-back-btn">Back to collections</button>
+          <span id="sic-breadcrumb-name" class="sic-breadcrumb-name"></span>
+        </div>
+        <div id="sic-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AOR Execution Monitor panel (Pass 10J) -->
+    <section id="panel-aor" class="panel" data-panel-id="aor" data-panel-status="mounted" data-read-only="true">
+      <div class="aor-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">RUN DESK</div>
+            <h2>Tasks &amp; Runs</h2>
+            <p class="panel-subtitle">Review human and agent work history, run records, and outcomes.</p>
+            <div class="runtime-authority-row" aria-label="Tasks and runs action posture">
+              <span>Inspect</span>
+              <span>Run history</span>
+              <span>Run records</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span id="aor-status" class="panel-status-pill">Checking</span>
+        </div>
+        <div id="aor-breadcrumb" class="aor-breadcrumb" style="display:none;">
+          <button id="aor-back-btn" class="btn-secondary aor-back-btn">← Executions</button>
+          <span id="aor-breadcrumb-name" class="aor-breadcrumb-name"></span>
+        </div>
+        <div class="aor-filter-row" id="aor-filter-row">
+          <select id="aor-workflow-filter" class="aor-filter-select" title="Filter by workflow">
+            <option value="">All workflows</option>
+          </select>
+          <select id="aor-status-filter" class="aor-filter-select" title="Filter by status">
+            <option value="">All statuses</option>
+            <option value="success">success</option>
+            <option value="escalated">escalated</option>
+            <option value="failed">failed</option>
+          </select>
+          <button id="aor-refresh-btn" class="btn-secondary aor-refresh-btn" title="Refresh">↻ Refresh</button>
+        </div>
+        <div id="aor-stats-row" class="aor-stats-row"></div>
+        <div id="aor-wf-bars" class="aor-wf-bars"></div>
+        <div id="aor-operating-context" class="aor-operating-context"></div>
+        <div class="aor-tab-strip" id="aor-tab-strip">
+          <button class="aor-tab aor-tab-active" data-aor-tab="board">Board</button>
+          <button class="aor-tab" data-aor-tab="list">List</button>
+          <button class="aor-tab" data-aor-tab="timeline">Timeline</button>
+        </div>
+        <div id="aor-body">
+          <div style="color:var(--text-muted);font-size:12px">Waiting for local run records...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Schedule Manager panel (Pass 10K) -->
+    <section id="panel-schedules" class="panel" data-panel-id="schedules" data-panel-status="mounted" data-read-only="true">
+      <div class="schedules-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">PLANNER</div>
+            <h2>Schedules</h2>
+            <p class="panel-subtitle">Review local schedule intents, runtime targets, and activation posture before changes are approved.</p>
+            <div class="runtime-authority-row" aria-label="Schedules action posture">
+              <span>Schedule intents</span>
+              <span>Runtime targets</span>
+              <span>Changes need approval</span>
+              <span>Activation needs approval</span>
+            </div>
+          </div>
+          <span id="schedules-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="schedules-breadcrumb" class="schedules-breadcrumb" style="display:none;">
+          <button id="schedules-back-btn" class="btn-secondary schedules-back-btn">← Schedules</button>
+          <span id="schedules-breadcrumb-name" class="schedules-breadcrumb-name"></span>
+        </div>
+        <div class="schedules-filter-row" id="schedules-filter-row">
+          <select id="schedules-runtime-filter" class="schedules-filter-select" title="Filter by runtime">
+            <option value="">All runtimes</option>
+          </select>
+          <select id="schedules-cadence-filter" class="schedules-filter-select" title="Filter by cadence">
+            <option value="">All cadences</option>
+            <option value="cron">cron</option>
+            <option value="manual">manual</option>
+          </select>
+          <label class="schedules-enabled-label">
+            <input type="checkbox" id="schedules-enabled-only"> Enabled only
+          </label>
+          <button id="schedules-refresh-btn" class="btn-secondary schedules-refresh-btn" title="Refresh">↻ Refresh</button>
+        </div>
+        <div id="schedules-operating-context" class="schedules-context-panel"></div>
+        <div id="schedules-readiness" class="schedules-readiness-panel"></div>
+        <div id="schedules-feature-coverage" class="schedules-feature-coverage"></div>
+        <div id="schedules-stats-row" class="schedules-stats-row"></div>
+        <div id="schedules-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proactive Briefings panel (10A0) -->
+    <section id="panel-pulse-schedule-proof" class="panel" data-panel-id="pulse-schedule-proof" data-panel-status="mounted" data-read-only="true">
+      <div class="pulse-schedule-proof-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">BRIEFINGS</div>
+            <h2>Proactive Briefings</h2>
+            <p class="panel-subtitle">Review briefing schedules, briefing lanes, and delivery readiness.</p>
+            <div class="runtime-authority-row" aria-label="Proactive briefing action posture">
+              <span>Schedules</span>
+              <span>Briefing lanes</span>
+              <span>Inspect</span>
+              <span>No auto-trigger</span>
+            </div>
+          </div>
+          <span id="pulse-schedule-proof-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="pulse-schedule-proof-summary" class="pulse-schedule-proof-summary"></div>
+        <div class="pulse-schedule-proof-section-title">Briefing Lanes</div>
+        <div id="pulse-schedule-proof-body" class="pulse-schedule-proof-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+        <div class="pulse-schedule-proof-actions-row">
+          <button id="pulse-schedule-proof-refresh-btn" class="btn-secondary pulse-schedule-proof-refresh-btn" title="Refresh">Refresh</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review Queue panel (10A0) -->
+    <section id="panel-pulse-enqueue" class="panel" data-panel-id="pulse-enqueue" data-panel-status="mounted" data-read-only="true">
+      <div class="pulse-enqueue-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">REVIEW</div>
+            <h2>Review Queue</h2>
+            <p class="panel-subtitle">Review proactive intelligence checks, approval requests, and proposed actions.</p>
+            <div class="runtime-authority-row" aria-label="Review queue action posture">
+              <span>Queue</span>
+              <span>Proposed actions</span>
+              <span>Inspect</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span id="pulse-enqueue-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="pulse-enqueue-summary" class="pulse-enqueue-summary"></div>
+        <div class="pulse-enqueue-tabs" role="tablist">
+          <button class="pulse-enqueue-tab pulse-enqueue-tab--active" data-pulse-enqueue-tab="preflights" role="tab" aria-selected="true">Preflights</button>
+          <button class="pulse-enqueue-tab" data-pulse-enqueue-tab="requests" role="tab" aria-selected="false">Requests</button>
+          <button class="pulse-enqueue-tab" data-pulse-enqueue-tab="commands" role="tab" aria-selected="false">Actions</button>
+        </div>
+        <div id="pulse-enqueue-tab-preflights" class="pulse-enqueue-tab-body">
+          <div id="pulse-enqueue-preflight-list" class="pulse-enqueue-list">
+            <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+          </div>
+        </div>
+        <div id="pulse-enqueue-tab-requests" class="pulse-enqueue-tab-body" style="display:none;">
+          <div id="pulse-enqueue-request-list" class="pulse-enqueue-list"></div>
+        </div>
+        <div id="pulse-enqueue-tab-commands" class="pulse-enqueue-tab-body" style="display:none;">
+          <div id="pulse-enqueue-command-list" class="pulse-enqueue-command-list"></div>
+        </div>
+        <div class="pulse-enqueue-actions-row">
+          <button id="pulse-enqueue-refresh-btn" class="btn-secondary pulse-enqueue-refresh-btn" title="Refresh">Refresh</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intake panel (Pass 10G) -->
+    <section id="panel-intake" class="panel" data-panel-id="intake" data-panel-status="mounted" data-read-only="true">
+      <div class="intake-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">INTAKE</div>
+            <h2>Intake</h2>
+            <p class="panel-subtitle">Review new captures, spot duplicates, and request approval before anything joins your knowledge base.</p>
+            <div class="runtime-authority-row" aria-label="Intake action posture">
+              <span>New captures</span>
+              <span>Duplicate protection</span>
+              <span>Approval required</span>
+              <span>No automatic filing</span>
+            </div>
+          </div>
+          <span id="intake-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="intake-filter-row">
+          <select id="intake-class-filter" class="intake-filter-select" title="Filter by input class">
+            <option value="">All content</option>
+            <option value="source">Sources</option>
+            <option value="digest">Digests</option>
+            <option value="transcript">Transcripts</option>
+            <option value="generated-idea">Ideas</option>
+          </select>
+          <input id="intake-search-filter" class="intake-search-input" type="search" placeholder="Search captures..." aria-label="Search intake captures">
+          <button id="intake-refresh-btn" class="btn-secondary intake-refresh-btn" title="Refresh review inbox">Refresh</button>
+        </div>
+        <div id="intake-stats-row" class="intake-stats-row"></div>
+        <div id="intake-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capture panel (Capture to Markdown Pass 3) -->
+    <section id="panel-capture-markdown" class="panel" data-panel-id="capture-markdown" data-panel-status="mounted" data-read-only="false" data-write-mode="raw-quarantine-writer">
+      <div class="capture-markdown-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">CAPTURE</div>
+            <h2>Capture</h2>
+            <p class="panel-subtitle">Turn source text or a vault file into reviewable Markdown while keeping downstream lanes governed.</p>
+            <div class="runtime-authority-row" aria-label="Capture action posture">
+              <span>Render</span>
+              <span>Quarantine save</span>
+              <span>Review</span>
+              <span>No auto-run</span>
+            </div>
+          </div>
+          <span id="capture-markdown-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="capture-markdown-grid">
+          <label class="capture-markdown-field">
+            <span>Profile</span>
+            <select id="capture-markdown-profile-select" class="capture-markdown-select" title="Capture profile"></select>
+          </label>
+          <label class="capture-markdown-field">
+            <span>Source</span>
+            <select id="capture-markdown-source-select" class="capture-markdown-select" title="Capture source"></select>
+          </label>
+          <label class="capture-markdown-field capture-markdown-title-field">
+            <span>Title</span>
+            <input id="capture-markdown-title-input" class="capture-markdown-input" type="text" autocomplete="off" spellcheck="true">
+          </label>
+          <label class="capture-markdown-field capture-markdown-file-row" id="capture-markdown-file-row" hidden>
+            <span>Vault File</span>
+            <input id="capture-markdown-file-input" class="capture-markdown-input" type="text" autocomplete="off" spellcheck="false">
+          </label>
+          <label class="capture-markdown-field" id="capture-markdown-local-ocr-command-row" hidden>
+            <span>Local optical character recognition command</span>
+            <input id="capture-markdown-local-ocr-command-input" class="capture-markdown-input" type="text" autocomplete="off" spellcheck="false">
+          </label>
+          <label class="capture-markdown-field">
+            <span>Source link</span>
+            <input id="capture-markdown-source-url-input" class="capture-markdown-input" type="url" autocomplete="off" spellcheck="false">
+          </label>
+          <label class="capture-markdown-check">
+            <input id="capture-markdown-redaction-check" type="checkbox">
+            <span>Allow redacted save</span>
+          </label>
+        </div>
+        <div class="capture-markdown-source-options" id="capture-markdown-source-options">
+          <div style="color:var(--text-muted);font-size:12px">Syncing capture sources</div>
+        </div>
+        <div class="capture-markdown-release-readiness" id="capture-markdown-release-readiness">
+          <div style="color:var(--text-muted);font-size:12px">Syncing Capture release readiness</div>
+        </div>
+        <label class="capture-markdown-field capture-markdown-full">
+          <span>Raw Text</span>
+          <textarea id="capture-markdown-raw-text" class="capture-markdown-textarea" spellcheck="true"></textarea>
+        </label>
+        <div class="capture-markdown-grid capture-markdown-notes-grid">
+          <label class="capture-markdown-field">
+            <span>Intent</span>
+            <input id="capture-markdown-intent-input" class="capture-markdown-input" type="text" autocomplete="off" spellcheck="true">
+          </label>
+          <label class="capture-markdown-field">
+            <span>Summary</span>
+            <input id="capture-markdown-summary-input" class="capture-markdown-input" type="text" autocomplete="off" spellcheck="true">
+          </label>
+        </div>
+        <label class="capture-markdown-field capture-markdown-full">
+          <span>Structured Notes</span>
+          <textarea id="capture-markdown-notes-text" class="capture-markdown-textarea capture-markdown-notes-textarea" spellcheck="true"></textarea>
+        </label>
+        <label class="capture-markdown-field capture-markdown-full">
+          <span>Interpretation</span>
+          <textarea id="capture-markdown-interpretation-text" class="capture-markdown-textarea capture-markdown-notes-textarea" spellcheck="true"></textarea>
+        </label>
+          <div class="capture-markdown-actions-row">
+            <button id="capture-markdown-preview-btn" class="btn-secondary capture-markdown-preview-btn" title="Render Markdown">Render</button>
+            <button id="capture-markdown-save-btn" class="btn-secondary capture-markdown-save-btn" title="Save to quarantine">Save</button>
+            <span id="capture-markdown-action-msg" class="capture-markdown-action-msg"></span>
+          </div>
+          <div id="capture-markdown-policy-body" class="capture-markdown-policy-body"></div>
+          <div id="capture-markdown-source-pack-preview-body" class="capture-markdown-source-pack-preview-body"></div>
+          <div class="capture-markdown-output-grid">
+          <div class="capture-markdown-output">
+            <div class="capture-markdown-section-title">Rendered Markdown</div>
+            <div id="capture-markdown-preview-body" class="capture-markdown-preview-body"></div>
+          </div>
+          <div class="capture-markdown-recent">
+            <div class="capture-markdown-section-title">Recent Captures</div>
+            <div id="capture-markdown-recent-body" class="capture-markdown-recent-body">
+              <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SiteOps Inspector panel (Pass 10L) -->
+    <section id="panel-siteops" class="panel" data-panel-id="siteops" data-panel-status="mounted" data-read-only="true">
+      <div class="siteops-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">SITE REVIEW</div>
+            <h2>Site Skills</h2>
+            <p class="panel-subtitle">Review site-operation runs, approvals, audit events, and promotion posture.</p>
+            <div class="runtime-authority-row" aria-label="Site skills action posture">
+              <span>Run records</span>
+              <span>Approvals</span>
+              <span>Inspect</span>
+              <span>No deploy action</span>
+            </div>
+          </div>
+          <span id="siteops-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="siteops-breadcrumb" class="siteops-breadcrumb" style="display:none;">
+          <button id="siteops-back-btn" class="btn-secondary siteops-back-btn">← SiteOps</button>
+          <span id="siteops-breadcrumb-name" class="siteops-breadcrumb-name"></span>
+        </div>
+        <div class="siteops-tab-row" id="siteops-tab-row">
+          <button class="siteops-tab-btn active" data-tab="runs" id="siteops-tab-runs">Runs</button>
+          <button class="siteops-tab-btn" data-tab="approvals" id="siteops-tab-approvals">Approvals</button>
+          <button id="siteops-refresh-btn" class="btn-secondary siteops-refresh-btn" title="Refresh">↻ Refresh</button>
+        </div>
+        <div id="siteops-stats-row" class="siteops-stats-row"></div>
+        <div id="siteops-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sources panel -->
+    <section id="panel-acquisition" class="panel" data-panel-id="acquisition" data-panel-status="mounted" data-read-only="true">
+      <div class="acquisition-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">CONTENT SOURCES</div>
+            <h2>Sources</h2>
+            <p class="panel-subtitle">Review source channels, source packs, normalized packs, briefing inputs, and provenance before content moves downstream.</p>
+            <div class="runtime-authority-row" aria-label="Sources action posture">
+              <span>Source channels</span>
+              <span>Source packs</span>
+              <span>Briefing inputs</span>
+              <span>Approval required</span>
+            </div>
+          </div>
+          <span id="acquisition-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="acquisition-tab-row" id="acquisition-tab-row" role="tablist" aria-label="Sources sections">
+          <button class="acquisition-tab-btn active" data-acquisition-tab="sources" type="button" role="tab" aria-selected="true">Sources</button>
+          <button class="acquisition-tab-btn" data-acquisition-tab="source-packs" type="button" role="tab" aria-selected="false">Source Packs</button>
+          <button class="acquisition-tab-btn" data-acquisition-tab="normalized-packs" type="button" role="tab" aria-selected="false">Normalized Packs</button>
+          <button class="acquisition-tab-btn" data-acquisition-tab="briefing-inputs" type="button" role="tab" aria-selected="false">Briefing Inputs</button>
+          <button class="acquisition-tab-btn" data-acquisition-tab="provenance" type="button" role="tab" aria-selected="false">Provenance</button>
+          <button class="acquisition-tab-btn" data-acquisition-tab="advanced" type="button" role="tab" aria-selected="false">Advanced</button>
+          <button id="acquisition-refresh-btn" class="btn-secondary acquisition-refresh-btn" type="button" title="Refresh sources">Refresh</button>
+        </div>
+        <div class="acquisition-search-row">
+          <input id="acquisition-search" class="panel-search-input" type="search" placeholder="Filter sources, packs, inputs, or provenance..." autocomplete="off" spellcheck="false">
+          <button id="acquisition-dry-run-btn" class="btn-secondary acquisition-dry-run-btn" type="button" title="Request a governed source plan">Plan source run</button>
+          <span id="acquisition-action-msg" class="acquisition-action-msg"></span>
+        </div>
+        <div id="acquisition-stats-row" class="acquisition-stats-row"></div>
+
+        <div class="acquisition-tab-panels">
+          <section class="acquisition-tab-panel active" id="acquisition-tab-sources" data-acquisition-tab-panel="sources" role="tabpanel">
+            <div class="acquisition-section-title" id="acquisition-sources-heading">Sources</div>
+            <div id="acquisition-sources-row" class="acquisition-sources-row"></div>
+            <div class="acquisition-section-title">Source Activity</div>
+            <div id="acquisition-runs-body" class="acquisition-runs-body">
+              <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+            </div>
+          </section>
+          <section class="acquisition-tab-panel" id="acquisition-tab-source-packs" data-acquisition-tab-panel="source-packs" role="tabpanel">
+            <div class="acquisition-section-title">Source Packs</div>
+            <div id="acquisition-source-packs-body" class="acquisition-product-body"></div>
+          </section>
+          <section class="acquisition-tab-panel" id="acquisition-tab-normalized-packs" data-acquisition-tab-panel="normalized-packs" role="tabpanel">
+            <div class="acquisition-section-title">Normalized Packs</div>
+            <div id="acquisition-normalized-packs-body" class="acquisition-product-body"></div>
+          </section>
+          <section class="acquisition-tab-panel" id="acquisition-tab-briefing-inputs" data-acquisition-tab-panel="briefing-inputs" role="tabpanel">
+            <div class="acquisition-section-title">Briefing Inputs</div>
+            <div id="acquisition-briefing-inputs-body" class="acquisition-product-body"></div>
+          </section>
+          <section class="acquisition-tab-panel" id="acquisition-tab-provenance" data-acquisition-tab-panel="provenance" role="tabpanel">
+            <div class="acquisition-section-title">Provenance</div>
+            <div id="acquisition-provenance-body" class="acquisition-product-body"></div>
+          </section>
+          <section class="acquisition-tab-panel" id="acquisition-tab-advanced" data-acquisition-tab-panel="advanced" role="tabpanel">
+            <div class="acquisition-section-title">Advanced</div>
+            <div id="acquisition-advanced-body" class="acquisition-product-body"></div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Bus product panel -->
+    <section id="panel-bus" class="panel" data-panel-id="bus" data-panel-status="mounted" data-read-only="true">
+      <div class="bus-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">COORDINATE</div>
+            <h2>Agent Bus</h2>
+            <p class="panel-subtitle">Coordinate local runtime work from an operator desk: task packets, worker heartbeats, routes, and activity events.</p>
+            <div class="runtime-authority-row" aria-label="Agent Bus action posture">
+              <span>Queue readback</span>
+              <span>Worker heartbeats</span>
+              <span>Routes</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span id="bus-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="bus-mode-banner" class="bus-mode-banner"></div>
+        <div id="bus-operating-context"></div>
+        <div id="bus-readiness"></div>
+        <div id="bus-feature-coverage"></div>
+        <div class="bus-tab-row" id="bus-tab-row">
+          <button class="bus-tab-btn active" data-tab="tasks" id="bus-tab-tasks">Coordination Queue</button>
+          <button class="bus-tab-btn" data-tab="heartbeats" id="bus-tab-heartbeats">Worker Heartbeats</button>
+          <button class="bus-tab-btn" data-tab="events" id="bus-tab-events">Audit Stream</button>
+          <button id="bus-refresh-btn" class="btn-secondary bus-refresh-btn" title="Refresh">↻ Refresh</button>
+        </div>
+        <div id="bus-stats-row" class="bus-stats-row"></div>
+        <div class="bus-filter-row" id="bus-filter-row">
+          <select id="bus-status-filter" class="bus-filter-select" title="Filter by status">
+            <option value="">All statuses</option>
+            <option value="open">open</option>
+            <option value="claimed">claimed</option>
+            <option value="in_progress">in_progress</option>
+            <option value="done">done</option>
+            <option value="blocked">blocked</option>
+          </select>
+          <select id="bus-runtime-filter" class="bus-filter-select" title="Filter by runtime">
+            <option value="">All runtimes</option>
+            <option value="OpenClaw">OpenClaw</option>
+            <option value="Hermes">Hermes</option>
+            <option value="Archon">Archon</option>
+          </select>
+        </div>
+        <div id="bus-body">
+          <div style="color:var(--text-muted);font-size:12px">Syncing local state</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quality Review / Proof panel -->
+    <section id="panel-qa-proof" class="panel" data-panel-id="qa-proof" data-panel-status="mounted" data-read-only="true">
+      <div class="qa-proof-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">QUALITY</div>
+            <h2>Quality Review</h2>
+            <p class="panel-subtitle">Native shell checks, package checks, visual review, and quality records.</p>
+            <div class="runtime-authority-row" aria-label="Quality review action posture">
+              <span>Records</span>
+              <span>Visual review</span>
+              <span>Inspect</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span class="panel-status-pill">Ready</span>
+        </div>
+        <section class="operator-surface-overview">
+          <div class="operator-surface-copy">
+            <strong>Quality Review</strong>
+            <span>Review package status, screenshots, route coverage, product-copy checks, and console health before a Studio build is accepted.</span>
+          </div>
+          <div class="operator-surface-metrics">
+            <span><b>38</b>routes<em>native shell</em></span>
+            <span><b>0</b>hidden actions<em>quality guard</em></span>
+            <span><b>safe</b>mode<em>review only</em></span>
+          </div>
+        </section>
+        <div class="operator-surface-card-grid">
+          <article class="operator-surface-card" data-operator-card="quality-native-package" data-operator-card-title="Native package" data-operator-card-status="Tracked">
+            <div class="operator-surface-card-head"><span>Native package</span><strong>Tracked</strong></div>
+            <p>Packaged Studio builds are checked through the native shell path, not only static browser rendering.</p>
+            <div class="operator-surface-card-meta"><span>EXE</span><span>Hash</span><span>Route screenshots</span></div>
+          </article>
+          <article class="operator-surface-card" data-operator-card="quality-visual-review" data-operator-card-title="Visual review" data-operator-card-status="Tracked">
+            <div class="operator-surface-card-head"><span>Visual review</span><strong>Tracked</strong></div>
+            <p>Desktop and compact layouts are reviewed for blank pages, clipping, overlap, and internal copy leakage.</p>
+            <div class="operator-surface-card-meta"><span>Desktop</span><span>Compact</span><span>Contact sheet</span></div>
+          </article>
+          <article class="operator-surface-card" data-operator-card="quality-product-copy" data-operator-card-title="Product copy" data-operator-card-status="Guarded">
+            <div class="operator-surface-card-head"><span>Product copy</span><strong>Guarded</strong></div>
+            <p>Visible text is checked so the product shell does not read like an internal console.</p>
+            <div class="operator-surface-card-meta"><span>Labels</span><span>Empty states</span><span>Navigation</span></div>
+          </article>
+          <article class="operator-surface-card" data-operator-card="quality-action-boundary" data-operator-card-title="Action boundary" data-operator-card-status="Guarded">
+            <div class="operator-surface-card-head"><span>Action boundary</span><strong>Guarded</strong></div>
+            <p>Quality Review shows records without consuming approvals, starting runtimes, or mutating project records.</p>
+            <div class="operator-surface-card-meta"><span>Inspect</span><span>Records</span><span>Governed actions</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Build Log Viewer panel (Pass 10Q) -->
+    <section id="panel-build-logs" class="panel" data-panel-id="build-logs" data-panel-status="mounted" data-read-only="true">
+      <div class="build-logs-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">HISTORY</div>
+            <h2>History / Audit</h2>
+            <p class="panel-subtitle">Search activity history, audit records, verification notes, and product records.</p>
+            <div class="runtime-authority-row" aria-label="History audit action posture">
+              <span>Readback</span>
+              <span>Records</span>
+              <span>Search</span>
+              <span>History stays unchanged</span>
+            </div>
+          </div>
+          <span id="build-logs-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div id="build-logs-summary" class="bl-summary-bar"></div>
+        <div class="build-logs-search-row">
+          <input type="text" id="build-logs-search" class="panel-search-input" placeholder="Filter history..." autocomplete="off" />
+        </div>
+        <div id="build-logs-body" class="build-logs-body">
+          <div id="build-logs-list" class="build-logs-list"></div>
+          <div id="build-logs-viewer" class="build-logs-viewer" style="display:none;">
+            <div class="build-logs-viewer-header">
+              <span id="build-logs-viewer-title" class="build-logs-viewer-title"></span>
+              <button id="build-logs-viewer-close" class="build-logs-viewer-close" type="button">✕ Close</button>
+            </div>
+            <div id="build-logs-viewer-content" class="build-logs-viewer-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-decision-ledger" class="panel" data-panel-id="decision-ledger" data-panel-status="mounted" data-read-only="true">
+      <div class="decision-ledger-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">DECISIONS</div>
+            <h2>Decisions</h2>
+            <p class="panel-subtitle">Browse durable decisions, rationale, standing records, and historical operator choices.</p>
+            <div class="runtime-authority-row" aria-label="Decisions action posture">
+              <span>Ledger</span>
+              <span>Rationale</span>
+              <span>Inspect</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span id="decision-ledger-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="decision-ledger-search-row">
+          <input type="text" id="decision-ledger-search" class="panel-search-input" placeholder="Filter decisions…" autocomplete="off" />
+        </div>
+        <div id="decision-ledger-body" class="decision-ledger-body">
+          <div id="decision-ledger-list" class="decision-ledger-list"></div>
+          <div id="decision-ledger-viewer" class="decision-ledger-viewer" style="display:none;">
+            <div class="decision-ledger-viewer-header">
+              <span id="decision-ledger-viewer-title" class="decision-ledger-viewer-title"></span>
+              <button id="decision-ledger-viewer-close" class="decision-ledger-viewer-close" type="button">✕ Close</button>
+            </div>
+            <div id="decision-ledger-viewer-content" class="decision-ledger-viewer-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-pivot-log" class="panel" data-panel-id="pivot-log" data-panel-status="mounted" data-read-only="true">
+      <div class="pivot-log-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">PIVOTS</div>
+            <h2>Pivot Log</h2>
+          </div>
+          <span id="pivot-log-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="pivot-log-search-row">
+          <input type="text" id="pivot-log-search" class="panel-search-input" placeholder="Filter pivots..." autocomplete="off" />
+        </div>
+        <div id="pivot-log-body" class="pivot-log-body">
+          <div id="pivot-log-list" class="pivot-log-list"></div>
+          <div id="pivot-log-viewer" class="pivot-log-viewer" style="display:none;">
+            <div class="pivot-log-viewer-header">
+              <span id="pivot-log-viewer-title" class="pivot-log-viewer-title"></span>
+              <button id="pivot-log-viewer-close" class="pivot-log-viewer-close" type="button">x Close</button>
+            </div>
+            <div id="pivot-log-viewer-content" class="pivot-log-viewer-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-feature-filter" class="panel" data-panel-id="feature-filter" data-panel-status="mounted" data-read-only="true">
+      <div class="feature-filter-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">FEATURES</div>
+            <h2>Feature Audit</h2>
+            <p class="panel-subtitle">Review task-type boundaries, feature adoption gates, and feature triage references.</p>
+            <div class="runtime-authority-row" aria-label="Feature audit action posture">
+              <span>Triage</span>
+              <span>Task types</span>
+              <span>SOP</span>
+              <span>No roadmap write</span>
+            </div>
+          </div>
+          <span id="feature-filter-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="feature-filter-tabs" role="tablist">
+          <button class="ff-tab ff-tab--active" data-ff-tab="task-types" role="tab" aria-selected="true">Task Types</button>
+          <button class="ff-tab" data-ff-tab="sop" role="tab" aria-selected="false">Adoption Gate SOP</button>
+        </div>
+        <div id="feature-filter-tab-task-types" class="feature-filter-tab-body">
+          <div class="feature-filter-search-row">
+            <input type="text" id="feature-filter-search" class="panel-search-input" placeholder="Filter task types..." autocomplete="off" />
+          </div>
+          <div id="feature-filter-task-list" class="feature-filter-task-list"></div>
+        </div>
+        <div id="feature-filter-tab-sop" class="feature-filter-tab-body" style="display:none;">
+          <div id="feature-filter-sop-content" class="feature-filter-sop-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-workflow-registry" class="panel" data-panel-id="workflow-registry" data-panel-status="mounted" data-read-only="true">
+      <div class="workflow-registry-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">WORKFLOWS</div>
+            <h2>Workflow Registry</h2>
+            <p class="panel-subtitle">Browse registered workflows, task types, trigger posture, and bounded execution contracts.</p>
+            <div class="runtime-authority-row" aria-label="Workflow registry action posture">
+              <span>Registry</span>
+              <span>Task types</span>
+              <span>Inspect</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span id="workflow-registry-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="workflow-registry-search-row">
+          <input type="text" id="workflow-registry-search" class="panel-search-input" placeholder="Filter workflows..." autocomplete="off" />
+        </div>
+        <div id="workflow-registry-body" class="workflow-registry-body">
+          <div id="workflow-registry-list" class="workflow-registry-list"></div>
+          <div id="workflow-registry-viewer" class="workflow-registry-viewer" style="display:none;">
+            <div class="workflow-registry-viewer-header">
+              <span id="workflow-registry-viewer-title" class="workflow-registry-viewer-title"></span>
+              <button id="workflow-registry-viewer-close" class="workflow-registry-viewer-close" type="button">&#x2715; Close</button>
+            </div>
+            <div id="workflow-registry-viewer-content" class="workflow-registry-viewer-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-role-cards" class="panel" data-panel-id="role-cards" data-panel-status="mounted" data-read-only="true">
+      <div class="role-cards-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">ROLES</div>
+            <h2>Role Cards</h2>
+            <p class="panel-subtitle">Inspect runtime role cards, allowed actions, forbidden actions, and write scopes.</p>
+            <div class="runtime-authority-row" aria-label="Role cards action posture">
+              <span>Roles</span>
+              <span>Permissions</span>
+              <span>Inspect</span>
+              <span>Review only</span>
+            </div>
+          </div>
+          <span id="role-cards-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="role-cards-search-row">
+          <input type="text" id="role-cards-search" class="panel-search-input" placeholder="Filter role cards..." autocomplete="off" />
+        </div>
+        <div id="role-cards-body" class="role-cards-body">
+          <div id="role-cards-list" class="role-cards-list"></div>
+          <div id="role-cards-viewer" class="role-cards-viewer" style="display:none;">
+            <div class="role-cards-viewer-header">
+              <span id="role-cards-viewer-title" class="role-cards-viewer-title"></span>
+              <button id="role-cards-viewer-close" class="role-cards-viewer-close" type="button">&#x2715; Close</button>
+            </div>
+            <div id="role-cards-viewer-content" class="role-cards-viewer-content"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="panel-runtime-memory-inspector" class="panel" data-panel-id="runtime-memory-inspector" data-panel-status="mounted" data-read-only="true">
+      <div class="runtime-memory-inspector-panel">
+        <div class="panel-title-row">
+          <div>
+            <div class="panel-kicker">MEMORY</div>
+            <h2>Memory Manager</h2>
+            <p class="panel-subtitle">Inspect runtime profiles, identity ledgers, navigation maps, scorecards, and repair memory.</p>
+            <div class="runtime-authority-row" aria-label="Memory manager action posture">
+              <span>Inspect</span>
+              <span>Runtime profiles</span>
+              <span>Memory context</span>
+              <span>Changes gated</span>
+            </div>
+          </div>
+          <span id="runtime-memory-inspector-status" class="panel-status-pill">Syncing</span>
+        </div>
+        <div class="runtime-memory-inspector-search-row">
+          <input type="text" id="runtime-memory-search" class="panel-search-input" placeholder="Filter runtimes..." autocomplete="off" spellcheck="false" />
+        </div>
+        <div id="runtime-memory-body" class="runtime-memory-body">
+          <div id="runtime-memory-list" class="runtime-memory-list"></div>
+          <div id="runtime-memory-viewer" class="runtime-memory-viewer">
+            <div id="runtime-memory-viewer-empty" class="runtime-memory-empty">Select a runtime to inspect memory, identity, navigation, scorecard, and repair state.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Inspector aside removed — Node Inspector DOM now lives inside #panel-node-inspector -->
+
+  <!-- Quick Switch overlay (Ctrl+O) -->
+  <div id="quick-switch-modal" class="quick-switch-modal" hidden role="dialog" aria-label="Quick Switch">
+    <div class="quick-switch-inner">
+      <input id="quick-switch-input" type="search" placeholder="Find a node…" autocomplete="off" spellcheck="false">
+      <div id="quick-switch-results" class="quick-switch-results"></div>
+      <div class="quick-switch-hints">↑↓ Navigate &nbsp;·&nbsp; Enter Open &nbsp;·&nbsp; Esc Close</div>
+    </div>
+  </div>
+
+  <!-- Object inspector rail: shell framing only; page-owned inspectors keep route authority. -->
+  <aside id="object-inspector" aria-label="Object inspector" data-authority="read-only">
+    <div class="object-inspector-header">
+      <span id="object-inspector-kicker" class="object-inspector-kicker">Inspector</span>
+      <span id="object-inspector-state" class="object-inspector-state">Standby</span>
+      <button id="inspector-collapse-btn" class="inspector-collapse-btn" type="button" title="Collapse inspector" aria-label="Collapse inspector">›</button>
+    </div>
+    <!-- Shown only when inspector is collapsed — click to re-expand -->
+    <div class="inspector-collapsed-tab" id="inspector-collapsed-tab" role="button" tabindex="0" title="Expand inspector" aria-label="Expand inspector">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M8 2L4 6l4 4"/></svg>
+      <span class="inspector-collapsed-tab-label">Inspector</span>
+    </div>
+    <div id="object-inspector-body" class="object-inspector-body">
+      <p>Select an item on the current page to inspect.</p>
+    </div>
+  </aside>
+
+  <!-- Status bar -->
+  <footer id="statusbar">
+    <span id="status-pill" class="status-pill">OBSERVE</span>
+    <span id="status-runtime-mode" class="status-runtime-mode" title="OSRIL runtime mode">●</span>
+    <span id="status-message">Starting…</span>
+    <span id="status-active-tasks" class="status-active-tasks" style="display:none;" title="Active tasks"></span>
+  </footer>
+
+</div>
+
+<!-- Studio feature guide drawer: user-facing explanations, feature families, and authority status -->
+<aside id="feature-help-drawer" class="feature-help-drawer" aria-hidden="true" aria-label="Studio feature guide">
+  <div class="feature-help-header">
+    <div>
+      <div class="feature-help-kicker">Studio Guide</div>
+      <h2>What can I do here?</h2>
+    </div>
+    <button id="feature-help-close" class="icon-btn" title="Close feature guide" aria-label="Close feature guide">✕</button>
+  </div>
+  <div class="feature-help-intro">
+    ChaseOS Studio is organized around Main, Knowledge Graph, Content, Runtime, Personal Memory, and Governance. Each surface names whether it is direct-safe, proposal-only, approval-gated, blocked-with-reason, or coming soon.
+  </div>
+  <div id="feature-help-body" class="feature-help-body"></div>
+</aside>
+
+<div id="feature-help-backdrop" class="feature-help-backdrop" aria-hidden="true"></div>
+
+<!-- Graph context menu (shown on right-click on blank canvas) -->
+<div id="graph-context-menu" class="context-menu" style="display:none;">
+  <button id="ctx-create-node" class="ctx-menu-item">+ Create node</button>
+  <button id="ctx-customize-node-type" class="ctx-menu-item">Customize node type</button>
+  <button id="ctx-customize-edge-layer" class="ctx-menu-item">Customize edge layer</button>
+  <button id="ctx-start-link" class="ctx-menu-item">Start visual link</button>
+  <button id="ctx-finish-link" class="ctx-menu-item">Finish visual link</button>
+  <button id="ctx-clear-link" class="ctx-menu-item">Clear link source</button>
+</div>
+
+<!-- Create node modal -->
+<div id="create-node-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Create Node">
+  <div class="modal-box" style="max-width:420px;">
+    <div class="modal-header">
+      <span class="modal-title">Create Node</span>
+      <button id="create-node-modal-close" class="icon-btn" title="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="settings-section">
+        <label class="settings-row">
+          <span>Title</span>
+          <input id="create-node-title" type="text" placeholder="Node title…" autocomplete="off">
+        </label>
+        <label class="settings-row">
+          <span>Type</span>
+          <select id="create-node-type"></select>
+        </label>
+        <label class="settings-row">
+          <span>Domain</span>
+          <input id="create-node-domain" type="text" placeholder="general" list="domain-suggestions" autocomplete="off">
+          <datalist id="domain-suggestions">
+            <option value="general">
+            <option value="trading">
+            <option value="chaseos">
+            <option value="finance">
+            <option value="technology">
+            <option value="health">
+          </datalist>
+        </label>
+        <div id="create-node-target-preview" class="write-preview-box">Target preview will appear here.</div>
+        <div id="create-node-approval-posture" class="approval-posture">Approval required before any file is written.</div>
+        <div id="create-node-status" class="write-status-msg"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="create-node-cancel-btn" class="btn-secondary">Cancel</button>
+      <button id="create-node-submit-btn" class="btn-primary">Queue Approval</button>
+    </div>
+  </div>
+</div>
+
+<!-- Visual link modal -->
+<div id="visual-link-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Create Visual Link">
+  <div class="modal-box" style="max-width:520px;">
+    <div class="modal-header">
+      <span class="modal-title">Create Visual Link</span>
+      <button id="visual-link-modal-close" class="icon-btn" title="Close">x</button>
+    </div>
+    <div class="modal-body">
+      <div class="visual-link-node-pair">
+        <div class="visual-link-node">
+          <span class="meta-label">Source</span>
+          <span id="visual-link-source-label" class="meta-value"></span>
+          <span id="visual-link-source-path" class="meta-value mono"></span>
+        </div>
+        <div class="visual-link-node">
+          <span class="meta-label">Target</span>
+          <span id="visual-link-target-label" class="meta-value"></span>
+          <span id="visual-link-target-path" class="meta-value mono"></span>
+        </div>
+      </div>
+      <div class="settings-section">
+        <label class="settings-row">
+          <span>Edge Layer</span>
+          <select id="visual-link-edge-layer"></select>
+        </label>
+        <label class="settings-row">
+          <span>Relation</span>
+          <select id="visual-link-relation-type"></select>
+        </label>
+        <label class="settings-row">
+          <span>Label</span>
+          <input id="visual-link-label" type="text" placeholder="Optional edge label" autocomplete="off">
+        </label>
+        <label class="settings-row">
+          <span>Evidence</span>
+          <input id="visual-link-evidence" type="text" placeholder="Optional operator note" autocomplete="off">
+        </label>
+        <div id="visual-link-preview" class="write-preview-box">Previewing approval-gated edge...</div>
+        <div class="approval-posture">Approval required. Pending links render as non-canonical overlay edges.</div>
+        <div id="visual-link-status" class="write-status-msg"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="visual-link-cancel-btn" class="btn-secondary">Cancel</button>
+      <button id="visual-link-submit-btn" class="btn-primary">Queue Approval</button>
+    </div>
+  </div>
+</div>
+
+<!-- Approval modal -->
+<div id="approval-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Approve Action">
+  <div class="modal-box" style="max-width:500px;">
+    <div class="modal-header">
+      <span class="modal-title">Approval Required</span>
+      <button id="approval-modal-close" class="icon-btn" title="Close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="approval-detail">
+        <div class="approval-detail-row">
+          <span class="meta-label">Action</span>
+          <span id="approval-action-type" class="meta-value mono"></span>
+        </div>
+        <div class="approval-detail-row">
+          <span class="meta-label">Target</span>
+          <span id="approval-path" class="meta-value mono" style="word-break:break-all;"></span>
+        </div>
+        <div class="approval-detail-row">
+          <span class="meta-label">Detail</span>
+          <span id="approval-detail" class="meta-value"></span>
+        </div>
+        <div class="approval-detail-row">
+          <span class="meta-label">ID</span>
+          <span id="approval-id-display" class="meta-value mono" style="font-size:10px;opacity:0.5;"></span>
+        </div>
+      </div>
+      <label class="settings-row" style="margin-top:14px;">
+        <span>Note</span>
+        <input id="approval-note" type="text" placeholder="Optional operator note…" autocomplete="off">
+      </label>
+      <div id="approval-modal-status" class="write-status-msg"></div>
+    </div>
+    <div class="modal-footer">
+      <button id="approval-reject-btn" class="btn-secondary">Reject</button>
+      <button id="approval-approve-btn" class="btn-primary">Approve</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings modal -->
+<div id="settings-modal" class="modal-overlay" style="display:none;" role="dialog" aria-modal="true" aria-label="Graph Settings">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span class="modal-title">Graph Settings</span>
+      <button id="settings-modal-close" class="icon-btn" title="Close">✕</button>
+    </div>
+    <div class="modal-tabs" id="settings-tabs"></div>
+    <div class="modal-body" id="settings-body"></div>
+    <div class="modal-footer">
+      <button id="settings-reset-btn" class="btn-secondary">Reset to Defaults</button>
+      <button id="settings-save-btn" class="btn-primary">Save Settings</button>
+    </div>
+  </div>
+</div>
+
+<!-- Runtime Profile drawer — opened by clicking a runtime chip on Home -->
+<div id="runtime-profile-drawer" class="home-drawer" role="dialog" aria-label="Runtime Profile" aria-modal="false" hidden>
+  <div class="drawer-overlay" data-drawer-close="runtime-profile-drawer"></div>
+  <div class="drawer-panel drawer-panel--right">
+    <div class="drawer-header">
+      <span class="drawer-title">Runtime Profile</span>
+      <button class="icon-btn drawer-close-btn" data-drawer-close="runtime-profile-drawer" title="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="runtime-profile-drawer-body"></div>
+  </div>
+</div>
+
+<!-- Companion profile panel — full modal opened from companion column or drawer -->
+<div id="companion-profile-panel" class="companion-panel-modal" hidden>
+  <div class="companion-panel-overlay" id="companion-panel-overlay"></div>
+  <div class="companion-panel-drawer">
+    <div class="companion-panel-header">
+      <span class="companion-panel-title">Companion Profile</span>
+      <button class="icon-btn" id="companion-panel-close" title="Close">✕</button>
+    </div>
+    <div class="companion-panel-body" id="companion-profile-panel-body"></div>
+  </div>
+</div>
+
+<!-- Companion context drawer — opened by clicking the companion orb -->
+<div id="companion-drawer" class="home-drawer" role="dialog" aria-label="Companion Context" aria-modal="false" hidden>
+  <div class="drawer-overlay" data-drawer-close="companion-drawer"></div>
+  <div class="drawer-panel drawer-panel--right">
+    <div class="drawer-header">
+      <span class="drawer-title">Context</span>
+      <button class="icon-btn drawer-close-btn" data-drawer-close="companion-drawer" title="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="companion-drawer-body"></div>
+  </div>
+</div>
+
+<!-- Bundled locally — no CDN, no internet dependency -->
+<script src="assets/marked.min.js"></script>
+<script src="assets/highlight.min.js"></script>
+<script src="assets/3d-force-graph.min.js"></script>
+<script src="graphStyles.js"></script>
+<script src="graphFilters.js"></script>
+<script src="graphPresets.js"></script>
+<script src="settings.js"></script>
+<script src="markdownRenderer.js"></script>
+<script src="inspectorTabs.js"></script>
+<script src="writeActions.js"></script>
+<script src="approvalModal.js"></script>
+<script src="companion.js"></script>
+<script src="app.js"></script>
+
+<script>
+  // Wire vault root into topbar once shell is ready
+  (function () {
+    var _orig = window.__onShellReady;
+    window.__onShellReady = function () {
+      var vaultEl = document.getElementById('topbar-vault');
+      if (vaultEl && window.__CHASEOS_VAULT_ROOT__) {
+        var parts = window.__CHASEOS_VAULT_ROOT__.replace(/\\/g, '/').split('/');
+        vaultEl.title = window.__CHASEOS_VAULT_ROOT__;
+        vaultEl.textContent = parts[parts.length - 1] + '  ·  ' + window.__CHASEOS_VAULT_ROOT__;
+        vaultEl.textContent = parts[parts.length - 1] || 'Workspace';
+      }
+      if (_orig) _orig();
+    };
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "surface_id": "browser.operator.playwright",
+  "display_name": "Browser Operator Surface",
+  "surface_family": "browser_operator",
+  "surface_type": "browser",
+  "owner_layer": "runtime/operator_surface",
+  "status": "PARTIAL",
+  "implementation_refs": [
+    "runtime/operator_surface/adapters/browser_adapter.py",
+    "runtime/operator_surface/browser/policy.py",
+    "runtime/operator_surface/capabilities.py"
+  ],
+  "docs_refs": [
+    "06_AGENTS/Browser-Operator-Surface.md",
+    "06_AGENTS/Operator-Surface-Adapter-Spec.md"
+  ],
+  "trust_ceiling": "tier-2",
+  "permission_model_refs": [
+    "06_AGENTS/Permission-Matrix.md",
+    "06_AGENTS/Trust-Tiers.md",
+    "06_AGENTS/Agent-Control-Plane.md"
+  ],
+  "gate_operations": [],
+  "capabilities": [
+    {
+      "capability_id": "browser.read_state",
+      "maps_to": "browser_read_state",
+      "risk_class": "external_ui_read",
+      "approval_required": false
+    },
+    {
+      "capability_id": "browser.screenshot",
+      "maps_to": "browser_screenshot",
+      "risk_class": "external_ui_read",
+      "approval_required": false
+    },
+    {
+      "capability_id": "browser.click",
+      "maps_to": "browser_click",
+      "risk_class": "external_ui_mutation",
+      "approval_required": "conditional"
+    },
+    {
+      "capability_id": "browser.keyboard",
+      "maps_to": "browser_keyboard",
+      "risk_class": "external_ui_mutation",
+      "approval_required": "conditional"
+    },
+    {
+      "capability_id": "browser.tab_manage",
+      "maps_to": "browser_tab_manage",
+      "risk_class": "external_ui_mutation",
+      "approval_required": "conditional"
+    }
+  ],
+  "credential_policy": {
+    "credentials_allowed": false,
+    "cookies_allowed": false,
+    "real_profile_allowed": false
+  },
+  "fallback_policy": {
+    "sticky_fallback_allowed": false
+  },
+  "writeback_surfaces": [
+    "07_LOGS/Agent-Activity/",
+    "07_LOGS/Operator-Screenshots/",
+    "03_INPUTS/00_QUARANTINE/source/"
+  ],
+  "audit_targets": [
+    "07_LOGS/Agent-Activity/"
+  ],
+  "routing_policy": {
+    "default": "deny_unknown",
+    "authority_layer": "runtime/operator_surface"
+  },
+  "mcp_exposure_policy": {
+    "expose_summary": true,
+    "expose_raw_manifest": false
+  }
+}

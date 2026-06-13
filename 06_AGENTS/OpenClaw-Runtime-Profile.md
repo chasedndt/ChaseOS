@@ -224,7 +224,7 @@ For how OpenClaw preferred routes, trusted zones, risk zones, safe writeback pat
 
 ---
 
-*Graph links: [[CLAUDE]] · [[OPENCLAW]] · [[OpenClaw-Runtime-Profile]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[Chaser-Agent-Runtime-Profile]] · [[Codex-Runtime-Profile]] · [[OpenClaw-Adapter-Spec]] · [[Hermes-Adapter-Spec]] · [[Operator-Surface-Adapter-Spec]] · [[Runtime-Navigation-Map]] · [[Runtime-InterAgent-Coordination-Bus]] · [[Runtime-Instance-Authority-Parity]] · [[ChaseOS-Discord-Control-Plane]] · [[Discord-Control-Plane-Setup-SOP]] · [[Vault-Map]] · [[Agent-Activity-Index]] · [[ChaseOS-Studio-Architecture]]*
+*Graph links: [[CLAUDE]] · [[OPENCLAW]] · [[OpenClaw-Runtime-Profile]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[Archon-Runtime-Profile]] · [[Codex-Runtime-Profile]] · [[OpenClaw-Adapter-Spec]] · [[Hermes-Adapter-Spec]] · [[Operator-Surface-Adapter-Spec]] · [[Runtime-Navigation-Map]] · [[Runtime-InterAgent-Coordination-Bus]] · [[Runtime-Instance-Authority-Parity]] · [[ChaseOS-Discord-Control-Plane]] · [[Discord-Control-Plane-Setup-SOP]] · [[Vault-Map]] · [[Agent-Activity-Index]] · [[ChaseOS-Studio-Architecture]]*
 
 *OpenClaw-Runtime-Profile.md — v0.3 | Created: 2026-04-24 | Updated: 2026-05-15 (Discord binding validator and Studio control-plane readiness added)*
 

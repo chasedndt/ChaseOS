@@ -1,0 +1,20 @@
+{
+  "schema_id": "chaseos.siteops.workflow_manifest.v0",
+  "object_type": "workflow_manifest",
+  "required": [
+    "workflow_id",
+    "display_name",
+    "status",
+    "execution_status",
+    "live_execution_status",
+    "workflow_type",
+    "mode",
+    "inputs",
+    "steps",
+    "approval_required",
+    "blocked_actions",
+    "outputs"
+  ],
+  "dry_run_invariant": "A workflow with live_execution_status NOT BUILT may only produce plans and audit records.",
+  "notes": "Schema is documentation for the stdlib validator in runtime/siteops/registry.py."
+}

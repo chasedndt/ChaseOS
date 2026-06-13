@@ -1,0 +1,354 @@
+{
+  "version": 1,
+  "updated": "2026-05-11",
+  "purpose": "Explicit Gate/Gateway allowlists for Phase 9 hardening before Phase 10 surfaces.",
+  "write_targets": {
+    "standard_outputs": [
+      "07_LOGS/Build-Logs/**",
+      "07_LOGS/Agent-Activity/**",
+      "07_LOGS/Daily/**",
+      "07_LOGS/Documentation-History/**",
+      "07_LOGS/Hygiene-Reports/**",
+      "07_LOGS/Link-Proposals/**",
+      "07_LOGS/Maintain-Runs/**",
+      "07_LOGS/Trace-Reports/**",
+      "SYSTEM-STATUS.md",
+      "RUNTIME-REGISTRY.md",
+      "OPERATOR-BRIEF-INDEX.md"
+    ],
+    "operator_briefs": [
+      "07_LOGS/Operator-Briefs/**"
+    ],
+    "scheduled_briefing_runs": [
+      "07_LOGS/SBP-Runs/**"
+    ],
+    "runtime_activity": [
+      "07_LOGS/Agent-Activity/**"
+    ],
+    "project_os_files": [
+      "01_PROJECTS/**"
+    ],
+    "knowledge_notes": [
+      "02_KNOWLEDGE/**"
+    ],
+    "inputs_folder": [
+      "03_INPUTS/**"
+    ],
+    "archive_notes": [
+      "99_ARCHIVE/**"
+    ],
+    "draft_outputs": [
+      "07_LOGS/Developer-Briefs/**",
+      "07_LOGS/Operator-Briefs/_drafts/**",
+      "runtime/scaffold/generated/**"
+    ],
+    "setup_init_scaffold": [
+      "00_HOME",
+      "01_PROJECTS",
+      "02_KNOWLEDGE",
+      "03_INPUTS",
+      "04_SOPS",
+      "05_TEMPLATES",
+      "06_AGENTS",
+      "07_LOGS",
+      "07_LOGS/Build-Logs",
+      "07_LOGS/Agent-Activity",
+      "07_LOGS/Operator-Briefs",
+      "07_LOGS/Documentation-History",
+      "99_ARCHIVE",
+      "runtime",
+      "runtime/bindings",
+      "runtime/lifecycle",
+      "runtime/state",
+      "runtime/policy",
+      "runtime/schedules"
+    ],
+    "setup_init_seed_files": [
+      "README.md",
+      "PROJECT_FOUNDATION.md",
+      "ROADMAP.md",
+      "FORKING.md",
+      "SOUL.md",
+      "00_HOME/Now.md",
+      "00_HOME/Dashboard.md",
+      "00_HOME/Operating-System.md",
+      "00_HOME/Principles.md",
+      "00_HOME/Assistant-Contract.md",
+      "06_AGENTS/Vault-Map.md",
+      "06_AGENTS/Permission-Matrix.md",
+      "06_AGENTS/Agent-Registry.md",
+      "06_AGENTS/Tool-Map.md",
+      "06_AGENTS/Handoff-Protocol.md",
+      "06_AGENTS/Trust-Tiers.md",
+      "06_AGENTS/Agent-Control-Plane.md",
+      "06_AGENTS/OpenClaw-Runtime-Profile.md",
+      "06_AGENTS/Hermes-Runtime-Profile.md",
+      "runtime/setup_registry.json",
+      "runtime/setup_provider_profiles.json",
+      "runtime/setup_state.example.json",
+      "runtime/setup_state.schema.json",
+      "runtime/setup_*.json",
+      "runtime/SETUP-README.md",
+      "System-Status.md",
+      "Setup-Instructions.md",
+      "Runtime-Registry.md",
+      "07_LOGS/Build-Logs/Build-Logs-Index.md",
+      "07_LOGS/Agent-Activity/Agent-Activity-Index.md",
+      "07_LOGS/Operator-Briefs/Operator-Briefs-Index.md",
+      "07_LOGS/Daily/Daily-Index.md",
+      "02_KNOWLEDGE/Knowledge-Index.md"
+    ],
+    "setup_state": [
+      "runtime/setup_state.json"
+    ],
+    "config_state": [
+      ".chaseos/config.yaml"
+    ],
+    "schedule_state": [
+      "runtime/schedules/*.yaml",
+      "runtime/schedules/index.yaml",
+      "07_LOGS/Schedule-State/schedule_state_log.jsonl"
+    ],
+    "event_state": [
+      "runtime/events/**"
+    ],
+    "browser_operator_outputs": [
+      "07_LOGS/Agent-Activity/**",
+      "07_LOGS/Operator-Screenshots/**"
+    ],
+    "runtime_registry_state": [
+      "runtime/aor/runtime_registry/**"
+    ],
+    "graph_store_snapshots": [
+      "runtime/graph/store/manifests/**",
+      "runtime/graph/store/snapshots/**"
+    ],
+    "graph_store_identity": [
+      "runtime/graph/store/identity/**"
+    ],
+    "graph_store_migrations": [
+      "runtime/graph/store/migrations/**"
+    ],
+    "runtime_lifecycle_state": [
+      "runtime/lifecycle/run/**",
+      "runtime/lifecycle/bootstrap/**",
+      "07_LOGS/Agent-Activity/**"
+    ],
+    "host_startup_registration": [
+      "%USERPROFILE%/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/* Gateway.cmd",
+      "%USERPROFILE%/.hermes/gateway.cmd",
+      "%USERPROFILE%/.openclaw/gateway.cmd"
+    ],
+    "private_runtime_config": [
+      "home/*/.hermes/.env",
+      "home/*/.hermes/backups/**",
+      "home/*/runtimes/hermes-home/.env",
+      "home/*/runtimes/hermes-home/backups/**"
+    ],
+    "osril_approval_state": [
+      "runtime/osril/approvals/**"
+    ],
+    "osril_run_state": [
+      "runtime/osril/run/**"
+    ],
+    "runtime_provider_state": [
+      "runtime/providers/state/provider_state.json",
+      "runtime/providers/state/provider_queue.json",
+      "runtime/providers/state/provider_audit.jsonl"
+    ],
+    "acquisition_packs": [
+      "runtime/acquisition/**"
+    ],
+    "browser_skills_inactive_review": [
+      "runtime/browser_skills/skills/*.yaml"
+    ],
+    "siteops_skill_cards_inactive_review": [
+      "runtime/siteops/registry/skill_cards/*.json"
+    ],
+    "siteops_activation_records": [
+      "07_LOGS/SiteOps-Activations/**"
+    ],
+    "siteops_execution_outputs": [
+      "07_LOGS/Website-Workflow-Runs/**",
+      "07_LOGS/SiteOps-Runs/**",
+      "07_LOGS/SiteOps-Audits/**",
+      "07_LOGS/SiteOps-Approvals/**"
+    ],
+    "siteops_quarantine_outputs": [
+      "03_INPUTS/00_QUARANTINE/source/**",
+      "03_INPUTS/00_QUARANTINE/digest/**"
+    ]
+  },
+  "task_types": [
+    "activity-logging",
+    "approval-notification",
+    "audit-review",
+    "browser-research",
+    "build-debug",
+    "code.patch",
+    "code.review",
+    "coordination",
+    "daily-note-generation",
+    "decision-record",
+    "developer-co-development",
+    "developer-copilot-shadow",
+    "docs-pass",
+    "drift-scan",
+    "draft-alert-generation",
+    "graph-hygiene",
+    "idea-graduation",
+    "ingestion-pass",
+    "meeting-ingest",
+    "morning-thesis-prefill",
+    "operator-briefing",
+    "operator-briefing-shadow",
+    "planning",
+    "promotion-review",
+    "repo-refactor",
+    "repo.inspect",
+    "research",
+    "research-ingest",
+    "review",
+    "runtime-binding",
+    "scheduled-briefing",
+    "scheduled-ingest",
+    "security-review",
+    "shadow-audit",
+    "source-intelligence",
+    "source-pack-builder",
+    "test.run",
+    "trace-idea",
+    "vault-maintenance"
+  ],
+  "external_apis": {
+    "siteops.browser_execute": {
+      "description": "SiteOps governed browser workflow execution. Read-only page capture only. No credentials, no form submission, no file download. Outputs route to quarantine.",
+      "schemes": ["http", "https"],
+      "approval_gate": "operator",
+      "audit_requirement": "siteops_run_audit",
+      "credential_required": false
+    },
+    "browser.navigation": {
+      "description": "Bounded browser navigation/read/screenshot work.",
+      "schemes": [
+        "http",
+        "https"
+      ],
+      "registry": "runtime/browser_registry/allowed_origins.yaml"
+    },
+    "capture.rss": {
+      "description": "RSS/Atom feed fetches through the capture quarantine path.",
+      "schemes": [
+        "http",
+        "https"
+      ]
+    },
+    "host.process": {
+      "description": "Bounded local host process start/stop actions for runtime lifecycle supervisors."
+    },
+    "host.scheduler": {
+      "description": "Bounded local host scheduler query/register/unregister actions for runtime lifecycle bootstrap."
+    },
+    "host.startup_folder": {
+      "description": "Bounded local Windows Startup-folder launcher create/remove actions for declared runtime gateways.",
+      "approval_gate": "operator",
+      "audit_requirement": "startup_write_tag"
+    },
+    "capture.perplexity": {
+      "description": "Perplexity capture connector; credentials must be references only.",
+      "credential_reference_required": true
+    },
+    "capture.grok": {
+      "description": "Grok/xAI capture connector; credentials must be references only.",
+      "credential_reference_required": true
+    },
+    "provider.anthropic": {
+      "description": "Anthropic provider API setup/validation; setup state stores references only.",
+      "credential_reference_required": true
+    },
+    "provider.openai": {
+      "description": "OpenAI provider API setup/validation; setup state stores references only.",
+      "credential_reference_required": true
+    },
+    "provider.local_oss_endpoint": {
+      "description": "Local model endpoint health/probe calls.",
+      "schemes": [
+        "http",
+        "https"
+      ]
+    },
+    "provider.n8n_endpoint": {
+      "description": "n8n endpoint health/probe calls.",
+      "schemes": [
+        "http",
+        "https"
+      ],
+      "credential_reference_required": true
+    },
+    "delivery.discord_webhook": {
+      "description": "Scheduled Briefing Pipeline delivery to Discord webhook endpoints. Webhook values must come from runtime environment references, not vault state.",
+      "schemes": [
+        "https"
+      ],
+      "credential_reference_required": true
+    },
+    "delivery.whop_api": {
+      "description": "Scheduled Briefing Pipeline delivery to Whop API post endpoints. API keys must come from runtime environment references, not vault state.",
+      "schemes": [
+        "https"
+      ],
+      "credential_reference_required": true
+    }
+  },
+  "control_plane_transports": {
+    "runtime/agent_bus/": {
+      "description": "ChaseOS-owned structured coordination state.",
+      "coordination_source_of_truth": true
+    },
+    "discord": {
+      "description": "Operator ingress/control surface; coordination-sensitive work must translate to runtime/agent_bus/."
+    }
+  },
+  "credential_references": {
+    "allowed_kinds": [
+      "env-var",
+      "env-var-or-local-secret-ref",
+      "keychain-ref",
+      "template-placeholder"
+    ],
+    "allowed_target_patterns": [
+      {
+        "id": "env_var_name",
+        "regex": "^[A-Z][A-Z0-9_]{2,}$"
+      },
+      {
+        "id": "template_placeholder",
+        "regex": "^(SET|TODO|PLACEHOLDER)_[A-Z0-9_]+$"
+      },
+      {
+        "id": "angle_placeholder",
+        "regex": "^<[^<>]*(ENV|KEYCHAIN|SECRET|TOKEN|CREDENTIAL)[^<>]*>$"
+      },
+      {
+        "id": "keychain_uri",
+        "regex": "^(keychain|windows-credential|1password|op|secret-manager)://[A-Za-z0-9._/@:+-]+$"
+      }
+    ],
+    "reference_only_state_keys": [
+      "credential_reference",
+      "credential_reference_target",
+      "keychain_reference",
+      "secret_reference_target",
+      "token_reference"
+    ],
+    "secret_value_key_fragments": [
+      "api_key",
+      "client_secret",
+      "password",
+      "private_key",
+      "secret",
+      "token",
+      "webhook"
+    ]
+  }
+}

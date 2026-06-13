@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://chaseos.local/schemas/creator_engine/source_recording.schema.json",
+  "title": "Creator Engine Source Recording",
+  "type": "object",
+  "required": [
+    "recording_id",
+    "adapter",
+    "path",
+    "media_kind",
+    "file_size_bytes",
+    "sha256",
+    "created_at",
+    "modified_at",
+    "probe_status",
+    "trust_tier",
+    "adapter_metadata"
+  ],
+  "properties": {
+    "recording_id": { "type": "string", "minLength": 1 },
+    "adapter": { "type": "string" },
+    "path": { "type": "string" },
+    "media_kind": { "type": "string" },
+    "file_size_bytes": { "type": "integer", "minimum": 0 },
+    "sha256": { "type": "string" },
+    "created_at": { "type": "string" },
+    "modified_at": { "type": "string" },
+    "duration_seconds": { "type": ["number", "null"] },
+    "probe_status": { "type": "string" },
+    "trust_tier": { "type": "string" },
+    "adapter_metadata": { "type": "object" }
+  },
+  "additionalProperties": true
+}

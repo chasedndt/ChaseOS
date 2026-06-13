@@ -1,0 +1,84 @@
+{
+  "version": 3,
+  "families": {
+    "canonical-folder-local": {
+      "label": "Canonical folder-local indexes",
+      "default_enabled": true
+    },
+    "convenience": {
+      "label": "Convenience surfaces",
+      "default_enabled": false
+    },
+    "orientation": {
+      "label": "Orientation surfaces",
+      "default_enabled": true
+    },
+    "os-core": {
+      "label": "OS core surfaces",
+      "default_enabled": true
+    }
+  },
+  "profiles": {
+    "personal": {
+      "description": "Default personal ChaseOS scaffold for a new operator instance",
+      "required_folders": [
+        "00_HOME",
+        "01_PROJECTS",
+        "02_KNOWLEDGE",
+        "03_INPUTS",
+        "04_SOPS",
+        "05_TEMPLATES",
+        "06_AGENTS",
+        "07_LOGS",
+        "07_LOGS/Build-Logs",
+        "07_LOGS/Agent-Activity",
+        "07_LOGS/Operator-Briefs",
+        "07_LOGS/Documentation-History",
+        "99_ARCHIVE",
+        "runtime",
+        "runtime/bindings",
+        "runtime/lifecycle",
+        "runtime/state",
+        "runtime/policy",
+        "runtime/schedules"
+      ],
+      "required_files": [
+        {"path": "README.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "PROJECT_FOUNDATION.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "ROADMAP.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "FORKING.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "SOUL.md", "classification": "user-personalization", "owner": "operator", "mode": "existing-or-placeholder", "template_key": "soul"},
+        {"path": "00_HOME/Now.md", "classification": "generated-then-user-maintained", "owner": "operator", "mode": "existing-or-placeholder", "template_key": "now"},
+        {"path": "00_HOME/Dashboard.md", "classification": "generated-then-user-maintained", "owner": "operator", "mode": "existing-or-placeholder", "template_key": "dashboard"},
+        {"path": "00_HOME/Operating-System.md", "classification": "protected", "owner": "operator", "mode": "existing-or-placeholder", "template_key": "operating_system"},
+        {"path": "00_HOME/Principles.md", "classification": "protected", "owner": "operator", "mode": "existing-or-placeholder", "template_key": "principles"},
+        {"path": "00_HOME/Assistant-Contract.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "06_AGENTS/Vault-Map.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "06_AGENTS/Permission-Matrix.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "06_AGENTS/Agent-Registry.md", "classification": "generated-then-user-maintained", "owner": "operator", "mode": "existing-or-placeholder", "template_key": "agent_registry"},
+        {"path": "06_AGENTS/Tool-Map.md", "classification": "generated-then-user-maintained", "owner": "operator", "mode": "existing-or-placeholder", "template_key": "tool_map"},
+        {"path": "06_AGENTS/Handoff-Protocol.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "06_AGENTS/Trust-Tiers.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "06_AGENTS/Agent-Control-Plane.md", "classification": "protected", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "runtime/setup_registry.json", "classification": "machine-maintained", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "runtime/setup_provider_profiles.json", "classification": "machine-maintained", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "runtime/setup_state.example.json", "classification": "machine-maintained", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "runtime/setup_state.schema.json", "classification": "machine-maintained", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "runtime/SETUP-README.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-seed"},
+        {"path": "06_AGENTS/OpenClaw-Runtime-Profile.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-seed", "index_scope": "os-core"},
+        {"path": "06_AGENTS/Hermes-Runtime-Profile.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-seed", "index_scope": "os-core"},
+        {"path": "System-Status.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "system_status", "index_scope": "orientation"},
+        {"path": "Setup-Instructions.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "setup_instructions", "index_scope": "orientation"},
+        {"path": "Runtime-Registry.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "runtime_registry", "index_scope": "orientation"},
+        {"path": "07_LOGS/Build-Logs/Build-Logs-Index.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "folder_build_logs_index", "index_scope": "canonical-folder-local"},
+        {"path": "07_LOGS/Agent-Activity/Agent-Activity-Index.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "folder_agent_activity_index", "index_scope": "canonical-folder-local"},
+        {"path": "07_LOGS/Operator-Briefs/Operator-Briefs-Index.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "folder_operator_briefs_index", "index_scope": "canonical-folder-local"},
+        {"path": "07_LOGS/Daily/Daily-Index.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "folder_daily_index", "index_scope": "canonical-folder-local"},
+        {"path": "02_KNOWLEDGE/Knowledge-Index.md", "classification": "generated-then-user-maintained", "owner": "framework", "mode": "existing-or-placeholder", "template_key": "folder_knowledge_index", "index_scope": "canonical-folder-local"}
+      ],
+      "runtime_seeds": ["openclaw", "hermes"],
+      "provider_targets": ["claude", "openai", "local_oss", "n8n"],
+      "integration_targets": ["discord", "telegram", "slack"]
+    }
+  }
+}

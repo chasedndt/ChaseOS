@@ -1,0 +1,46 @@
+{
+  "object_type": "workflow_manifest",
+  "workflow_id": "example-com.observed_shadow_flow",
+  "display_name": "Example.com Observed Shadow Flow",
+  "status": "PARTIAL",
+  "execution_status": "shadow_proof_only",
+  "live_execution_status": "NOT BUILT",
+  "workflow_type": "browser_shadow_observation",
+  "mode": "shadow",
+  "site_profile": "example-com",
+  "inputs": [
+    {
+      "name": "target_url",
+      "required": true
+    }
+  ],
+  "steps": [
+    {
+      "step_id": "validate_inputs"
+    },
+    {
+      "step_id": "open_target_url"
+    },
+    {
+      "step_id": "observe_page_structure"
+    },
+    {
+      "step_id": "write_shadow_run_evidence"
+    }
+  ],
+  "approval_required": [
+    "before_live_execution",
+    "before_trusted_artifact_write"
+  ],
+  "blocked_actions": [
+    "login",
+    "form_submit",
+    "download",
+    "external_share",
+    "canonical_writeback"
+  ],
+  "outputs": [
+    "shadow_run_audit",
+    "browser_run_evidence"
+  ]
+}

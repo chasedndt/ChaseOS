@@ -1,0 +1,28 @@
+{
+  "schema_id": "chaseos.siteops.site_profile.v0",
+  "object_type": "site_profile",
+  "required": [
+    "site_id",
+    "display_name",
+    "status",
+    "profile_status",
+    "allowed_domains",
+    "auth_mode",
+    "risk_level",
+    "known_workflows",
+    "allowed_actions",
+    "blocked_actions",
+    "approval_required",
+    "output_targets"
+  ],
+  "forbidden_secret_fields": [
+    "password",
+    "secret",
+    "token",
+    "cookie",
+    "api_key",
+    "private_key",
+    "seed_phrase"
+  ],
+  "notes": "Schema is documentation for the stdlib validator in runtime/siteops/registry.py."
+}

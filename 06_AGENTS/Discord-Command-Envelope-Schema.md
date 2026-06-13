@@ -421,7 +421,7 @@ envelope_example_advisory:
   scope:
     single_run: true
     expiration: "2026-04-20T15:00:00Z"
-    vault_root: "%CHASEOS_VAULT_ROOT%"
+    vault_root: "C:/Users/chaseos/Documents/chaseos_obsidian"
   approval_state: approved_once
   audit_destination: "07_LOGS/Agent-Activity/2026-04-20-discord-schedule-status.md"
   timestamp: "2026-04-20T14:32:00Z"
@@ -461,7 +461,7 @@ envelope_example_execution:
   scope:
     single_run: true
     expiration: "2026-04-20T15:00:00Z"
-    vault_root: "%CHASEOS_VAULT_ROOT%"
+    vault_root: "C:/Users/chaseos/Documents/chaseos_obsidian"
   approval_state: approved_once
   audit_destination: "07_LOGS/Agent-Activity/2026-04-20-discord-run-operator_today.md"
   timestamp: "2026-04-20T14:35:00Z"

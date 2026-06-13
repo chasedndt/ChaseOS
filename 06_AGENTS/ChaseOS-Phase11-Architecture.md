@@ -7,7 +7,7 @@ created: 2026-05-06
 updated: 2026-05-16
 phase: Phase 11 — ChaseOS Conversational Command Center
 knowledge_class: system-operational
-owner: Chaser Agent (primary Phase 10/11 engineering runtime)
+owner: Archon (primary Phase 10/11 engineering runtime)
 related_docs:
   - 06_AGENTS/Phase10-Desktop-Shell-Engineering-Plan.md
   - 06_AGENTS/ChaseOS-Studio-Architecture.md
@@ -26,7 +26,7 @@ related_docs:
 
 # ChaseOS Phase 11 — Conversational Command Center
 
-> **Handover notice for all runtimes (Chaser Agent, Hermes, OpenClaw, and future):**
+> **Handover notice for all runtimes (Archon, Hermes, OpenClaw, and future):**
 > This is the canonical planning document for Phase 11 and the handover guide for completing Phase 10.
 > Read this file before starting any new Phase 10 or Phase 11 pass.
 > If you have suggestions or find a contradiction with current repo truth, update this document
@@ -68,7 +68,7 @@ Do not implement Phase 11 features during Phase 10 passes. Keep pass boundaries 
 **2026-05-12 operator-governed executor/deferred closeout handoff note:** The operator-governed closeout handoff is now complete/read-only/verified. It verifies zero substantial autonomous Phase 11 development passes remain; after the companion-selection consumption executor and runtime-dispatch enqueue executor, four remaining lanes stay operator-governed/deferred. It records `implementation_authority_granted=false` and advances the marker to `operator-action-required-no-autonomous-phase11-pass`. It added no command execution, approval artifact write/consumption/execution, exact-once marker write, provider/model call, runtime/browser dispatch, Agent Bus task write, target mutation, or canonical mutation.
 
 **2026-05-12 operator-action-required no-autonomous-pass gate note:** The operator action gate is now complete/read-only/verified. It records that zero autonomous Phase 11 passes remain, exposes two unselected decisions (`select_governed_executor_lane` and `defer_phase11_closeout`), and after the companion-selection consumption executor plus runtime-dispatch enqueue executor keeps four remaining lanes operator-governed. It advances the next action to `operator-select-governed-executor-lane-or-defer-closeout`. It added no lane selection, deferral selection, command execution, approval artifact write/consumption/execution, exact-once marker write, provider/model call, runtime/browser dispatch, Agent Bus task write, target mutation, or canonical mutation.
-**2026-05-13 companion memory boundary note:** The operator confirmed separate companion memory. `runtime/companion/memory.py` and `runtime/studio/phase11_companion_memory_boundary_contract.py` now define governed separate namespaces for Hermes/OpenClaw/Chaser Agent, candidate validation, Chat panel display, StudioAPI/CLI/QA wiring, and no-write proof. This does not create memory files or grant memory write authority; future writes require `phase11-companion-memory-approval-preview` and then a separate exact-once executor proof.
+**2026-05-13 companion memory boundary note:** The operator confirmed separate companion memory. `runtime/companion/memory.py` and `runtime/studio/phase11_companion_memory_boundary_contract.py` now define governed separate namespaces for Hermes/OpenClaw/Archon, candidate validation, Chat panel display, StudioAPI/CLI/QA wiring, and no-write proof. This does not create memory files or grant memory write authority; future writes require `phase11-companion-memory-approval-preview` and then a separate exact-once executor proof.
 **2026-05-13 companion memory approval preview note:** `runtime/studio/phase11_companion_memory_approval_preview.py` now turns valid companion-memory candidates into deterministic approval-packet previews and supports explicit digest-gated pending approval queue writes. Live proof wrote approval `448282cc-4d3c-4853-a114-8246657dbe5a` and audit evidence for Hermes preference memory, blocked duplicate approval creation before writing, and blocked credential-class memory candidates. It still writes no companion memory ledger and consumes no approval; this was followed by the now-complete `phase11-companion-memory-approved-execution-proof`.
 **2026-05-13 companion memory approved execution proof note:** `runtime/studio/phase11_companion_memory_approved_execution_proof.py` now consumes a digest-bound companion-memory approval exactly once and writes proof-only evidence. Live proof consumed approval `448282cc-4d3c-4853-a114-8246657dbe5a`, matched digest `3c49a24ad2f9275d327fc6923c0873ae3e42dfb9b97d3a194c163f07e0364250`, reserved the exact-once marker before proof outputs, wrote proof artifacts and execution evidence, and blocked duplicate execution before writes. It still does not create `07_LOGS/Companion-Memory/`, append a memory ledger, call providers/models, dispatch runtimes/browsers, write Agent Bus tasks, mutate Gate/Git/workflow/host state, or mutate canonical state. It was followed by the now-complete `phase11-companion-memory-readback-search-preview`.
 **2026-05-13 companion memory readback/search preview note:** `runtime/studio/phase11_companion_memory_readback_search_preview.py` now indexes companion-memory approval/proof evidence without touching the real companion-memory ledger. Live proof search found approval `448282cc-4d3c-4853-a114-8246657dbe5a`, its exact-once marker, proof-temp outputs, and execution evidence as `proof_written`; filters cover companion id, memory class, query, status, and limit. The pass still does not create or read `07_LOGS/Companion-Memory/`, append a memory ledger, write/consume approvals, call providers/models, dispatch runtimes/browsers, write Agent Bus tasks, mutate Gate/Git/workflow/host state, or mutate canonical state. It was followed by the now-complete `phase11-companion-memory-ledger-write-approval-preview`.
@@ -583,7 +583,7 @@ provider/surface/adapter/runtime distinctions.
 | Model | Specific model at a provider | claude-sonnet-4-6, gpt-4o, gemini-2.5-pro |
 | Adapter | ChaseOS rules for a surface | ChaseOS-MCP-Server, n8n executor, RPGL |
 | Surface | Where the model is invoked | chat, AOR workflow, SBP pipeline, browser-use |
-| Runtime harness | An execution-capable agent environment | OpenClaw, Hermes, Chaser Agent |
+| Runtime harness | An execution-capable agent environment | OpenClaw, Hermes, Archon |
 
 **Provider status (2026-05-08 truth):**
 
@@ -864,7 +864,7 @@ inside the Studio shell. This is a UX/status layer — not an authority layer.
 > Authority comes only from `Permission-Matrix.md`, `Trust-Tiers.md`, and the Gate.
 
 **What a companion is:**
-- A named, visually represented identity for a runtime (Hermes companion, OpenClaw companion, Chaser Agent companion)
+- A named, visually represented identity for a runtime (Hermes companion, OpenClaw companion, Archon companion)
 - Shows runtime status, last activity, health state, current mode
 - Has a personality/tone that shapes how it communicates in the chat interface
 - Has a visual avatar (icon, ASCII sprite, or small image)
@@ -908,7 +908,7 @@ last_activity_source: "07_LOGS/Agent-Activity/"
 |---|---|---|---|
 | Hermes | hermes | Careful, strategic, scholarly | Research synthesis, repo-aware review |
 | OpenClaw | openclaw | Execution-oriented, direct | Browser/computer-use, workflow dispatch |
-| Chaser Agent | chaser_agent | Engineering-focused, precise | Code passes, implementation, testing |
+| Archon | archon | Engineering-focused, precise | Code passes, implementation, testing |
 | Scout | future-local | Minimal, offline marker | Local model fallback, privacy-first tasks |
 
 **Slash commands for companions:**
@@ -938,7 +938,7 @@ error    → red border, error icon
 complete → green flash, then idle
 ```
 
-**MVP scope:** Hermes + OpenClaw + Chaser Agent companions defined; `/pet` slash command direction; companion status card in chat responses. Current implementation truth includes authority-neutral companion status cards, digest-bound companion-selection approval previews, approval queue-write readiness/execution proof, approval-consumption readiness, one governed companion-selection approval-consumption executor proof, and separate governed companion memory namespace boundary/readiness with memory writes still blocked.
+**MVP scope:** Hermes + OpenClaw + Archon companions defined; `/pet` slash command direction; companion status card in chat responses. Current implementation truth includes authority-neutral companion status cards, digest-bound companion-selection approval previews, approval queue-write readiness/execution proof, approval-consumption readiness, one governed companion-selection approval-consumption executor proof, and separate governed companion memory namespace boundary/readiness with memory writes still blocked.
 
 **Mobile/tablet bridge:** `06_AGENTS/Companion-Surface-Mobile-Tablet-Architecture.md` extends this companion UX into a Phase 10 companion-surface lane for brief viewing, approval inboxes, capture-trigger previews, runtime status, and gateway/mobile delivery posture. It does not activate live mobile authority; all actions still route through Gate/AOR/StudioService and lower-layer gateway/capture/runtime-dispatch dependencies.
 
@@ -1001,7 +1001,7 @@ and dashboard cards.
 **Queryable surfaces from chat:**
 - Active projects (from project workspace data)
 - Pending approvals count and list
-- Hermes/OpenClaw/Chaser Agent last activity
+- Hermes/OpenClaw/Archon last activity
 - AOR pipeline status
 - Quarantine queue depth
 - Schedule next-run times
@@ -1186,7 +1186,7 @@ It has no special authority that a CLI command does not also have.
 - `companions/` — directory of per-runtime companion YAML profiles
   - `companions/hermes-companion.yaml`
   - `companions/openclaw-companion.yaml`
-  - `companions/chaser_agent-companion.yaml`
+  - `companions/archon-companion.yaml`
 
 **`05_TEMPLATES/` additions:**
 - `Agent-Companion-Profile-Template.md`
@@ -1237,10 +1237,10 @@ Phase 11 cannot begin until the following Phase 10 items are stable:
 10. **Read-only slash command responses + native UI** - BUILT READ-ONLY / STATIC UI QA VERIFIED; `/dashboard`, `/map`, `/vault`, `/runtime status`, `/models`, `/provider`, `/log`, `/memory show`, and `/pet` produce bounded response cards rendered in native Chat while unknown/write/execution commands fail closed to help/boundary cards
 11. **Native Chat workspace/thread foundation** - BUILT PARTIAL / READ-ONLY / VERIFIED; models Chat projects, folders, tabs, threads, runtime lanes, Discord transport posture, and proposal actions for thread creation, runtime board handoff, schedule management, and runtime setup without writing chat state or dispatching runtimes
 12. **Native Chat workspace/folder/thread proposal writer** - BUILT PARTIAL / APPROVAL-GATED / VERIFIED; queues digest-bound Studio approval artifacts for workspace, folder, and runtime-thread proposals only, while target Chat state, Discord, Agent Bus, board, schedule, provider, and canonical writes remain blocked
-6. **Companion status bar** — shows Hermes/OpenClaw/Chaser Agent status derived from bus heartbeats (read-only)
+6. **Companion status bar** — shows Hermes/OpenClaw/Archon status derived from bus heartbeats (read-only)
 7. **`/map`, `/dashboard`, `/runtime status`** — read-only slash commands (lowest risk, highest value)
 8. **`/pet` companion commands** — show companion status cards
-9. **Companion profile seed** — Hermes, OpenClaw, Chaser Agent YAML profiles + registry
+9. **Companion profile seed** — Hermes, OpenClaw, Archon YAML profiles + registry
 
 **Phase 11 post-closeout passes completed (2026-05-11):**
 1. `phase11-chat-conversation-persistence-approval-contract` - COMPLETE / READ-ONLY / VERIFIED / CONVERSATION WRITES BLOCKED; defines and previews governed conversation-log target paths under `07_LOGS/Conversations/` before any live provider execution or Chat-originated approval queue writes.
@@ -1249,7 +1249,7 @@ Phase 11 cannot begin until the following Phase 10 items are stable:
 4. `phase11-chat-runtime-dispatch-readiness-contract` - COMPLETE / READ-ONLY / VERIFIED / RUNTIME DISPATCH BLOCKED; previews runtime dispatch packets from runtime capabilities, Agent Bus read-only posture, AOR workflow registry, and Runtime Cockpit readiness without Agent Bus task writes or workflow/runtime execution.
 5. `phase11-chat-browser-dispatch-readiness-contract` - COMPLETE / READ-ONLY / VERIFIED / BROWSER DISPATCH BLOCKED; previews browser dispatch packets from external Browser Use/Excalidraw readiness without browser launch, Browser Use CLI/CDP/MCP invocation, navigation, screenshot capture, or browser-run writes.
 6. `phase11-chat-approval-consumption-readiness-contract` - COMPLETE / READ-ONLY / VERIFIED / APPROVAL CONSUMPTION BLOCKED; previews Chat approval consumption readiness without approval status mutation, exact-once marker write, approval execution, or target writes.
-7. `phase11-chat-companion-status-ui-shell` - COMPLETE / READ-ONLY / VERIFIED / AUTHORITY NEUTRAL; renders Hermes/OpenClaw/Chaser Agent companion status without runtime control, identity mutation, profile writes, role-card mutation, provider calls, Agent Bus writes, or canonical mutation.
+7. `phase11-chat-companion-status-ui-shell` - COMPLETE / READ-ONLY / VERIFIED / AUTHORITY NEUTRAL; renders Hermes/OpenClaw/Archon companion status without runtime control, identity mutation, profile writes, role-card mutation, provider calls, Agent Bus writes, or canonical mutation.
 8. `phase11-chat-companion-selection-approval-preview` - COMPLETE / APPROVAL-PREVIEW ONLY / VERIFIED / SELECTION WRITES BLOCKED; previews digest-bound companion selection approval packets without approval artifact writes or companion selection target mutation.
 9. `phase11-chat-companion-selection-queue-write-readiness` - COMPLETE / QUEUE-WRITE-READINESS / VERIFIED / QUEUE WRITES BLOCKED; previews exact queue-write packet metadata and required digest match without writing approval artifacts or companion selection state.
 10. `phase11-chat-companion-selection-queue-write-execution-proof` - COMPLETE / APPROVAL-GATED / VERIFIED / TARGET WRITE BLOCKED; writes pending companion-selection approval artifacts only with exact digest match and blocks duplicate digest writes, approval execution, and companion selection target mutation.
@@ -1326,7 +1326,7 @@ Do not introduce these in any Phase 11 pass:
 Phase 11 is complete when:
 
 - [ ] Chat panel mounts in the Studio shell with persistent message history
-- [ ] Companion status bar shows Hermes, OpenClaw, Chaser Agent with live heartbeat data
+- [ ] Companion status bar shows Hermes, OpenClaw, Archon with live heartbeat data
 - [ ] Slash commands: `/map`, `/dashboard`, `/run`, `/approve`, `/reject`, `/pet` all working
 - [ ] Intent classification routes at minimum: `chat-answer`, `project-create`, `vault-node-create`, `approval-action`
 - [ ] Project creation proposal generated and approved creates actual vault file via `StudioService`
@@ -1335,7 +1335,7 @@ Phase 11 is complete when:
 - [ ] Conversation saved to `07_LOGS/Conversations/` per session
 - [ ] All write actions routed through `StudioService` with audit records
 - [ ] No write bypasses Gate or approval gate
-- [ ] Companion profiles for Hermes, OpenClaw, Chaser Agent exist in YAML
+- [ ] Companion profiles for Hermes, OpenClaw, Archon exist in YAML
 - [ ] Prompt injection guard active for all user input
 - [ ] `07_LOGS/Agent-Activity/` event written for every runtime dispatch from chat
 
@@ -1343,7 +1343,7 @@ Phase 11 is complete when:
 
 ## 11. Cross-Runtime Rules
 
-These rules apply to all runtimes (Chaser Agent, Hermes, OpenClaw) during Phase 10 completion and Phase 11 implementation.
+These rules apply to all runtimes (Archon, Hermes, OpenClaw) during Phase 10 completion and Phase 11 implementation.
 
 1. **Read this document before starting any pass.** If something in this document is wrong or
    outdated, update it before building on incorrect assumptions.
@@ -1383,13 +1383,13 @@ These rules apply to all runtimes (Chaser Agent, Hermes, OpenClaw) during Phase 
 
 ---
 
-*Graph links: [[ChaseOS-Studio-Architecture]] · [[Workspace-Mode-Layer-Feature-Family]] · [[Phase10-Desktop-Shell-Engineering-Plan]] · [[ChaseOS-Studio-Phase10-Implementation-Tracker]] · [[Agent-Control-Plane]] · [[Permission-Matrix]] · [[Trust-Tiers]] · [[Agent-Registry]] · [[Autonomous-Operator-Runtime]] · [[Agent-Memory-Architecture]] · [[Feature-Fit-Register]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[Chaser-Agent-Runtime-Profile]]*
+*Graph links: [[ChaseOS-Studio-Architecture]] · [[Workspace-Mode-Layer-Feature-Family]] · [[Phase10-Desktop-Shell-Engineering-Plan]] · [[ChaseOS-Studio-Phase10-Implementation-Tracker]] · [[Agent-Control-Plane]] · [[Permission-Matrix]] · [[Trust-Tiers]] · [[Agent-Registry]] · [[Autonomous-Operator-Runtime]] · [[Agent-Memory-Architecture]] · [[Feature-Fit-Register]] · [[HERMES]] · [[Hermes-Runtime-Profile]] · [[Archon-Runtime-Profile]]*
 
-*ChaseOS Phase 11 Architecture — v1.0 | Created: 2026-05-06 | Author: Chaser Agent*
+*ChaseOS Phase 11 Architecture — v1.0 | Created: 2026-05-06 | Author: Archon*
 *This is the canonical planning document for Phase 11. Update it when architecture decisions change.*
 *Do not split this document without creating a clear primary anchor that all runtimes can find.*
 
 
-**2026-05-13 companion layer v0.1 note:** The core companion layer is now implemented under `runtime/companion/` with [[Companion-Behavior-Policy]], [[Companion-Roster]], and [[Companion-Profile-Template]]. It supports Hermes/OpenClaw/Chaser Agent profile validation, read-only switch preview, approval-flag-gated active selection, and switch-ledger entries while preserving no runtime routing, provider/model, memory, permission, tool, connector, protected-file, workflow, Agent Bus, or canonical authority changes. This does not build Studio UI or avatar assets.
+**2026-05-13 companion layer v0.1 note:** The core companion layer is now implemented under `runtime/companion/` with [[Companion-Behavior-Policy]], [[Companion-Roster]], and [[Companion-Profile-Template]]. It supports Hermes/OpenClaw/Archon profile validation, read-only switch preview, approval-flag-gated active selection, and switch-ledger entries while preserving no runtime routing, provider/model, memory, permission, tool, connector, protected-file, workflow, Agent Bus, or canonical authority changes. This does not build Studio UI or avatar assets.
 
-**2026-05-13 companion runtime core adapter sync note:** Studio companion status, registry readiness, roster preview, and companion-selection approval preview now consume `runtime/companion` as the source of truth for Hermes/OpenClaw/Chaser Agent metadata, profile validation, visual marks, descriptive stats, and the shared selection target path. This closes the drift where Studio companion panels carried their own metadata and where the core package depended back on Studio status code. The pass is read-only and authority-neutral: no companion memory, provider/model routing, runtime/browser dispatch, Agent Bus task write, permission change, profile/role-card mutation, protected-file access, approval execution broadening, or canonical mutation was added. Next recommended pass is `phase11-companion-memory-boundary-contract`.
+**2026-05-13 companion runtime core adapter sync note:** Studio companion status, registry readiness, roster preview, and companion-selection approval preview now consume `runtime/companion` as the source of truth for Hermes/OpenClaw/Archon metadata, profile validation, visual marks, descriptive stats, and the shared selection target path. This closes the drift where Studio companion panels carried their own metadata and where the core package depended back on Studio status code. The pass is read-only and authority-neutral: no companion memory, provider/model routing, runtime/browser dispatch, Agent Bus task write, permission change, profile/role-card mutation, protected-file access, approval execution broadening, or canonical mutation was added. Next recommended pass is `phase11-companion-memory-boundary-contract`.
