@@ -1,0 +1,41 @@
+role: research-runner
+version: "1.0"
+description: >
+  Hermes research synthesis runner. Reads SIC workspace outputs and captures
+  structured synthesis drafts to quarantine. Read-heavy; write scope limited to
+  quarantine ingest and agent activity log. No canonical promotion, no external
+  network calls, no protected file access.
+
+trust_tier_ceiling: tier-2
+
+required_reads:
+  - "runtime/source_intelligence/workspaces/"
+  - "00_HOME/Now.md"
+
+write_scope:
+  - "03_INPUTS/00_QUARANTINE/"
+  - "07_LOGS/Agent-Activity/"
+
+forbidden_write_zones:
+  - "SOUL.md"
+  - "00_HOME/Principles.md"
+  - "00_HOME/Assistant-Contract.md"
+  - "01_PROJECTS/"
+  - "02_KNOWLEDGE/"
+  - "06_AGENTS/"
+  - "99_ARCHIVE/"
+  - "ROADMAP.md"
+  - "CLAUDE.md"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+
+escalation_triggers:
+  - "workspace does not exist"
+  - "no outputs found in workspace"
+  - "synthesis draft exceeds size limit"
+  - "workspace_id references a non-declared workspace"
+
+governance_boundary: >
+  Synthesis drafts are quarantine captures only. They are NOT canonical knowledge.
+  Promotion to 02_KNOWLEDGE/ requires explicit operator review and Gate endorsement.
+  This role card may not be broadened without a Decision Ledger entry.

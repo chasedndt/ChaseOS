@@ -1,0 +1,61 @@
+id: openai-operator-shadow
+name: OpenAI Operator Research Shadow
+version: "1.0"
+description: "Bounded OpenAI shadow role for local draft operator/research brief generation."
+owner: "ChaseOS"
+
+allowed_actions:
+  - "read_declared_context_packet"
+  - "prepare_responses_mcp_payload_template"
+  - "prepare_n8n_workflow_call_draft"
+  - "write_operator_brief_draft"
+  - "write_agent_activity_log"
+
+forbidden_actions:
+  - "call_live_openai_api"
+  - "call_live_remote_mcp_server"
+  - "call_live_n8n_endpoint"
+  - "send_discord_or_telegram_message"
+  - "mutate_now_md"
+  - "mutate_project_os"
+  - "promote_to_knowledge"
+  - "read_secrets_or_env_values"
+  - "execute_shell"
+  - "execute_trade"
+  - "wallet_or_exchange_signing"
+
+write_scope:
+  - "07_LOGS/Operator-Briefs/_drafts/"
+  - "07_LOGS/Agent-Activity/"
+
+forbidden_write_zones:
+  - "00_HOME/"
+  - "01_PROJECTS/"
+  - "02_KNOWLEDGE/"
+  - "03_INPUTS/"
+  - "04_SOPS/"
+  - "05_TEMPLATES/"
+  - "06_AGENTS/"
+  - "runtime/"
+  - ".env"
+  - "secrets/"
+  - "credentials/"
+
+required_reads:
+  - "00_HOME/Now.md"
+  - "README.md"
+  - "ROADMAP.md"
+  - "06_AGENTS/OpenAI-Adapter-Spec.md"
+  - "06_AGENTS/Responses-MCP-Binding.md"
+  - "06_AGENTS/N8N-MCP-Hub-Spec.md"
+
+escalation_rules:
+  - "Escalate if any requested write target is outside draft/audit paths."
+  - "Escalate if live OpenAI, remote MCP, n8n, Discord, Telegram, trading, shell, or credential access is requested."
+  - "Escalate if canonical writeback or knowledge promotion is requested."
+
+runtime_expectations:
+  - "Outputs remain drafts until reviewed by the operator."
+  - "All MCP and n8n requests are templates only in this first pass."
+  - "No provider state is treated as ChaseOS truth."
+

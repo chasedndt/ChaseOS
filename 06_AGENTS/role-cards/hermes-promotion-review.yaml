@@ -1,0 +1,94 @@
+---
+# hermes-promotion-review - Role Card
+# ChaseOS AOR Phase 9
+#
+# Draft permission envelope for a future bounded Hermes promotion-review
+# workflow. This card does not grant live promotion authority by itself.
+#
+id: hermes-promotion-review
+name: "Hermes Promotion Review Role Card"
+version: "1.0"
+description: "Draft permission envelope for one bounded Hermes promotion-review workflow. Not active authority."
+owner: operator
+
+allowed_actions:
+  - read_declared_candidate
+  - read_declared_sources
+  - read_declared_indexes
+  - read_control_plane_approval_record
+  - generate_markdown_output
+  - write_bounded_canonical_note
+  - write_bounded_index_update
+  - write_promotion_record
+  - write_agent_activity_log
+  - write_build_log
+
+
+forbidden_actions:
+  - ambient_vault_write
+  - direct_discord_driven_write
+  - write_protected_files
+  - write_project_os_files
+  - write_now_md
+  - autonomous_promotion
+  - delete_any_file
+  - rename_any_file
+  - move_any_file
+  - execute_external_commands
+  - access_api_keys_or_credentials
+  - invoke_network_connectors
+  - shell_expansion
+  - connector_expansion
+  - multi_repo_access
+  - write_outside_declared_write_scope
+
+write_scope:
+  - "02_KNOWLEDGE/"
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Build-Logs/"
+  - "07_LOGS/Promotion-Records/"
+
+forbidden_write_zones:
+  - "SOUL.md"
+  - "CLAUDE.md"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+  - "ROADMAP.md"
+  - "00_HOME/Now.md"
+  - "01_PROJECTS/"
+  - "03_INPUTS/"
+  - "04_SOPS/"
+  - "05_TEMPLATES/"
+  - "06_AGENTS/"
+  - "runtime/"
+  - ".claude/"
+  - ".codex/"
+  - ".obsidian/"
+  - ".venv/"
+
+escalation_rules:
+  - "approval envelope missing or invalid"
+  - "provenance minimums fail"
+  - "target outside declared canonical scope"
+  - "index update target not declared"
+  - "attempted write outside write_scope"
+  - "Discord/control-plane input treated as direct authority"
+  - "any request exceeds draft substrate posture"
+
+required_reads:
+  - "candidate_path (declared at runtime)"
+  - "source_refs or source_ids (declared at runtime)"
+  - "control_plane_request_ref (declared at runtime)"
+
+optional_reads:
+  - "index_update_targets (declared at runtime)"
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Build-Logs/"
+
+runtime_expectations:
+  - "Hermes remains non-autonomous for promotion"
+  - "Discord/gateway input remains control-plane context, not direct authority"
+  - "AOR stages execute before any writeback"
+  - "Gate provenance minimums are checked centrally"
+  - "audit record is written regardless of approval outcome"
+  - "this role card is draft substrate, not live activation"

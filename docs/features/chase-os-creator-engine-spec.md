@@ -2,13 +2,13 @@
 
 **Document purpose:** Repository-ready context file for Claude Code, Codex, or another implementation agent to inspect inside the ChaseOS repository before implementation.
 
-**Date prepared:** 2026-05-19
-**Product name:** ChaseOS
-**Module name:** `chase_creator_engine`
-**Immediate implementation target:** Option 1 — transcript / voice-note / context-prompt driven workflow
-**Later roadmap:** Option 2 — raw screen recording + AI video understanding + prompt-to-edit pipeline
-**Primary recorder/editor target:** Recordly
-**Secondary future recorder/editor target:** OpenScreen
+**Date prepared:** 2026-05-19  
+**Product name:** ChaseOS  
+**Module name:** `chase_creator_engine`  
+**Immediate implementation target:** Option 1 — transcript / voice-note / context-prompt driven workflow  
+**Later roadmap:** Option 2 — raw screen recording + AI video understanding + prompt-to-edit pipeline  
+**Primary recorder/editor target:** Recordly  
+**Secondary future recorder/editor target:** OpenScreen  
 **Out of scope:** OpenHuman. This module should integrate with ChaseOS, Hermes Agent, and OpenClaw only.
 
 ---
@@ -107,9 +107,9 @@ This section captures the current backend wiring of Recordly and OpenScreen for 
 
 ### 4.1 Recordly Snapshot
 
-**Repository:** `webadderallorg/Recordly`
-**Website:** `recordly.dev`
-**License:** AGPL 3.0
+**Repository:** `webadderallorg/Recordly`  
+**Website:** `recordly.dev`  
+**License:** AGPL 3.0  
 **Stack:** Electron, React, TypeScript, Vite, PixiJS, dnd-timeline, FFmpeg, Whisper runtime, native capture helpers.
 
 Recordly is a desktop app for polished screen recording and editing. Its README describes it as a desktop app for recording and editing screen captures with motion-driven presentation tools. It runs on macOS, Windows, and Linux. Platform capture notes:
@@ -353,8 +353,8 @@ This is not legal advice, but implementation agents should not ignore this.
 
 ### 4.2 OpenScreen Snapshot
 
-**Repository:** `siddharthvaddem/openscreen`
-**License:** MIT
+**Repository:** `siddharthvaddem/openscreen`  
+**License:** MIT  
 **Stack:** Electron, React, TypeScript, Vite, PixiJS, dnd-timeline.
 
 OpenScreen is a free open-source alternative to Screen Studio. Its README explicitly warns that it started as a side project and is not production grade. It still has valuable architecture and a permissive license.

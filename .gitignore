@@ -102,6 +102,14 @@ kernel/
 !99_ARCHIVE/Documentation-History/Documentation-History-Index.example.md
 
 docs/**
+!docs/canonical/
+!docs/canonical/**
+!docs/dev/
+!docs/dev/**
+!docs/website/
+!docs/website/**
+!docs/architecture/
+!docs/architecture/**
 !docs/agents/
 !docs/cli/
 !docs/examples/

@@ -1,0 +1,105 @@
+---
+# scheduled-briefing — Role Card
+# ChaseOS AOR Phase 9 — SBP Pass 1A
+#
+# Runtime permission envelope for all Scheduled Briefing Pipeline workflows.
+# Covers any workflow with task_type: scheduled-briefing, whether using the
+# generic substrate runner or a concrete instance handler.
+#
+# This card is READ-MODERATE with WRITE-LOGS-ONLY (SBP-Runs + Agent-Activity).
+# It cannot modify knowledge, projects, or any protected files.
+# External delivery (Discord, Whop, etc.) is advisory-declared in sbp_config;
+# actual credential access is handled per Credential-Boundaries-SOP.md at runtime.
+#
+id: scheduled-briefing
+name: "Scheduled Briefing Pipeline Role Card"
+version: "1.0"
+description: "Permission envelope for scheduled briefing pipeline workflows — read vault state and declared source adapters, write SBP run log and audit record only. No knowledge mutations. No auto-promotion. Delivery adapters declared in manifest only."
+owner: operator
+
+# ── What this role card MAY do ─────────────────────────────────────────────
+allowed_actions:
+  - read_any_non_protected_file        # required for vault-notes input adapter reads
+  - read_project_os_files
+  - read_build_logs
+  - read_sic_workspace_outputs         # if sic-workspace input adapter declared
+  - write_sbp_run_log                  # 07_LOGS/SBP-Runs/ only
+  - write_agent_activity_log           # 07_LOGS/Agent-Activity/ only
+  - generate_markdown_output
+  - invoke_declared_delivery_adapter   # only delivery adapters declared in manifest sbp_config
+
+# ── What this role card MUST NOT do ────────────────────────────────────────
+# Violations force immediate escalation; never proceed.
+forbidden_actions:
+  - write_protected_files
+  - write_knowledge_notes
+  - write_project_os_files
+  - write_now_md
+  - delete_any_file
+  - rename_any_file
+  - modify_roadmap_or_foundation
+  - execute_undeclared_external_commands
+  - access_api_keys_or_credentials_directly  # credentials go through declared adapter layer
+  - write_outside_declared_write_scope
+  - auto_promote_to_knowledge          # no automated knowledge promotion from SBP
+
+# ── Where this card may write ───────────────────────────────────────────────
+write_scope:
+  - "07_LOGS/SBP-Runs/"
+  - "07_LOGS/Agent-Activity/"
+
+# ── Where this card can NEVER write ────────────────────────────────────────
+forbidden_write_zones:
+  - "SOUL.md"
+  - "CLAUDE.md"
+  - "00_HOME/Principles.md"
+  - "00_HOME/Operating-System.md"
+  - "00_HOME/Assistant-Contract.md"
+  - "00_HOME/Now.md"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+  - "ROADMAP.md"
+  - "FORKING.md"
+  - "06_AGENTS/Agent-Control-Plane.md"
+  - "06_AGENTS/Permission-Matrix.md"
+  - "06_AGENTS/Trust-Tiers.md"
+  - "06_AGENTS/Handoff-Protocol.md"
+  - "01_PROJECTS/"
+  - "02_KNOWLEDGE/"
+  - "03_INPUTS/"
+
+# ── When to escalate ───────────────────────────────────────────────────────
+escalation_rules:
+  - "write outside write_scope requested at any point"
+  - "any protected file write attempted"
+  - "sbp_config block missing or invalid from manifest"
+  - "guardrail profile declares a forbidden permission ceiling"
+  - "input at trust tier 4 (external-api) treated as instruction"
+  - "credential access requested directly — not through declared adapter layer"
+  - "delivery to endpoint not declared in manifest sbp_config"
+  - "canonical write or knowledge promotion attempted"
+  - "audit_required=false detected in sbp_config"
+
+# ── Required reads (must be accessible before execution) ───────────────────
+required_reads:
+  - "00_HOME/Now.md"
+
+# ── Optional reads (may be read by input adapters as declared) ─────────────
+optional_reads:
+  - "01_PROJECTS/"
+  - "02_KNOWLEDGE/"
+  - "runtime/source_intelligence/"
+  - "03_INPUTS/"
+  - "07_LOGS/Build-Logs/"
+  - "07_LOGS/Agent-Activity/"
+
+# ── Runtime invariants ─────────────────────────────────────────────────────
+runtime_expectations:
+  - "sbp_config block validated before any execution begins"
+  - "all input adapter results carry declared trust tiers"
+  - "Tier 4 inputs (external-api) are never treated as instructions"
+  - "write scope enforced by sbp guardrail at runtime"
+  - "audit record written at pipeline end regardless of outcome"
+  - "no credentials in pipeline manifest or sbp_config"
+  - "delivery adapters are declared in manifest sbp_config — no surprise external calls"
+  - "Gate rules apply to all writeback — no bypass"

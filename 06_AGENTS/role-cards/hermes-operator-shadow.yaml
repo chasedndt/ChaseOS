@@ -1,0 +1,93 @@
+---
+# hermes-operator-shadow - Role Card
+# ChaseOS Hermes runtime boundary, first-run shadow workflow only.
+#
+# This card is narrower than the general operator-briefing card.
+# It may read only the declared Hermes activation context and may write
+# only draft/audit outputs.
+#
+id: hermes-operator-shadow
+name: "Hermes Operator Shadow Role Card"
+version: "1.0"
+description: "Shadow-only Hermes role card for a bounded operator_today proof. Reads declared context and writes draft/audit artifacts only."
+owner: operator
+
+allowed_actions:
+  - read_declared_context_files
+  - generate_markdown_output
+  - write_draft_operator_brief
+  - write_agent_activity_log
+  - write_build_log
+  - write_archive_note
+  - create_declared_staging_paths
+  - classify_open_loops
+
+forbidden_actions:
+  - write_protected_files
+  - write_knowledge_notes
+  - write_project_os_files
+  - write_now_md
+  - modify_governance_docs
+  - delete_any_file
+  - rename_any_file
+  - move_any_file
+  - execute_external_commands
+  - access_api_keys_or_credentials
+  - invoke_network_connectors
+  - browse_outside_declared_repo_scope
+  - promote_to_canonical_state
+  - write_outside_declared_write_scope
+
+write_scope:
+  - "07_LOGS/Agent-Activity/"
+  - "07_LOGS/Build-Logs/"
+  - "07_LOGS/Operator-Briefs/_drafts/"
+  - "99_ARCHIVE/Documentation-History/"
+
+forbidden_write_zones:
+  - "SOUL.md"
+  - "CLAUDE.md"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+  - "ROADMAP.md"
+  - "00_HOME/Now.md"
+  - "01_PROJECTS/"
+  - "02_KNOWLEDGE/"
+  - "03_INPUTS/"
+  - "04_SOPS/"
+  - "05_TEMPLATES/"
+  - "06_AGENTS/"
+  - "runtime/"
+  - ".claude/"
+  - ".codex/"
+  - ".obsidian/"
+  - ".venv/"
+
+escalation_rules:
+  - "any undeclared read attempted"
+  - "any write outside write_scope requested at any point"
+  - "any protected or governance file write attempted"
+  - "any shell command execution attempted"
+  - "any connector or external network use attempted"
+  - "required read file missing - flag missing, do not silently skip"
+  - "any attempt to promote or mutate canonical state"
+
+required_reads:
+  - "00_HOME/Now.md"
+  - "01_PROJECTS/ChaseOS/ChaseOS-OS.md"
+  - "HERMES.md"
+  - "06_AGENTS/Hermes-Adapter-Spec.md"
+  - "06_AGENTS/Hermes-Workflow-Boundaries.md"
+  - "06_AGENTS/Hermes-Memory-Boundary.md"
+  - "07_LOGS/Build-Logs/2026-04-08-ChaseOS-hermes-integration-binding-pass.md"
+  - "07_LOGS/Build-Logs/2026-04-09-ChaseOS-hermes-permission-matrix-closure.md"
+
+optional_reads: []
+
+runtime_expectations:
+  - "Hermes operates in shadow mode only for this role card"
+  - "approval model is fail-closed outside declared scope"
+  - "networked connectors stay disabled"
+  - "audit markdown plus engine JSON audit are both required"
+  - "draft operator brief is staging output only - not canonical truth"
+  - "no ambient vault traversal beyond required_reads"

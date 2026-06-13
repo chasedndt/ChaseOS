@@ -1,0 +1,50 @@
+# _schema.yaml — Role Card Schema Reference
+# ChaseOS AOR Phase 9
+#
+# Role cards define the runtime permission envelope for a workflow execution.
+# They are NOT personas. They are boundary files.
+#
+# Files starting with _ are skipped by the role card loader.
+#
+# Required fields (validation enforced by role_cards.py):
+#   id                    — unique identifier; must match filename stem
+#   name                  — human-readable name
+#   version               — semantic version string
+#   description           — what this role card is for
+#   owner                 — which workflow family owns this card
+#   allowed_actions       — list of permitted action categories
+#   forbidden_actions     — list of hard-stop action categories; violations → escalate
+#   write_scope           — list of dirs/files this card may write
+#   forbidden_write_zones — list of dirs/files that CANNOT be written; violations → escalate
+#   escalation_rules      — list of conditions that force escalation
+#   runtime_expectations  — list of invariants that must hold during execution
+#
+# Optional fields:
+#   required_reads        — list of paths that must be read before execution
+#   optional_reads        — list of paths that may be read if needed
+#   notes                 — free-form notes
+
+# Example:
+# ---
+# id: my-role-card
+# name: "My Role Card"
+# version: "1.0"
+# description: "Defines the permission envelope for XYZ workflows."
+# owner: operator
+# allowed_actions:
+#   - read_vault
+#   - write_logs
+# forbidden_actions:
+#   - write_protected_files
+#   - delete_files
+# write_scope:
+#   - "07_LOGS/"
+# forbidden_write_zones:
+#   - "00_HOME/"
+#   - "SOUL.md"
+#   - "CLAUDE.md"
+# escalation_rules:
+#   - "write outside write_scope requested"
+# runtime_expectations:
+#   - "vault root is accessible"
+#   - "Gate rules apply to all writeback"

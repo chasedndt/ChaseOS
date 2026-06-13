@@ -17,11 +17,12 @@
 - [[06_AGENTS/ChaseOS-Creator-Engine-Feature]] - partial creator/media runtime subsystem; passes 1-10 verified, product execution and Studio/AOR lanes blocked.
 - [[07_LOGS/Visual-QA/2026-05-24-studio-ui-content-personal-memory-source-qa-sweep/final-productization-visual-qa]] - source-render visual QA evidence for Studio Content and Personal Memory surfaces plus prior Main/Runtime/Extensions surfaces; no authority expansion.
 - [[chaseos_not_built_backlog]] — working backlog of not-built, partial, blocked, and planned product gaps extracted from README/PROJECT_FOUNDATION and operator screenshots; includes the first safe Voice Mode page slice and AISO as NB-031.
-- [[06_AGENTS/Artifact-Intelligence-Submission-Operator]] - Artifact Intelligence & Submission Operator (AISO) feature-family node for governed local artifact discovery, media comprehension, staged rename/package, submission draft, approval, and audit workflows; planned/blueprint only, not built.
+- [[06_AGENTS/Artifact-Intelligence-Submission-Operator]] - Artifact Intelligence & Submission Operator (AISO) feature-family node for governed local artifact discovery, media comprehension, staged rename/package, submission draft, approval, and audit workflows; bounded local prepare/rename/package proof path is development-complete and real-test closeout ready; live external submission remains separately gated.
 
 - [[openhuman-reference-feature-extraction-plan]] — OpenHuman/TinyHumans reference-product feature extraction plan; retires active runtime integration and seeds Token Juice / provider-router / product UX / webapp+landing-page integration lessons for ChaseOS.
 - [[adaptive-runtime-surface-layer-spec]] — Adaptive Runtime Surface Layer specification.
 - [[adaptive-runtime-surface-layer-audit]] — Adaptive Runtime Surface Layer audit.
+- [[chaser_forge_mvp_extension_install_contract]] and [[chase_forge_approved_extension_points_spec]] — Chaser Forge extension install/import contract family. Backlog row NB-043 is preview/import-intent only: local package validation, permission disclosure, sandbox/import handoff, and Approval Center review routing may be visible; live marketplace fetch/upload, paid purchase/license checkout, hosted publication, remote install execution, and approval consumption remain blocked.
 - [[personal-ai-dev-stack-suggestion-layer]] — personal-instance suggestion layer for Matt Pocock methods, gated gstack review workflows, CLI-Anything safe-wrapper discovery, and tmux-managed Hermes agents; not ChaseOS Core.
 
 ## Registry Boundary
@@ -44,4 +45,4 @@ This file is an upcoming-feature and reference-study navigation surface only. Du
 [[06_AGENTS/ChaseOS-Creator-Engine-Feature]]
 [[07_LOGS/Visual-QA/2026-05-24-studio-ui-content-personal-memory-source-qa-sweep/final-productization-visual-qa]]
 
-[[Feature-Register]] · [[Feature-Fit-Register]] · [[chaseos_not_built_backlog]] · [[06_AGENTS/Artifact-Intelligence-Submission-Operator]] · [[openhuman-reference-feature-extraction-plan]] · [[adaptive-runtime-surface-layer-spec]] · [[adaptive-runtime-surface-layer-audit]] · [[personal-ai-dev-stack-suggestion-layer]]
+[[Feature-Register]] · [[Feature-Fit-Register]] · [[chaseos_not_built_backlog]] · [[06_AGENTS/Artifact-Intelligence-Submission-Operator]] · [[openhuman-reference-feature-extraction-plan]] · [[adaptive-runtime-surface-layer-spec]] · [[adaptive-runtime-surface-layer-audit]] · [[chaser_forge_mvp_extension_install_contract]] · [[chase_forge_approved_extension_points_spec]] · [[personal-ai-dev-stack-suggestion-layer]]

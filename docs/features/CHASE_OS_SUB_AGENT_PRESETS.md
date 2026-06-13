@@ -1,8 +1,8 @@
 ﻿# ChaseOS Default Sub-Agent Presets & Task-Scoped Worker System
 
-**Document status:** Product / architecture specification
-**Intended location:** ChaseOS repository docs, architecture folder, or feature planning folder
-**Feature name:** Default Sub-Agent Presets & Task-Scoped Worker System
+**Document status:** Product / architecture specification  
+**Intended location:** ChaseOS repository docs, architecture folder, or feature planning folder  
+**Feature name:** Default Sub-Agent Presets & Task-Scoped Worker System  
 **Primary goal:** Give ChaseOS a default system for spawning specialized sub-agent workers only when a task, mission, workflow, or planning mode actually needs them.
 
 **Implementation status (2026-05-20):** PARTIAL. Passes 1-9 are implemented and
@@ -35,7 +35,7 @@ Those three runtime backends are the only components that should be assumed to b
 
 A good mental model is:
 
-> The runtime backends are always alive. The sub-agents are not.
+> The runtime backends are always alive. The sub-agents are not.  
 > Sub-agents are closer to structured `Claude.md`-style instruction files plus lifecycle rules than independent always-running processes.
 
 When ChaseOS decides it needs specialist help, it creates a sub-agent activation context from a preset, routes it through the best runtime backend, gives it bounded tools and memory access, collects the output, persists only useful summaries/artifacts, and then tears down the sub-agent context.

@@ -1,0 +1,73 @@
+---
+# trace-idea-readonly - Role Card
+# ChaseOS AOR Phase 9
+#
+# Runtime permission envelope for read-only provenance tracing workflows.
+id: trace-idea-readonly
+name: "Trace Idea Readonly Role Card"
+version: "1.0"
+description: "Permission envelope for trace_idea - reads declared lineage surfaces and writes a trace report only. No canonical mutation."
+owner: operator
+
+allowed_actions:
+  - read_vault
+  - read_acquisition_artifacts
+  - read_source_packages
+  - read_build_logs
+  - read_agent_activity
+  - write_trace_report
+  - write_agent_activity_log
+  - generate_markdown_output
+
+forbidden_actions:
+  - write_protected_files
+  - write_knowledge_notes
+  - write_project_os_files
+  - write_now_md
+  - promote_to_canonical
+  - delete_any_file
+  - rename_any_file
+  - execute_external_commands
+  - access_api_keys_or_credentials
+  - access_network
+  - write_outside_declared_write_scope
+
+write_scope:
+  - "07_LOGS/Trace-Reports/"
+  - "07_LOGS/Agent-Activity/"
+
+forbidden_write_zones:
+  - "SOUL.md"
+  - "CLAUDE.md"
+  - "00_HOME/Now.md"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+  - "ROADMAP.md"
+  - "01_PROJECTS/"
+  - "02_KNOWLEDGE/"
+  - "06_AGENTS/"
+  - "runtime/"
+
+escalation_rules:
+  - "any canonical promotion attempted"
+  - "write outside Trace-Reports or Agent-Activity requested"
+  - "any protected file write attempted"
+  - "external commands or network access requested"
+  - "missing declared lineage surfaces"
+
+required_reads:
+  - "runtime/acquisition/"
+  - "07_LOGS/Build-Logs/"
+  - "07_LOGS/Agent-Activity/"
+
+optional_reads:
+  - "runtime/source_intelligence/"
+  - "03_INPUTS/00_QUARANTINE/"
+  - "runtime/workflows/"
+
+runtime_expectations:
+  - "vault root is accessible and CLAUDE.md is present"
+  - "Gate rules apply to all writeback"
+  - "audit record is written at pipeline end regardless of outcome"
+  - "trace output is derivative, non-canonical, and operator-facing"
+  - "partial lineage is reported honestly rather than invented"

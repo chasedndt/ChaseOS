@@ -1,0 +1,92 @@
+---
+id: ventureops_mission_dry_reviewer
+name: "VentureOps Mission Dry Reviewer"
+version: "0.1"
+description: "Permission envelope for local VentureOps Mission Mode dry-review proof generation."
+owner: operator
+
+allowed_actions:
+  - read_declared_mission_workspace
+  - read_declared_activation_packet
+  - validate_mission_dry_run_artifacts
+  - validate_agent_bus_mission_task_packet_preview
+  - generate_mission_dry_review_proof
+  - write_mission_workspace_review_record
+  - write_mission_review_note
+  - write_workflow_proof
+  - write_runtime_audit_report
+
+forbidden_actions:
+  - activate_mission
+  - write_agent_bus_task
+  - apply_workflow_evolution
+  - access_api_keys_or_credentials
+  - read_env_files
+  - read_wallet_keys_or_seed_phrases
+  - call_provider_or_model
+  - control_browser_or_gui
+  - activate_browser_skill
+  - send_external_message
+  - mutate_provider_config
+  - mutate_shell_or_host_state
+  - mutate_canonical_state
+  - mutate_payment_or_crm_system
+  - execute_live_trading
+  - perform_live_remediation
+  - write_outside_declared_write_scope
+  - delete_any_file
+
+write_scope:
+  - "07_LOGS/VentureOps-Missions/"
+  - "07_LOGS/Mission-Reviews/"
+  - "07_LOGS/Workflow-Proofs/"
+  - "07_LOGS/Runtime-Audits/"
+
+forbidden_write_zones:
+  - ".env"
+  - "secrets/"
+  - "credentials/"
+  - "00_HOME/"
+  - "01_PROJECTS/"
+  - "02_KNOWLEDGE/"
+  - "03_INPUTS/"
+  - "04_SOPS/"
+  - "05_TEMPLATES/"
+  - "06_AGENTS/"
+  - "README.md"
+  - "PROJECT_FOUNDATION.md"
+  - "ROADMAP.md"
+  - "runtime/"
+
+escalation_rules:
+  - "mission workspace is missing or fails validation"
+  - "activation packet is missing or mission_id does not match"
+  - "execution_mode is not dry_review"
+  - "Agent Bus mission packet preview fails validation"
+  - "any mission activation or bus enqueue is requested"
+  - "any workflow evolution apply is requested"
+  - "any provider/model call is requested"
+  - "any browser or GUI action is requested"
+  - "any external send is requested"
+  - "any payment, CRM, live trading, canonical, protected-file, or credential action is requested"
+  - "write outside VentureOps-Missions, Mission-Reviews, Workflow-Proofs, or Runtime-Audits requested"
+
+required_reads:
+  - "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/"
+  - "07_LOGS/VentureOps-Missions/2026-05-13_mission-chase-ai-runtime-governance-kit-dry-run/activation-approval-packet-draft.json"
+  - "runtime/workflows/missions/mission_chase_ai_runtime_governance_kit.py"
+  - "runtime/agent_bus/mission_tasks.py"
+  - "runtime/agent_bus/schemas/mission_task_packet.schema.json"
+
+optional_reads:
+  - "runtime/ventureops/mission_activation_readiness.py"
+  - "runtime/ventureops/mission_dry_runs.py"
+  - "runtime/workflows/registry/mission_chase_ai_runtime_governance_kit.yaml"
+
+runtime_expectations:
+  - "read declared local mission workspace artifacts only"
+  - "produce bounded dry-review proof, review, and audit artifacts only"
+  - "treat activation approval packets as evidence, not as automatic execution authority"
+  - "do not activate a mission, write a live Agent Bus task, or apply workflow evolution"
+  - "no provider/model, browser, external-send, provider-config, shell, payment/CRM, canonical, protected-file, credential, or live-trading action"
+  - "fail closed on missing workspace artifacts, mismatched mission_id, or unsupported execution mode"

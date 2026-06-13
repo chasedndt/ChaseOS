@@ -9,9 +9,9 @@ This example defines the portable ChaseOS Core framing for Chaser Agent.
 - Bus name: `Chaser Agent`
 - Runtime family: 24/7 ChaseOS harness/runtime lane with Hermes and OpenClaw
 
-## Not the same as Archon
+## Runtime boundary
 
-Archon is the personal instance name of the operator's Claude Code environment. It is not a public ChaseOS Core runtime, not an always-on harness, and not one of the three 24/7 runtime lanes.
+Chaser Agent is the portable ChaseOS Core runtime identity for this lane. Local development helpers, including Claude Code sessions, are not public ChaseOS Core 24/7 runtime lanes unless a private deployment explicitly registers them under its own governance.
 
 ## Permitted Core representation
 

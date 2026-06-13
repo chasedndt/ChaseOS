@@ -1,8 +1,8 @@
-﻿# Chaser OS Forge â€” Approved Extension Points & Safe Self-Extension Spec
+# Chaser OS Forge — Approved Extension Points & Safe Self-Extension Spec
 
-**Document status:** Draft v0.1
-**Owner:** Chaser OS product/engineering
-**Intended use:** Paste into Codex, Claude Code, Abacus/AbacoX, or another repository-aware coding agent so it can inspect the Chaser OS repository and plan/build the feature safely.
+**Document status:** Draft v0.1  
+**Owner:** Chaser OS product/engineering  
+**Intended use:** Paste into Codex, Claude Code, Abacus/AbacoX, or another repository-aware coding agent so it can inspect the Chaser OS repository and plan/build the feature safely.  
 **Core idea:** Chaser OS should be able to build new Chaser OS modules from inside Chaser OS, but only through approved extension points that cannot break the core operating system.
 
 ---
@@ -11,9 +11,9 @@
 
 Chaser OS should include a new system-level feature called **Chaser Forge**.
 
-Chaser Forge is a visual, AI-assisted builder that lets users describe a new feature, dashboard, page, workflow, agent, automation, or module in plain language. Chaser OS then turns the request into a structured feature spec, shows a live preview/demo of where it will appear in the interface, validates it, asks the user to approve permissions, and installs it into the userâ€™s workspace.
+Chaser Forge is a visual, AI-assisted builder that lets users describe a new feature, dashboard, page, workflow, agent, automation, or module in plain language. Chaser OS then turns the request into a structured feature spec, shows a live preview/demo of where it will appear in the interface, validates it, asks the user to approve permissions, and installs it into the user’s workspace.
 
-This feature is not just an â€œAI coding assistant.â€ It is a **safe self-extension layer** for Chaser OS.
+This feature is not just an “AI coding assistant.” It is a **safe self-extension layer** for Chaser OS.
 
 The fundamental rule:
 
@@ -25,14 +25,14 @@ The intended lifecycle:
 
 ```text
 User prompt
-  â†’ feature brief
-  â†’ extension manifest
-  â†’ UI/workflow/agent preview
-  â†’ validation
-  â†’ permission review
-  â†’ sandbox install, optional
-  â†’ live install
-  â†’ audit log + rollback snapshot
+  → feature brief
+  → extension manifest
+  → UI/workflow/agent preview
+  → validation
+  → permission review
+  → sandbox install, optional
+  → live install
+  → audit log + rollback snapshot
 ```
 
 The builder should make non-technical users feel like they can create their own AI-powered modules without understanding GitHub, forks, pull requests, repo structure, routing, schemas, deployment, or code.
@@ -75,20 +75,20 @@ Bad pattern:
 
 ```text
 User asks for feature
-  â†’ AI edits random files
-  â†’ global routes/layout/auth/data may change
-  â†’ core system breaks
+  → AI edits random files
+  → global routes/layout/auth/data may change
+  → core system breaks
 ```
 
 Safe pattern:
 
 ```text
 User asks for feature
-  â†’ AI creates structured spec
-  â†’ AI creates extension manifest
-  â†’ manifest is validated
-  â†’ extension is installed into allowed slots only
-  â†’ core remains protected
+  → AI creates structured spec
+  → AI creates extension manifest
+  → manifest is validated
+  → extension is installed into allowed slots only
+  → core remains protected
 ```
 
 The hard part is not generating a dashboard page. The hard part is creating **approved extension points** so generated modules can be useful without gaining the ability to damage Chaser OS itself.
@@ -172,11 +172,11 @@ An installable module that adds functionality to Chaser OS through approved exte
 
 Examples:
 
-- â€œUGC Campaign Studioâ€
-- â€œShopify Growth Labâ€
-- â€œTrading Journal Labâ€
-- â€œClient Onboarding Studioâ€
-- â€œAI Sales Team Dashboardâ€
+- “UGC Campaign Studio”
+- “Shopify Growth Lab”
+- “Trading Journal Lab”
+- “Client Onboarding Studio”
+- “AI Sales Team Dashboard”
 
 ### Extension Point
 
@@ -231,7 +231,7 @@ An isolated installation for testing a feature with fake/test data. External sid
 
 ### Live Install
 
-Installation into the userâ€™s actual workspace after validation, permission approval, audit logging, and rollback snapshot creation.
+Installation into the user’s actual workspace after validation, permission approval, audit logging, and rollback snapshot creation.
 
 ---
 
@@ -332,7 +332,7 @@ Each extension point should define:
 - Removing core sidebar items
 - Renaming core sidebar items
 - Reordering the global sidebar unless user-level sorting exists
-- Claiming core labels deceptively, such as â€œBilling,â€ â€œAdmin,â€ â€œSecurity,â€ â€œLogin,â€ or â€œSystem Settingsâ€
+- Claiming core labels deceptively, such as “Billing,” “Admin,” “Security,” “Login,” or “System Settings”
 - Linking outside the approved route namespace
 - Running code from a nav item click beyond route navigation or approved command dispatch
 
@@ -1530,7 +1530,7 @@ Extensions must not:
 Recommended:
 
 ```text
-Manifest â†’ declarative component schema â†’ approved renderer â†’ extension host
+Manifest → declarative component schema → approved renderer → extension host
 ```
 
 Example:
@@ -1620,21 +1620,21 @@ A workflow is allowed to run only if:
 
 ```text
 manual trigger
-  â†’ collect form input
-  â†’ run agent
-  â†’ human approval
-  â†’ save to extension collection
-  â†’ generate report
+  → collect form input
+  → run agent
+  → human approval
+  → save to extension collection
+  → generate report
 ```
 
 ### Unsafe Workflow Example
 
 ```text
 manual trigger
-  â†’ read secrets
-  â†’ raw database query
-  â†’ external API call
-  â†’ delete core data
+  → read secrets
+  → raw database query
+  → external API call
+  → delete core data
 ```
 
 The unsafe version must be blocked.
@@ -1754,13 +1754,13 @@ Requires:
 
 ```text
 Validate manifest
-  â†’ calculate risk
-  â†’ show permission screen
-  â†’ user approves
-  â†’ create rollback snapshot
-  â†’ register extension
-  â†’ enable extension routes/nav/widgets
-  â†’ write audit event
+  → calculate risk
+  → show permission screen
+  → user approves
+  → create rollback snapshot
+  → register extension
+  → enable extension routes/nav/widgets
+  → write audit event
 ```
 
 ### 16.2 Disable Flow
@@ -2049,14 +2049,14 @@ Rule:
 
 ```text
 Open Chaser Forge
-  â†’ click â€œBuild something newâ€
-  â†’ describe desired feature
-  â†’ AI creates feature brief
-  â†’ user edits/approves brief
-  â†’ AI creates manifest + preview
-  â†’ user sees where the tab/page/widget will appear
-  â†’ user reviews permissions
-  â†’ user installs to sandbox or live workspace
+  → click “Build something new”
+  → describe desired feature
+  → AI creates feature brief
+  → user edits/approves brief
+  → AI creates manifest + preview
+  → user sees where the tab/page/widget will appear
+  → user reviews permissions
+  → user installs to sandbox or live workspace
 ```
 
 ### Example Request
@@ -2069,7 +2069,7 @@ Create a tab that helps me plan, script, and track UGC videos for brand campaign
 
 ```text
 Feature name: UGC Campaign Studio
-Location: Sidebar â†’ Creator â†’ UGC Campaign Studio
+Location: Sidebar → Creator → UGC Campaign Studio
 Pages: Campaign Brief, Script Generator, Shot List, Asset Tracker, Delivery Checklist
 Agents: UGC Script Agent, Brand QA Agent
 Workflows: Generate Campaign From Brief
@@ -2131,7 +2131,7 @@ Do not start with arbitrary code generation.
 
 ## 23. Implementation Roadmap
 
-### Phase 0 â€” Repository Inventory
+### Phase 0 — Repository Inventory
 
 The coding agent should inspect the repo and identify:
 
@@ -2150,7 +2150,7 @@ The coding agent should inspect the repo and identify:
 
 Output: architecture map.
 
-### Phase 1 â€” Extension Registry
+### Phase 1 — Extension Registry
 
 Build:
 
@@ -2161,7 +2161,7 @@ Build:
 - Route/nav registration
 - Lifecycle events
 
-### Phase 2 â€” Validator and Core Guard
+### Phase 2 — Validator and Core Guard
 
 Build:
 
@@ -2175,7 +2175,7 @@ Build:
 - Data schema validator
 - Tests for forbidden attempts
 
-### Phase 3 â€” Host Slots
+### Phase 3 — Host Slots
 
 Build:
 
@@ -2186,7 +2186,7 @@ Build:
 - Workflow template registry slot
 - Optional command palette slot
 
-### Phase 4 â€” Forge Builder UI
+### Phase 4 — Forge Builder UI
 
 Build:
 
@@ -2197,7 +2197,7 @@ Build:
 - Validation report
 - Install controls
 
-### Phase 5 â€” Preview Renderer
+### Phase 5 — Preview Renderer
 
 Build:
 
@@ -2207,7 +2207,7 @@ Build:
 - Simulated workflow output
 - Preview-only labeling
 
-### Phase 6 â€” Install/Disable/Rollback
+### Phase 6 — Install/Disable/Rollback
 
 Build:
 
@@ -2219,7 +2219,7 @@ Build:
 - Feature flags
 - Permission grants/revocations
 
-### Phase 7 â€” Agents and Workflows
+### Phase 7 — Agents and Workflows
 
 Integrate:
 
@@ -2229,7 +2229,7 @@ Integrate:
 - Agent run constraints
 - Approval gates
 
-### Phase 8 â€” Export/PR Mode
+### Phase 8 — Export/PR Mode
 
 Future:
 
@@ -2238,7 +2238,7 @@ Future:
 - Generate PR for maintainers
 - Generate code only for reviewed trusted extensions
 
-### Phase 9 â€” Marketplace
+### Phase 9 — Marketplace
 
 Future:
 
@@ -2495,7 +2495,7 @@ Generated feature:
 
 ```text
 Name: Trading Journal Lab
-Location: Sidebar â†’ Finance â†’ Trading Journal Lab
+Location: Sidebar → Finance → Trading Journal Lab
 Pages: Trade Log, PnL Dashboard, Mistake Review, Strategy Notes
 Agents: Trade Review Agent, Risk Coach Agent
 Workflows: Log Trade, Review Losing Trade, Weekly Performance Summary
@@ -2533,7 +2533,7 @@ Generated feature:
 
 ```text
 Name: Shopify Growth Lab
-Location: Sidebar â†’ E-Commerce â†’ Shopify Growth Lab
+Location: Sidebar → E-Commerce → Shopify Growth Lab
 Pages: Experiment Tracker, Product Ideas, Content Ideas, Weekly Review
 Agents: Product Analyst, Listing Copy Agent, Growth Strategist
 Workflows: Create Growth Experiment, Review Results, Generate Weekly Plan
@@ -2561,7 +2561,7 @@ Generated feature:
 
 ```text
 Name: Client Onboarding Studio
-Location: Sidebar â†’ Agency â†’ Client Onboarding
+Location: Sidebar → Agency → Client Onboarding
 Pages: Intake Form, Client Checklist, Asset Requests, Kickoff Notes
 Agents: Onboarding Assistant, Brief Summarizer
 Workflows: New Client Intake, Generate Kickoff Plan, Request Missing Assets

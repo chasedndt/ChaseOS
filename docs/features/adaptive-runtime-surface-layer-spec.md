@@ -483,7 +483,7 @@ Repo-truth anchors:
 Implemented behavior:
 
 - Adds validated manifest metadata only.
-- Keeps Archon out of portable runtime identity: Archon is only the operator personal Claude Code instance name, while Chaser Agent is the Core runtime identity.
+- Keeps personal Claude Code instance naming out of portable runtime identity; Chaser Agent is the Core runtime identity for this lane.
 - Keeps `routing_policy.default: deny_unknown`.
 - Keeps `credential_policy.credentials_allowed: false`.
 - Keeps `credential_policy.cookies_allowed: false`.

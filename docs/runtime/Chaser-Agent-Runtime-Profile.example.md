@@ -10,7 +10,7 @@ The ChaseOS always-on runtime family is:
 - OpenClaw — Windows-side 24/7 operator harness/runtime lane.
 - Chaser Agent — first-party personal agent harness/runtime lane for governed ChaseOS workflows and source-card harness work.
 
-Archon is not part of this always-on runtime family. Archon is the personal instance name of the operator's Claude Code environment and should not be represented in portable ChaseOS Core as a public runtime/harness lane.
+Local development helper names are not part of this always-on runtime family and should not be represented in portable ChaseOS Core as public runtime/harness lanes.
 
 ## Authority boundary
 

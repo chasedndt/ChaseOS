@@ -1,0 +1,766 @@
+{
+  "ok": true,
+  "action": "chaser",
+  "result": {
+    "ok": true,
+    "surface": "chaser_runtime_readiness_review",
+    "schema_version": "chaser_runtime_readiness_review.v1",
+    "generated_at": "2026-06-12T13:36:22.948914+00:00",
+    "vault_root": "<WSL_CHASEOS_VAULT_ROOT>",
+    "review_status": "readiness_review_complete_live_wiring_blocked",
+    "live_runtime_ready": false,
+    "ready_for_runtime_activation": false,
+    "read_only_review_available": true,
+    "activation_gate_design_available": true,
+    "activation_gate_design_surface": "chaser_runtime_activation_gate_design",
+    "activation_approval_preview_available": true,
+    "activation_approval_preview_surface": "chaser_runtime_activation_approval_preview",
+    "activation_approval_request_write_available": true,
+    "activation_approval_request_write_surface": "chaser_runtime_activation_approval_request_write_gate",
+    "activation_approval_decision_preflight_available": true,
+    "activation_approval_decision_preflight_surface": "chaser_runtime_activation_approval_decision_preflight",
+    "activation_approval_consumption_design_available": true,
+    "activation_approval_consumption_design_surface": "chaser_runtime_activation_approval_consumption_design",
+    "activation_approval_consumption_write_guard_available": true,
+    "activation_approval_consumption_write_guard_surface": "chaser_runtime_activation_approval_consumption_write_guard",
+    "activation_post_consumption_readiness_available": true,
+    "activation_post_consumption_readiness_surface": "chaser_runtime_activation_post_consumption_readiness",
+    "activation_executor_design_available": true,
+    "activation_executor_design_surface": "chaser_runtime_activation_executor_design",
+    "activation_executor_write_guard_available": true,
+    "activation_executor_write_guard_surface": "chaser_runtime_activation_executor_write_guard",
+    "activation_state_readiness_available": true,
+    "activation_state_readiness_surface": "chaser_runtime_activation_state_readiness",
+    "profile_toolset_activation_design_available": true,
+    "profile_toolset_activation_design_surface": "chaser_runtime_profile_toolset_activation_design",
+    "profile_toolset_activation_write_guard_available": true,
+    "profile_toolset_activation_write_guard_surface": "chaser_runtime_profile_toolset_activation_write_guard",
+    "profile_toolset_activation_readiness_available": true,
+    "profile_toolset_activation_readiness_surface": "chaser_runtime_profile_toolset_activation_readiness",
+    "terminal_toolset_binding_design_available": false,
+    "terminal_toolset_binding_design_surface": "",
+    "terminal_toolset_binding_write_guard_available": false,
+    "terminal_toolset_binding_runtime_binding_available": false,
+    "terminal_output_trusted": false,
+    "trust_tier": "Tier 4",
+    "authority": {
+      "chaser_agent_live_runtime_wired": false,
+      "profile_activation_allowed": false,
+      "toolset_activation_allowed": false,
+      "terminal_toolset_runtime_binding_allowed": false,
+      "studio_execution_now": false,
+      "terminal_execution_now": false,
+      "approval_queue_write_now": false,
+      "approval_consumption_now": false,
+      "agent_bus_write_now": false,
+      "provider_call_now": false,
+      "canonical_writeback_now": false,
+      "host_mutation_now": false,
+      "external_network_now": false
+    },
+    "chaser_no_authority": {
+      "runtime_activated": false,
+      "agent_bus_task_claimed": false,
+      "agent_bus_task_written": false,
+      "provider_called": false,
+      "tool_executed": false,
+      "shell_executed": false,
+      "memory_written": false,
+      "canonical_state_mutated": false,
+      "protected_file_mutated": false,
+      "credential_read": false,
+      "external_network_called": false
+    },
+    "contract_summary": {
+      "checks_total": 6,
+      "checks_passed": 6,
+      "checks_failed": 0,
+      "failed_checks": [],
+      "status": "passed"
+    },
+    "contract_checks": [
+      {
+        "name": "phase_a_policy_is_no_authority",
+        "ok": true,
+        "status": "passed",
+        "detail": "Chaser policy snapshot is descriptive only and unavailable for runtime activation.",
+        "blockers": [],
+        "evidence": {
+          "status": "planned_profile_prepared_not_live",
+          "available_for_runtime_activation": false
+        }
+      },
+      {
+        "name": "board_authority_preserves_no_execution",
+        "ok": true,
+        "status": "passed",
+        "detail": "Chaser board authority remains read-only/proposal-only.",
+        "blockers": [],
+        "evidence": {
+          "authority_summary": {
+            "read_only": true,
+            "proposal_packets": true,
+            "terminal_execution": false,
+            "studio_execution": false,
+            "provider_calls": false,
+            "agent_bus_writes": false,
+            "approval_queue_writes": false,
+            "approval_consumption": false,
+            "canonical_writeback": false,
+            "external_upload": false,
+            "host_mutation": false,
+            "profile_activation": false,
+            "toolset_activation": false
+          }
+        }
+      },
+      {
+        "name": "gateway_contract_preserves_no_runtime_mutation",
+        "ok": true,
+        "status": "passed",
+        "detail": "N7 gateway contract does not expose live runtime, provider, Studio execution, or Agent Bus mutation authority.",
+        "blockers": [],
+        "evidence": {
+          "mode": "internal_structured_ingress",
+          "surface": "chaser_gateway_ingress"
+        }
+      },
+      {
+        "name": "terminal_authority_audit_passes",
+        "ok": true,
+        "status": "passed",
+        "detail": "N8 terminal authority audit confirms no execution or mutation side effects for inspected surfaces.",
+        "blockers": [],
+        "evidence": {
+          "summary": {
+            "status": "pass",
+            "checks_total": 15,
+            "checks_passed": 15,
+            "checks_failed": 0,
+            "failed_checks": []
+          },
+          "side_effects": {
+            "approval_files_unchanged": true,
+            "marker_files_unchanged": true,
+            "terminal_run_files_unchanged": true,
+            "terminal_session_files_unchanged": true,
+            "agent_bus_files_unchanged": true,
+            "probe_target_not_created": true
+          }
+        }
+      },
+      {
+        "name": "profile_views_descriptive_only",
+        "ok": true,
+        "status": "passed",
+        "detail": "All Chaser profile views validate as descriptive only.",
+        "blockers": [],
+        "evidence": {
+          "profile_count": 5,
+          "statuses": {
+            "planned": 5
+          }
+        }
+      },
+      {
+        "name": "toolset_views_descriptive_only",
+        "ok": true,
+        "status": "passed",
+        "detail": "All Chaser toolset views validate as non-executing/non-writing views.",
+        "blockers": [],
+        "evidence": {
+          "toolset_count": 7,
+          "statuses": {
+            "planned": 3,
+            "partial": 3,
+            "available": 1
+          }
+        }
+      }
+    ],
+    "activation_posture": {
+      "chaser_agent_live_runtime_wired": false,
+      "studio_execution_allowed": false,
+      "terminal_execution_allowed": false,
+      "terminal_write_capable_lane_available_to_chaser": false,
+      "approval_queue_write_allowed": true,
+      "approval_queue_write_scope": "chaser_runtime_activation_approval_request_only",
+      "approval_decision_preflight_allowed": true,
+      "approval_decision_preflight_scope": "chaser_runtime_activation_approval_request_only",
+      "approval_consumption_design_allowed": true,
+      "approval_consumption_design_scope": "chaser_runtime_activation_approval_request_only",
+      "approval_consumption_write_guard_allowed": true,
+      "approval_consumption_write_guard_scope": "exact_once_marker_and_append_only_audit_only",
+      "approval_consumption_allowed": true,
+      "approval_consumption_scope": "exact_once_marker_and_append_only_audit_only",
+      "post_consumption_readiness_allowed": true,
+      "post_consumption_readiness_scope": "read_only_marker_and_audit_validation_only",
+      "activation_executor_design_allowed": true,
+      "activation_executor_design_scope": "read_only_fail_closed_design_only",
+      "activation_executor_write_guard_allowed": true,
+      "activation_executor_write_guard_scope": "exact_once_activation_marker_state_and_audit_only",
+      "activation_state_readiness_allowed": true,
+      "activation_state_readiness_scope": "read_only_activation_marker_state_and_audit_validation_only",
+      "profile_toolset_activation_design_allowed": true,
+      "profile_toolset_activation_design_scope": "read_only_profile_toolset_activation_design_only",
+      "profile_toolset_activation_write_guard_allowed": true,
+      "profile_toolset_activation_write_guard_scope": "exact_once_marker_profile_state_toolset_state_and_append_only_audit_only",
+      "profile_toolset_activation_readiness_allowed": true,
+      "profile_toolset_activation_readiness_scope": "read_only_profile_toolset_marker_state_and_audit_validation_only",
+      "terminal_toolset_binding_design_allowed": false,
+      "terminal_toolset_binding_design_scope": "deferred_until_human_studio_terminal_foundation_exists",
+      "terminal_toolset_binding_write_guard_allowed": false,
+      "agent_bus_mutation_allowed": false,
+      "provider_call_allowed": false,
+      "canonical_writeback_allowed": false,
+      "profile_activation_allowed": false,
+      "toolset_activation_allowed": false,
+      "network_gateway_server_allowed": false
+    },
+    "activation_gates": [
+      {
+        "name": "live_chaser_runtime_adapter",
+        "satisfied": false,
+        "blocker": "chaser_runtime_adapter_not_installed",
+        "detail": "No live ChaserAgent runtime adapter is installed or activated."
+      },
+      {
+        "name": "profile_toolset_activation_design",
+        "satisfied": true,
+        "blocker": "",
+        "detail": "Read-only profile/toolset activation design is available; it grants no runtime authority."
+      },
+      {
+        "name": "profile_toolset_activation_write_guard",
+        "satisfied": true,
+        "blocker": "",
+        "detail": "Guarded profile/toolset activation marker/state/audit writer is available; it does not activate live runtime authority."
+      },
+      {
+        "name": "profile_toolset_activation_readiness",
+        "satisfied": true,
+        "blocker": "",
+        "detail": "Read-only profile/toolset activation marker/state/audit readiness validator is available; it does not activate live runtime authority."
+      },
+      {
+        "name": "terminal_toolset_runtime_binding",
+        "satisfied": false,
+        "blocker": "terminal_toolset_binding_not_implemented",
+        "detail": "No ChaserAgent tool binding may invoke terminal execution; terminal work is redirected to the human Studio terminal lane first."
+      },
+      {
+        "name": "agent_bus_mutation_gate",
+        "satisfied": false,
+        "blocker": "agent_bus_task_mutation_from_chaser_not_authorized",
+        "detail": "ChaserAgent does not claim, write, or mutate Agent Bus tasks."
+      },
+      {
+        "name": "provider_runtime_dispatch_gate",
+        "satisfied": false,
+        "blocker": "provider_runtime_dispatch_not_authorized",
+        "detail": "No provider/model dispatch is authorized for ChaserAgent runtime wiring."
+      },
+      {
+        "name": "external_gateway_ingress_gate",
+        "satisfied": false,
+        "blocker": "external_gateway_ingress_not_implemented",
+        "detail": "Gateway ingress remains internal structured routing, not a network server."
+      },
+      {
+        "name": "live_runtime_activation_approval_gate",
+        "satisfied": false,
+        "blocker": "live_runtime_activation_approval_gate_not_implemented",
+        "detail": "No approval workflow exists for enabling a live ChaserAgent runtime lane."
+      }
+    ],
+    "blockers_for_live_wiring": [
+      "chaser_runtime_adapter_not_installed",
+      "terminal_toolset_binding_not_implemented",
+      "agent_bus_task_mutation_from_chaser_not_authorized",
+      "provider_runtime_dispatch_not_authorized",
+      "external_gateway_ingress_not_implemented",
+      "live_runtime_activation_approval_gate_not_implemented"
+    ],
+    "profiles": [
+      {
+        "profile_id": "builder",
+        "display_name": "Chaser Builder",
+        "status": "planned",
+        "role": "patch/proposal planning preview",
+        "recommended_toolsets": [
+          "repo-preview",
+          "artifact-preview"
+        ],
+        "runtime_id": "chaser",
+        "profile_doc": "06_AGENTS/ChaserAgent-Runtime-Profile.md",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "grants_permission": false,
+        "activates_runtime": false,
+        "calls_provider": false
+      },
+      {
+        "profile_id": "default",
+        "display_name": "Chaser Default",
+        "status": "planned",
+        "role": "bounded proposal and coordination preview",
+        "recommended_toolsets": [
+          "none"
+        ],
+        "runtime_id": "chaser",
+        "profile_doc": "06_AGENTS/ChaserAgent-Runtime-Profile.md",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "grants_permission": false,
+        "activates_runtime": false,
+        "calls_provider": false
+      },
+      {
+        "profile_id": "local",
+        "display_name": "Chaser Local",
+        "status": "planned",
+        "role": "local-first context and session preview",
+        "recommended_toolsets": [
+          "session-preview",
+          "artifact-preview"
+        ],
+        "runtime_id": "chaser",
+        "profile_doc": "06_AGENTS/ChaserAgent-Runtime-Profile.md",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "grants_permission": false,
+        "activates_runtime": false,
+        "calls_provider": false
+      },
+      {
+        "profile_id": "ops",
+        "display_name": "Chaser Ops",
+        "status": "planned",
+        "role": "runtime status and gateway diagnostic preview",
+        "recommended_toolsets": [
+          "terminal-preview",
+          "gateway-diagnostic"
+        ],
+        "runtime_id": "chaser",
+        "profile_doc": "06_AGENTS/ChaserAgent-Runtime-Profile.md",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "grants_permission": false,
+        "activates_runtime": false,
+        "calls_provider": false
+      },
+      {
+        "profile_id": "research",
+        "display_name": "Chaser Research",
+        "status": "planned",
+        "role": "source review and evidence synthesis preview",
+        "recommended_toolsets": [
+          "web-preview",
+          "artifact-preview"
+        ],
+        "runtime_id": "chaser",
+        "profile_doc": "06_AGENTS/ChaserAgent-Runtime-Profile.md",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "grants_permission": false,
+        "activates_runtime": false,
+        "calls_provider": false
+      }
+    ],
+    "profile_validations": [
+      {
+        "profile_id": "builder",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "profile_id": "default",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "profile_id": "local",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "profile_id": "ops",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "profile_id": "research",
+        "ok": true,
+        "errors": []
+      }
+    ],
+    "toolsets": [
+      {
+        "toolset_id": "artifact-preview",
+        "display_name": "Artifact Preview",
+        "status": "planned",
+        "mode": "manifest_preview_only",
+        "description": "Artifact manifest/provenance preview only.",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "executes_now": false,
+        "writes_now": false,
+        "requires_approval_for_future_execution": true
+      },
+      {
+        "toolset_id": "gateway-diagnostic",
+        "display_name": "Gateway Diagnostic",
+        "status": "partial",
+        "mode": "read_only_diagnostic",
+        "description": "Read-only Chaser Gateway Diagnostic status surfaces.",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "executes_now": false,
+        "writes_now": false,
+        "requires_approval_for_future_execution": true
+      },
+      {
+        "toolset_id": "none",
+        "display_name": "No tools",
+        "status": "available",
+        "mode": "preview_only",
+        "description": "Profile/board preview without tool routing.",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "executes_now": false,
+        "writes_now": false,
+        "requires_approval_for_future_execution": false
+      },
+      {
+        "toolset_id": "repo-preview",
+        "display_name": "Repo Preview",
+        "status": "planned",
+        "mode": "proposal_only",
+        "description": "Patch/review proposal routing only.",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "executes_now": false,
+        "writes_now": false,
+        "requires_approval_for_future_execution": true
+      },
+      {
+        "toolset_id": "session-preview",
+        "display_name": "Session Preview",
+        "status": "partial",
+        "mode": "read_only_session_store",
+        "description": "Read-only Chaser session metadata and export references.",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "executes_now": false,
+        "writes_now": false,
+        "requires_approval_for_future_execution": true
+      },
+      {
+        "toolset_id": "terminal-preview",
+        "display_name": "Terminal Preview",
+        "status": "partial",
+        "mode": "policy_preview_only",
+        "description": "TerminalAdapter policy preview and historical run references only.",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "executes_now": false,
+        "writes_now": false,
+        "requires_approval_for_future_execution": true
+      },
+      {
+        "toolset_id": "web-preview",
+        "display_name": "Web Preview",
+        "status": "planned",
+        "mode": "no_network_preview_only",
+        "description": "Web/search intent description only; no network call.",
+        "authority": {
+          "runtime_activated": false,
+          "agent_bus_task_claimed": false,
+          "agent_bus_task_written": false,
+          "provider_called": false,
+          "tool_executed": false,
+          "shell_executed": false,
+          "memory_written": false,
+          "canonical_state_mutated": false,
+          "protected_file_mutated": false,
+          "credential_read": false,
+          "external_network_called": false
+        },
+        "executes_now": false,
+        "writes_now": false,
+        "requires_approval_for_future_execution": true
+      }
+    ],
+    "toolset_validations": [
+      {
+        "toolset_id": "artifact-preview",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "toolset_id": "gateway-diagnostic",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "toolset_id": "none",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "toolset_id": "repo-preview",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "toolset_id": "session-preview",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "toolset_id": "terminal-preview",
+        "ok": true,
+        "errors": []
+      },
+      {
+        "toolset_id": "web-preview",
+        "ok": true,
+        "errors": []
+      }
+    ],
+    "gateway_contract": {
+      "surface": "chaser_gateway_ingress",
+      "mode": "internal_structured_ingress",
+      "authority": {
+        "gateway_network_server_now": false,
+        "studio_execution_now": false,
+        "terminal_execution_now": false,
+        "terminal_audit_write_now": false,
+        "approval_queue_write_now": false,
+        "approval_consumption_now": false,
+        "exact_once_marker_write_now": false,
+        "host_mutation_now": false,
+        "agent_bus_write_now": false,
+        "provider_call_now": false,
+        "canonical_writeback_now": false,
+        "external_upload_now": false,
+        "profile_activation_now": false,
+        "toolset_activation_now": false
+      },
+      "supported_intents": [
+        {
+          "intent": "gateway.contract",
+          "writes_now": false,
+          "executes_now": false,
+          "route": "build_gateway_ingress_contract"
+        },
+        {
+          "intent": "board.state",
+          "writes_now": false,
+          "executes_now": false,
+          "route": "runtime.chaser.board.build_board_state"
+        },
+        {
+          "intent": "terminal.propose",
+          "writes_now": false,
+          "executes_now": false,
+          "route": "runtime.chaser.board.build_action_proposal"
+        },
+        {
+          "intent": "terminal.approval_request_preview",
+          "writes_now": false,
+          "executes_now": false,
+          "route": "runtime.chaser.board.build_terminal_write_approval_request(write_request=False)"
+        },
+        {
+          "intent": "terminal.approval_request_write",
+          "writes_now": true,
+          "executes_now": false,
+          "route": "runtime.chaser.board.build_terminal_write_approval_request(write_request=True)"
+        },
+        {
+          "intent": "terminal.executor_readiness",
+          "writes_now": false,
+          "executes_now": false,
+          "route": "runtime.chaser.terminal_write_executor_readiness"
+        },
+        {
+          "intent": "terminal.execute_approval",
+          "writes_now": true,
+          "executes_now": true,
+          "route": "runtime.chaser.terminal_write_executor.execute_terminal_write_approval"
+        }
+      ]
+    },
+    "terminal_authority_audit": {
+      "ok": true,
+      "surface": "chaser_terminal_authority_audit",
+      "summary": {
+        "status": "pass",
+        "checks_total": 15,
+        "checks_passed": 15,
+        "checks_failed": 0,
+        "failed_checks": []
+      },
+      "authority": {
+        "studio_execution_now": false,
+        "terminal_execution_now": false,
+        "approval_queue_write_now": false,
+        "approval_consumption_now": false,
+        "exact_once_marker_write_now": false,
+        "terminal_audit_write_now": false,
+        "agent_bus_write_now": false,
+        "provider_call_now": false,
+        "canonical_writeback_now": false,
+        "external_upload_now": false,
+        "host_mutation_now": false
+      },
+      "side_effects": {
+        "approval_files_unchanged": true,
+        "marker_files_unchanged": true,
+        "terminal_run_files_unchanged": true,
+        "terminal_session_files_unchanged": true,
+        "agent_bus_files_unchanged": true,
+        "probe_target_not_created": true
+      }
+    },
+    "warnings": [
+      "readiness_review_only_no_chaser_runtime_activation",
+      "no_studio_execution_api_added",
+      "chaser_terminal_toolset_binding_deferred_until_human_studio_terminal",
+      "no_agent_bus_writes_or_provider_calls",
+      "terminal_output_and_terminal_intent_remain_tier_4_untrusted"
+    ],
+    "next_recommended_pass": "terminal-n29-studio-full-terminal-product-contract"
+  },
+  "errors": [],
+  "warnings": [
+    "readiness_review_only_no_chaser_runtime_activation",
+    "no_studio_execution_api_added",
+    "chaser_terminal_toolset_binding_deferred_until_human_studio_terminal",
+    "no_agent_bus_writes_or_provider_calls",
+    "terminal_output_and_terminal_intent_remain_tier_4_untrusted"
+  ],
+  "audit_id": null
+}
