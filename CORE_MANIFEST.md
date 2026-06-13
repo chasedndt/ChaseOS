@@ -8,6 +8,7 @@ ChaseOS Core is the public framework layer for governed memory, runtime boundari
 - Public schemas, templates, and operating patterns.
 - Approval-first write surfaces and evidence requirements.
 - Adapter boundaries for model and automation runtimes.
+- Runtime identity examples for Hermes, OpenClaw, and Chaser Agent as the ChaseOS 24/7 harness/runtime family.
 - Core starter folders for home, projects, knowledge, inputs, SOPs, templates, agents, and logs.
 - Chaser Forge workflow and extension-governance templates.
 

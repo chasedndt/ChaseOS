@@ -23,8 +23,8 @@ sites.
 
 - Existing runtime integration is Agent Bus centered. Hermes and OpenClaw have
   active capability manifests and runtime profiles.
-- Codex and Archon are also bus-capable development runtimes, but the requested
-  product-facing backend target is modeled as OpenHuman, HermesAgent, OpenClaw.
+- Hermes, OpenClaw, and Chaser Agent are the ChaseOS 24/7 harness/runtime family.
+- Archon is not a portable ChaseOS Core runtime; it is the operator's personal Claude Code instance name.
 - OpenHuman is not an active backend in current repo truth. The current profile
   marks it retired/reference-only, so Pass 1 models it but blocks it by default.
 - Existing sub-agent logic lives under VentureOps Mission Mode and

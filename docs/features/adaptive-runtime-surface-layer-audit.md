@@ -84,7 +84,7 @@ Implemented or partially implemented:
 - `runtime/codex/capabilities.yaml`
 - `runtime/openclaw/capabilities.yaml`
 - `runtime/hermes/capabilities.yaml`
-- `runtime/archon/capabilities.yaml`
+- `runtime/chaser_agent/capabilities.yaml`
 - `06_AGENTS/Runtime-InterAgent-Coordination-Bus.md`
 - `06_AGENTS/Agent-Bus-Backend-Architecture.md`
 - `06_AGENTS/Autonomous-Operator-Runtime.md`

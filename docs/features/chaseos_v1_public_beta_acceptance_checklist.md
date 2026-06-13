@@ -28,14 +28,14 @@ Use this product identity consistently in public-user beta copy, Studio UI, docs
 | ChaseOS | Platform/product: local-first AI operating system and agent control plane. | Public product name. Do not reduce it to a chatbot, vault, or template pack. |
 | ChaseOS Studio | Standalone app / graphical control panel for ChaseOS. | Main V1 user-facing app. |
 | Chaser Forge | Governed marketplace / extension and workflow-pack distribution layer. | V1 preview/partial path unless public domain/index is live. |
-| Chaser Agent | Future first-party always-on runtime / managed agent family. | Upcoming/Post-V1. Must not block beta. |
+| Chaser Agent | First-party ChaseOS 24/7 harness/runtime lane. | Runtime identity exists; public managed-agent product authority remains gated/Post-V1 and must not block beta. |
 | Hermes / OpenClaw | Existing bounded runtime-instance lanes under ChaseOS governance. | Internal/proof/runtime-compatibility lanes, not product brand. |
 
 ## 2. Release gate verdict
 
 Current PM verdict: **not beta-ready until Ship and Ship-Minimum gates below are verified**.
 
-The beta may still show Preview, Upcoming, and Blocked features if they are clearly labeled, safe, and non-deceptive. V1 public-user beta must not imply that external delivery, payments, broad browser automation, marketplace purchase flows, Chaser Agent, or uncontrolled runtime execution are live unless separately proven and approved.
+The beta may still show Preview, Upcoming, and Blocked features if they are clearly labeled, safe, and non-deceptive. V1 public-user beta must not imply that external delivery, payments, broad browser automation, marketplace purchase flows, Chaser Agent public managed-agent actions, or uncontrolled runtime execution are live unless separately proven and approved.
 
 ## 3. Ship gates — must work for first public users
 
@@ -80,7 +80,7 @@ The beta may still show Preview, Upcoming, and Blocked features if they are clea
 
 | Area | Beta label | Rule |
 |---|---|---|
-| Chaser Agent | Upcoming / Post-V1 | Future first-party runtime or managed-agent layer; do not present as required for Studio beta. |
+| Chaser Agent | Runtime identity exists / product authority gated | First-party 24/7 runtime lane; do not present public managed-agent authority as required for Studio beta. |
 | AISO | Upcoming | Roadmap/mission preview only. |
 | Voice Mode | Upcoming / Preview | Page/status is okay; microphone/provider capture not required. |
 | Companion surface | Upcoming | No beta dependency. |
@@ -136,7 +136,7 @@ These are PM/reviewer gates, not implementation scope for V1-A1:
 
 ## 11. PM handoff summary
 
-V1 public-user beta should be cut around a truthful ChaseOS Studio product shell, local-first setup, settings/privacy/provider visibility, feature catalog status labeling, docs/inspector access, public repo hygiene, and a repeatable smoke/leak suite. Chaser Forge can ship as preview/partial, Chaser Agent and AISO remain upcoming, and live external delivery/payments/browser/runtime authority must stay blocked or preview-only unless separately proven. The next release decision should be evidence-driven: the beta is ready only after Ship and Ship-Minimum gates have recorded proof and no public-trust blocker remains.
+V1 public-user beta should be cut around a truthful ChaseOS Studio product shell, local-first setup, settings/privacy/provider visibility, feature catalog status labeling, docs/inspector access, public repo hygiene, and a repeatable smoke/leak suite. Chaser Forge can ship as preview/partial, Chaser Agent public managed-agent authority and AISO remain gated, and live external delivery/payments/browser/runtime authority must stay blocked or preview-only unless separately proven. The next release decision should be evidence-driven: the beta is ready only after Ship and Ship-Minimum gates have recorded proof and no public-trust blocker remains.
 
 ## 12. Graph links
 

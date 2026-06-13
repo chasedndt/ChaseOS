@@ -1,0 +1,9 @@
+# Chaser Agent lifecycle example for private ChaseOS deployments.
+runtime: chaser_agent
+display_name: Chaser Agent
+status: template
+startup_mode: operator_controlled
+notes: >-
+  Chaser Agent is a 24/7 ChaseOS harness/runtime identity. This template does
+  not start a daemon or grant shell, browser, provider, approval-consumption,
+  protected-write, or canonical-promotion authority.

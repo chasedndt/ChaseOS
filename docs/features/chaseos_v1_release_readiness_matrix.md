@@ -100,7 +100,7 @@ Final V1-A1 PM handoff: `docs/features/chaseos_v1_public_beta_acceptance_checkli
 | MCP | Preview | Mention advanced/developer integration; not first user required. |
 | VentureOps / Mission Mode | Preview / Partial | Good founder/business wedge; external revenue delivery remains blocked. |
 | AISO | Upcoming | Roadmap/mission preview only. |
-| Chaser Agent | Upcoming / Post-V1 | Future first-party runtime/agency harness. |
+| Chaser Agent | Runtime identity exists / product authority gated | First-party 24/7 runtime/harness lane; managed-agent product authority remains gated. |
 
 ## 5. Monetization-readiness classification
 
@@ -111,7 +111,7 @@ Final V1-A1 PM handoff: `docs/features/chaseos_v1_public_beta_acceptance_checkli
 | License/account gate | Post-V1 / Decision | Decide open-core/source-available boundary. | Stripe/license server. |
 | Credits | Post-V1 | Define credit concept only if managed agents/provider calls exist. | Credit accounting and enforcement. |
 | Marketplace paid packs | Preview / Partial | Chaser Forge static/public index path; free/demo packs. | Payments, seller accounts, revenue share. |
-| Managed Chaser Agent / agency | Post-V1 | Position as premium future lane. | 24/7 hosted runtime product. |
+| Managed Chaser Agent / agency | Post-V1 | Position as gated premium lane. | 24/7 hosted runtime product. |
 | Enterprise/private deployment | Post-V1 | Mention high-level. | Sales/legal/security process. |
 
 ## 6. Recommended package/pricing hypothesis
